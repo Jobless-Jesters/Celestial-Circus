@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public float jumpPower = 10f;
     public KeyCode jumpkey = KeyCode.Space;
+
+    public float jumpPower = 30f;
+    public int extraJumps = 2; // adds double jump
     private Movement movement;
     // Start is called before the first frame update
     void Start()
@@ -15,9 +17,10 @@ public class Jump : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(Input.GetKeyDown(jumpkey)){
-            movement.Jump(jumpPower);
+    {            
+        if (Input.GetKeyDown(jumpkey))
+        {
+            movement.Jump(jumpPower, extraJumps);
         }
     }
 }
