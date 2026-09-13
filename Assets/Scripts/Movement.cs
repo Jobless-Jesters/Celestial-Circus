@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class BasicPlatformerScript : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [Header("Input Bindings")]
     [SerializeField] protected KeyCode left = KeyCode.A;
@@ -23,9 +23,10 @@ public class BasicPlatformerScript : MonoBehaviour
     [SerializeField] protected float maxVerticalVelocity = 20;
 
     [Header("Physics")]
-    [SerializeField] protected float gravity = 9.8f;
-    [SerializeField] protected float mass = 5;
+    [SerializeField] protected float gravity = 6f;
+    [SerializeField] protected float mass = 1;
     [SerializeField] protected float groundBuffer = 0.08f; // for ground detection
+    private float GROUND_CHECK_DEPTH = 0.7f;
 
     // Player States
     public enum STATE {Grounded, Falling}
@@ -89,6 +90,7 @@ public class BasicPlatformerScript : MonoBehaviour
             _horizontalInput -= 1;
         }
 
+        _CheckGrounded();
         _calculateHorizontalVelocity();
         _ApplyGravity();
     }
@@ -105,7 +107,7 @@ public class BasicPlatformerScript : MonoBehaviour
         Vector2 position = transform.position;
         Vector2 newPosition = position + _currentVelocity * dt;
         Vector2 bounds = _playerCollider.bounds.extents; // Player bounding box edge
-        if (_currentVelocity.y < 0)
+        if (_currentVelocity.y <= 0) // Groundcheck still happens even if the vert v is 0 
         { // MAKE SURE PLAYER IS ON "IGNORE RAYCAST" LAYER IN UNITY IN TOP RIGHT
             Vector2 boundPosition = new Vector2(position.x, position.y - bounds.y);
             RaycastHit2D hit = Physics2D.Raycast(boundPosition, Vector2.down); // Shoot invisible line straight down
@@ -116,9 +118,10 @@ public class BasicPlatformerScript : MonoBehaviour
                 if (distance <= groundBuffer && distance > 0) // Distance is close enough to ground
                 {
                     currentState = STATE.Grounded;
-                    _currentVelocity = new Vector2(_currentVelocity.x, 0);
-                    newPosition = (Vector2) position;
+                    _currentVelocity.y = 0;
+                    newPosition = new Vector2(newPosition.x, position.y);
                 } else if (distance < Mathf.Abs(_currentVelocity.y * dt) + groundBuffer && distance > 0)
+                
                 { // Still falling
                     newPosition = new Vector2(
                         newPosition.x, position.y - distance + groundBuffer
@@ -142,6 +145,33 @@ public class BasicPlatformerScript : MonoBehaviour
         if (currentState == STATE.Falling)
         {
             _currentVelocity += new Vector2(0, -1) * (gravity * mass * Time.deltaTime);
+        }
+    }
+
+    public void Jump(float jumpVelocity)
+    {
+        if (currentState == STATE.Grounded)
+        {
+            _currentVelocity.y = jumpVelocity;
+            currentState = STATE.Falling;
+            OnJump_Hook();
+        }
+    }
+
+    private void _CheckGrounded()
+    {
+        Vector2 position = transform.position;
+        Vector2 extents = _playerCollider.bounds.extents;
+        Vector2 rayPosition = new Vector2(position.x, position.y - extents.y);
+        
+        if (currentState == STATE.Grounded)
+        {
+            Debug.DrawRay(rayPosition,Vector2.down*(GROUND_CHECK_DEPTH));
+            RaycastHit2D checkValid = Physics2D.Raycast(rayPosition, Vector2.down,GROUND_CHECK_DEPTH);
+            if (!checkValid.collider)
+            {
+                currentState = STATE.Falling;
+            }
         }
     }
 }
