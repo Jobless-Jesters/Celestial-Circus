@@ -28,6 +28,8 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float mass = 1;
     [SerializeField] protected float groundBuffer = 0.08f; // for ground detection
     private float GROUND_CHECK_DEPTH = 0.7f;
+    public LayerMask groundLayer;
+    public LayerMask wallLayer;
 
     // Player States
     public enum STATE { Grounded, Falling }
@@ -114,7 +116,7 @@ public class Movement : MonoBehaviour
         if (_currentVelocity.y <= 0) // Groundcheck still happens even if the vert v is 0 
         { // MAKE SURE PLAYER IS ON "IGNORE RAYCAST" LAYER IN UNITY IN TOP RIGHT
             Vector2 boundPosition = new Vector2(position.x, position.y - bounds.y);
-            RaycastHit2D hit = Physics2D.Raycast(boundPosition, Vector2.down); // Shoot invisible line straight down
+            RaycastHit2D hit = Physics2D.Raycast(boundPosition, Vector2.down, Mathf.Infinity, groundLayer); // Shoot invisible line straight down
 
             if (hit.collider) // If line hits something
             {
@@ -175,6 +177,7 @@ public class Movement : MonoBehaviour
     {
         // Draws a line of GROUND_CHECK_DEPTH length extending from the player down to the ground 
         // If the line isn't colliding with anything, we must be not be in contact with the ground
+        // ENSURE ANY PLATFORMS IN THE LEVEL ARE ON THE LAYER "3: GROUND" or the player will fall through the floor!
         Vector2 position = transform.position;
         Vector2 extents = _playerCollider.bounds.extents;
         Vector2 rayPosition = new Vector2(position.x, position.y - extents.y);
@@ -182,7 +185,7 @@ public class Movement : MonoBehaviour
         if (currentState == STATE.Grounded)
         {
             Debug.DrawRay(rayPosition, Vector2.down * (GROUND_CHECK_DEPTH));
-            RaycastHit2D checkValid = Physics2D.Raycast(rayPosition, Vector2.down, GROUND_CHECK_DEPTH);
+            RaycastHit2D checkValid = Physics2D.Raycast(rayPosition, Vector2.down, GROUND_CHECK_DEPTH, groundLayer);
             if (!checkValid.collider)
             {
                 currentState = STATE.Falling;

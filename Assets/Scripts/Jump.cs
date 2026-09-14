@@ -7,7 +7,7 @@ public class Jump : MonoBehaviour
     public KeyCode jumpkey = KeyCode.Space;
 
     public float jumpPower = 30f;
-    public int extraJumps = 2; // adds double jump
+    public int extraJumps = 1; // adds double jump
     private Movement movement;
     // Start is called before the first frame update
     void Start()
