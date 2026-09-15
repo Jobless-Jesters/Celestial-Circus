@@ -1,6 +1,7 @@
 # CMPUT 250 - Computers and Games
 
 This project is being completed as part of the CMPUT 250 curriculum, found [here](https://sites.google.com/ualberta.ca/cmput250?pli=1&authuser=0)
+Celestial Circus by the Jobless Jesters
 
 
 
