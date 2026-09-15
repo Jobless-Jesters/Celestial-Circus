@@ -15,7 +15,8 @@ public class Movement : MonoBehaviour
     [SerializeField] protected KeyCode right = KeyCode.D;
 
     [Header("Movement Settings")]
-    [SerializeField] protected int jumpsRemaining;
+    [SerializeField] protected int jumpsRemaining = 1;
+    [SerializeField] protected bool facingRight = true;
 
     [Header("Kinematics")]
     [SerializeField] protected float baseSpeed = 5f;
@@ -28,12 +29,12 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float mass = 1;
     [SerializeField] protected float groundBuffer = 0.08f; // for ground detection
     private float GROUND_CHECK_DEPTH = 0.7f;
-    public LayerMask groundLayer;
-    public LayerMask wallLayer;
+    [SerializeField] public LayerMask groundLayer;
+    [SerializeField] public LayerMask wallLayer;
 
     // Player States
     public enum STATE { Grounded, Falling }
-    private STATE _currentState = STATE.Falling;
+    public STATE _currentState = STATE.Falling;
     [HideInInspector]
     public STATE currentState
     {
@@ -180,7 +181,7 @@ public class Movement : MonoBehaviour
         // ENSURE ANY PLATFORMS IN THE LEVEL ARE ON THE LAYER "3: GROUND" or the player will fall through the floor!
         Vector2 position = transform.position;
         Vector2 extents = _playerCollider.bounds.extents;
-        Vector2 rayPosition = new Vector2(position.x, position.y - extents.y);
+        Vector2 rayPosition = new Vector2(position.x-extents.x, position.y - extents.y);
 
         if (currentState == STATE.Grounded)
         {
