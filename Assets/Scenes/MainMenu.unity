@@ -910,6 +910,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1194347238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194347239}
+  m_Layer: 3
+  m_Name: GroundTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194347239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194347238}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1762733454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602748410
 GameObject:
   m_ObjectHideFlags: 3
@@ -1036,19 +1067,22 @@ MonoBehaviour:
   right: 100
   jumpsRemaining: 0
   facingRight: 1
+  maxJumps: 2
   baseSpeed: 10
   horizontalAcceleration: 10
   maxHorizontalVelocity: 20
   maxVerticalVelocity: 20
   gravity: 9.8
   mass: 10
-  groundBuffer: 0.08
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  groundBuffer: 0.1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  groundCheckPos: {fileID: 1194347239}
+  groundCheckSize: {x: 1.17, y: 0.21}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   _currentState: 1
 --- !u!212 &1762733453
 SpriteRenderer:
@@ -1114,7 +1148,8 @@ Transform:
   m_LocalPosition: {x: 0.08, y: 3.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1194347239}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1762733455
@@ -1178,7 +1213,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1187,7 +1222,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &1762733457
 MonoBehaviour:
