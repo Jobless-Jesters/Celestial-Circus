@@ -640,6 +640,7 @@ MonoBehaviour:
   down: 115
   right: 100
   jumpsRemaining: 0
+  facingRight: 1
   baseSpeed: 5
   horizontalAcceleration: 10
   maxHorizontalVelocity: 20
@@ -647,6 +648,13 @@ MonoBehaviour:
   gravity: 6
   mass: 5
   groundBuffer: 0.08
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _currentState: 1
 --- !u!114 &1315609883
 MonoBehaviour:
   m_ObjectHideFlags: 0
