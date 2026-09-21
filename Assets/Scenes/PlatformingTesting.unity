@@ -1065,16 +1065,14 @@ MonoBehaviour:
   left: 97
   down: 115
   right: 100
-  jumpsRemaining: 0
-  facingRight: 1
-  maxJumps: 2
   baseSpeed: 10
-  horizontalAcceleration: 10
-  maxHorizontalVelocity: 20
-  maxVerticalVelocity: 20
+  jumpsRemaining: 0
+  maxJumps: 2
+  facingRight: 1
   gravity: 9.8
+  fallSpeedMultiplier: 2
+  maxFallSpeed: 18
   mass: 10
-  groundBuffer: 0.1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1237,8 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpkey: 32
-  jumpPower: 30
-  extraJumps: 1
+  jumpPower: 40
 --- !u!1 &1988169765
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "temp-game-name.sln"
+    "dotnet.defaultSolution": "Celestial-Circus.sln"
 }
