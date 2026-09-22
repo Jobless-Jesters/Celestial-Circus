@@ -18,9 +18,10 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float baseSpeed = 5f;
     [SerializeField] protected int jumpsRemaining;
     [SerializeField] public int maxJumps = 2;
-
     [SerializeField] protected bool facingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
@@ -116,11 +117,20 @@ public class Movement : MonoBehaviour
 
     public void Jump(float jumpVelocity)
     {
-        if (jumpsRemaining > 0)
+        // Gives coyote time on the first jump
+        if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
         {
             _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
             jumpsRemaining--;
 
+            coyoteTimeCounter = 0f;
+        }
+
+        // Double jumps don't need coyote time. Player can double jump normally
+        else if (jumpsRemaining > 0)
+        {
+            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
+            jumpsRemaining--;
         }
     }
 
@@ -134,11 +144,14 @@ public class Movement : MonoBehaviour
             {
                 currentState = STATE.Grounded;
                 jumpsRemaining = maxJumps;
+                coyoteTimeCounter = coyoteTime;
+
             }
         }
         else
         {
             currentState = STATE.Falling;
+            coyoteTimeCounter -= Time.deltaTime;
         }
     }
 
