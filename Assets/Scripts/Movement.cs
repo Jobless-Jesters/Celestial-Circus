@@ -15,22 +15,24 @@ public class Movement : MonoBehaviour
     [SerializeField] protected KeyCode right = KeyCode.D;
 
     [Header("Movement Settings")]
-    [SerializeField] protected int jumpsRemaining = 1;
-    [SerializeField] protected bool facingRight = true;
-
-    [Header("Kinematics")]
     [SerializeField] protected float baseSpeed = 5f;
-    [SerializeField] protected float horizontalAcceleration = 10;
-    [SerializeField] protected float maxHorizontalVelocity = 20;
-    [SerializeField] protected float maxVerticalVelocity = 20;
+    [SerializeField] protected int jumpsRemaining;
+    [SerializeField] public int maxJumps = 2;
+
+    [SerializeField] protected bool facingRight = true;
+    protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
+    [SerializeField] protected float fallSpeedMultiplier = 2f;
+    [SerializeField] protected float maxFallSpeed = 18f;
     [SerializeField] protected float mass = 1;
-    [SerializeField] protected float groundBuffer = 0.08f; // for ground detection
-    private float GROUND_CHECK_DEPTH = 0.7f;
-    [SerializeField] public LayerMask groundLayer;
     [SerializeField] public LayerMask wallLayer;
+
+    [Header("Collision Variables")]
+    [SerializeField] public Transform groundCheckPos;
+    [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] public LayerMask groundLayer;
 
     // Player States
     public enum STATE { Grounded, Falling }
@@ -49,28 +51,17 @@ public class Movement : MonoBehaviour
             switch (_currentState)
             {
                 case STATE.Grounded:
-                    OnGrounded_Hook();
                     break;
                 // case STATE.Rising: OnRising_Hook();
                 //     break;
                 // case STATE.Hanging: OnHanging_Hook();
                 //     break;
                 case STATE.Falling:
-                    OnFalling_Hook();
                     break;
             }
         }
     }
-    //Jump hooks
-    protected virtual void OnGrounded_Hook() { }
-    protected virtual void OnRising_Hook() { }
-    protected virtual void OnHanging_Hook() { }
-    protected virtual void OnFalling_Hook() { }
-    protected virtual void OnJump_Hook() { }
 
-    // Internal Movement Variables
-    private Vector2 _currentVelocity = Vector2.zero;
-    protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
 
     // Unity Components
     private Rigidbody2D _playerBody;
@@ -97,100 +88,65 @@ public class Movement : MonoBehaviour
             _horizontalInput -= 1;
         }
 
-        _CheckGrounded();
-        _calculateHorizontalVelocity();
+        groundCheck();
         _ApplyGravity();
     }
 
     protected virtual void FixedUpdate()
     {
         // Actually move in fixed update to avoid kinematic body glitches
-        _TryMove();
+        Move();
     }
 
-    private void _TryMove()
+    private void Move()
     {
-        float dt = Time.fixedDeltaTime;
-        Vector2 position = transform.position;
-        Vector2 newPosition = position + _currentVelocity * dt;
-        Vector2 bounds = _playerCollider.bounds.extents; // Player bounding box edge
-        if (_currentVelocity.y <= 0) // Groundcheck still happens even if the vert v is 0 
-        { // MAKE SURE PLAYER IS ON "IGNORE RAYCAST" LAYER IN UNITY IN TOP RIGHT
-            Vector2 boundPosition = new Vector2(position.x, position.y - bounds.y);
-            RaycastHit2D hit = Physics2D.Raycast(boundPosition, Vector2.down, Mathf.Infinity, groundLayer); // Shoot invisible line straight down
-
-            if (hit.collider) // If line hits something
-            {
-                float distance = hit.distance;
-                if (distance <= groundBuffer && distance > 0) // Distance is close enough to ground
-                {
-                    currentState = STATE.Grounded;
-                    _currentVelocity.y = 0;
-                    newPosition = new Vector2(newPosition.x, position.y);
-                }
-                else if (distance < Mathf.Abs(_currentVelocity.y * dt) + groundBuffer && distance > 0)
-
-                { // Still falling
-                    newPosition = new Vector2(
-                        newPosition.x, position.y - distance + groundBuffer
-                    );
-                }
-            }
-        }
-
-        _playerBody.MovePosition(newPosition);
+        // Says "right", but _horizontalInput flips the direction left if player presses Left
+        transform.position += Vector3.right * (_horizontalInput * Time.deltaTime * baseSpeed);
     }
 
-    // v_final = v_initial + direction * (acceleration * time)
-    private void _calculateHorizontalVelocity()
-    {
-        _currentVelocity += new Vector2(_horizontalInput, 0) * (horizontalAcceleration * Time.deltaTime);
-    }
-
-    // same formula as _HorizontalMove but down
     private void _ApplyGravity()
     {
+        // Gravity is applied to the player's RigidBody2D, falling no faster than the maxFallSpeed
         if (currentState == STATE.Falling)
         {
-            _currentVelocity += new Vector2(0, -1) * (gravity * mass * Time.deltaTime);
+            _playerBody.gravityScale = gravity * fallSpeedMultiplier;  // Fall increasingly faster
+            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Max(_playerBody.velocity.y, -maxFallSpeed));
         }
     }
 
-    public void Jump(float jumpVelocity, int extraJumps)
+    public void Jump(float jumpVelocity)
     {
-        if (currentState == STATE.Grounded)
+        if (jumpsRemaining > 0)
         {
-            jumpsRemaining = extraJumps;  // reset jumps when we touch the ground
-            _currentVelocity.y = jumpVelocity;
-            currentState = STATE.Falling;
-            OnJump_Hook();
-        }
-        // Double jump
-        else if (currentState == STATE.Falling && jumpsRemaining > 0)
-        {
+            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
             jumpsRemaining--;
-            _currentVelocity.y = jumpVelocity;
-            OnJump_Hook();
+
         }
     }
 
-    private void _CheckGrounded()
+    private void groundCheck()
     {
-        // Draws a line of GROUND_CHECK_DEPTH length extending from the player down to the ground 
-        // If the line isn't colliding with anything, we must be not be in contact with the ground
-        // ENSURE ANY PLATFORMS IN THE LEVEL ARE ON THE LAYER "3: GROUND" or the player will fall through the floor!
-        Vector2 position = transform.position;
-        Vector2 extents = _playerCollider.bounds.extents;
-        Vector2 rayPosition = new Vector2(position.x-extents.x, position.y - extents.y);
-
-        if (currentState == STATE.Grounded)
+        // Overlaps is calculated with an invisible box, not an invisible ray
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
-            Debug.DrawRay(rayPosition, Vector2.down * (GROUND_CHECK_DEPTH));
-            RaycastHit2D checkValid = Physics2D.Raycast(rayPosition, Vector2.down, GROUND_CHECK_DEPTH, groundLayer);
-            if (!checkValid.collider)
+            // Only change to Grounded if it wasn't already to avoid jump count errors
+            if (currentState != STATE.Grounded)
             {
-                currentState = STATE.Falling;
+                currentState = STATE.Grounded;
+                jumpsRemaining = maxJumps;
             }
         }
+        else
+        {
+            currentState = STATE.Falling;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Draws a bounding box for the ground detection collider
+        // You can turn this off by deselcting Gizmos in the Scene view
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 }
