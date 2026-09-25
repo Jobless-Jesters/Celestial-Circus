@@ -29,6 +29,18 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float mass = 1;
     [SerializeField] public LayerMask wallLayer;
 
+    [Header("Glide Settings")]
+    [SerializeField] protected float glideGravity = 2f;
+    [SerializeField] protected float glideMaxFallSpeed = 4f;
+    [SerializeField] protected float glideSpeedMultiplier = 1.2f;
+
+    [Header("Glide Visual")]
+    [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
+    private bool WantsToGlide = false;
+    private SpriteRenderer spriteRenderer;
+    private Color normalColor;
+
+
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
     [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
@@ -73,6 +85,11 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        // Sprite may eventually be a child of the player object hence using getcomponentinchildren
+        if(spriteRenderer != null){
+            normalColor = spriteRenderer.color;
+        }
     }
 
     // Update is called once per frame
@@ -90,6 +107,7 @@ public class Movement : MonoBehaviour
 
         groundCheck();
         _ApplyGravity();
+        UpdateGlideVisual();
     }
 
     protected virtual void FixedUpdate()
@@ -100,17 +118,51 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
+        float speedMultiplier;
+
+        if (IsGliding()){
+            speedMultiplier = glideSpeedMultiplier;
+        }
+        else
+        {
+            speedMultiplier = 1f;
+        }
+
         // Says "right", but _horizontalInput flips the direction left if player presses Left
-        transform.position += Vector3.right * (_horizontalInput * Time.deltaTime * baseSpeed);
+        transform.position += Vector3.right * (_horizontalInput * Time.deltaTime * baseSpeed * speedMultiplier);
     }
 
     private void _ApplyGravity()
     {
-        // Gravity is applied to the player's RigidBody2D, falling no faster than the maxFallSpeed
-        if (currentState == STATE.Falling)
+        if (currentState == STATE.Falling){
+            
+            if (IsGliding()){
+                
+                // Reduced gravity while gliding
+                _playerBody.gravityScale = glideGravity;
+
+                // Prevent the player from falling faster than the glide speed
+                _playerBody.velocity = new Vector2(
+                    _playerBody.velocity.x,
+                    Mathf.Max(_playerBody.velocity.y, -glideMaxFallSpeed)
+                );
+            }
+            
+            else
+            {
+                // Normal falling physics
+                _playerBody.gravityScale = gravity * fallSpeedMultiplier;
+
+                _playerBody.velocity = new Vector2(
+                    _playerBody.velocity.x,
+                    Mathf.Max(_playerBody.velocity.y, -maxFallSpeed)
+                );
+            }
+        }
+        else
         {
-            _playerBody.gravityScale = gravity * fallSpeedMultiplier;  // Fall increasingly faster
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Max(_playerBody.velocity.y, -maxFallSpeed));
+            // Reset gravity when grounded
+            _playerBody.gravityScale = gravity;
         }
     }
 
@@ -124,6 +176,17 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void SetGliding(bool gliding)
+    {
+        WantsToGlide = gliding; //called by Jump.cs 
+    }
+
+    private bool IsGliding()
+    {
+        return WantsToGlide
+        && currentState == STATE.Falling
+        && _playerBody.velocity.y < 0; // makes sure that glide only activates when the player is actually moving downwards
+    }
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
@@ -148,5 +211,18 @@ public class Movement : MonoBehaviour
         // You can turn this off by deselcting Gizmos in the Scene view
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+    }
+
+    private void UpdateGlideVisual(){
+        if (spriteRenderer == null){
+            return;}
+
+        if (IsGliding()){
+            spriteRenderer.color = glideColor;
+        }
+        else
+        {
+            spriteRenderer.color = normalColor;
+        }
     }
 }
