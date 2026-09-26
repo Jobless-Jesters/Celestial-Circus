@@ -74,15 +74,11 @@ public class GameController : MonoBehaviour
 
     public void respawnAtCheckpoint()
     {
-        print("Player was at: " + player.transform.position);
-
         // Puts the player at the same spot as the checkpoint.
         // Offset by [0, 0, -2] so that player respawns in front of checkpoint
         // May want to add xy offset as well for a certain effect/feel
-        print("Last checkpoint: " + getLastCheckpointPosition());
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
 
-        print("Player moved to: " + player.transform.position);
 
     }
 }
