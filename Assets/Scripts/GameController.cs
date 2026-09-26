@@ -77,8 +77,9 @@ public class GameController : MonoBehaviour
         // Puts the player at the same spot as the checkpoint.
         // Offset by [0, 0, -2] so that player respawns in front of checkpoint
         // May want to add xy offset as well for a certain effect/feel
-        player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
-
-
+        if (getLastCheckpointPosition() != Vector3.zero)
+        {
+            player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
+        }
     }
 }
