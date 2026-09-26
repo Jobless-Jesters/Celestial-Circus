@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
+    // To use:
+    // AudioController.Instance.Play????SFX();
+    // Wherever you need a certain sound effect
     private static AudioController _instance;
     public static AudioController Instance { get { return _instance; } }
     public AudioSource audioSource;
@@ -21,7 +24,7 @@ public class AudioController : MonoBehaviour
         _instance = this;
     }
 
-    // TODO: Replace the function names and SFX with the right sounds
+    // TODO: Replace the function names and SFX with the correct sounds and names
     public void PlayWalkSFX()
     {
         audioSource.PlayOneShot(walkSFX);
