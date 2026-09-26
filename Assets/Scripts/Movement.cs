@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
