@@ -22,6 +22,7 @@ public class AudioController : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        DontDestroyOnLoad(this.gameObject); // Controller persists between scenes
     }
 
     // TODO: Replace the function names and SFX with the correct sounds and names
