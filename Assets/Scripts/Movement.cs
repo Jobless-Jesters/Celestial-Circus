@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -180,21 +181,30 @@ public class Movement : MonoBehaviour
         // Press Space -> jump/double jump            
         if (Input.GetKeyDown(jumpkey))
         {
+            jumpBufferCounter = jumpBufferTime;
+
             // Gives coyote time on the first jump
-            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
+            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
 
+                jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
             }
 
             // Double jumps don't need coyote time. Player can double jump normally
-            else if (jumpsRemaining > 0)
+            else if (jumpsRemaining > 0 && jumpBufferCounter > 0f)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
+                
+                jumpBufferCounter = 0f;
             }
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
         }
 
         // Holding Space tells Movement that the player wants to glide
