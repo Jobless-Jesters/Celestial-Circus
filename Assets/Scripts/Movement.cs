@@ -13,9 +13,11 @@ public class Movement : MonoBehaviour
     [SerializeField] protected KeyCode left = KeyCode.A;
     [SerializeField] protected KeyCode down = KeyCode.S;
     [SerializeField] protected KeyCode right = KeyCode.D;
+    [SerializeField] protected KeyCode jumpkey = KeyCode.Space;
 
     [Header("Movement Settings")]
     [SerializeField] protected float baseSpeed = 5f;
+    [SerializeField] public float jumpPower = 30f;
     [SerializeField] protected int jumpsRemaining;
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool facingRight = true;
@@ -42,7 +44,6 @@ public class Movement : MonoBehaviour
     private bool WantsToGlide = false;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
-
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -77,7 +78,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     // Unity Components
     private Rigidbody2D _playerBody;
     private BoxCollider2D _playerCollider;
@@ -90,7 +90,8 @@ public class Movement : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         // Sprite may eventually be a child of the player object hence using getcomponentinchildren
-        if(spriteRenderer != null){
+        if (spriteRenderer != null)
+        {
             normalColor = spriteRenderer.color;
         }
     }
@@ -111,6 +112,8 @@ public class Movement : MonoBehaviour
         groundCheck();
         _ApplyGravity();
         UpdateGlideVisual();
+        Jump();
+
     }
 
     protected virtual void FixedUpdate()
@@ -123,7 +126,8 @@ public class Movement : MonoBehaviour
     {
         float speedMultiplier;
 
-        if (IsGliding()){
+        if (IsGliding())
+        {
             speedMultiplier = glideSpeedMultiplier;
         }
         else
@@ -137,10 +141,12 @@ public class Movement : MonoBehaviour
 
     private void _ApplyGravity()
     {
-        if (currentState == STATE.Falling){
-            
-            if (IsGliding()){
-                
+        if (currentState == STATE.Falling)
+        {
+
+            if (IsGliding())
+            {
+
                 // Reduced gravity while gliding
                 _playerBody.gravityScale = glideGravity;
 
@@ -150,7 +156,7 @@ public class Movement : MonoBehaviour
                     Mathf.Max(_playerBody.velocity.y, -glideMaxFallSpeed)
                 );
             }
-            
+
             else
             {
                 // Normal falling physics
@@ -169,23 +175,31 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void Jump(float jumpVelocity)
+    public void Jump()
     {
-        // Gives coyote time on the first jump
-        if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
+        // Press Space -> jump/double jump            
+        if (Input.GetKeyDown(jumpkey))
         {
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
-            jumpsRemaining--;
+            // Gives coyote time on the first jump
+            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
+            {
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                jumpsRemaining--;
 
-            coyoteTimeCounter = 0f;
+                coyoteTimeCounter = 0f;
+            }
+
+            // Double jumps don't need coyote time. Player can double jump normally
+            else if (jumpsRemaining > 0)
+            {
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                jumpsRemaining--;
+            }
         }
 
-        // Double jumps don't need coyote time. Player can double jump normally
-        else if (jumpsRemaining > 0)
-        {
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
-            jumpsRemaining--;
-        }
+        // Holding Space tells Movement that the player wants to glide
+        SetGliding(Input.GetKey(jumpkey));
+
     }
 
     public void SetGliding(bool gliding)
@@ -228,11 +242,15 @@ public class Movement : MonoBehaviour
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 
-    private void UpdateGlideVisual(){
-        if (spriteRenderer == null){
-            return;}
+    private void UpdateGlideVisual()
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
 
-        if (IsGliding()){
+        if (IsGliding())
+        {
             spriteRenderer.color = glideColor;
         }
         else
