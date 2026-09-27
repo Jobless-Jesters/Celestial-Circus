@@ -1637,7 +1637,9 @@ MonoBehaviour:
   left: 97
   down: 115
   right: 100
+  jumpkey: 32
   baseSpeed: 10
+  jumpPower: 40
   jumpsRemaining: 0
   maxJumps: 2
   facingRight: 1
@@ -1812,6 +1814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpkey: 32
   jumpPower: 40
+  movement: {fileID: 0}
 --- !u!1 &1988169765
 GameObject:
   m_ObjectHideFlags: 0
