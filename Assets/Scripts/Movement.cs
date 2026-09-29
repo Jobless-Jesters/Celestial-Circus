@@ -198,7 +198,7 @@ public class Movement : MonoBehaviour
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
-                
+
                 jumpBufferCounter = 0f;
             }
         }
@@ -226,7 +226,7 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y == 0f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
@@ -234,7 +234,6 @@ public class Movement : MonoBehaviour
                 currentState = STATE.Grounded;
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
-
             }
         }
         else
