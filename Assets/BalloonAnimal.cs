@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.Rendering;
+using System;
+using UnityEngine.SceneManagement;
+
+public class BalloonAnimal : MonoBehaviour
+{
+    public TMP_Text hintText;
+    public SpriteRenderer spriteRenderer;
+    public String mask; // Which mask this balloon animal belongs to. LOWERCASE NAMES
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            hintText.gameObject.SetActive(true);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                print("Got key code");
+                playLevelEndAnimation();
+
+                if (mask == "comedy")
+                {
+                    GameController.Instance.setHasComedyMask(true);
+                }
+                else if (mask == "tragedy")
+                {
+                    GameController.Instance.setHasTragedyMask(true);
+                } else
+                {
+                    print("Mask not found");
+                    return;
+                }
+
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            hintText.gameObject.SetActive(false);
+        }
+    }
+
+    void playLevelEndAnimation()
+    {
+        // Code for level end animations and effects here
+    }
+}
