@@ -1614,7 +1614,6 @@ GameObject:
   - component: {fileID: 1762733450}
   - component: {fileID: 1762733456}
   - component: {fileID: 1762733455}
-  - component: {fileID: 1762733457}
   - component: {fileID: 1762733458}
   m_Layer: 2
   m_Name: Player
@@ -1764,8 +1763,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.54077256, y: 0.10344828}
-    oldSize: {x: 4.66, y: 5.22}
+    pivot: {x: 0.50591016, y: 0}
+    oldSize: {x: 4.23, y: 4.49}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1801,18 +1800,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1762733457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762733448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152009e1db60097449d2df7a6eac4fae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1762733458
 Animator:
   serializedVersion: 5
