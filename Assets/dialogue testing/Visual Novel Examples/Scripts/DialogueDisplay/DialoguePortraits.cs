@@ -12,8 +12,6 @@ namespace Narrative
 
         [SerializeField] DialoguePortrait portraitLeft, portraitRight;
 
-
-
         /// <summary>
         /// Sets the sprite of the left portrait.
         /// If the portrait isn't showing it will fade in.
