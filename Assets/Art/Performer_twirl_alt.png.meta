@@ -110,15 +110,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Clown_twirl_alt_0
+      name: Performer_twirl_alt_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 558
-        width: 466
-        height: 522
+        x: 38
+        y: 601
+        width: 423
+        height: 449
       alignment: 9
-      pivot: {x: 0.54077256, y: 0.10344828}
+      pivot: {x: 0.50591016, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Performer_twirl_alt_1
       rect:
         serializedVersion: 2
-        x: 466
-        y: 560
-        width: 465
-        height: 520
+        x: 505
+        y: 607
+        width: 416
+        height: 445
       alignment: 9
-      pivot: {x: 0.5419355, y: 0.103846155}
+      pivot: {x: 0.5144231, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Performer_twirl_alt_2
       rect:
         serializedVersion: 2
-        x: 930
-        y: 560
-        width: 465
-        height: 520
+        x: 960
+        y: 601
+        width: 410
+        height: 444
       alignment: 9
-      pivot: {x: 0.50709677, y: 0.103846155}
+      pivot: {x: 0.50365853, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: Performer_twirl_alt_3
       rect:
         serializedVersion: 2
-        x: 1395
-        y: 560
-        width: 465
-        height: 520
+        x: 1411
+        y: 601
+        width: 402
+        height: 448
       alignment: 9
-      pivot: {x: 0.4619355, y: 0.103846155}
+      pivot: {x: 0.50273633, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: Performer_twirl_alt_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 465
-        height: 520
+        x: 50
+        y: 87
+        width: 403
+        height: 452
       alignment: 9
-      pivot: {x: 0.5419355, y: 0.103846155}
+      pivot: {x: 0.5037221, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: Performer_twirl_alt_5
       rect:
         serializedVersion: 2
-        x: 465
-        y: 40
-        width: 465
-        height: 520
+        x: 515
+        y: 65
+        width: 406
+        height: 447
       alignment: 9
-      pivot: {x: 0.5309677, y: 0.067307696}
+      pivot: {x: 0.48719212, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: Performer_twirl_alt_6
       rect:
         serializedVersion: 2
-        x: 930
-        y: 40
-        width: 465
-        height: 520
+        x: 974
+        y: 73
+        width: 397
+        height: 449
       alignment: 9
-      pivot: {x: 0.49935484, y: 0.067307696}
+      pivot: {x: 0.47279596, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: Performer_twirl_alt_7
       rect:
         serializedVersion: 2
-        x: 1395
-        y: 40
-        width: 465
-        height: 520
+        x: 1440
+        y: 61
+        width: 383
+        height: 451
       alignment: 9
-      pivot: {x: 0.49784946, y: 0.067307696}
+      pivot: {x: 0.49321148, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,7 +288,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Clown_twirl_alt_0: -39313353
+      Performer_twirl_alt_0: -39313353
       Performer_twirl_alt_1: -904255911
       Performer_twirl_alt_2: 1682970387
       Performer_twirl_alt_3: -1854560483
