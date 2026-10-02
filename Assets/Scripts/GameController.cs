@@ -19,8 +19,8 @@ public class GameController : MonoBehaviour
     private bool playerIsAlive = true;
 
     [Header("Masks Info")]
-    private bool hasTragedyMask = false;
-    private bool hasComedyMask = false;
+    [SerializeField] private bool hasTragedyMask = false;
+    [SerializeField] private bool hasComedyMask = false;
 
     [Header("Checkpoints")]
     private Vector3 lastCheckpointPosition;
@@ -28,7 +28,23 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
+        // Prevent duplicate GameManagers by checking if there is more than one singleton
+        // This is also nice because all our testing scenes can have a manager
+        // without it ultimately impacting all the other scenes by creating duplicates
+        if (_instance != null && _instance!= this)
+        {
+            Destroy(gameObject);
+            return; 
+        }
+
         _instance = this;
+
+        // TODO: Make a player Prefab to assign to the Game Manager
+        if (player == null) 
+        {
+            player = GameObject.Find("Player");
+        }
+
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
     }
 
