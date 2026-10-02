@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -21,7 +23,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public float jumpPower = 30f;
     [SerializeField] protected int jumpsRemaining;
     [SerializeField] public int maxJumps = 2;
-    [SerializeField] protected bool facingRight = true;
+    [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
@@ -45,6 +47,9 @@ public class Movement : MonoBehaviour
     private bool WantsToGlide = false;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
+
+    [Header("Animation")]
+    public Animator animator;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -114,13 +119,20 @@ public class Movement : MonoBehaviour
         _ApplyGravity();
         UpdateGlideVisual();
         Jump();
+        Flip();
 
+        animator.SetFloat("yVelocity", _playerBody.velocity.y);
+        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetBool("isGliding", IsGliding());
     }
 
     protected virtual void FixedUpdate()
     {
         // Actually move in fixed update to avoid kinematic body glitches
         Move();
+        animator.SetFloat("yVelocity", _playerBody.velocity.y);
+        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetBool("isGliding", IsGliding());
     }
 
     private void Move()
@@ -137,7 +149,7 @@ public class Movement : MonoBehaviour
         }
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
-        transform.position += Vector3.right * (_horizontalInput * Time.deltaTime * baseSpeed * speedMultiplier);
+        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
     }
 
     private void _ApplyGravity()
@@ -189,6 +201,8 @@ public class Movement : MonoBehaviour
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
 
+                animator.SetTrigger("jump");
+
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
             }
@@ -198,6 +212,8 @@ public class Movement : MonoBehaviour
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
+
+                animator.SetTrigger("jump");
 
                 jumpBufferCounter = 0f;
             }
@@ -240,6 +256,17 @@ public class Movement : MonoBehaviour
         {
             currentState = STATE.Falling;
             coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
+    private void Flip()
+    {
+        if ((isFacingRight && _horizontalInput < 0) || (!isFacingRight && _horizontalInput > 0))
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
         }
     }
 
