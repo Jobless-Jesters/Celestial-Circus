@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
 
     //Block reference for spawning
     [Header("Player Info")]
-    public GameObject player;
     private bool playerIsAlive = true;
 
     [Header("Masks Info")]
@@ -38,12 +37,6 @@ public class GameController : MonoBehaviour
         }
 
         _instance = this;
-
-        // TODO: Make a player Prefab to assign to the Game Manager
-        if (player == null) 
-        {
-            player = GameObject.Find("Player");
-        }
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
     }
@@ -84,6 +77,12 @@ public class GameController : MonoBehaviour
         return lastCheckpointPosition;
     }
 
+    public void clearCheckpoints() 
+    {
+        lastCheckpointID = -1;
+        lastCheckpointPosition = Vector3.zero;
+    }
+
     public void setPlayerIsAlive(bool isAlive)
     {
         playerIsAlive = isAlive;
@@ -101,6 +100,7 @@ public class GameController : MonoBehaviour
         // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
+            GameObject player = GameObject.Find("Player");
             player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         }
     }

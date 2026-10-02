@@ -19,5 +19,9 @@ public class UIController : MonoBehaviour
         if (GameController.Instance.getHasTragedyMask()) {
             tragedyButton.gameObject.SetActive(false);
         }
+
+        // Clear checkpoint data between levels
+        GameController.Instance.clearCheckpoints();
+        GameController.Instance.setPlayerIsAlive(true);
     }
 }

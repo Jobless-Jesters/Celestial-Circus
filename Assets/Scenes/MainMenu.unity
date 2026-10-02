@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddf5de067ac5613409bc6681b0cf2c66, type: 3}
+  m_Sprite: {fileID: 2695541149977655980, guid: 48e1280c9b4aec94c84fa3476898582f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2467,7 +2467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58822f414b9ec334fadc7dfe59006314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  hasTragedyMask: 0
+  hasComedyMask: 0
 --- !u!4 &1391527668
 Transform:
   m_ObjectHideFlags: 0
@@ -2676,7 +2677,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580547544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f05ee11ba41d4e74e8dee898fb8208b1, type: 3}
+  m_Script: {fileID: 11500000, guid: a7409de2f7ace844daf5645e28d07b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   comedyButton: {fileID: 1956645069}
