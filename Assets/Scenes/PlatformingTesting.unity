@@ -1722,11 +1722,11 @@ MonoBehaviour:
   down: 115
   right: 100
   jumpkey: 32
-  baseSpeed: 10
+  baseSpeed: 600
   jumpPower: 40
   jumpsRemaining: 0
   maxJumps: 2
-  facingRight: 1
+  isFacingRight: 1
   gravity: 9.8
   fallSpeedMultiplier: 2
   maxFallSpeed: 18
