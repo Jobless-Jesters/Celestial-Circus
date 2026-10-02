@@ -25,12 +25,11 @@ public class BalloonAnimal : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.X))
         {
-            print("Got key code");
-            playLevelEndAnimation();
 
             if (mask == "comedy")
             {
                 GameController.Instance.setHasComedyMask(true);
+
             }
             else if (mask == "tragedy")
             {
@@ -41,6 +40,8 @@ public class BalloonAnimal : MonoBehaviour
                 print("Mask not found");
                 return;
             }
+
+            playLevelEndAnimation();
 
             SceneManager.LoadScene("MainMenu");
         }

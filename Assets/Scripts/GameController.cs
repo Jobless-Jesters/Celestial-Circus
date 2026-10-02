@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     [Header("Checkpoints")]
     private Vector3 lastCheckpointPosition;
+    private int lastCheckpointID = -1;  // default ID
 
     void Awake()
     {
@@ -52,9 +53,14 @@ public class GameController : MonoBehaviour
         return hasComedyMask;
     }
 
-    public void setLastCheckpointPosition(Vector3 pos)
+    public void setLastCheckpoint(int newID, Vector3 pos)
     {
-        lastCheckpointPosition = pos;
+        // Only update the checkpoint if it is further along the level than the previous checkpoint
+        if (lastCheckpointID < newID) 
+        {
+            lastCheckpointID = newID;
+            lastCheckpointPosition = pos;
+        }
     }
 
     public Vector3 getLastCheckpointPosition()
