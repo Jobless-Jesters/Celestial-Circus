@@ -202,7 +202,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Curtains_left_0: -1133328487012188454
+      Curtains_left_1: -7479846315104707051
+      Curtains_left_2: -6216432434014998865
+      Curtains_left_3: -7322058416100207776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

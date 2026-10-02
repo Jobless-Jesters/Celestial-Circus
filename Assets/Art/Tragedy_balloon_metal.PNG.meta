@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tragedy_balloon_metal_0: -4109131219008186240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
