@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Rendering;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -13,12 +16,14 @@ public class Movement : MonoBehaviour
     [SerializeField] protected KeyCode left = KeyCode.A;
     [SerializeField] protected KeyCode down = KeyCode.S;
     [SerializeField] protected KeyCode right = KeyCode.D;
+    [SerializeField] protected KeyCode jumpkey = KeyCode.Space;
 
     [Header("Movement Settings")]
     [SerializeField] protected float baseSpeed = 5f;
+    [SerializeField] public float jumpPower = 30f;
     [SerializeField] protected int jumpsRemaining;
     [SerializeField] public int maxJumps = 2;
-    [SerializeField] protected bool facingRight = true;
+    [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
@@ -43,6 +48,8 @@ public class Movement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
 
+    [Header("Animation")]
+    public Animator animator;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -77,7 +84,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     // Unity Components
     private Rigidbody2D _playerBody;
     private BoxCollider2D _playerCollider;
@@ -90,7 +96,8 @@ public class Movement : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         // Sprite may eventually be a child of the player object hence using getcomponentinchildren
-        if(spriteRenderer != null){
+        if (spriteRenderer != null)
+        {
             normalColor = spriteRenderer.color;
         }
     }
@@ -111,19 +118,29 @@ public class Movement : MonoBehaviour
         groundCheck();
         _ApplyGravity();
         UpdateGlideVisual();
+        Jump();
+        Flip();
+
+        animator.SetFloat("yVelocity", _playerBody.velocity.y);
+        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetBool("isGliding", IsGliding());
     }
 
     protected virtual void FixedUpdate()
     {
         // Actually move in fixed update to avoid kinematic body glitches
         Move();
+        animator.SetFloat("yVelocity", _playerBody.velocity.y);
+        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetBool("isGliding", IsGliding());
     }
 
     private void Move()
     {
         float speedMultiplier;
 
-        if (IsGliding()){
+        if (IsGliding())
+        {
             speedMultiplier = glideSpeedMultiplier;
         }
         else
@@ -132,15 +149,17 @@ public class Movement : MonoBehaviour
         }
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
-        transform.position += Vector3.right * (_horizontalInput * Time.deltaTime * baseSpeed * speedMultiplier);
+        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
     }
 
     private void _ApplyGravity()
     {
-        if (currentState == STATE.Falling){
-            
-            if (IsGliding()){
-                
+        if (currentState == STATE.Falling)
+        {
+
+            if (IsGliding())
+            {
+
                 // Reduced gravity while gliding
                 _playerBody.gravityScale = glideGravity;
 
@@ -150,7 +169,7 @@ public class Movement : MonoBehaviour
                     Mathf.Max(_playerBody.velocity.y, -glideMaxFallSpeed)
                 );
             }
-            
+
             else
             {
                 // Normal falling physics
@@ -169,23 +188,44 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void Jump(float jumpVelocity)
+    public void Jump()
     {
-        // Gives coyote time on the first jump
-        if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
+        // Press Space -> jump/double jump            
+        if (Input.GetKeyDown(jumpkey))
         {
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
-            jumpsRemaining--;
+            jumpBufferCounter = jumpBufferTime;
 
-            coyoteTimeCounter = 0f;
+            // Gives coyote time on the first jump
+            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+            {
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                jumpsRemaining--;
+
+                animator.SetTrigger("jump");
+
+                jumpBufferCounter = 0f;
+                coyoteTimeCounter = 0f;
+            }
+
+            // Double jumps don't need coyote time. Player can double jump normally
+            else if (jumpsRemaining > 0 && jumpBufferCounter > 0f)
+            {
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                jumpsRemaining--;
+
+                animator.SetTrigger("jump");
+
+                jumpBufferCounter = 0f;
+            }
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
         }
 
-        // Double jumps don't need coyote time. Player can double jump normally
-        else if (jumpsRemaining > 0)
-        {
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpVelocity);
-            jumpsRemaining--;
-        }
+        // Holding Space tells Movement that the player wants to glide
+        SetGliding(Input.GetKey(jumpkey));
+
     }
 
     public void SetGliding(bool gliding)
@@ -202,7 +242,7 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y == 0f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
@@ -210,13 +250,23 @@ public class Movement : MonoBehaviour
                 currentState = STATE.Grounded;
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
-
             }
         }
         else
         {
             currentState = STATE.Falling;
             coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
+    private void Flip()
+    {
+        if ((isFacingRight && _horizontalInput < 0) || (!isFacingRight && _horizontalInput > 0))
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
         }
     }
 
@@ -228,11 +278,15 @@ public class Movement : MonoBehaviour
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 
-    private void UpdateGlideVisual(){
-        if (spriteRenderer == null){
-            return;}
+    private void UpdateGlideVisual()
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
 
-        if (IsGliding()){
+        if (IsGliding())
+        {
             spriteRenderer.color = glideColor;
         }
         else
