@@ -12,6 +12,7 @@ public class BalloonAnimal : MonoBehaviour
     public TMP_Text hintText;
     public SpriteRenderer spriteRenderer;
     public String mask; // Which mask this balloon animal belongs to. LOWERCASE NAMES
+    private bool playerInRange;
 
     // Start is called before the first frame update
     void Start()
@@ -22,35 +23,35 @@ public class BalloonAnimal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerInRange && Input.GetKeyDown(KeyCode.X))
+        {
+            print("Got key code");
+            playLevelEndAnimation();
 
+            if (mask == "comedy")
+            {
+                GameController.Instance.setHasComedyMask(true);
+            }
+            else if (mask == "tragedy")
+            {
+                GameController.Instance.setHasTragedyMask(true);
+            }
+            else
+            {
+                print("Mask not found");
+                return;
+            }
+
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            playerInRange = true;
             hintText.gameObject.SetActive(true);
-
-            if (Input.GetKey(KeyCode.X))
-            {
-                print("Got key code");
-                playLevelEndAnimation();
-
-                if (mask == "comedy")
-                {
-                    GameController.Instance.setHasComedyMask(true);
-                }
-                else if (mask == "tragedy")
-                {
-                    GameController.Instance.setHasTragedyMask(true);
-                } else
-                {
-                    print("Mask not found");
-                    return;
-                }
-
-                SceneManager.LoadScene("MainMenu");
-            }
         }
     }
 
@@ -58,6 +59,7 @@ public class BalloonAnimal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            playerInRange = false;
             hintText.gameObject.SetActive(false);
         }
     }
@@ -65,5 +67,6 @@ public class BalloonAnimal : MonoBehaviour
     void playLevelEndAnimation()
     {
         // Code for level end animations and effects here
+        return;
     }
 }
