@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tragedy_platform_0: 6358234899908343019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

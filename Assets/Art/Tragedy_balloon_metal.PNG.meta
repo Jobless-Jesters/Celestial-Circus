@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 48e1280c9b4aec94c84fa3476898582f
+guid: 425912bc3bc02ff40bc2294560bc4efa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2695541149977655980
-    second: Curtains_still_0
+      213: -4109131219008186240
+    second: Tragedy_balloon_metal_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Curtains_still_0
+      name: Tragedy_balloon_metal_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 246
+        y: 209
+        width: 1495
+        height: 1656
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: caabdd1f46c786520800000000000000
-      internalID: 2695541149977655980
+      spriteID: 0889c8b6dee69f6c0800000000000000
+      internalID: -4109131219008186240
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Curtains_still_0: 2695541149977655980
+      Tragedy_balloon_metal_0: -4109131219008186240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
