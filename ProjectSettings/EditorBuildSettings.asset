@@ -14,4 +14,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/PlatformingTesting.unity
+    guid: 99831039012f1b94bab31ec489361d61
+  - enabled: 1
+    path: Assets/Scenes/TragedyLevel.unity
+    guid: 562163a04d20d7e4baf156985bfd3823
+  - enabled: 1
+    path: Assets/Scenes/ComedyLevel.unity
+    guid: c55e77fd632894a4c835376edb67d46a
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -15,19 +15,29 @@ public class GameController : MonoBehaviour
 
     //Block reference for spawning
     [Header("Player Info")]
-    public GameObject player;
     private bool playerIsAlive = true;
 
     [Header("Masks Info")]
-    private bool hasTragedyMask = false;
-    private bool hasComedyMask = false;
+    [SerializeField] private bool hasTragedyMask = false;
+    [SerializeField] private bool hasComedyMask = false;
 
     [Header("Checkpoints")]
     private Vector3 lastCheckpointPosition;
+    private int lastCheckpointID = -1;  // default ID
 
     void Awake()
     {
+        // Prevent duplicate GameManagers by checking if there is more than one singleton
+        // This is also nice because all our testing scenes can have a manager
+        // without it ultimately impacting all the other scenes by creating duplicates
+        if (_instance != null && _instance!= this)
+        {
+            Destroy(gameObject);
+            return; 
+        }
+
         _instance = this;
+
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
     }
 
@@ -52,14 +62,25 @@ public class GameController : MonoBehaviour
         return hasComedyMask;
     }
 
-    public void setLastCheckpointPosition(Vector3 pos)
+    public void setLastCheckpoint(int newID, Vector3 pos)
     {
-        lastCheckpointPosition = pos;
+        // Only update the checkpoint if it is further along the level than the previous checkpoint
+        if (lastCheckpointID < newID) 
+        {
+            lastCheckpointID = newID;
+            lastCheckpointPosition = pos;
+        }
     }
 
     public Vector3 getLastCheckpointPosition()
     {
         return lastCheckpointPosition;
+    }
+
+    public void clearCheckpoints() 
+    {
+        lastCheckpointID = -1;
+        lastCheckpointPosition = Vector3.zero;
     }
 
     public void setPlayerIsAlive(bool isAlive)
@@ -79,6 +100,7 @@ public class GameController : MonoBehaviour
         // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
+            GameObject player = GameObject.Find("Player");
             player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         }
     }
