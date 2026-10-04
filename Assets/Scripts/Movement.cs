@@ -42,11 +42,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float glideMaxFallSpeed = 4f;
     [SerializeField] protected float glideSpeedMultiplier = 1.2f;
 
-    [Header("Glide Visual")]
-    [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
     private bool WantsToGlide = false;
-    private SpriteRenderer spriteRenderer;
-    private Color normalColor;
 
     [Header("Animation")]
     public Animator animator;
@@ -94,12 +90,6 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        // Sprite may eventually be a child of the player object hence using getcomponentinchildren
-        if (spriteRenderer != null)
-        {
-            normalColor = spriteRenderer.color;
-        }
     }
 
     // Update is called once per frame
@@ -117,7 +107,6 @@ public class Movement : MonoBehaviour
 
         groundCheck();
         _ApplyGravity();
-        UpdateGlideVisual();
         Jump();
         Flip();
 
@@ -228,6 +217,24 @@ public class Movement : MonoBehaviour
 
     }
 
+    public void LaunchFromTightrope(float launchVelocity)
+    {
+        // Force the player into the air
+        currentState = STATE.Falling;
+
+        // Guaranteed upward velocity
+        _playerBody.velocity = new Vector2(_playerBody.velocity.x, launchVelocity);
+
+        // Give the player their air jumps after being launched
+        jumpsRemaining = maxJumps - 1;
+
+        // Prevent old grounded/coyote state from interfering
+        coyoteTimeCounter = 0f;
+        jumpBufferCounter = 0f;
+
+        animator.SetTrigger("jump");
+    }
+
     public void SetGliding(bool gliding)
     {
         WantsToGlide = gliding; //called by Jump.cs 
@@ -276,22 +283,5 @@ public class Movement : MonoBehaviour
         // You can turn this off by deselcting Gizmos in the Scene view
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
-    }
-
-    private void UpdateGlideVisual()
-    {
-        if (spriteRenderer == null)
-        {
-            return;
-        }
-
-        if (IsGliding())
-        {
-            spriteRenderer.color = glideColor;
-        }
-        else
-        {
-            spriteRenderer.color = normalColor;
-        }
     }
 }
