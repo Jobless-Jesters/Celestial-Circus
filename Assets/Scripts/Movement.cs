@@ -25,6 +25,10 @@ public class Movement : MonoBehaviour
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
+
+    // Set by a tightrope while the player is bouncing on it. Called when Jump is pressed;
+    // returns true if the rope used the press, in which case no normal jump happens.
+    public Func<bool> JumpInterceptor;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
@@ -184,8 +188,14 @@ public class Movement : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferTime;
 
+            // A tightrope can claim the press for a timed boost
+            if (JumpInterceptor != null && JumpInterceptor())
+            {
+                jumpBufferCounter = 0f;
+            }
+
             // Gives coyote time on the first jump
-            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+            else if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
@@ -217,7 +227,7 @@ public class Movement : MonoBehaviour
 
     }
 
-    public void LaunchFromTightrope(float launchVelocity)
+    public void LaunchFromTightrope(float launchVelocity, bool playJumpAnimation = true)
     {
         // Force the player into the air
         currentState = STATE.Falling;
@@ -232,7 +242,10 @@ public class Movement : MonoBehaviour
         coyoteTimeCounter = 0f;
         jumpBufferCounter = 0f;
 
-        animator.SetTrigger("jump");
+        if (playJumpAnimation)
+        {
+            animator.SetTrigger("jump");
+        }
     }
 
     public void SetGliding(bool gliding)
