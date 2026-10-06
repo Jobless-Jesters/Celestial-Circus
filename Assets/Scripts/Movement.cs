@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float glideSpeedMultiplier = 1.2f;
 
     [Header("Glide Visual")]
-    [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
+    // [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
     private bool WantsToGlide = false;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
@@ -280,18 +280,19 @@ public class Movement : MonoBehaviour
 
     private void UpdateGlideVisual()
     {
-        if (spriteRenderer == null)
-        {
-            return;
-        }
+        // if (spriteRenderer == null)
+        // {
+        //     return;
+        // }
 
-        if (IsGliding())
-        {
-            spriteRenderer.color = glideColor;
-        }
-        else
-        {
-            spriteRenderer.color = normalColor;
-        }
+        // if (IsGliding())
+        // {
+        //     spriteRenderer.color = glideColor;
+        // }
+        // else
+        // {
+        //     spriteRenderer.color = normalColor;
+        // }
+        return;
     }
 }
