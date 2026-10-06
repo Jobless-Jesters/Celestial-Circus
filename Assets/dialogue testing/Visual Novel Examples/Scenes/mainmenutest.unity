@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895d74e7f43114e5a873a68aed966d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCSV: {fileID: 4900000, guid: 38786c4babad5401a841dbb8cc00baff, type: 3}
+  dialogueCSV: {fileID: 4900000, guid: 7b4d6f29ddf170a47abcb5437ba3a2d0, type: 3}
   writeToFlagId: intro_done
   writeToFlagValue: 1
   conditions: []
