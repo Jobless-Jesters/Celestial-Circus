@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Narrative
 {
@@ -33,12 +35,13 @@ namespace Narrative
         [SerializeField] private DialogueBox textbox;
         [SerializeField] private DialoguePortraits portraits;
         [SerializeField] private DialogueChoices choices;
+        [SerializeField] private TMPro.TMP_FontAsset comedyFont;
+        [SerializeField] private TMPro.TMP_FontAsset tragedyFont;
 
         //Object properties
         private DialogueSequence currentDialog;  //set when we are playing
         private int currentLine = 0;  //current line in the sequence we are playing
         private bool isPlaying = false;
-
 
         /// <summary>
         /// Starts playing the given sequence
@@ -98,6 +101,14 @@ namespace Narrative
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
+                if (name == "Comedy") 
+                {
+                    textbox.setFont(comedyFont);
+                }
+                else 
+                {
+                    textbox.setFont(tragedyFont);
+                }
             }
             //Apply to left portrait
             string portraitLeft = currentDialog.GetRowPortraitLeft(lineNum);

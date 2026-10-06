@@ -62,6 +62,12 @@ namespace Narrative
                 {
                     AdvanceLine();
                 }
+                else // not end of text
+                {
+                    // do nothing
+                    charactersPerSecond = 1000.0f;
+                    //AdvanceLine();
+                }
             }
         }
 
@@ -148,7 +154,15 @@ namespace Narrative
         public void AdvanceLine()
         {
             advanceArrow.SetVisible(false);
+            charactersPerSecond = 45.0f;
             onAdvance.Invoke();
+        }
+
+        public void setFont(TMPro.TMP_FontAsset font)
+        {
+            //textLabel.setFont(font); 
+            //textLabel.font(font);
+            textLabel.font = font; 
         }
     }
 }
