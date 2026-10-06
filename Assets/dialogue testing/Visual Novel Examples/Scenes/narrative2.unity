@@ -467,8 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 16
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 960, y: 640}
   m_ScreenMatchMode: 0
@@ -487,7 +487,7 @@ Canvas:
   m_GameObject: {fileID: 127123581}
   m_Enabled: 0
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1079039119}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -499,7 +499,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &127123585
 RectTransform:
@@ -522,8 +522,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &176108211
 GameObject:
@@ -1564,15 +1564,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9119549463136492614, guid: 40df686498e86f44789ba472d86fb55d, type: 3}
+  m_Sprite: {fileID: -4109131219008186240, guid: 425912bc3bc02ff40bc2294560bc4efa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.3333333, y: 3.3333333}
+  m_Size: {x: 14.95, y: 16.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &774672181
@@ -1986,7 +1986,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2568,12 +2568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundsByID:
-  - id: characterA
-    clip: {fileID: 8300000, guid: 6040fdc734cf34816aec04751c233c24, type: 3}
-  - id: characterB
-    clip: {fileID: 8300000, guid: d59aa75a5e18d4896abb011e2f66bd38, type: 3}
-  - id: both
-    clip: {fileID: 8300000, guid: 0e531b0f9bf344dc28a014f14fc2aa42, type: 3}
   - id: none
     clip: {fileID: 0}
 --- !u!82 &1661886587

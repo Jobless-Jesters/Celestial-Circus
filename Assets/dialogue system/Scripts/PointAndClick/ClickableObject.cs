@@ -15,7 +15,6 @@ namespace Narrative
         //Event Callbacks
         public UnityEvent onClick;
 
-
         /// <summary>
         /// Called when this object is clicked on
         /// </summary>
