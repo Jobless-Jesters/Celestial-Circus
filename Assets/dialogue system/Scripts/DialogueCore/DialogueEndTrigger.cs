@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEngine.Rendering;
+using System;
 
 namespace Narrative
 {
@@ -12,6 +16,7 @@ namespace Narrative
     public class DialogueEndTrigger : MonoBehaviour
     {
         public bool repeatable = false;//whether or not this dialogue can repeat
+        public bool loadScene = false;//whether or not this dialogue can repeat
 
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
@@ -43,6 +48,7 @@ namespace Narrative
                 return; //Cancel activation if any conditions fail
             }
 
+            //callFinish();
             onFinish.Invoke();
         }
 
@@ -60,5 +66,18 @@ namespace Narrative
             }
             return true;
         }
+
+        /* private void callFinish()
+        {
+            if (loadScene)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+            else 
+            {
+                onFinish.Invoke();
+            }
+            
+        } */
     }
 }
