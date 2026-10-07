@@ -6,12 +6,14 @@ using Unity.VisualScripting;
 using UnityEngine.Rendering;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class BalloonAnimal : MonoBehaviour
 {
     public TMP_Text hintText;
     public SpriteRenderer spriteRenderer;
     public String mask; // Which mask this balloon animal belongs to. LOWERCASE NAMES
+    public UnityEvent onClick;
     private bool playerInRange;
 
     // Start is called before the first frame update
@@ -41,10 +43,12 @@ public class BalloonAnimal : MonoBehaviour
                 return;
             }
 
-            playLevelEndAnimation();
-            AudioController.Instance.StopScore();
-            
-            SceneManager.LoadScene("MainMenu");
+            onClick.Invoke();
+
+            //playLevelEndAnimation();
+
+            //SceneManager.LoadScene("MainMenu");
+
         }
     }
 
