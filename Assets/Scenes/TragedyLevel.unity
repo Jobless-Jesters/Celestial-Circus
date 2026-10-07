@@ -873,7 +873,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -971,8 +971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 886175001}
-  walkSFX: {fileID: 0}
-  jumpSFX: {fileID: 0}
+  walkSFX: {fileID: 8300000, guid: 4944b701e825f45b1b251bbe57d4e799, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 0}
   hurtSFX: {fileID: 0}
   swingingStarSFX: {fileID: 0}

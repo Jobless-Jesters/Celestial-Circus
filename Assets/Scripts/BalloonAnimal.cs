@@ -17,7 +17,7 @@ public class BalloonAnimal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioController.Instance.PlayTragedyBG();
     }
 
     // Update is called once per frame
@@ -42,7 +42,8 @@ public class BalloonAnimal : MonoBehaviour
             }
 
             playLevelEndAnimation();
-
+            AudioController.Instance.StopScore();
+            
             SceneManager.LoadScene("MainMenu");
         }
     }
@@ -68,6 +69,7 @@ public class BalloonAnimal : MonoBehaviour
     void playLevelEndAnimation()
     {
         // Code for level end animations and effects here
+        
         return;
     }
 }
