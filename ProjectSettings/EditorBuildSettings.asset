@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/dialogue system/scenes/MainMenu.unity
+    path: Assets/dialogue system/scenes/MainMenuDialogue.unity
     guid: 33eb14441cd94474e84c0b7aaa5cebfe
   - enabled: 1
     path: Assets/Scenes/Testing.unity
@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ComedyLevel.unity
     guid: c55e77fd632894a4c835376edb67d46a
+  - enabled: 1
+    path: Assets/dialogue system/scenes/TestLevelDia.unity
+    guid: 8b738088b8c644441a6e00987e397d26
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 306e11bec88c11349bae04f25b1faafa
+  - enabled: 1
+    path: Assets/dialogue system/scenes/TestLevelDia2.unity
+    guid: e3f7949b168ef3346a8e43740a22b66c
   m_configObjects: {}

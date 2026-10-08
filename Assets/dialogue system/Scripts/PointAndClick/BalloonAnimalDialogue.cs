@@ -8,7 +8,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class BalloonAnimal : MonoBehaviour
+public class BalloonAnimalDialogue : MonoBehaviour
 {
     public TMP_Text hintText;
     public SpriteRenderer spriteRenderer;
@@ -43,11 +43,11 @@ public class BalloonAnimal : MonoBehaviour
                 return;
             }
 
-            //onClick.Invoke();
+            onClick.Invoke();
 
-            playLevelEndAnimation();
+            //playLevelEndAnimation();
 
-            SceneManager.LoadScene("MainMenu");
+            //SceneManager.LoadScene("MainMenu");
 
         }
     }

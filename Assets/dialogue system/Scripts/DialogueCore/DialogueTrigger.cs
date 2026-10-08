@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Narrative
 {
@@ -15,8 +16,6 @@ namespace Narrative
         /// <summary> The csv file containing the dialogue to be played. </summary>
         [SerializeField] private TextAsset dialogueCSV;
 
-        
-
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
 
@@ -27,17 +26,20 @@ namespace Narrative
         private string writeToFlagId = "";
         [SerializeField] private bool writeToFlagValue = false;
 
+        [Header("Events")]
+        public UnityEvent onFinish;
 
+        
         /// <summary>
         /// Call this to activate the dialogue. If condition are set they must all be satisfied.
         /// </summary>
         public void Trigger()
         {
             
-            if (DialogueSystem.IsPlaying())
+            /* if (DialogueSystem.IsPlaying())
             {
                 return;//Don't activate if already playing something
-            }
+            }  */
 
 
             //Check conditions
@@ -58,7 +60,7 @@ namespace Narrative
         {
             foreach (Condition condition in conditions)
             {
-                if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                if (GameController.GetFlagValue(condition.flagID) != condition.expectedValue)
                 {
                     return false;
                 }
@@ -74,12 +76,16 @@ namespace Narrative
         {
             if (writeToFlagId != "")
             {
-                DialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
+                GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
-            if(!repeatable){
+            
+            Destroy(this);
+            /* if(!repeatable){
                 Destroy(this);
-            }
+            } */
+
+            onFinish.Invoke();
         }
     }
 }

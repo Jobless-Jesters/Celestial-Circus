@@ -16,10 +16,15 @@ namespace Narrative
     public class DialogueEndTrigger : MonoBehaviour
     {
         public bool repeatable = false;//whether or not this dialogue can repeat
-        public bool loadScene = false;//whether or not this dialogue can repeat
 
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
+
+        [Header("Set Dialogue Flag After Finishing Dialogue")]
+        [Tooltip("Which flag to assign after finishing this dialogue.")]
+        [SerializeField]
+        private string writeToFlagId = "";
+        [SerializeField] private bool writeToFlagValue = false;
 
         [Header("Object")]
         public UnityEvent onFinish;
@@ -49,6 +54,7 @@ namespace Narrative
             }
 
             //callFinish();
+            DialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             onFinish.Invoke();
         }
 
@@ -59,7 +65,12 @@ namespace Narrative
         {
             foreach (Condition condition in conditions)
             {
-                if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                /* if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                {
+                    return false;
+                } */
+
+                if (GameController.GetFlagValue(condition.flagID) != condition.expectedValue)
                 {
                     return false;
                 }
@@ -67,17 +78,21 @@ namespace Narrative
             return true;
         }
 
-        /* private void callFinish()
+        /// <summary>
+        /// Callback reciever for when dialogue ends.
+        /// Writes to flags if it is set
+        /// </summary>
+        private void OnDialogueEnd()
         {
-            if (loadScene)
+            if (writeToFlagId != "")
             {
-                SceneManager.LoadScene("MainMenu");
+                //DialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
+                GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
-            else 
-            {
-                onFinish.Invoke();
+            DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
+            if(!repeatable){
+                Destroy(this);
             }
-            
-        } */
+        }
     }
 }

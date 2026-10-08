@@ -38,7 +38,12 @@ namespace Narrative
         {
             foreach (Condition condition in conditions)
             {
-                if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                /* if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                {
+                    return false;
+                } */
+
+                if (GameController.GetFlagValue(condition.flagID) != condition.expectedValue)
                 {
                     return false;
                 }
@@ -71,7 +76,8 @@ namespace Narrative
         /// </summary>
         private void OnDialogueEnd()
         {
-            DialogueFlags.SetFlag(postChoiceConditionEffects[_choice].flagID, postChoiceConditionEffects[_choice].expectedValue);
+            //DialogueFlags.SetFlag(postChoiceConditionEffects[_choice].flagID, postChoiceConditionEffects[_choice].expectedValue);
+            GameController.SetFlag(postChoiceConditionEffects[_choice].flagID, postChoiceConditionEffects[_choice].expectedValue);
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
             Destroy(this);
         }

@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] public Button comedyButton;
     [SerializeField] public Button tragedyButton;
 
+    public UnityEvent introDialogueStart;
+    public UnityEvent endDialogueStart;
+
     void Start()
     {
+        if(!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask())
+        {
+            introDialogueStart.Invoke();
+        } 
+
+        if(GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask())
+        {
+            endDialogueStart.Invoke();
+        }
+        
         // Hide comedy button if we already got the mask
         if (GameController.Instance.getHasComedyMask()) {
             comedyButton.gameObject.SetActive(false);
