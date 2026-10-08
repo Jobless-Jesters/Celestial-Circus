@@ -11,18 +11,14 @@ public class UIController : MonoBehaviour
 
     public UnityEvent introDialogueStart;
     public UnityEvent endDialogueStart;
+    public UnityEvent tragDialogueStart;
 
     void Start()
     {
         if(!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask())
         {
-            introDialogueStart.Invoke();
+            Debug.LogWarning("MainMenuController introDialogueStart.Invoke() called");
         } 
-
-        if(GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask())
-        {
-            endDialogueStart.Invoke();
-        }
         
         // Hide comedy button if we already got the mask
         if (GameController.Instance.getHasComedyMask()) {
