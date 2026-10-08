@@ -1116,6 +1116,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4222638728641963323, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: onDialogueStarted.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222638728641963323, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: onDialogueStarted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5972139214164406258, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: loadScene
       value: 1
