@@ -118,6 +118,7 @@ public class Movement : MonoBehaviour
         groundCheck();
         _ApplyGravity();
         UpdateGlideVisual();
+        TwirlSFXLoop();
         Jump();
         Flip();
 
@@ -134,7 +135,10 @@ public class Movement : MonoBehaviour
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
     }
-
+    
+    private bool _isWalking = false;
+    private bool _wasTwirling = false;
+    
     private void Move()
     {
         float speedMultiplier;
@@ -150,6 +154,47 @@ public class Movement : MonoBehaviour
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
         _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+        
+        // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
+        
+        if (currentState == STATE.Grounded && _horizontalInput != 0)
+        {
+            if (!_isWalking)
+            {
+                _isWalking = true;
+                StartCoroutine(WalkSFXLoop());
+            }
+        }
+            else
+            {
+                _isWalking = false;
+            }
+    }
+    
+    // Calling walkSFX outside of update so that it can be delayed
+    IEnumerator WalkSFXLoop()
+    {
+        while (_isWalking)
+        {
+        AudioController.Instance.PlayWalkSFX();
+        yield return new WaitForSeconds(0.5f);
+        }
+    }
+    
+    private void TwirlSFXLoop()
+    {
+        bool isTwirling = IsGliding();
+        if (isTwirling && !_wasTwirling)
+        {
+            AudioController.Instance.PlayTwirlSFX();
+        }
+            
+        if (!isTwirling && _wasTwirling)
+        {
+            AudioController.Instance.StopTwirlSFX();
+        }
+        
+        _wasTwirling = isTwirling;
     }
 
     private void _ApplyGravity()
@@ -159,7 +204,6 @@ public class Movement : MonoBehaviour
 
             if (IsGliding())
             {
-
                 // Reduced gravity while gliding
                 _playerBody.gravityScale = glideGravity;
 
@@ -168,6 +212,7 @@ public class Movement : MonoBehaviour
                     _playerBody.velocity.x,
                     Mathf.Max(_playerBody.velocity.y, -glideMaxFallSpeed)
                 );
+
             }
 
             else
@@ -186,7 +231,10 @@ public class Movement : MonoBehaviour
             // Reset gravity when grounded
             _playerBody.gravityScale = gravity;
         }
+
     }
+    
+
 
     public void Jump()
     {
@@ -202,6 +250,8 @@ public class Movement : MonoBehaviour
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
+                
+                AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
@@ -214,6 +264,8 @@ public class Movement : MonoBehaviour
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
+                
+                AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
             }
@@ -238,6 +290,7 @@ public class Movement : MonoBehaviour
         return WantsToGlide
         && currentState == STATE.Falling
         && _playerBody.velocity.y < 0; // makes sure that glide only activates when the player is actually moving downwards
+
     }
     private void groundCheck()
     {
