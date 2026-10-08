@@ -58,7 +58,7 @@ namespace Narrative
         {
             foreach (Condition condition in conditions)
             {
-                if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                if (GameController.GetFlagValue(condition.flagID) != condition.expectedValue)
                 {
                     return false;
                 }
@@ -74,7 +74,7 @@ namespace Narrative
         {
             if (writeToFlagId != "")
             {
-                DialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
+                GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
             if(!repeatable){

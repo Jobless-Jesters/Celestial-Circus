@@ -16,7 +16,7 @@ namespace Narrative
     public class DialogueEndTrigger : MonoBehaviour
     {
         public bool repeatable = false;//whether or not this dialogue can repeat
-        public bool loadScene = false;//whether or not this dialogue can repeat
+        //public bool loadScene = false;//whether or not this dialogue can repeat
 
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
@@ -59,25 +59,12 @@ namespace Narrative
         {
             foreach (Condition condition in conditions)
             {
-                if (DialogueFlags.GetFlagValue(condition.flagID) != condition.expectedValue)
+                if (GameController.GetFlagValue(condition.flagID) != condition.expectedValue)
                 {
                     return false;
                 }
             }
             return true;
         }
-
-        /* private void callFinish()
-        {
-            if (loadScene)
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
-            else 
-            {
-                onFinish.Invoke();
-            }
-            
-        } */
     }
 }

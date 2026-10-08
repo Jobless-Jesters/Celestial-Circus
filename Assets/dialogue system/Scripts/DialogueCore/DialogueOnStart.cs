@@ -35,7 +35,7 @@ namespace Narrative
         {
             if (writeToFlagId != "")
             {
-                DialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
+                GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
             Destroy(this);

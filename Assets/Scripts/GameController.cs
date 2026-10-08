@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     private Vector3 lastCheckpointPosition;
     private int lastCheckpointID = -1;  // default ID
 
+    [Header("Dialogue Flags")]
+    [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
+
     void Awake()
     {
         // Prevent duplicate GameManagers by checking if there is more than one singleton
@@ -103,5 +106,38 @@ public class GameController : MonoBehaviour
             GameObject player = GameObject.Find("Player");
             player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         }
+    }
+
+
+    // dealing with dialogue flags
+    // reused code and comments from DialogueFlags.cs from canvas base unity 
+
+    /// Static fuctions to shorten calls to the singleton instance
+    /// ie. DialogueFlags.SetFlag(...) is better than DialogueFlags.Instance.SetFlag(...)
+
+    /// <summary>
+    /// Sets the flag.
+    /// </summary>
+    /// <param name="flag">The flag ID</param>
+    /// <param name="value">Value to set the flag to.</param>
+    public static void SetFlag(string flag, bool value)
+    {
+        _instance.flags[flag] = value;
+    }
+
+    /// <summary>
+    /// Obtains the flag value. Doesn't error check, leave to users to catch exceptions.
+    /// </summary>
+    /// <param name="flag">Which flag to retrieve.</param>
+    /// <returns>The contents of the given flag.</returns>
+    public static bool GetFlagValue(string flag)
+    {
+        if (_instance.flags!=null){
+            if (_instance.flags.ContainsKey(flag)){
+                return _instance.flags[flag];    
+            }
+        }
+        return false;
+        
     }
 }
