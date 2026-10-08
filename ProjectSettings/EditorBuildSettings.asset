@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/dialogue system/scenes/MainMenu.unity
     guid: 33eb14441cd94474e84c0b7aaa5cebfe
   - enabled: 1
     path: Assets/Scenes/Testing.unity
@@ -24,4 +24,3 @@ EditorBuildSettings:
     path: Assets/Scenes/ComedyLevel.unity
     guid: c55e77fd632894a4c835376edb67d46a
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0
