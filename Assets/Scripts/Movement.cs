@@ -131,10 +131,10 @@ public class Movement : MonoBehaviour
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
     }
-    
+
     private bool _isWalking = false;
     private bool _wasTwirling = false;
-    
+
     private void Move()
     {
         float speedMultiplier;
@@ -150,9 +150,9 @@ public class Movement : MonoBehaviour
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
         _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
-        
+
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
-        
+
         if (currentState == STATE.Grounded && _horizontalInput != 0)
         {
             if (!_isWalking)
@@ -161,22 +161,22 @@ public class Movement : MonoBehaviour
                 StartCoroutine(WalkSFXLoop());
             }
         }
-            else
-            {
-                _isWalking = false;
-            }
+        else
+        {
+            _isWalking = false;
+        }
     }
-    
+
     // Calling walkSFX outside of update so that it can be delayed
     IEnumerator WalkSFXLoop()
     {
         while (_isWalking)
         {
-        AudioController.Instance.PlayWalkSFX();
-        yield return new WaitForSeconds(0.5f);
+            AudioController.Instance.PlayWalkSFX();
+            yield return new WaitForSeconds(0.5f);
         }
     }
-    
+
     private void TwirlSFXLoop()
     {
         bool isTwirling = IsGliding();
@@ -184,12 +184,12 @@ public class Movement : MonoBehaviour
         {
             AudioController.Instance.PlayTwirlSFX();
         }
-            
+
         if (!isTwirling && _wasTwirling)
         {
             AudioController.Instance.StopTwirlSFX();
         }
-        
+
         _wasTwirling = isTwirling;
     }
 
@@ -229,7 +229,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-    
+
 
 
     public void Jump()
@@ -252,7 +252,7 @@ public class Movement : MonoBehaviour
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
-                
+
                 AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
@@ -266,7 +266,7 @@ public class Movement : MonoBehaviour
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
-                
+
                 AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
