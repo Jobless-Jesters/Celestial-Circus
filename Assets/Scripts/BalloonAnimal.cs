@@ -43,6 +43,8 @@ public class BalloonAnimal : MonoBehaviour
                 return;
             }
 
+            AudioController.Instance.StopScore();
+            
             onClick.Invoke();
 
             //playLevelEndAnimation();
@@ -73,7 +75,7 @@ public class BalloonAnimal : MonoBehaviour
     void playLevelEndAnimation()
     {
         // Code for level end animations and effects here
-        
+
         return;
     }
 }
