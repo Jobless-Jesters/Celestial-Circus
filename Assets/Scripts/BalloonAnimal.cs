@@ -73,7 +73,7 @@ public class BalloonAnimal : MonoBehaviour
     void playLevelEndAnimation()
     {
         // Code for level end animations and effects here
-        
+
         return;
     }
 }
