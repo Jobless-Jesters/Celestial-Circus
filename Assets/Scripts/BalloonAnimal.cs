@@ -6,18 +6,20 @@ using Unity.VisualScripting;
 using UnityEngine.Rendering;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class BalloonAnimal : MonoBehaviour
 {
     public TMP_Text hintText;
     public SpriteRenderer spriteRenderer;
     public String mask; // Which mask this balloon animal belongs to. LOWERCASE NAMES
+    public UnityEvent onClick;
     private bool playerInRange;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioController.Instance.PlayTragedyBG();
     }
 
     // Update is called once per frame
@@ -41,9 +43,14 @@ public class BalloonAnimal : MonoBehaviour
                 return;
             }
 
-            playLevelEndAnimation();
+            AudioController.Instance.StopScore();
+            
+            onClick.Invoke();
 
-            SceneManager.LoadScene("MainMenu");
+            //playLevelEndAnimation();
+
+            //SceneManager.LoadScene("MainMenu");
+
         }
     }
 
@@ -68,6 +75,7 @@ public class BalloonAnimal : MonoBehaviour
     void playLevelEndAnimation()
     {
         // Code for level end animations and effects here
+
         return;
     }
 }

@@ -3,7 +3,14 @@ guid: fc424485a57c71f46acbae686d7bccc6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - walkSFX: {instanceID: 0}
+  - jumpSFX: {instanceID: 0}
+  - twirlSFX: {instanceID: 0}
+  - hurtSFX: {instanceID: 0}
+  - swingingStarSFX: {instanceID: 0}
+  - tragedyBGMusic: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
