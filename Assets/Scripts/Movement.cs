@@ -25,6 +25,10 @@ public class Movement : MonoBehaviour
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
+
+    // Set by a tightrope while the player is bouncing on it. Called when Jump is pressed;
+    // returns true if the rope used the press, in which case no normal jump happens.
+    public Func<bool> JumpInterceptor;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
@@ -45,8 +49,6 @@ public class Movement : MonoBehaviour
     [Header("Glide Visual")]
     // [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
     private bool WantsToGlide = false;
-    private SpriteRenderer spriteRenderer;
-    private Color normalColor;
 
     [Header("Animation")]
     public Animator animator;
@@ -94,12 +96,6 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        // Sprite may eventually be a child of the player object hence using getcomponentinchildren
-        if (spriteRenderer != null)
-        {
-            normalColor = spriteRenderer.color;
-        }
     }
 
     // Update is called once per frame
@@ -135,10 +131,10 @@ public class Movement : MonoBehaviour
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
     }
-    
+
     private bool _isWalking = false;
     private bool _wasTwirling = false;
-    
+
     private void Move()
     {
         float speedMultiplier;
@@ -154,9 +150,9 @@ public class Movement : MonoBehaviour
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
         _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
-        
+
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
-        
+
         if (currentState == STATE.Grounded && _horizontalInput != 0)
         {
             if (!_isWalking)
@@ -165,22 +161,22 @@ public class Movement : MonoBehaviour
                 StartCoroutine(WalkSFXLoop());
             }
         }
-            else
-            {
-                _isWalking = false;
-            }
+        else
+        {
+            _isWalking = false;
+        }
     }
-    
+
     // Calling walkSFX outside of update so that it can be delayed
     IEnumerator WalkSFXLoop()
     {
         while (_isWalking)
         {
-        AudioController.Instance.PlayWalkSFX();
-        yield return new WaitForSeconds(0.5f);
+            AudioController.Instance.PlayWalkSFX();
+            yield return new WaitForSeconds(0.5f);
         }
     }
-    
+
     private void TwirlSFXLoop()
     {
         bool isTwirling = IsGliding();
@@ -188,12 +184,12 @@ public class Movement : MonoBehaviour
         {
             AudioController.Instance.PlayTwirlSFX();
         }
-            
+
         if (!isTwirling && _wasTwirling)
         {
             AudioController.Instance.StopTwirlSFX();
         }
-        
+
         _wasTwirling = isTwirling;
     }
 
@@ -233,7 +229,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-    
+
 
 
     public void Jump()
@@ -243,14 +239,20 @@ public class Movement : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferTime;
 
+            // A tightrope can claim the press for a timed boost
+            if (JumpInterceptor != null && JumpInterceptor())
+            {
+                jumpBufferCounter = 0f;
+            }
+
             // Gives coyote time on the first jump
-            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+            else if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
-                
+
                 AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
@@ -264,7 +266,7 @@ public class Movement : MonoBehaviour
                 jumpsRemaining--;
 
                 animator.SetTrigger("jump");
-                
+
                 AudioController.Instance.PlayJumpSFX();
 
                 jumpBufferCounter = 0f;
@@ -278,6 +280,27 @@ public class Movement : MonoBehaviour
         // Holding Space tells Movement that the player wants to glide
         SetGliding(Input.GetKey(jumpkey));
 
+    }
+
+    public void LaunchFromTightrope(float launchVelocity, bool playJumpAnimation = true)
+    {
+        // Force the player into the air
+        currentState = STATE.Falling;
+
+        // Guaranteed upward velocity
+        _playerBody.velocity = new Vector2(_playerBody.velocity.x, launchVelocity);
+
+        // Give the player their air jumps after being launched
+        jumpsRemaining = maxJumps - 1;
+
+        // Prevent old grounded/coyote state from interfering
+        coyoteTimeCounter = 0f;
+        jumpBufferCounter = 0f;
+
+        if (playJumpAnimation)
+        {
+            animator.SetTrigger("jump");
+        }
     }
 
     public void SetGliding(bool gliding)
