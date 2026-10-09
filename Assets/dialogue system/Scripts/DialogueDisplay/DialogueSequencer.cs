@@ -43,6 +43,12 @@ namespace Narrative
         private int currentLine = 0;  //current line in the sequence we are playing
         private bool isPlaying = false;
 
+        void Awake()
+        {
+            textbox = GameObject.Find("TextboxPanel").GetComponent<DialogueBox>();
+            Debug.LogWarning("DialogueSequencer Awake() textbox: " + textbox.GetHashCode());
+        }
+
         /// <summary>
         /// Starts playing the given sequence
         /// </summary>
@@ -84,6 +90,7 @@ namespace Narrative
                 //Finished, close textbox
                 textbox.CloseTextbox();
                 portraits.ClosePortraits();
+                Debug.LogWarning("DialogueSequencer OnsequenceAdvanced: textbox isActive: " + textbox.IsActive);
                 onFinish.Invoke();
             }
         }
@@ -148,6 +155,8 @@ namespace Narrative
         /// </summary>
         public bool IsPlaying()
         {
+            Debug.LogWarning("DialogueSequencer IsPlaying: " + textbox.IsActive);
+            Debug.LogWarning("DialogueSequencer IsPlaying textbox: " + textbox.GetHashCode());
             return textbox.IsActive;
         }
 

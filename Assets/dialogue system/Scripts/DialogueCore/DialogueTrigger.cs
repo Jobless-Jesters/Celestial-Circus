@@ -30,7 +30,7 @@ namespace Narrative
 
         [Header("Event")]
         public UnityEvent onFinish;
-        [SerializeField] public GameObject host;
+        //[SerializeField] public GameObject host;
 
 
         /// <summary>
@@ -38,17 +38,13 @@ namespace Narrative
         /// </summary>
         public void Trigger()
         {
-            if(!host.gameObject.activeSelf)
-            {
-                Debug.LogWarning("DialogueTrigger !host.gameObject.activeSelf if statement inside");
-                return;
-            }
+            Debug.LogWarning("DialogueTrigger Trigger() start");
             
-            /* if (DialogueSystem.IsPlaying())
+            if (DialogueSystem.IsPlaying())
             {
                 Debug.LogWarning("DialogueTrigger IsPlaying if statement inside");
                 return;//Don't activate if already playing something
-            } */
+            }
 
 
             //Check conditions
@@ -85,7 +81,6 @@ namespace Narrative
         /// </summary>
         private void OnDialogueEnd()
         {
-            Debug.LogWarning("DialogueTrigger onDialogueEnd() run");
             if (writeToFlagId != "")
             {
                 GameController.SetFlag(writeToFlagId, writeToFlagValue);
@@ -95,6 +90,7 @@ namespace Narrative
                 Destroy(this);
             }
             onFinish.Invoke();
+            Debug.LogWarning("DialogueTrigger onDialogueEnd() run");
         }
     }
 }

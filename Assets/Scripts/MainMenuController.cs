@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
         // Hide tragedy button if we already got the mask
         if (GameController.Instance.getHasTragedyMask()) {
             tragedyButton.gameObject.SetActive(false);
+            //introDialogue.Invoke();
         }
 
         // Clear checkpoint data between levels

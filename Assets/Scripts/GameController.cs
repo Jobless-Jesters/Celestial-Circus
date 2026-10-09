@@ -123,6 +123,7 @@ public class GameController : MonoBehaviour
     public static void SetFlag(string flag, bool value)
     {
         _instance.flags[flag] = value;
+        
     }
 
     /// <summary>
