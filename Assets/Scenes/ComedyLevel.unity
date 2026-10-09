@@ -1184,7 +1184,7 @@ MonoBehaviour:
   landingImpulse: 2.7
   jumpWindow: 0.12
   jumpBuffer: 0.08
-  boostVelocity: 50.7
+  boostVelocity: 100
   missBounceVelocity: 22
   reboundKick: 14.7
   rearmMargin: 0.5
