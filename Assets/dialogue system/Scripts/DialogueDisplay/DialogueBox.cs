@@ -28,7 +28,8 @@ namespace Narrative
         //State tracking variables and getters, useful for timing
         //serialized so the animator can edit them but shouldn't be modified otherwise
         [SerializeField] [HideInInspector] private bool isOpen = false;
-        [SerializeField] [HideInInspector] private bool isActive = false;
+        //[SerializeField] [HideInInspector] private bool isActive = false;
+        [SerializeField] private bool isActive = false;
         public bool IsOpen { get { return isOpen; } }
         public bool IsActive { get { return isActive; } }
 
@@ -64,9 +65,7 @@ namespace Narrative
                 }
                 else // not end of text
                 {
-                    // do nothing
                     charactersPerSecond = 1000.0f;
-                    //AdvanceLine();
                 }
             }
         }

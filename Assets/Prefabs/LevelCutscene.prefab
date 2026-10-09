@@ -441,6 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+    - {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7895476779136485944, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     m_AddedGameObjects:
@@ -479,6 +480,9 @@ MonoBehaviour:
     expectedValue: 0
   writeToFlagId: trag_done
   writeToFlagValue: 1
+  onFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3603030430527671178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}

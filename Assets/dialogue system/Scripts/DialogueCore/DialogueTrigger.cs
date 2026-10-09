@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Narrative
 {
@@ -27,28 +28,40 @@ namespace Narrative
         private string writeToFlagId = "";
         [SerializeField] private bool writeToFlagValue = false;
 
+        [Header("Event")]
+        public UnityEvent onFinish;
+        [SerializeField] public GameObject host;
+
 
         /// <summary>
         /// Call this to activate the dialogue. If condition are set they must all be satisfied.
         /// </summary>
         public void Trigger()
         {
-            
-            if (DialogueSystem.IsPlaying())
+            if(!host.gameObject.activeSelf)
             {
-                return;//Don't activate if already playing something
+                Debug.LogWarning("DialogueTrigger !host.gameObject.activeSelf if statement inside");
+                return;
             }
+            
+            /* if (DialogueSystem.IsPlaying())
+            {
+                Debug.LogWarning("DialogueTrigger IsPlaying if statement inside");
+                return;//Don't activate if already playing something
+            } */
 
 
             //Check conditions
             if (!AreConditionsTrue())
             {
+                Debug.LogWarning("DialogueTrigger !AreConditionsTrue() if statement inside");
                 return; //Cancel activation if any conditions fail
             }
 
             //Activate Dialogue
             DialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             DialogueSystem.PlaySequence(dialogueCSV);
+            Debug.LogWarning("end of trigger code");
         }
 
         /// <summary>
@@ -72,6 +85,7 @@ namespace Narrative
         /// </summary>
         private void OnDialogueEnd()
         {
+            Debug.LogWarning("DialogueTrigger onDialogueEnd() run");
             if (writeToFlagId != "")
             {
                 GameController.SetFlag(writeToFlagId, writeToFlagValue);
@@ -80,6 +94,7 @@ namespace Narrative
             if(!repeatable){
                 Destroy(this);
             }
+            onFinish.Invoke();
         }
     }
 }
