@@ -601,6 +601,10 @@ PrefabInstance:
       value: com_done
       objectReference: {fileID: 0}
     - target: {fileID: 7289438241850937581, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: conditions.Array.data[0].flagID
+      value: intro_done
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289438241850937581, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: conditions.Array.data[0].expectedValue
       value: 1
       objectReference: {fileID: 0}
@@ -727,6 +731,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2691735046406807963, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+    - {fileID: 6180614726425643663, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8300429048154682898, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       insertIndex: -1

@@ -34,7 +34,7 @@ namespace Narrative
         //Sub-Object references
         [SerializeField] private DialogueBox textbox;
         [SerializeField] private DialoguePortraits portraits;
-        [SerializeField] private DialogueChoices choices;
+        //[SerializeField] private DialogueChoices choices;
         [SerializeField] private TMPro.TMP_FontAsset comedyFont;
         [SerializeField] private TMPro.TMP_FontAsset tragedyFont;
 
