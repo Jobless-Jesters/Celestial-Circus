@@ -109,30 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portraitsByID:
-  - id: neutralA
-    sprite: {fileID: 21300000, guid: a0b645be58170ca478588acba7e83c60, type: 3}
-  - id: questionA
-    sprite: {fileID: 21300000, guid: e9f5bfeb19ae9394ba21d1ad9ba0cb93, type: 3}
-  - id: boldA
-    sprite: {fileID: 21300000, guid: b29c30385b0b54040be347fb1ad0f4bb, type: 3}
-  - id: excitedA
-    sprite: {fileID: 21300000, guid: 868ad9cfadab26e45bc2a6ce1f13f2ad, type: 3}
-  - id: sadA
-    sprite: {fileID: 21300000, guid: 2813b7cbc2eb23648b753dd84812cc80, type: 3}
-  - id: fearA
-    sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
-  - id: neutralB
-    sprite: {fileID: 21300000, guid: 7907618d16b0be24aa46ed6e898f382d, type: 3}
-  - id: questionB
-    sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
-  - id: boldB
-    sprite: {fileID: 21300000, guid: 4914125559ebbff46bdeea7d681053ff, type: 3}
-  - id: excitedB
-    sprite: {fileID: 21300000, guid: 21a427e4a9659f64daf6513796003e14, type: 3}
-  - id: sadB
-    sprite: {fileID: 21300000, guid: ee73c8531e9965a42afda05b663944e1, type: 3}
-  - id: fearB
-    sprite: {fileID: 21300000, guid: b67e10a090286954396a72c93f3c422f, type: 3}
   - id: comedy
     sprite: {fileID: 21300000, guid: 9f3895eafa47c4746bd882eff42f930c, type: 3}
   - id: tragedy
@@ -424,7 +400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9f3895eafa47c4746bd882eff42f930c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -790,7 +766,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4d475b2884d84b94aa191f8be9f37b1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -846,7 +822,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7317605181486624424}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
@@ -1011,8 +987,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8656012496883773265}
-  - component: {fileID: 2114882965021020388}
-  - component: {fileID: 390861864250378960}
+  - component: {fileID: 5294503262018632703}
   m_Layer: 0
   m_Name: DialogueHost
   m_TagString: Untagged
@@ -1035,7 +1010,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2647234840029614896}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2114882965021020388
+--- !u!114 &5294503262018632703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1044,32 +1019,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8509969925868503270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895d74e7f43114e5a873a68aed966d0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueCSV: {fileID: 4900000, guid: 7b4d6f29ddf170a47abcb5437ba3a2d0, type: 3}
-  writeToFlagId: intro_done
-  writeToFlagValue: 1
-  conditions: []
-  onFinish:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &390861864250378960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509969925868503270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b311aabbd27f5694e8f67a1e1cc8e46e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   repeatable: 0
+  dialogueCSV: {fileID: 4900000, guid: b8f0c1d8c5e1c36499c2062700fad7a7, type: 3}
   conditions:
   - flagID: intro_done
-    expectedValue: 1
+    expectedValue: 0
+  writeToFlagId: intro_done
+  writeToFlagValue: 1
   onFinish:
     m_PersistentCalls:
       m_Calls:
@@ -1085,7 +1044,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8509969925868503270}
+      - m_Target: {fileID: 7317605181486624424}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1352,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
     [Header("Dialogue Flags")]
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
 
+    public GameObject mainmenu;
+
     void Awake()
     {
         // Prevent duplicate GameManagers by checking if there is more than one singleton
@@ -63,6 +65,11 @@ public class GameController : MonoBehaviour
     public bool getHasComedyMask()
     {
         return hasComedyMask;
+    }
+
+    public void setMainMenu()
+    {
+        mainmenu = GameObject.Find("MainMenu");
     }
 
     public void setLastCheckpoint(int newID, Vector3 pos)
@@ -123,7 +130,7 @@ public class GameController : MonoBehaviour
     public static void SetFlag(string flag, bool value)
     {
         _instance.flags[flag] = value;
-        
+
     }
 
     /// <summary>

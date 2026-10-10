@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/dialogue system/scenes/MainMenu.unity
     guid: 33eb14441cd94474e84c0b7aaa5cebfe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Testing.unity
     guid: 154beae96ca00fd45a76f8756b4fc601
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlatformingTesting.unity
     guid: 99831039012f1b94bab31ec489361d61
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TragedyLevel.unity
     guid: 246d93a3fb3d1964cb7fcc776325703a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ComedyLevel.unity
     guid: 4ad2f7a33e7c9c340b6b0b6dd6ab58e8
   - enabled: 1
@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/dialogue system/scenes/TragedyLevel1.unity
     guid: f3d772a9f1772bc4ea3f777350f61d30
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 306e11bec88c11349bae04f25b1faafa
   m_configObjects: {}
