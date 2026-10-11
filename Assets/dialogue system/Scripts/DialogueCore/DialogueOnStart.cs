@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿/// TO BE DELTED ONCE IT DOESN'T CAUSE PROBLEMS ANYWHERE ELSE 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace Narrative
 {
     public class DialogueOnStart : MonoBehaviour
@@ -18,6 +21,9 @@ namespace Narrative
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
 
+        [Header("Event")]
+        public UnityEvent onFinish;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -28,17 +34,18 @@ namespace Narrative
         }
 
         /// <summary>
-        /// Callback reciever for ehrn dialogue ends.
+        /// Callback reciever for when dialogue ends.
         /// Writes to flags if it is set
         /// </summary>
         private void OnDialogueEnd()
         {
             if (writeToFlagId != "")
             {
-                DialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
+                GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
             Destroy(this);
+            onFinish.Invoke();
         }
     }
 }

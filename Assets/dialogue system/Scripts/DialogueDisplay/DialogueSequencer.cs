@@ -34,7 +34,7 @@ namespace Narrative
         //Sub-Object references
         [SerializeField] private DialogueBox textbox;
         [SerializeField] private DialoguePortraits portraits;
-        [SerializeField] private DialogueChoices choices;
+        //[SerializeField] private DialogueChoices choices;
         [SerializeField] private TMPro.TMP_FontAsset comedyFont;
         [SerializeField] private TMPro.TMP_FontAsset tragedyFont;
 
@@ -42,6 +42,11 @@ namespace Narrative
         private DialogueSequence currentDialog;  //set when we are playing
         private int currentLine = 0;  //current line in the sequence we are playing
         private bool isPlaying = false;
+
+        void Awake()
+        {
+            //textbox = GameObject.Find("TextboxPanel").GetComponent<DialogueBox>();
+        }
 
         /// <summary>
         /// Starts playing the given sequence
@@ -98,9 +103,14 @@ namespace Narrative
             textbox.SetLine(currentDialog.GetRowDialogue(lineNum));
             //Apply to textbox speaker name
             string name = currentDialog.GetRowName(lineNum);
+
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
+
+                // change of font controlled by if statement
+                // ideal world this would be become part of the csv file
+                // for now this base set works fine 
                 if (name == "Comedy") 
                 {
                     textbox.setFont(comedyFont);
@@ -110,6 +120,7 @@ namespace Narrative
                     textbox.setFont(tragedyFont);
                 }
             }
+
             //Apply to left portrait
             string portraitLeft = currentDialog.GetRowPortraitLeft(lineNum);
 

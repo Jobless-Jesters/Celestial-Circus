@@ -28,7 +28,8 @@ namespace Narrative
         //State tracking variables and getters, useful for timing
         //serialized so the animator can edit them but shouldn't be modified otherwise
         [SerializeField] [HideInInspector] private bool isOpen = false;
-        [SerializeField] [HideInInspector] private bool isActive = false;
+        //[SerializeField] [HideInInspector] private bool isActive = false;
+        [SerializeField] private bool isActive = false;
         public bool IsOpen { get { return isOpen; } }
         public bool IsActive { get { return isActive; } }
 
@@ -64,9 +65,7 @@ namespace Narrative
                 }
                 else // not end of text
                 {
-                    // do nothing
                     charactersPerSecond = 1000.0f;
-                    //AdvanceLine();
                 }
             }
         }
@@ -98,6 +97,7 @@ namespace Narrative
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
+            isOpen = true;
         }
 
         /// <summary>
@@ -106,6 +106,8 @@ namespace Narrative
         public void CloseTextbox()
         {
             animator.SetBool("isOpen", false);
+            isActive = false;
+            isOpen = false;
         }
 
         /// <summary>
@@ -158,10 +160,12 @@ namespace Narrative
             onAdvance.Invoke();
         }
 
+
+        /// <summary>
+        /// Function to change the font of the textLabel. Takes in font and sets textLabel font. 
+        /// </summary>
         public void setFont(TMPro.TMP_FontAsset font)
         {
-            //textLabel.setFont(font); 
-            //textLabel.font(font);
             textLabel.font = font; 
         }
     }

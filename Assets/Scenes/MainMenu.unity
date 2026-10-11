@@ -2595,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1896955182663176089, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -2605,6 +2605,14 @@ PrefabInstance:
       propertyPath: dialogueCSV
       value: 
       objectReference: {fileID: 4900000, guid: b8f0c1d8c5e1c36499c2062700fad7a7, type: 3}
+    - target: {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: conditions.Array.data[0].flagID
+      value: intro_done
+      objectReference: {fileID: 0}
     - target: {fileID: 2647234840029614896, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2699,27 +2707,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3447968965206019393, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 81.4
       objectReference: {fileID: 0}
     - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
       value: DialogueMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 49.4
       objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2929,6 +2945,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comedyButton: {fileID: 1956645069}
   tragedyButton: {fileID: 837761193}
+  introDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1765938731}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2078119605}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  endDialogue:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1629228067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,7 +3217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1765938732
 RectTransform:
   m_ObjectHideFlags: 0
