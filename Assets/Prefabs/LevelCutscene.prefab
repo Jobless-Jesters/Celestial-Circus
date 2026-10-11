@@ -359,10 +359,6 @@ PrefabInstance:
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1896955182663176089, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2647234840029614896, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -459,6 +455,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: conditions.Array.data[0].expectedValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
       value: LevelCutscene
@@ -483,18 +483,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
-    - target: {fileID: 8509969925868503270, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_Name
-      value: DialogueHost
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509969925868503270, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787959325407815265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1977350008757628840}
     m_RemovedComponents:
     - {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     - {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
@@ -514,11 +502,6 @@ PrefabInstance:
       addedObject: {fileID: 8610868426699121926}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
---- !u!95 &1977350008757628840 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5547633648234793610, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-  m_PrefabInstance: {fileID: 6308929766675653922}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3603030430527671178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
