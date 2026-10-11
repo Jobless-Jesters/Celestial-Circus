@@ -20,8 +20,6 @@ namespace Narrative {
             _instance = this;
         }
 
-
-
         /// <summary>
         /// Simple struct because you can't serialize a dictionary by default.
         /// </summary>
@@ -41,7 +39,6 @@ namespace Narrative {
         {
             BuildPortraitDictionary();
         }
-
 
         /// <summary>
         /// Converts the serializable list into a dictionary.

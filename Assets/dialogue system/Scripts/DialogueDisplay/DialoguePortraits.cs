@@ -28,7 +28,7 @@ namespace Narrative
             }
         }
 
-         /// <summary>
+        /// <summary>
         /// Sets the sprite of the right portrait.
         /// If the portrait isn't showing it will fade in.
         /// </summary>

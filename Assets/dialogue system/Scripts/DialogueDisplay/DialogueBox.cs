@@ -38,9 +38,6 @@ namespace Narrative
         {
             //Connect onAdvance event to hide the advancearrow object on invoke
             onAdvance.AddListener(() => advanceArrow.SetVisible(false));
-            Debug.LogWarning("DialogueBox Start isActive: " + isActive);
-            Debug.LogWarning("DialogueBox Start isOpen: " + isOpen);
-            Debug.LogWarning("DialogueBox Start textbox: " + this.GetHashCode());
         }
 
         // Update is called once per frame
@@ -96,15 +93,11 @@ namespace Narrative
         /// </summary>
         public void OpenTextbox()
         {
-            //Debug.LogWarning("DialogueBox OpenTextbox run");
             animator.SetBool("isOpen", true);
-            //Debug.LogWarning("DialogueBox OpenTextbox after animator isOpen: " + isOpen);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
-            isOpen = true; 
-            //Debug.LogWarning("DialogueBox OpenTextbox isActive: " + isActive);
-            //Debug.LogWarning("DialogueBox OpenTextbox after separate code isOpen: " + isOpen);
+            isOpen = true;
         }
 
         /// <summary>
@@ -112,13 +105,9 @@ namespace Narrative
         /// </summary>
         public void CloseTextbox()
         {
-            //Debug.LogWarning("DialogueBox CloseTextbox run");
             animator.SetBool("isOpen", false);
-            //Debug.LogWarning("DialogueBox CloseTextbox after animator isOpen: " + isOpen);
             isActive = false;
-            isOpen = false; 
-            //Debug.LogWarning("DialogueBox CloseTextbox: " + isActive);
-            //Debug.LogWarning("DialogueBox CloseTextbox after separate code isOpen: " + isOpen);
+            isOpen = false;
         }
 
         /// <summary>
@@ -171,10 +160,12 @@ namespace Narrative
             onAdvance.Invoke();
         }
 
+
+        /// <summary>
+        /// Function to change the font of the textLabel. Takes in font and sets textLabel font. 
+        /// </summary>
         public void setFont(TMPro.TMP_FontAsset font)
         {
-            //textLabel.setFont(font); 
-            //textLabel.font(font);
             textLabel.font = font; 
         }
     }

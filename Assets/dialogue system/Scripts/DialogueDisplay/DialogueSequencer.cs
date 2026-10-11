@@ -90,7 +90,6 @@ namespace Narrative
                 //Finished, close textbox
                 textbox.CloseTextbox();
                 portraits.ClosePortraits();
-                Debug.LogWarning("DialogueSequencer OnsequenceAdvanced: textbox isActive: " + textbox.IsActive);
                 onFinish.Invoke();
             }
         }
@@ -105,9 +104,14 @@ namespace Narrative
             textbox.SetLine(currentDialog.GetRowDialogue(lineNum));
             //Apply to textbox speaker name
             string name = currentDialog.GetRowName(lineNum);
+
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
+
+                // change of font controlled by if statement
+                // ideal world this would be become part of the csv file
+                // for now this base set works fine 
                 if (name == "Comedy") 
                 {
                     textbox.setFont(comedyFont);
@@ -117,6 +121,7 @@ namespace Narrative
                     textbox.setFont(tragedyFont);
                 }
             }
+
             //Apply to left portrait
             string portraitLeft = currentDialog.GetRowPortraitLeft(lineNum);
 
@@ -155,8 +160,6 @@ namespace Narrative
         /// </summary>
         public bool IsPlaying()
         {
-            Debug.LogWarning("DialogueSequencer IsPlaying: " + textbox.IsActive);
-            Debug.LogWarning("DialogueSequencer IsPlaying textbox: " + textbox.GetHashCode());
             return textbox.IsActive;
         }
 

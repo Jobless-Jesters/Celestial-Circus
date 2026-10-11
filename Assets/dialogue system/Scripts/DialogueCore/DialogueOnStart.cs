@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/// TO BE DELTED ONCE IT DOESN'T CAUSE PROBLEMS ANYWHERE ELSE 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,7 +34,7 @@ namespace Narrative
         }
 
         /// <summary>
-        /// Callback reciever for ehrn dialogue ends.
+        /// Callback reciever for when dialogue ends.
         /// Writes to flags if it is set
         /// </summary>
         private void OnDialogueEnd()
