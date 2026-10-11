@@ -46,7 +46,6 @@ namespace Narrative
         void Awake()
         {
             //textbox = GameObject.Find("TextboxPanel").GetComponent<DialogueBox>();
-            Debug.LogWarning("DialogueSequencer Awake() textbox: " + textbox.GetHashCode());
         }
 
         /// <summary>
