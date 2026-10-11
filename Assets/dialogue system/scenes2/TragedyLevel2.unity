@@ -234,7 +234,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
+    m_Style: 0
     m_Time: 2
     m_CustomCurve:
       serializedVersion: 2
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 283923008}
   - component: {fileID: 283923009}
   m_Layer: 0
-  m_Name: Tragedy_background (1)
+  m_Name: TragedyCutscene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f3007164448ac446bcb4ad5717ad875, type: 3}
+  m_Sprite: {fileID: 2695541149977655980, guid: 48e1280c9b4aec94c84fa3476898582f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
