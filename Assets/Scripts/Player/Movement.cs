@@ -9,7 +9,7 @@ using UnityEditor;
 //using UnityEditor.Rendering;
 using UnityEngine.Rendering;
 //using UnityEditor.Tilemaps;
-using UnityEngine.Tilemaps; 
+using UnityEngine.Tilemaps;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -103,6 +103,31 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        // _horizontalInput = 0;
+        // if (Input.GetKey(right))
+        // {
+        //     _horizontalInput += 1;
+        // }
+        // if (Input.GetKey(left))
+        // {
+        //     _horizontalInput -= 1;
+        // }
+
+        // groundCheck();
+        // _ApplyGravity();
+        // UpdateGlideVisual();
+        // TwirlSFXLoop();
+        // Jump();
+        // Flip();
+
+        // animator.SetFloat("yVelocity", _playerBody.velocity.y);
+        // animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        // animator.SetBool("isGliding", IsGliding());
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        // Actually move in fixed update to avoid kinematic body glitches
         _horizontalInput = 0;
         if (Input.GetKey(right))
         {
@@ -119,19 +144,12 @@ public class Movement : MonoBehaviour
         TwirlSFXLoop();
         Jump();
         Flip();
-
-        animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
-        animator.SetBool("isGliding", IsGliding());
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        // Actually move in fixed update to avoid kinematic body glitches
         Move();
+
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
+
     }
 
     private bool _isWalking = false;
