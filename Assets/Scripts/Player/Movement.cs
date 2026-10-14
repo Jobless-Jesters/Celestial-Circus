@@ -103,6 +103,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        Jump();
+
         // _horizontalInput = 0;
         // if (Input.GetKey(right))
         // {
@@ -142,7 +144,6 @@ public class Movement : MonoBehaviour
         _ApplyGravity();
         UpdateGlideVisual();
         TwirlSFXLoop();
-        Jump();
         Flip();
         Move();
 
