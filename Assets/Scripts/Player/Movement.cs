@@ -153,7 +153,7 @@ public class Movement : MonoBehaviour
         Move();
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
 
     }
@@ -175,7 +175,7 @@ public class Movement : MonoBehaviour
         }
 
         // Says "right", but _horizontalInput flips the direction left if player presses Left
-        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.fixedDeltaTime * speedMultiplier, _playerBody.velocity.y);
 
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
 
@@ -341,7 +341,7 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y == 0f)
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
@@ -354,7 +354,7 @@ public class Movement : MonoBehaviour
         else
         {
             currentState = STATE.Falling;
-            coyoteTimeCounter -= Time.deltaTime;
+            coyoteTimeCounter -= Time.fixedDeltaTime;
         }
     }
 
