@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
+    private bool jumpPressed;
 
     // Set by a tightrope while the player is bouncing on it. Called when Jump is pressed;
     // returns true if the rope used the press, in which case no normal jump happens.
@@ -103,7 +104,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        Jump();
+        if (Input.GetKeyDown(jumpkey))
+        {
+            jumpPressed = true;
+        }
 
         // _horizontalInput = 0;
         // if (Input.GetKey(right))
@@ -145,6 +149,7 @@ public class Movement : MonoBehaviour
         UpdateGlideVisual();
         TwirlSFXLoop();
         Flip();
+        Jump();
         Move();
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
@@ -255,9 +260,10 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        // Press Space -> jump/double jump            
-        if (Input.GetKeyDown(jumpkey))
+        // Capture the key press in Update, then handle physics in FixedUpdate.
+        if (jumpPressed)
         {
+            jumpPressed = false;
             jumpBufferCounter = jumpBufferTime;
 
             // A tightrope can claim the press for a timed boost
@@ -266,36 +272,32 @@ public class Movement : MonoBehaviour
                 jumpBufferCounter = 0f;
             }
 
-            // Gives coyote time on the first jump
-            else if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        }
+
+        if (jumpBufferCounter > 0f)
+        {
+            // Gives coyote time on the first jump; double jumps work normally.
+            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
-
                 animator.SetTrigger("jump");
-
                 AudioController.Instance.PlayJumpSFX();
-
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
             }
-
-            // Double jumps don't need coyote time. Player can double jump normally
-            else if (jumpsRemaining > 0 && jumpBufferCounter > 0f)
+            else if (jumpsRemaining > 0)
             {
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
-
                 animator.SetTrigger("jump");
-
                 AudioController.Instance.PlayJumpSFX();
-
                 jumpBufferCounter = 0f;
             }
-        }
-        else
-        {
-            jumpBufferCounter -= Time.deltaTime;
+            else
+            {
+                jumpBufferCounter -= Time.fixedDeltaTime;
+            }
         }
 
         // Holding Space tells Movement that the player wants to glide
