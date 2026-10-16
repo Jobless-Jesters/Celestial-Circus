@@ -9,7 +9,7 @@ public class MovingHazard : Hazard
 
     [Header("Movement Parameters")]
     [SerializeField] public MovementType movementType;
-    [SerializeField] public Vector3 startPoint;
+    [SerializeField] [HideInInspector] public Vector3 startPoint;
     [SerializeField] public Vector3 endPoint;
     [SerializeField] public float speed = 1.0f;
     [SerializeField] public int maxAngle = 180; // in degrees, set negative for bottom semicircle motion
@@ -21,7 +21,9 @@ public class MovingHazard : Hazard
 
     private void Start()
     {
+        startPoint = transform.position;
         targetPos = endPoint;
+        //Debug.LogWarning(Vector3.x());
     }
 
     private void Update()
@@ -47,6 +49,8 @@ public class MovingHazard : Hazard
             targetPos = startPoint;
         }
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        //Debug.LogWarning(transform.position);
+        //Debug.LogWarning(targetPos);
     }
 
     // Calculates next point in an arc using polar coordinates (assumes perfectly circular motion)

@@ -98,6 +98,7 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
+        Debug.LogWarning(_currentState);
     }
 
     // Update is called once per frame
@@ -166,6 +167,7 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
+            Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -320,20 +322,28 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
+        //Debug.LogWarning("groundCheckPos.position: " + groundCheckPos.position);
+        //Debug.LogWarning("groundChecksize: " + groundCheckSize);
+        //Debug.LogWarning("player.velocity.y: " + _playerBody.velocity.y);
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y == 0f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
             {
                 currentState = STATE.Grounded;
+                Debug.LogWarning("ground check, not grounded: " + currentState);
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
             }
         }
         else
         {
-            currentState = STATE.Falling;
-            coyoteTimeCounter -= Time.deltaTime;
+            if (currentState != STATE.Falling)
+            {
+                currentState = STATE.Falling;
+                Debug.LogWarning("ground check, else: " + currentState);
+                coyoteTimeCounter -= Time.deltaTime;
+            }
         }
     }
 
