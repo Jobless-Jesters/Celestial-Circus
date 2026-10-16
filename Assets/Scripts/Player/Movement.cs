@@ -156,7 +156,9 @@ public class Movement : MonoBehaviour
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
-
+        Debug.Log("fixedupdate yvelocity: " + _playerBody.velocity.y);
+        Debug.Log("fixedupdate magnitude: " + Mathf.Abs(_playerBody.velocity.x));
+        Debug.Log("fixedupdate isGliding: " + IsGliding());
     }
 
     private bool _isWalking = false;
@@ -191,7 +193,7 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
-            Debug.LogWarning("in Move: " + currentState);
+            //Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -284,6 +286,7 @@ public class Movement : MonoBehaviour
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
+                Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
@@ -293,6 +296,7 @@ public class Movement : MonoBehaviour
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
+                Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
             }
@@ -325,6 +329,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
 
@@ -346,10 +351,12 @@ public class Movement : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
+            //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
+                //Debug.LogWarning("ground check, not grounded: " + currentState);
                 currentState = STATE.Grounded;
-                Debug.LogWarning("ground check, not grounded: " + currentState);
+                //Debug.LogWarning("ground check, should be grounded: " + currentState);
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
             }
