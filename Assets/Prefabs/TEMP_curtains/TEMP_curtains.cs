@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TEMP_curtains : MonoBehaviour
 {
-    
-    //Sub-object references
+    public enum CurtainMode
+    {
+        Full,
+        Death,
+        Pause
+    }
+
+    // Curtain Parts
     [SerializeField] private GameObject top;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
@@ -14,42 +17,74 @@ public class TEMP_curtains : MonoBehaviour
     [SerializeField] private GameObject topRight;
     [SerializeField] private Animator animator;
 
-    // state tracking
+    // State tracking
     [SerializeField] private bool isOpen = false;
-    
+    [SerializeField] private CurtainMode curtainMode = CurtainMode.Full;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        ApplyCurtainMode();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetCurtainMode(CurtainMode.Full);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetCurtainMode(CurtainMode.Death);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetCurtainMode(CurtainMode.Pause);
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("pressed t");
+            animator.SetTrigger("toggleCurtain");
+            animator.SetBool("isOpen", isOpen);
+        }
     }
 
-    public void setIsOpen(bool open)
+    public void SetCurtainMode(CurtainMode mode)
     {
-        isOpen = open;
+        curtainMode = mode;
+        ApplyCurtainMode();
     }
 
-    public bool getIsOpen()
+    private void ApplyCurtainMode()
     {
-        return isOpen;
-    }
+        // Arrange curtains differently depending on the situation
+        if (top == null || left == null || right == null || topLeft == null || topRight == null)
+        {
+            return;
+        }
 
-    public void openCurtains()
-    {
-        setIsOpen(true);
-        animator.SetBool("isOpen", true);
-    }
-
-    public void closeCurtains()
-    {
-        setIsOpen(false);
-        animator.SetBool("isOpen", false);
+        switch (curtainMode)
+        {
+            case CurtainMode.Full:
+                top.SetActive(true);
+                topLeft.SetActive(true);
+                topRight.SetActive(true);
+                left.SetActive(true);
+                right.SetActive(true);
+                break;
+            case CurtainMode.Death:
+                top.SetActive(false);
+                topLeft.SetActive(false);
+                topRight.SetActive(false);
+                left.SetActive(true);
+                right.SetActive(true);
+                break;
+            case CurtainMode.Pause:
+                top.SetActive(true);
+                topLeft.SetActive(false);
+                topRight.SetActive(false);
+                left.SetActive(false);
+                right.SetActive(false);
+                break;
+        }
     }
 }

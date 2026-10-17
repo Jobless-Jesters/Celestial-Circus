@@ -110,6 +110,9 @@ public class GameController : MonoBehaviour
         // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
+
+            
+
             GameObject player = GameObject.Find("Player");
             player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         }
