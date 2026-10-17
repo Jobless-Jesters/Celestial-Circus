@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
-//using UnityEditor.Callbacks;
-//using UnityEditor.Experimental.GraphView;
-//using UnityEditor.Rendering;
 using UnityEngine.Rendering;
-//using UnityEditor.Tilemaps;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 
@@ -79,10 +75,6 @@ public class Movement : MonoBehaviour
             {
                 case STATE.Grounded:
                     break;
-                // case STATE.Rising: OnRising_Hook();
-                //     break;
-                // case STATE.Hanging: OnHanging_Hook();
-                //     break;
                 case STATE.Falling:
                     break;
             }
@@ -105,31 +97,12 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        // Capture key-presses in Update to allow for simultaneous vertical and horizontal movement. 
+        // Otherwise, can only jump in time with the fixed update, which eats inputs
         if (Input.GetKeyDown(jumpkey))
         {
             jumpPressed = true;
         }
-
-        // _horizontalInput = 0;
-        // if (Input.GetKey(right))
-        // {
-        //     _horizontalInput += 1;
-        // }
-        // if (Input.GetKey(left))
-        // {
-        //     _horizontalInput -= 1;
-        // }
-
-        // groundCheck();
-        // _ApplyGravity();
-        // UpdateGlideVisual();
-        // TwirlSFXLoop();
-        // Jump();
-        // Flip();
-
-        // animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        // animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
-        // animator.SetBool("isGliding", IsGliding());
     }
 
     protected virtual void FixedUpdate()
@@ -156,9 +129,6 @@ public class Movement : MonoBehaviour
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
-        Debug.Log("fixedupdate yvelocity: " + _playerBody.velocity.y);
-        Debug.Log("fixedupdate magnitude: " + Mathf.Abs(_playerBody.velocity.x));
-        Debug.Log("fixedupdate isGliding: " + IsGliding());
     }
 
     private bool _isWalking = false;
@@ -354,17 +324,21 @@ public class Movement : MonoBehaviour
             //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
-                //Debug.LogWarning("ground check, not grounded: " + currentState);
-                currentState = STATE.Grounded;
-                //Debug.LogWarning("ground check, should be grounded: " + currentState);
+                animator.SetBool("isGrounded", true);
+                currentState = STATE.Grounded;  // fixes animator issues
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
             }
         }
         else
         {
-            currentState = STATE.Falling;
-            coyoteTimeCounter -= Time.fixedDeltaTime;
+            // Avoid repeatedly assigning the same value to a variable every tick
+            if (currentState != STATE.Falling)
+            {
+                animator.SetBool("isGrounded", false);  // fixes animator issues
+                currentState = STATE.Falling;
+                coyoteTimeCounter -= Time.fixedDeltaTime;
+            }
         }
     }
 

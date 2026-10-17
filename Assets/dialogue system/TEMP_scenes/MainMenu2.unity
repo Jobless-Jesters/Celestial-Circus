@@ -4430,8 +4430,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: temp text with showing off both portaits.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
+  m_sharedMaterial: {fileID: 4126855315762133208, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4671,7 +4671,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 44, y: -91}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 81.4, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &3451139164766389835
 RectTransform:
@@ -5130,8 +5130,8 @@ MonoBehaviour:
       m_Calls: []
   textbox: {fileID: 8787959326779069887}
   portraits: {fileID: 1340742187447396780}
-  comedyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  tragedyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  comedyFont: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
+  tragedyFont: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
 --- !u!1 &6852826969927228787
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,7 +5196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7584350271512039743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5301,10 +5301,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3447968963753016991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 16, y: -25}
+  m_SizeDelta: {x: 49.4, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &8368043869009663032
 MonoBehaviour:
