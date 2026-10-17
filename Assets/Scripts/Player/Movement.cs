@@ -155,7 +155,6 @@ public class Movement : MonoBehaviour
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
-
     }
 
     private bool _isWalking = false;
@@ -346,6 +345,7 @@ public class Movement : MonoBehaviour
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
             {
+                animator.SetBool("isGrounded", true);
                 currentState = STATE.Grounded;
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
@@ -353,8 +353,12 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            currentState = STATE.Falling;
-            coyoteTimeCounter -= Time.fixedDeltaTime;
+            if (currentState != STATE.Falling)
+            {
+                animator.SetBool("isGrounded", false);
+                currentState = STATE.Falling;
+                coyoteTimeCounter -= Time.fixedDeltaTime;
+            }
         }
     }
 
