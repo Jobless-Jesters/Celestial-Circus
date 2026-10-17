@@ -54,8 +54,10 @@ public class Movement : MonoBehaviour
     private bool WantsToGlide = false;
 
     [Header("Wall Slide Settings")]
+    private float wallJumpLockTimer;
     [SerializeField] protected float wallSlideSpeed = 2f;
-    [SerializeField] protected Vector2 wallJumpPower = new Vector2(25f, 40f);
+    [SerializeField] protected Vector2 wallJumpPower = new Vector2(12f, 30f);
+    [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to ignore horizontal movement for, shorter is more control/responsive, enables a "push" off a wall
 
     [Header("Animation")]
     public Animator animator;   
@@ -157,9 +159,14 @@ public class Movement : MonoBehaviour
         {
             speedMultiplier = 1f;
         }
-
-        // Says "right", but _horizontalInput flips the direction left if player presses Left
-        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+        
+        wallJumpLockTimer -= Time.deltaTime;
+        if (wallJumpLockTimer <= 0f) // Guard against regular movement during a wall jump 
+        {
+                // Says "right", but _horizontalInput flips the direction left if player presses Left
+            _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+        }
+        
 
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
 
@@ -258,9 +265,7 @@ public class Movement : MonoBehaviour
             {
                 if (IsWallSliding())
                 {
-                    float jumpDirection = -transform.localScale.x;
-                    _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
-                    if (jumpDirection != transform.localScale.x) Flip();
+                    WallJump();
                 } else
                 {
                     _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
@@ -280,9 +285,7 @@ public class Movement : MonoBehaviour
             {
                 if (IsWallSliding())
                 {
-                    float jumpDirection = -transform.localScale.x;
-                    _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
-                    if (jumpDirection != transform.localScale.x) Flip();
+                    WallJump();
                 } else
                 {
                     _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
@@ -304,6 +307,20 @@ public class Movement : MonoBehaviour
 
         // Holding Space tells Movement that the player wants to glide
         SetGliding(Input.GetKey(jumpkey));
+    }
+
+    public void WallJump()
+    {
+        float jumpDirection = -transform.localScale.x; // Opposite direction of wall
+        _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
+        wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
+        if (jumpDirection != transform.localScale.x) // Flip character direction
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
     }
 
     public void LaunchFromTightrope(float launchVelocity, bool playJumpAnimation = true)
@@ -342,7 +359,7 @@ public class Movement : MonoBehaviour
 
     private bool IsWallSliding()
     {
-        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, wallLayer);
+        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, wallLayer); // Check if colliding with wall
     }
 
     private void WallSlide()
@@ -350,11 +367,11 @@ public class Movement : MonoBehaviour
         if (IsWallSliding() && currentState != STATE.Grounded)
         {
             currentState = STATE.WallSliding;
-            jumpsRemaining = maxJumps - 1;
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue));
+            jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
+            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
         } else
         {
-            currentState = STATE.Falling;
+            currentState = STATE.Falling; // Reset to falling if off of wall
         }
     }
 
