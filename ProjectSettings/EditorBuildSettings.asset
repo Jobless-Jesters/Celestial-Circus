@@ -35,14 +35,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 306e11bec88c11349bae04f25b1faafa
-  - enabled: 1
-    path: Assets/dialogue system/scenes2/MainMenu2.unity
+  - enabled: 0
+    path: Assets/dialogue system/TEMP_scenes/MainMenu2.unity
     guid: 8530c7fa3cd15d74888bd18c668c168b
-  - enabled: 1
-    path: Assets/dialogue system/scenes2/ComedyLevel2.unity
+  - enabled: 0
+    path: Assets/dialogue system/TEMP_scenes/ComedyLevel2.unity
     guid: e28841fec10931e4dbcaf204467c8219
-  - enabled: 1
-    path: Assets/dialogue system/scenes2/TragedyLevel2.unity
+  - enabled: 0
+    path: Assets/dialogue system/TEMP_scenes/TragedyLevel2.unity
     guid: 87b217cb2c58ba24db715a5d8b0ff490
   - enabled: 1
     path: Assets/Scenes/EndMenu.unity

@@ -509,6 +509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tragedy Platform(Solid)
       objectReference: {fileID: 0}
+    - target: {fileID: 2671886044297326450, guid: e00c554c12670f1458167e8cb1925c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -546,7 +550,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 718937900}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1165,7 +1169,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310889329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1178,11 +1182,11 @@ RectTransform:
   - {fileID: 987662898}
   - {fileID: 1762733454}
   - {fileID: 574630717}
-  m_Father: {fileID: 1909620823}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1380837706
@@ -1235,19 +1239,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876395886943844939, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876395886943844939, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876395886943844939, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 49.4
       objectReference: {fileID: 0}
     - target: {fileID: 2876395886943844939, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2876395886943844939, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 3603030430527671178, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_Name
@@ -1256,6 +1264,18 @@ PrefabInstance:
     - target: {fileID: 3603030430527671178, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933343133897940897, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00005009571
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933343133897940897, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933343133897940897, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.207682
       objectReference: {fileID: 0}
     - target: {fileID: 5972139214164406258, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: loadScene
@@ -1459,7 +1479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8670686793818581091, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 81.4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1826,6 +1846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1988169766}
     m_Modifications:
+    - target: {fileID: 37121471669801134, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
     - target: {fileID: 1456727419835882383, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
       propertyPath: m_Name
       value: Tragedy Platform(Two Way)
@@ -1921,18 +1945,23 @@ MonoBehaviour:
   fallSpeedMultiplier: 2
   maxFallSpeed: 18
   mass: 10
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
   glideGravity: 2
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2
+  wallSlideSpeed: 2
+  wallJumpPower: {x: 12, y: 30}
+  wallJumpLockTime: 0.2
   animator: {fileID: 1762733458}
   groundCheckPos: {fileID: 1194347239}
   groundCheckSize: {x: 1.17, y: 0.21}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallCheckPos: {fileID: 1777049065}
+  wallCheckSize: {x: 0.5, y: -4.32}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _currentState: 1
 --- !u!212 &1762733453
 SpriteRenderer:
@@ -2000,6 +2029,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1194347239}
+  - {fileID: 1777049065}
   m_Father: {fileID: 1310889330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1762733455
@@ -2072,7 +2102,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &1762733458
 Animator:
@@ -2095,6 +2125,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1777049064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777049065}
+  m_Layer: 2
+  m_Name: WallTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1777049065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777049064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.80999756, y: 2.2999878, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1762733454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1846901079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2147,6 +2208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tragedy Platform(Solid) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2671886044297326450, guid: e00c554c12670f1458167e8cb1925c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2277,8 +2342,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 2
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2320,7 +2385,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1380837709}
-  - {fileID: 1310889330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2417,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tragedy Platform(Solid) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2671886044297326450, guid: e00c554c12670f1458167e8cb1925c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2604,6 +2672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tragedy Platform(Solid) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2671886044297326450, guid: e00c554c12670f1458167e8cb1925c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7fcb27ccb7cb8734ba9bf16c14d0bc52, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2776,4 +2848,5 @@ SceneRoots:
   - {fileID: 886175004}
   - {fileID: 1592532740}
   - {fileID: 1877442134}
+  - {fileID: 1310889330}
   - {fileID: 1909620823}
