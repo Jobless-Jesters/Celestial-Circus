@@ -137,8 +137,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: temp text with showing off both portaits.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
+  m_sharedMaterial: {fileID: 6975985051645742393, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5821795355198840003
@@ -549,10 +549,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3447968965206019393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 16, y: -20}
-  m_SizeDelta: {x: 41.17, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5063988533651665356
 CanvasRenderer:
@@ -584,8 +584,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Both
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
+  m_sharedMaterial: {fileID: 6975985051645742393, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6852826969210777261
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5481327062218301004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,7 +1036,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 45, y: 0}
-  m_SizeDelta: {x: 73.17, y: 40}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2975759997876573876
 CanvasRenderer:
@@ -1189,8 +1189,8 @@ MonoBehaviour:
       m_Calls: []
   textbox: {fileID: 8787959325407815265}
   portraits: {fileID: 1340742186145307250}
-  comedyFont: {fileID: 11400000, guid: e76ae6abd30370c4a866659b92d1d950, type: 2}
-  tragedyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  comedyFont: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
+  tragedyFont: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
 --- !u!1 &9060854134392236406
 GameObject:
   m_ObjectHideFlags: 0
