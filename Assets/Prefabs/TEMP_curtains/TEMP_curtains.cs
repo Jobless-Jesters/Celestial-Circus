@@ -27,6 +27,8 @@ public class TEMP_curtains : MonoBehaviour
 
     private void Start()
     {
+        // Allows animations to play during pauses
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         ApplyCurtainMode(curtainMode);
     }
 
@@ -80,7 +82,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(false);
                 left.SetActive(false);
                 right.SetActive(false);
-                animator.speed = 3f;
+                animator.speed = 10f;
                 break;
         }
     }

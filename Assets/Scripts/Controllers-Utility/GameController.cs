@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
 
     public GameObject mainmenu;
+    public GameObject pauseMenu;
+    private bool isPaused = false;
+    public bool canPause = true;
 
     void Awake()
     {
@@ -44,6 +48,53 @@ public class GameController : MonoBehaviour
         _instance = this;
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
+
+        // Force pause properties to prevent glitches
+        
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        {
+            isPaused = !isPaused;
+
+            // stop and restart time
+            if (isPaused)
+            {
+                Time.timeScale = 0.0f;
+
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+            }
+
+            if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
+            {
+                // Get the curtains and play the pause curtain animation
+                GameObject curtains = GameObject.Find("CurtainContainer");
+                TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
+                curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
+
+                StartCoroutine(showPauseText());
+            }
+            else
+            {
+                // Don't play curtain animation on menu scenes
+                pauseMenu.SetActive(isPaused);
+            }
+
+        }
+    }
+
+    private IEnumerator showPauseText()
+    {
+        // Wait specfied time for curtain close animation to finish
+        yield return new WaitForSecondsRealtime(.13f);
+
+        // Show pause text after wait
+        pauseMenu.SetActive(isPaused);
     }
 
     // Setters and Getters
@@ -70,6 +121,16 @@ public class GameController : MonoBehaviour
     public void setMainMenu()
     {
         mainmenu = GameObject.Find("MainMenu");
+    }
+
+    public void setIsPaused(bool paused)
+    {
+        isPaused = paused;
+    }
+
+    public bool getIsPaused()
+    {
+        return isPaused;
     }
 
     public void setLastCheckpoint(int newID, Vector3 pos)
@@ -110,7 +171,11 @@ public class GameController : MonoBehaviour
         // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
+
             Debug.Log("DIED");
+
+            // disable pause to avoid animator conflicts
+            canPause = false;
 
             // Get all components
             GameObject curtains = GameObject.Find("CurtainContainer");
@@ -135,11 +200,16 @@ public class GameController : MonoBehaviour
         // Reset player
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         setPlayerIsAlive(true);
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        
+
         // Open curtains
         cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
+
+        // Enable everything after opening animation is done
+        yield return new WaitForSecondsRealtime(1.2f);
+        canPause = true;
+
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // dealing with dialogue flags

@@ -27,7 +27,7 @@ namespace Narrative
 
         //State tracking variables and getters, useful for timing
         //serialized so the animator can edit them but shouldn't be modified otherwise
-        [SerializeField] [HideInInspector] private bool isOpen = false;
+        [SerializeField][HideInInspector] private bool isOpen = false;
         //[SerializeField] [HideInInspector] private bool isActive = false;
         [SerializeField] private bool isActive = false;
         public bool IsOpen { get { return isOpen; } }
@@ -57,7 +57,8 @@ namespace Narrative
         private void CheckInput()
         {
             //Input for advancing textbox
-            if (Input.GetButtonDown("Submit"))
+            // Cannot advance if game is paused
+            if (Input.GetButtonDown("Submit") && GameController.Instance.getIsPaused() == false)
             {
                 if (isEndOfText())
                 {
@@ -166,7 +167,7 @@ namespace Narrative
         /// </summary>
         public void setFont(TMPro.TMP_FontAsset font)
         {
-            textLabel.font = font; 
+            textLabel.font = font;
         }
     }
 }
