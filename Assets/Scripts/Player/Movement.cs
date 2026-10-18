@@ -1,17 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Unity.VisualScripting;
-using UnityEditor;
-//using UnityEditor.Callbacks;
-//using UnityEditor.Experimental.GraphView;
-//using UnityEditor.Rendering;
-using UnityEngine.Rendering;
-//using UnityEditor.Tilemaps;
-using UnityEngine.Tilemaps; 
 using UnityEngine;
-using UnityEditor.Callbacks;
 
 public class Movement : MonoBehaviour
 {
