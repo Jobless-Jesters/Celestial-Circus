@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 using UnityEngine;
+using UnityEditor.Callbacks;
 
 public class Movement : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float fallSpeedMultiplier = 2f;
     [SerializeField] protected float maxFallSpeed = 18f;
     [SerializeField] protected float mass = 1;
-    [SerializeField] public LayerMask wallLayer;
+
 
     [Header("Glide Settings")]
     [SerializeField] protected float glideGravity = 2f;
@@ -49,16 +50,23 @@ public class Movement : MonoBehaviour
     // [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
     private bool WantsToGlide = false;
 
+    [Header("Wall Slide Settings")]
+    private float wallJumpLockTimer;
+    [SerializeField] protected float wallSlideSpeed = 2f;
+    [SerializeField] protected Vector2 wallJumpPower = new Vector2(12f, 30f);
+    [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to ignore horizontal movement for, shorter is more control/responsive, enables a "push" off a wall
+
     [Header("Animation")]
-    public Animator animator;
+    public Animator animator;   
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
     [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     [SerializeField] public LayerMask groundLayer;
-
+    [SerializeField] public Transform wallCheckPos;
+    [SerializeField] public LayerMask wallLayer;
     // Player States
-    public enum STATE { Grounded, Falling }
+    public enum STATE { Grounded, Falling, WallSliding }
     public STATE _currentState = STATE.Falling;
     [HideInInspector]
     public STATE currentState
@@ -123,11 +131,13 @@ public class Movement : MonoBehaviour
         UpdateGlideVisual();
         TwirlSFXLoop();
         Flip();
+        WallSlide();
         Jump();
         Move();
+        Debug.Log(_playerBody.velocity);
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
+        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
     }
 
@@ -146,9 +156,14 @@ public class Movement : MonoBehaviour
         {
             speedMultiplier = 1f;
         }
-
-        // Says "right", but _horizontalInput flips the direction left if player presses Left
-        _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.fixedDeltaTime * speedMultiplier, _playerBody.velocity.y);
+        
+        wallJumpLockTimer -= Time.deltaTime;
+        if (wallJumpLockTimer <= 0f) // Guard against regular movement during a wall jump 
+        {
+                // Says "right", but _horizontalInput flips the direction left if player presses Left
+            _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+        }
+        
 
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
 
@@ -230,8 +245,6 @@ public class Movement : MonoBehaviour
 
     }
 
-
-
     public void Jump()
     {
         // Capture the key press in Update, then handle physics in FixedUpdate.
@@ -253,8 +266,15 @@ public class Movement : MonoBehaviour
             // Gives coyote time on the first jump; double jumps work normally.
             if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
             {
-                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
-                jumpsRemaining--;
+                if (IsWallSliding())
+                {
+                    WallJump();
+                } else
+                {
+                    _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                    jumpsRemaining--;
+                }
+
                 animator.SetTrigger("jump");
                 Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
@@ -263,8 +283,16 @@ public class Movement : MonoBehaviour
             }
             else if (jumpsRemaining > 0)
             {
-                _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
-                jumpsRemaining--;
+                if (IsWallSliding())
+                {
+                    WallJump();
+                } else
+                {
+                    _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+                    jumpsRemaining--;
+                }
+                
+
                 animator.SetTrigger("jump");
                 Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
@@ -278,7 +306,20 @@ public class Movement : MonoBehaviour
 
         // Holding Space tells Movement that the player wants to glide
         SetGliding(Input.GetKey(jumpkey));
+    }
 
+    public void WallJump()
+    {
+        float jumpDirection = -transform.localScale.x; // Opposite direction of wall
+        _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
+        wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
+        if (jumpDirection != transform.localScale.x) // Flip character direction
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
     }
 
     public void LaunchFromTightrope(float launchVelocity, bool playJumpAnimation = true)
@@ -315,6 +356,25 @@ public class Movement : MonoBehaviour
         && _playerBody.velocity.y < 0; // makes sure that glide only activates when the player is actually moving downwards
 
     }
+
+    private bool IsWallSliding()
+    {
+        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, wallLayer); // Check if colliding with wall
+    }
+
+    private void WallSlide()
+    {
+        if (IsWallSliding() && currentState != STATE.Grounded)
+        {
+            currentState = STATE.WallSliding;
+            jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
+            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
+        } else
+        {
+            currentState = STATE.Falling; // Reset to falling if off of wall
+        }
+    }
+
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
