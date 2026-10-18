@@ -66,8 +66,8 @@ public class Hazard : MonoBehaviour
         float radius = Vector3.Distance(start, endPoint) / 2f;
         Vector3 centerPoint = (start + endPoint) / 2f;
 
-        float startAngle = Mathf.Atan2(centerPoint.y - start.y, centerPoint.x- start.x); // Angle relative to endpoint
-        float sweepAngle = arcDirection == ArcDirection.Clockwise ? Mathf.PI : -Mathf.PI; // We assume perfect circular motion
+        float startAngle = Mathf.Atan2(start.y - centerPoint.y, start.x - centerPoint.x); // Angle made between center point and start
+        float sweepAngle = arcDirection == ArcDirection.Clockwise ? -Mathf.PI : Mathf.PI; // We assume perfect circular motion
 
         float theta = startAngle + progress * sweepAngle;
 
