@@ -4,12 +4,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
-//using UnityEditor.Callbacks;
-//using UnityEditor.Experimental.GraphView;
-//using UnityEditor.Rendering;
 using UnityEngine.Rendering;
-//using UnityEditor.Tilemaps;
-using UnityEngine.Tilemaps; 
+using UnityEngine.Tilemaps;
 using UnityEngine;
 using UnityEditor.Callbacks;
 
@@ -28,6 +24,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool isFacingRight = true;
     protected float _horizontalInput = 0; // 0 is idle, -1 is left, 1 is right
+    private bool jumpPressed;
 
     // Set by a tightrope while the player is bouncing on it. Called when Jump is pressed;
     // returns true if the rope used the press, in which case no normal jump happens.
@@ -86,10 +83,6 @@ public class Movement : MonoBehaviour
             {
                 case STATE.Grounded:
                     break;
-                // case STATE.Rising: OnRising_Hook();
-                //     break;
-                // case STATE.Hanging: OnHanging_Hook();
-                //     break;
                 case STATE.Falling:
                     break;
             }
@@ -106,11 +99,23 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
+        Debug.LogWarning(_currentState);
     }
 
     // Update is called once per frame
     protected void Update()
     {
+        // Capture key-presses in Update to allow for simultaneous vertical and horizontal movement. 
+        // Otherwise, can only jump in time with the fixed update, which eats inputs
+        if (Input.GetKeyDown(jumpkey))
+        {
+            jumpPressed = true;
+        }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        // Actually move in fixed update to avoid kinematic body glitches
         _horizontalInput = 0;
         if (Input.GetKey(right))
         {
@@ -125,20 +130,12 @@ public class Movement : MonoBehaviour
         _ApplyGravity();
         UpdateGlideVisual();
         TwirlSFXLoop();
-        Jump();
         Flip();
         WallSlide();
+        Jump();
+        Move();
         Debug.Log(_playerBody.velocity);
 
-        animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
-        animator.SetBool("isGliding", IsGliding());
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        // Actually move in fixed update to avoid kinematic body glitches
-        Move();
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
         animator.SetBool("isGliding", IsGliding());
@@ -181,6 +178,7 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
+            //Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -249,9 +247,10 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        // Press Space -> jump/double jump        
-        if (Input.GetKeyDown(jumpkey))
+        // Capture the key press in Update, then handle physics in FixedUpdate.
+        if (jumpPressed)
         {
+            jumpPressed = false;
             jumpBufferCounter = jumpBufferTime;
 
             // A tightrope can claim the press for a timed boost
@@ -260,8 +259,12 @@ public class Movement : MonoBehaviour
                 jumpBufferCounter = 0f;
             }
 
-            // Gives coyote time on the first jump
-            else if (jumpsRemaining > 1 && coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        }
+
+        if (jumpBufferCounter > 0f)
+        {
+            // Gives coyote time on the first jump; double jumps work normally.
+            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
             {
                 if (IsWallSliding())
                 {
@@ -273,15 +276,12 @@ public class Movement : MonoBehaviour
                 }
 
                 animator.SetTrigger("jump");
-
+                Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
-
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
             }
-
-            // Double jumps don't need coyote time. Player can double jump normally
-            else if (jumpsRemaining > 0 && jumpBufferCounter > 0f)
+            else if (jumpsRemaining > 0)
             {
                 if (IsWallSliding())
                 {
@@ -294,15 +294,14 @@ public class Movement : MonoBehaviour
                 
 
                 animator.SetTrigger("jump");
-
+                Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
-
                 jumpBufferCounter = 0f;
             }
-        }
-        else
-        {
-            jumpBufferCounter -= Time.deltaTime;
+            else
+            {
+                jumpBufferCounter -= Time.fixedDeltaTime;
+            }
         }
 
         // Holding Space tells Movement that the player wants to glide
@@ -341,6 +340,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
 
@@ -378,20 +378,27 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y == 0f)
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
+            //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
-                currentState = STATE.Grounded;
+                animator.SetBool("isGrounded", true);
+                currentState = STATE.Grounded;  // fixes animator issues
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
             }
         }
         else
         {
-            currentState = STATE.Falling;
-            coyoteTimeCounter -= Time.deltaTime;
+            // Avoid repeatedly assigning the same value to a variable every tick
+            if (currentState != STATE.Falling)
+            {
+                animator.SetBool("isGrounded", false);  // fixes animator issues
+                currentState = STATE.Falling;
+                coyoteTimeCounter -= Time.fixedDeltaTime;
+            }
         }
     }
 
