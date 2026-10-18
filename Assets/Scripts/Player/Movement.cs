@@ -91,6 +91,7 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
+        Debug.LogWarning(_currentState);
     }
 
     // Update is called once per frame
@@ -162,6 +163,7 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
+            //Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -254,6 +256,7 @@ public class Movement : MonoBehaviour
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
+                Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
@@ -263,6 +266,7 @@ public class Movement : MonoBehaviour
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
+                Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
             }
@@ -295,6 +299,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
 
@@ -316,6 +321,7 @@ public class Movement : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
+            //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
                 animator.SetBool("isGrounded", true);
