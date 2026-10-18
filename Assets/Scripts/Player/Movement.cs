@@ -57,13 +57,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to ignore horizontal movement for, shorter is more control/responsive, enables a "push" off a wall
 
     [Header("Animation")]
-    public Animator animator;   
+    public Animator animator;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
     [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     [SerializeField] public LayerMask groundLayer;
     [SerializeField] public Transform wallCheckPos;
+    [SerializeField] public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
     [SerializeField] public LayerMask wallLayer;
     // Player States
     public enum STATE { Grounded, Falling, WallSliding }
@@ -156,14 +157,14 @@ public class Movement : MonoBehaviour
         {
             speedMultiplier = 1f;
         }
-        
+
         wallJumpLockTimer -= Time.deltaTime;
         if (wallJumpLockTimer <= 0f) // Guard against regular movement during a wall jump 
         {
-                // Says "right", but _horizontalInput flips the direction left if player presses Left
+            // Says "right", but _horizontalInput flips the direction left if player presses Left
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
-        
+
 
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
 
@@ -269,13 +270,16 @@ public class Movement : MonoBehaviour
                 if (IsWallSliding())
                 {
                     WallJump();
-                } else
+                }
+                else
                 {
                     _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                     jumpsRemaining--;
                 }
 
                 animator.SetTrigger("jump");
+                currentState = STATE.Falling;
+                animator.SetBool("isGrounded", false);
                 Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
@@ -286,14 +290,17 @@ public class Movement : MonoBehaviour
                 if (IsWallSliding())
                 {
                     WallJump();
-                } else
+                }
+                else
                 {
                     _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
                     jumpsRemaining--;
                 }
-                
+
 
                 animator.SetTrigger("jump");
+                currentState = STATE.Falling;
+                animator.SetBool("isGrounded", false);
                 Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
@@ -369,9 +376,10 @@ public class Movement : MonoBehaviour
             currentState = STATE.WallSliding;
             jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
             _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
-        } else
+        }
+        else if (currentState == STATE.WallSliding)
         {
-            currentState = STATE.Falling; // Reset to falling if off of wall
+            currentState = STATE.Falling;
         }
     }
 
@@ -419,6 +427,9 @@ public class Movement : MonoBehaviour
         // You can turn this off by deselcting Gizmos in the Scene view
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
     }
 
     private void UpdateGlideVisual()
