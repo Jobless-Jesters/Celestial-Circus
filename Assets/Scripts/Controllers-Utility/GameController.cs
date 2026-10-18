@@ -35,10 +35,10 @@ public class GameController : MonoBehaviour
         // Prevent duplicate GameManagers by checking if there is more than one singleton
         // This is also nice because all our testing scenes can have a manager
         // without it ultimately impacting all the other scenes by creating duplicates
-        if (_instance != null && _instance!= this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
-            return; 
+            return;
         }
 
         _instance = this;
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
     public void setLastCheckpoint(int newID, Vector3 pos)
     {
         // Only update the checkpoint if it is further along the level than the previous checkpoint
-        if (lastCheckpointID < newID) 
+        if (lastCheckpointID < newID)
         {
             lastCheckpointID = newID;
             lastCheckpointPosition = pos;
@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour
         return lastCheckpointPosition;
     }
 
-    public void clearCheckpoints() 
+    public void clearCheckpoints()
     {
         lastCheckpointID = -1;
         lastCheckpointPosition = Vector3.zero;
@@ -110,14 +110,37 @@ public class GameController : MonoBehaviour
         // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
+            Debug.Log("DIED");
 
-            
-
+            // Get all components
+            GameObject curtains = GameObject.Find("CurtainContainer");
+            TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
             GameObject player = GameObject.Find("Player");
-            player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+            // Freeze player movement
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            // Toggle death curtain
+            curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Death);
+            StartCoroutine(RespawnAfterCurtain(player, rb, curtainScript));
         }
     }
 
+    private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs)
+    {
+        // Wait specfied time for curtain close animation to finish
+        yield return new WaitForSecondsRealtime(1.2f);
+
+        // Reset player
+        player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
+        setPlayerIsAlive(true);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        
+        // Open curtains
+        cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
+    }
 
     // dealing with dialogue flags
     // reused code and comments from DialogueFlags.cs from canvas base unity 
@@ -143,12 +166,14 @@ public class GameController : MonoBehaviour
     /// <returns>The contents of the given flag.</returns>
     public static bool GetFlagValue(string flag)
     {
-        if (_instance.flags!=null){
-            if (_instance.flags.ContainsKey(flag)){
-                return _instance.flags[flag];    
+        if (_instance.flags != null)
+        {
+            if (_instance.flags.ContainsKey(flag))
+            {
+                return _instance.flags[flag];
             }
         }
         return false;
-        
+
     }
 }

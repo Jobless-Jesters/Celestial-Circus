@@ -1,3 +1,7 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TEMP_curtains : MonoBehaviour
@@ -23,44 +27,34 @@ public class TEMP_curtains : MonoBehaviour
 
     private void Start()
     {
-        ApplyCurtainMode();
+        ApplyCurtainMode(curtainMode);
     }
 
-    private void Update()
+    public void setOpen()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetCurtainMode(CurtainMode.Full);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetCurtainMode(CurtainMode.Death);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetCurtainMode(CurtainMode.Pause);
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("pressed t");
-            animator.SetTrigger("toggleCurtain");
-            animator.SetBool("isOpen", isOpen);
-        }
+        // Called by animation event in the curtain open and closing animations
+        isOpen = !isOpen;
+        animator.SetBool("isOpen", isOpen);
     }
 
-    public void SetCurtainMode(CurtainMode mode)
+    public void toggleCurtain(CurtainMode mode)
     {
-        curtainMode = mode;
-        ApplyCurtainMode();
+        ApplyCurtainMode(mode);
+        animator.SetTrigger("toggleCurtain");
+        animator.SetBool("isOpen", isOpen);
+
     }
 
-    private void ApplyCurtainMode()
+    private void ApplyCurtainMode(CurtainMode mode)
     {
         // Arrange curtains differently depending on the situation
+        // Can also customize speed of animation
         if (top == null || left == null || right == null || topLeft == null || topRight == null)
         {
             return;
         }
+
+        curtainMode = mode;
 
         switch (curtainMode)
         {
@@ -70,6 +64,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(true);
                 left.SetActive(true);
                 right.SetActive(true);
+                animator.speed = 1.0f;
                 break;
             case CurtainMode.Death:
                 top.SetActive(false);
@@ -77,6 +72,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(false);
                 left.SetActive(true);
                 right.SetActive(true);
+                animator.speed = 3f;
                 break;
             case CurtainMode.Pause:
                 top.SetActive(true);
@@ -84,6 +80,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(false);
                 left.SetActive(false);
                 right.SetActive(false);
+                animator.speed = 3f;
                 break;
         }
     }
