@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
 
     public GameObject mainmenu;
+
+    [Header("Pause Menu")]
     public GameObject pauseMenu;
     private bool isPaused = false;
     public bool canPause = true;
@@ -48,13 +50,12 @@ public class GameController : MonoBehaviour
         _instance = this;
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
-
-        // Force pause properties to prevent glitches
         
     }
 
     void Update()
     {
+        // Pause the game at any time
         if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             isPaused = !isPaused;
@@ -204,7 +205,7 @@ public class GameController : MonoBehaviour
         // Open curtains
         cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
 
-        // Enable everything after opening animation is done
+        // Re-enable everything after opening animation is done
         yield return new WaitForSecondsRealtime(1.2f);
         canPause = true;
 

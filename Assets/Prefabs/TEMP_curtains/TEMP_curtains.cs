@@ -27,7 +27,7 @@ public class TEMP_curtains : MonoBehaviour
 
     private void Start()
     {
-        // Allows animations to play during pauses
+        // Allows curtain animations to play during pauses
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         ApplyCurtainMode(curtainMode);
     }
@@ -41,10 +41,10 @@ public class TEMP_curtains : MonoBehaviour
 
     public void toggleCurtain(CurtainMode mode)
     {
+        // Send triggers to the animator to open and close the curtain
         ApplyCurtainMode(mode);
         animator.SetTrigger("toggleCurtain");
         animator.SetBool("isOpen", isOpen);
-
     }
 
     private void ApplyCurtainMode(CurtainMode mode)
