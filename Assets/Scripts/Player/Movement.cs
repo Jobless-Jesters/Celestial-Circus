@@ -97,10 +97,24 @@ public class Movement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         _moveAction = playerInput.actions.FindAction("Move", true);
         _jumpAction = playerInput.actions.FindAction("Jump", true);
+        playerInput.enabled = false;  // cannot move at start of level
+
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Debug.LogWarning(_currentState);
+
+        // Disable player input until the curtains are fully open
+        StartCoroutine(EnableMoveAfterCurtain(playerInput));
+    }
+
+    private IEnumerator EnableMoveAfterCurtain(PlayerInput ip)
+    {
+        Debug.Log("Entered starting coroutine");
+        // Wait specfied time for curtain open animation to finish
+        yield return new WaitForSecondsRealtime(2.8f);
+
+        Debug.Log("Exited starting coroutine, player can move");
+        ip.enabled = true;  // Re-enable inputs, player can now start playing
     }
 
     // Update is called once per frame
@@ -284,7 +298,6 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
-                Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
@@ -305,7 +318,6 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
-                Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
             }
@@ -351,7 +363,6 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
-            Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
 
