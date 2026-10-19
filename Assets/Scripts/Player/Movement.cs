@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
+    private bool WantsToGlide = false;
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
@@ -35,10 +36,6 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float glideMaxFallSpeed = 4f;
     [SerializeField] protected float glideSpeedMultiplier = 1.2f;
 
-    [Header("Glide Visual")]
-    // [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
-    private bool WantsToGlide = false;
-
     [Header("Wall Slide Settings")]
     private float wallJumpLockTimer;
     [SerializeField] protected float wallSlideSpeed = 2f;
@@ -47,6 +44,7 @@ public class Movement : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
+    //Temporary colours for death animation
     [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
     [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
 
@@ -120,7 +118,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        // Capture jump presses in Update so FixedUpdate does not miss short presses.
+        // Capture key-presses in Update to allow for simultaneous vertical and horizontal movement. 
+        // Otherwise, can only jump in time with the fixed update, which eats inputs
         if (_jumpAction.WasPressedThisFrame())
         {
             jumpPressed = true;
@@ -183,9 +182,7 @@ public class Movement : MonoBehaviour
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
 
-
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
-
         if (currentState == STATE.Grounded && _horizontalInput != 0)
         {
             if (!_isWalking)
@@ -197,7 +194,6 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
-            //Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -404,7 +400,6 @@ public class Movement : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
-            //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
                 animator.SetBool("isGrounded", true);
@@ -440,9 +435,12 @@ public class Movement : MonoBehaviour
     {
         // Draws a bounding box for the ground detection collider
         // You can turn this off by deselcting Gizmos in the Scene view
+
+        // Ground check gizmo
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
-
+        
+        // Wall check gizmo
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
     }

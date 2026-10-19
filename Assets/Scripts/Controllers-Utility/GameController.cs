@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour
                 AudioController.Instance.twirlSource.UnPause();
             }
 
+            // Show curtains only on level scenes
             if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
             {
                 // Get the curtains and play the pause curtain animation
@@ -94,7 +95,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator showPauseText()
     {
-        // Wait specfied time for curtain close animation to finish
+        // Wait specfied time for curtain drop animation to finish
         yield return new WaitForSecondsRealtime(.13f);
 
         // Show pause text after wait
@@ -170,9 +171,6 @@ public class GameController : MonoBehaviour
 
     public void respawnAtCheckpoint()
     {
-        // Puts the player at the same spot as the checkpoint.
-        // Offset by [0, 0, -2] so that player respawns in front of checkpoint
-        // May want to add xy offset as well for a certain effect/feel
         if (getLastCheckpointPosition() != Vector3.zero)
         {
 
@@ -200,13 +198,13 @@ public class GameController : MonoBehaviour
 
     private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs, PlayerInput ip)
     {
-        // Wait specfied time for curtain close animation to finish
+        // Wait specfied time for curtain close animation to finish before resetting player
         yield return new WaitForSecondsRealtime(1.2f);
 
-        // Reset player
+        // Reset player pos: offset by [0, 0, -2] so that player respawns in front of checkpoint
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
-        setPlayerIsAlive(true);
-        rb.constraints = RigidbodyConstraints2D.None;
+        setPlayerIsAlive(true);  // end the death animation
+        rb.constraints = RigidbodyConstraints2D.None;  // Let the player fall to ground
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         // give player time to reset and hide animation changes
@@ -215,7 +213,7 @@ public class GameController : MonoBehaviour
         // Open curtains
         cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
 
-        // Re-enable pause after opening animation is done
+        // Re-enable pause and movement after opening animation is done
         yield return new WaitForSecondsRealtime(1.4f);
         canPause = true;
         ip.enabled = true;
