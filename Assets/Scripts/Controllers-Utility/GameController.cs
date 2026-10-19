@@ -64,11 +64,13 @@ public class GameController : MonoBehaviour
             if (isPaused)
             {
                 Time.timeScale = 0.0f;
+                AudioController.Instance.twirlSource.Pause();
 
             }
             else
             {
                 Time.timeScale = 1.0f;
+                AudioController.Instance.twirlSource.UnPause();
             }
 
             if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
