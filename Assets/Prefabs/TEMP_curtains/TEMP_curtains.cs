@@ -1,12 +1,22 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+using NUnit.Framework;
+using Unity.VisualScripting;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 
 public class TEMP_curtains : MonoBehaviour
 {
-    
-    //Sub-object references
+    public enum CurtainMode
+    {
+        Full,
+        Death,
+        Pause
+    }
+
+    // Curtain Parts
     [SerializeField] private GameObject top;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
@@ -14,42 +24,69 @@ public class TEMP_curtains : MonoBehaviour
     [SerializeField] private GameObject topRight;
     [SerializeField] private Animator animator;
 
-    // state tracking
+    // State tracking
     [SerializeField] private bool isOpen = false;
-    
+    [SerializeField] private CurtainMode curtainMode = CurtainMode.Full;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        // Allows curtain animations to play during pauses
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        ApplyCurtainMode(curtainMode);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setOpen()
     {
-
+        // Called by animation event in the curtain open and closing animations
+        isOpen = !isOpen;
+        animator.SetBool("isOpen", isOpen);
     }
 
-    public void setIsOpen(bool open)
+    public void toggleCurtain(CurtainMode mode)
     {
-        isOpen = open;
+        // Send triggers to the animator to open and close the curtain
+        ApplyCurtainMode(mode);
+        animator.SetTrigger("toggleCurtain");
+        animator.SetBool("isOpen", isOpen);
     }
 
-    public bool getIsOpen()
+    private void ApplyCurtainMode(CurtainMode mode)
     {
-        return isOpen;
-    }
+        // Arrange curtains differently depending on the situation
+        // Can also customize speed of animation
+        if (top == null || left == null || right == null || topLeft == null || topRight == null)
+        {
+            return;
+        }
 
-    public void openCurtains()
-    {
-        setIsOpen(true);
-        animator.SetBool("isOpen", true);
-    }
+        curtainMode = mode;
 
-    public void closeCurtains()
-    {
-        setIsOpen(false);
-        animator.SetBool("isOpen", false);
+        switch (curtainMode)
+        {
+            case CurtainMode.Full:
+                top.SetActive(true);
+                topLeft.SetActive(true);
+                topRight.SetActive(true);
+                left.SetActive(true);
+                right.SetActive(true);
+                animator.speed = 1.0f;
+                break;
+            case CurtainMode.Death:
+                top.SetActive(false);
+                topLeft.SetActive(false);
+                topRight.SetActive(false);
+                left.SetActive(true);
+                right.SetActive(true);
+                animator.speed = 3f;
+                break;
+            case CurtainMode.Pause:
+                top.SetActive(true);
+                topLeft.SetActive(false);
+                topRight.SetActive(false);
+                left.SetActive(false);
+                right.SetActive(false);
+                animator.speed = 10f;
+                break;
+        }
     }
 }
