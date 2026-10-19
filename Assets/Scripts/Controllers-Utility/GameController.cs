@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         _instance = this;
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
-        
+
     }
 
     void Update()
@@ -201,16 +201,18 @@ public class GameController : MonoBehaviour
         // Reset player
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
         setPlayerIsAlive(true);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        // give player time to reset and hide animation changes
+        yield return new WaitForSecondsRealtime(0.4f);
 
         // Open curtains
         cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
 
-        // Re-enable everything after opening animation is done
-        yield return new WaitForSecondsRealtime(1.2f);
+        // Re-enable pause after opening animation is done
+        yield return new WaitForSecondsRealtime(1.4f);
         canPause = true;
-
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // dealing with dialogue flags

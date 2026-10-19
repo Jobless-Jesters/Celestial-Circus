@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -104,6 +105,19 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(jumpkey))
         {
             jumpPressed = true;
+        }
+
+        if (GameController.Instance.getPlayerIsAlive() == false)
+        {
+            animator.SetFloat("yVelocity", 0);
+            animator.SetFloat("magnitude", 0);
+            animator.SetBool("isGliding", false);
+            animator.SetBool("isGrounded", false);
+            animator.SetBool("isAlive", false);
+        }
+        else
+        {
+            animator.SetBool("isAlive", true);
         }
     }
 
