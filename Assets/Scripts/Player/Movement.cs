@@ -2,15 +2,10 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [Header("Input Bindings")]
-    [SerializeField] protected KeyCode left = KeyCode.A;
-    [SerializeField] protected KeyCode down = KeyCode.S;
-    [SerializeField] protected KeyCode right = KeyCode.D;
-    [SerializeField] protected KeyCode jumpkey = KeyCode.Space;
-
     [Header("Movement Settings")]
     [SerializeField] protected float baseSpeed = 5f;
     [SerializeField] public float jumpPower = 30f;
@@ -91,11 +86,17 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _playerBody;
     private BoxCollider2D _playerCollider;
     private SpriteRenderer spriteRenderer;
+    private PlayerInput playerInput;
+    private InputAction _moveAction;
+    private InputAction _jumpAction;
 
 
     // Start is called before the first frame update
     protected void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        _moveAction = playerInput.actions.FindAction("Move", true);
+        _jumpAction = playerInput.actions.FindAction("Jump", true);
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -105,9 +106,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        // Capture key-presses in Update to allow for simultaneous vertical and horizontal movement. 
-        // Otherwise, can only jump in time with the fixed update, which eats inputs
-        if (Input.GetKeyDown(jumpkey))
+        // Capture jump presses in Update so FixedUpdate does not miss short presses.
+        if (_jumpAction.WasPressedThisFrame())
         {
             jumpPressed = true;
         }
@@ -131,25 +131,15 @@ public class Movement : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         // Actually move in fixed update to avoid kinematic body glitches
-        _horizontalInput = 0;
-        if (Input.GetKey(right))
-        {
-            _horizontalInput += 1;
-        }
-        if (Input.GetKey(left))
-        {
-            _horizontalInput -= 1;
-        }
+        _horizontalInput = _moveAction.ReadValue<Vector2>().x;
 
         groundCheck();
         _ApplyGravity();
-        UpdateGlideVisual();
         TwirlSFXLoop();
         Flip();
         WallSlide();
         Jump();
         Move();
-        Debug.Log(_playerBody.velocity);
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
@@ -326,7 +316,7 @@ public class Movement : MonoBehaviour
         }
 
         // Holding Space tells Movement that the player wants to glide
-        SetGliding(Input.GetKey(jumpkey));
+        SetGliding(_jumpAction.IsPressed());
     }
 
     public void WallJump()
@@ -444,23 +434,5 @@ public class Movement : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
-    }
-
-    private void UpdateGlideVisual()
-    {
-        // if (spriteRenderer == null)
-        // {
-        //     return;
-        // }
-
-        // if (IsGliding())
-        // {
-        //     spriteRenderer.color = glideColor;
-        // }
-        // else
-        // {
-        //     spriteRenderer.color = normalColor;
-        // }
-        return;
     }
 }

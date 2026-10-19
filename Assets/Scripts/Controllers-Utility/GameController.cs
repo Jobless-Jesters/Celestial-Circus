@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -185,17 +186,19 @@ public class GameController : MonoBehaviour
             TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
             GameObject player = GameObject.Find("Player");
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            PlayerInput input = player.GetComponent<PlayerInput>();
 
             // Freeze player movement
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            input.enabled = false;
 
             // Toggle death curtain
             curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Death);
-            StartCoroutine(RespawnAfterCurtain(player, rb, curtainScript));
+            StartCoroutine(RespawnAfterCurtain(player, rb, curtainScript, input));
         }
     }
 
-    private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs)
+    private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs, PlayerInput ip)
     {
         // Wait specfied time for curtain close animation to finish
         yield return new WaitForSecondsRealtime(1.2f);
@@ -215,6 +218,9 @@ public class GameController : MonoBehaviour
         // Re-enable pause after opening animation is done
         yield return new WaitForSecondsRealtime(1.4f);
         canPause = true;
+        ip.enabled = true;
+
+
     }
 
     // dealing with dialogue flags
