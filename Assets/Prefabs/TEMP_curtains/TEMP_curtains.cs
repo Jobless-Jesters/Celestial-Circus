@@ -3,6 +3,9 @@ using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class TEMP_curtains : MonoBehaviour
 {
