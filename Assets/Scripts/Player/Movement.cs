@@ -52,6 +52,9 @@ public class Movement : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
+    [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
+    [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -87,6 +90,7 @@ public class Movement : MonoBehaviour
     // Unity Components
     private Rigidbody2D _playerBody;
     private BoxCollider2D _playerCollider;
+    private SpriteRenderer spriteRenderer;
 
 
     // Start is called before the first frame update
@@ -94,6 +98,7 @@ public class Movement : MonoBehaviour
     {
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         Debug.LogWarning(_currentState);
     }
 
@@ -114,10 +119,12 @@ public class Movement : MonoBehaviour
             animator.SetBool("isGliding", false);
             animator.SetBool("isGrounded", false);
             animator.SetBool("isAlive", false);
+            spriteRenderer.color = deathColour;
         }
         else
         {
             animator.SetBool("isAlive", true);
+            spriteRenderer.color = normalColour;
         }
     }
 
