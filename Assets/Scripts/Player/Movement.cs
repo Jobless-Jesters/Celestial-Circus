@@ -128,7 +128,6 @@ public class Movement : MonoBehaviour
         WallSlide();
         Jump();
         Move();
-        Debug.Log(_playerBody.velocity);
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
@@ -166,7 +165,10 @@ public class Movement : MonoBehaviour
             if (!_isWalking)
             {
                 _isWalking = true;
-                StartCoroutine(WalkSFXLoop());
+                if (!AudioController.Instance.sfxSource.isPlaying)
+                {
+                    StartCoroutine(WalkSFXLoop());
+                }
             }
         }
         else
