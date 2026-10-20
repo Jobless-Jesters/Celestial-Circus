@@ -188,7 +188,10 @@ public class Movement : MonoBehaviour
             if (!_isWalking)
             {
                 _isWalking = true;
-                StartCoroutine(WalkSFXLoop());
+                if (!AudioController.Instance.sfxSource.isPlaying)
+                {
+                    StartCoroutine(WalkSFXLoop());
+                }
             }
         }
         else
