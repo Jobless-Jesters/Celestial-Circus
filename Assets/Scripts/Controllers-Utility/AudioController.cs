@@ -29,10 +29,14 @@ public class AudioController : MonoBehaviour
     [SerializeField] public AudioClip jumpSFX;
     [SerializeField] public AudioClip twirlSFX;
     [SerializeField] public AudioClip hurtSFX;
+    [Header("UI SFX")]
+    [SerializeField] public AudioClip levelselectSFX;
+    [SerializeField] public AudioClip uibuttonSFX;
     [Header("Environment SFX")]
     [SerializeField] public AudioClip swingingStarSFX;
     [Header("Background Tracks")]
     [SerializeField] public AudioClip tragedyBGMusic;
+    [SerializeField] public AudioClip comedyBGMusic;
 
     void Awake()
     {
@@ -109,6 +113,16 @@ public class AudioController : MonoBehaviour
     {
         sfxSource.PlayOneShot(hurtSFX);
     }
+    
+    public void PlayLevelSelectSFX()
+    {
+        sfxSource.PlayOneShot(levelselectSFX);
+    }
+    
+    public void PlayUIButtonSFX()
+    {
+        sfxSource.PlayOneShot(uibuttonSFX);
+    }
 
     public void PlayTragedyBG()
     {
@@ -116,7 +130,12 @@ public class AudioController : MonoBehaviour
         musicSource.Play();
         musicSource.loop = true;
     }
-
+    public void PlayComedyBG()
+    {
+        musicSource.clip = comedyBGMusic;
+        musicSource.Play();
+        musicSource.loop = true;
+    }
     public void StopScore()
     {
         musicSource.Stop();

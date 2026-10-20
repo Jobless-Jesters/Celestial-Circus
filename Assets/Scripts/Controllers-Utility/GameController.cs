@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -61,13 +62,13 @@ public class GameController : MonoBehaviour
             if (isPaused)
             {
                 Time.timeScale = 0.0f;
-                AudioController.Instance.twirlSource.Pause();
+                AudioController.Instance.loopedSFXSource.Pause();
 
             }
             else
             {
                 Time.timeScale = 1.0f;
-                AudioController.Instance.twirlSource.UnPause();
+                AudioController.Instance.loopedSFXSource.UnPause();
             }
 
             // Show curtains only on level scenes
