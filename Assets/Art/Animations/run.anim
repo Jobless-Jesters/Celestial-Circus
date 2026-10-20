@@ -80,9 +80,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: 
+    functionName: CallWalkSFX
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 0c33944d8f386904e8aae359427b410b, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

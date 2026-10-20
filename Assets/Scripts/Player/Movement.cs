@@ -159,7 +159,6 @@ public class Movement : MonoBehaviour
         animator.SetBool("isGliding", IsGliding());
     }
 
-    private bool _isWalking = false;
     private bool _wasTwirling = false;
 
     private void Move()
@@ -181,35 +180,12 @@ public class Movement : MonoBehaviour
             // Says "right", but _horizontalInput flips the direction left if player presses Left
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
-
-        // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
-        if (currentState == STATE.Grounded && _horizontalInput != 0)
-        {
-            if (!_isWalking)
-            {
-                _isWalking = true;
-                if (!AudioController.Instance.sfxSource.isPlaying)
-                {
-                    StartCoroutine(WalkSFXLoop());
-                }
-            }
-        }
-        else
-        {
-            _isWalking = false;
-        }
     }
-
-    // Calling walkSFX outside of update so that it can be delayed
-    IEnumerator WalkSFXLoop()
+    public void CallWalkSFX ()
     {
-        while (_isWalking)
-        {
-            AudioController.Instance.PlayWalkSFX();
-            yield return new WaitForSeconds(0.5f);
-        }
+        AudioController.Instance.PlayWalkSFX();
     }
-
+    
     private void TwirlSFXLoop()
     {
         bool isTwirling = IsGliding();
