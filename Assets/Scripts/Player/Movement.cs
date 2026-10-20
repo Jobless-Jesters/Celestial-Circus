@@ -55,6 +55,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
     [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
 
+    [Header("Particle Effects")]
+    public ParticleSystem dustFX;
+    public ParticleSystem twirlFX;
+    public ParticleSystem tightropeLaunchFX;
+
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -213,11 +218,13 @@ public class Movement : MonoBehaviour
         if (isTwirling && !_wasTwirling)
         {
             AudioController.Instance.PlayTwirlSFX();
+            twirlFX.Play();
         }
 
         if (!isTwirling && _wasTwirling)
         {
             AudioController.Instance.StopTwirlSFX();
+            twirlFX.Stop();
         }
 
         _wasTwirling = isTwirling;
@@ -294,6 +301,7 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
+                dustFX.Play();
                 Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
@@ -315,6 +323,7 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
+                dustFX.Play();
                 Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
@@ -361,6 +370,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            tightropeLaunchFX.Play(); // TODO: change this tighrope launch effect to something cooler
             Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
@@ -432,6 +442,11 @@ public class Movement : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
+
+            if (currentState == STATE.Grounded)
+            {
+                dustFX.Play();
+            }
         }
     }
 
