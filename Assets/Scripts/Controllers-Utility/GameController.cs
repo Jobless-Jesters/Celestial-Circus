@@ -23,8 +23,6 @@ public class GameController : MonoBehaviour
     [Header("Dialogue Flags")]
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
 
-    public static bool isPaused = false;
-    public GameObject PauseMenu;
     public GameObject mainmenu;
 
     void Awake()
@@ -41,35 +39,6 @@ public class GameController : MonoBehaviour
         _instance = this;
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Paused");
-            if (isPaused)
-            {
-                ResumeGame();
-            } else
-            {
-                PauseGame();
-            }
-        }
-    }
-
-    public void PauseGame()
-    {
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
-    
-    public void ResumeGame()
-    {
-        PauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
     }
 
     // Setters and Getters
