@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 398501684805678302}
   - component: {fileID: 6212695536775963701}
   - component: {fileID: 2056655606926833771}
-  - component: {fileID: 3582232667578005527}
   m_Layer: 0
   m_Name: Tragedy Hazard
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,10 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementType: 0
-  startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
-  speed: 1
-  maxAngle: 180
+  cycleTime: 1
+  arcDirection: 0
 --- !u!60 &2056655606926833771
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -167,20 +165,3 @@ PolygonCollider2D:
       - {x: 1.4712181, y: -3.6797395}
       - {x: 3.2793522, y: -2.553956}
   m_UseDelaunayMesh: 0
---- !u!114 &3582232667578005527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9142118527167710281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56494734a06e3d74dabc607f97fa2405, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementType: 0
-  startPoint: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
-  speed: 1
-  maxAngle: 180

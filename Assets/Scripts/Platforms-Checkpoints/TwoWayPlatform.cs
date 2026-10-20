@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TwoWayPlatform : MonoBehaviour
 {
     [Header("Drop Through")]
-    [SerializeField] private KeyCode dropKey = KeyCode.S;
     [SerializeField] private float inputBufferTime = 0.15f;
     [SerializeField] private float dropSpeed = 2f;
     [SerializeField] private float reenableMargin = 0.1f;
+    private InputAction _moveAction;
+
 
     private BoxCollider2D platformCollider;
 
@@ -17,11 +19,12 @@ public class TwoWayPlatform : MonoBehaviour
     private void Awake()
     {
         platformCollider = GetComponent<BoxCollider2D>();
+        _moveAction = FindObjectOfType<PlayerInput>().actions.FindAction("Move", true);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(dropKey))
+        if (_moveAction.ReadValue<Vector2>().y < 0f)
         {
             dropInputTimer = inputBufferTime;
         }

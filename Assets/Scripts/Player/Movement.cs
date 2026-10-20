@@ -1,15 +1,11 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [Header("Input Bindings")]
-    [SerializeField] protected KeyCode left = KeyCode.A;
-    [SerializeField] protected KeyCode down = KeyCode.S;
-    [SerializeField] protected KeyCode right = KeyCode.D;
-    [SerializeField] protected KeyCode jumpkey = KeyCode.Space;
-
     [Header("Movement Settings")]
     [SerializeField] protected float baseSpeed = 5f;
     [SerializeField] public float jumpPower = 30f;
@@ -26,6 +22,7 @@ public class Movement : MonoBehaviour
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
+    private bool WantsToGlide = false;
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
@@ -39,10 +36,6 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float glideMaxFallSpeed = 4f;
     [SerializeField] protected float glideSpeedMultiplier = 1.2f;
 
-    [Header("Glide Visual")]
-    // [SerializeField] private Color glideColor = new Color(0.4f, 0.75f, 1f, 1f);
-    private bool WantsToGlide = false;
-
     [Header("Wall Slide Settings")]
     private float wallJumpLockTimer;
     [SerializeField] protected float wallSlideSpeed = 2f;
@@ -51,6 +44,10 @@ public class Movement : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
+    //Temporary colours for death animation
+    [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
+    [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -86,14 +83,36 @@ public class Movement : MonoBehaviour
     // Unity Components
     private Rigidbody2D _playerBody;
     private BoxCollider2D _playerCollider;
+    private SpriteRenderer spriteRenderer;
+    private PlayerInput playerInput;
+    private InputAction _moveAction;
+    private InputAction _jumpAction;
 
 
     // Start is called before the first frame update
     protected void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        _moveAction = playerInput.actions.FindAction("Move", true);
+        _jumpAction = playerInput.actions.FindAction("Jump", true);
+        playerInput.enabled = false;  // cannot move at start of level
+
         _playerBody = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
-        Debug.LogWarning(_currentState);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Disable player input until the curtains are fully open
+        StartCoroutine(EnableMoveAfterCurtain(playerInput));
+    }
+
+    private IEnumerator EnableMoveAfterCurtain(PlayerInput ip)
+    {
+        Debug.Log("Entered starting coroutine");
+        // Wait specfied time for curtain open animation to finish
+        yield return new WaitForSecondsRealtime(2.8f);
+
+        Debug.Log("Exited starting coroutine, player can move");
+        ip.enabled = true;  // Re-enable inputs, player can now start playing
     }
 
     // Update is called once per frame
@@ -101,28 +120,34 @@ public class Movement : MonoBehaviour
     {
         // Capture key-presses in Update to allow for simultaneous vertical and horizontal movement. 
         // Otherwise, can only jump in time with the fixed update, which eats inputs
-        if (Input.GetKeyDown(jumpkey))
+        if (_jumpAction.WasPressedThisFrame())
         {
             jumpPressed = true;
+        }
+
+        if (GameController.Instance.getPlayerIsAlive() == false)
+        {
+            animator.SetFloat("yVelocity", 0);
+            animator.SetFloat("magnitude", 0);
+            animator.SetBool("isGliding", false);
+            animator.SetBool("isGrounded", false);
+            animator.SetBool("isAlive", false);
+            spriteRenderer.color = deathColour;
+        }
+        else
+        {
+            animator.SetBool("isAlive", true);
+            spriteRenderer.color = normalColour;
         }
     }
 
     protected virtual void FixedUpdate()
     {
         // Actually move in fixed update to avoid kinematic body glitches
-        _horizontalInput = 0;
-        if (Input.GetKey(right))
-        {
-            _horizontalInput += 1;
-        }
-        if (Input.GetKey(left))
-        {
-            _horizontalInput -= 1;
-        }
+        _horizontalInput = _moveAction.ReadValue<Vector2>().x;
 
         groundCheck();
         _ApplyGravity();
-        UpdateGlideVisual();
         TwirlSFXLoop();
         Flip();
         WallSlide();
@@ -157,9 +182,7 @@ public class Movement : MonoBehaviour
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
 
-
         // Sets up co-routine to check if player is walking so that walkSFX can be called outside of update
-
         if (currentState == STATE.Grounded && _horizontalInput != 0)
         {
             if (!_isWalking)
@@ -174,7 +197,6 @@ public class Movement : MonoBehaviour
         else
         {
             _isWalking = false;
-            //Debug.LogWarning("in Move: " + currentState);
         }
     }
 
@@ -275,7 +297,6 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
-                Debug.LogWarning("play jump animation, jump, 1st elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
                 coyoteTimeCounter = 0f;
@@ -296,7 +317,6 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("jump");
                 currentState = STATE.Falling;
                 animator.SetBool("isGrounded", false);
-                Debug.LogWarning("play jump animation, jump, 2nd elif animator");
                 AudioController.Instance.PlayJumpSFX();
                 jumpBufferCounter = 0f;
             }
@@ -307,7 +327,7 @@ public class Movement : MonoBehaviour
         }
 
         // Holding Space tells Movement that the player wants to glide
-        SetGliding(Input.GetKey(jumpkey));
+        SetGliding(_jumpAction.IsPressed());
     }
 
     public void WallJump()
@@ -342,7 +362,6 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
-            Debug.LogWarning("play jump animation, tightrope, animator");
         }
     }
 
@@ -384,7 +403,6 @@ public class Movement : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
-            //Debug.LogWarning("ground check, overlap: " + currentState);
             if (currentState != STATE.Grounded)
             {
                 animator.SetBool("isGrounded", true);
@@ -420,28 +438,13 @@ public class Movement : MonoBehaviour
     {
         // Draws a bounding box for the ground detection collider
         // You can turn this off by deselcting Gizmos in the Scene view
+
+        // Ground check gizmo
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
-
+        
+        // Wall check gizmo
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
-    }
-
-    private void UpdateGlideVisual()
-    {
-        // if (spriteRenderer == null)
-        // {
-        //     return;
-        // }
-
-        // if (IsGliding())
-        // {
-        //     spriteRenderer.color = glideColor;
-        // }
-        // else
-        // {
-        //     spriteRenderer.color = normalColor;
-        // }
-        return;
     }
 }
