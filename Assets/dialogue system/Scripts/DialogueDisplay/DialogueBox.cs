@@ -56,7 +56,8 @@ namespace Narrative
         private void CheckInput()
         {
             //Input for advancing textbox
-            if (Input.GetButtonDown("Submit"))
+            // Cannot advance if game is paused
+            if (Input.GetButtonDown("Submit") && GameController.Instance.getIsPaused() == false)
             {
                 if (isEndOfText())
                 {
@@ -165,7 +166,7 @@ namespace Narrative
         /// </summary>
         public void setFont(TMPro.TMP_FontAsset font)
         {
-            textLabel.font = font; 
+            textLabel.font = font;
         }
     }
 }

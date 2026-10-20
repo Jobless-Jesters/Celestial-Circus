@@ -19,13 +19,20 @@ public class BalloonAnimal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioController.Instance.PlayTragedyBG();
+        if (mask == "comedy")
+        {
+            AudioController.Instance.PlayComedyBG();
+        }
+        else if (mask == "tragedy")
+        {
+            AudioController.Instance.PlayTragedyBG();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.X))
+        if (playerInRange && Input.GetKeyDown(KeyCode.X) && GameController.Instance.getPlayerIsAlive())
         {
 
             if (mask == "comedy")
