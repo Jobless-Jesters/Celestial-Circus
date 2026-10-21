@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/dialogue system/TEMP_scenes/TragedyLevel2.unity
     guid: 87b217cb2c58ba24db715a5d8b0ff490
   - enabled: 1
+    path: Assets/Scenes/ComedyLevelSketch.unity
+    guid: b750b50c39fc6b94ca2bbca58f1cecd3
+  - enabled: 1
     path: Assets/Scenes/EndMenu.unity
     guid: 36dd76a7c3d51484d8ddb60795a842ef
   m_configObjects: {}

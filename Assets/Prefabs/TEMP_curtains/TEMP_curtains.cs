@@ -77,7 +77,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(false);
                 left.SetActive(true);
                 right.SetActive(true);
-                animator.speed = 3f;
+                animator.speed = 3.2f;
                 break;
             case CurtainMode.Pause:
                 top.SetActive(true);

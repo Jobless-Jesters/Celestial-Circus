@@ -194,7 +194,7 @@ public class GameController : MonoBehaviour
     private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs, PlayerInput ip)
     {
         // Wait specfied time for curtain close animation to finish before resetting player
-        yield return new WaitForSecondsRealtime(1.2f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         // Reset player pos: offset by [0, 0, -2] so that player respawns in front of checkpoint
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);
