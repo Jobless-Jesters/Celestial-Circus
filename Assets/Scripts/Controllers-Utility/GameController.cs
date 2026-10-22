@@ -182,6 +182,7 @@ public class GameController : MonoBehaviour
             PlayerInput input = player.GetComponent<PlayerInput>();
 
             // Freeze player movement
+            AudioController.Instance.PlayHurtSFX();
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             input.enabled = false;
 
