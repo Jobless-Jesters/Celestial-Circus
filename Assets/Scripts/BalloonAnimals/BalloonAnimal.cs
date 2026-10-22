@@ -19,6 +19,7 @@ public class BalloonAnimal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioController.Instance.StopMenuScore();
         if (mask == "comedy")
         {
             AudioController.Instance.PlayComedyBG();
@@ -27,6 +28,7 @@ public class BalloonAnimal : MonoBehaviour
         {
             AudioController.Instance.PlayTragedyBG();
         }
+        
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class BalloonAnimal : MonoBehaviour
                 return;
             }
 
-            AudioController.Instance.StopScore();
+            AudioController.Instance.StopGameScore();
             
             onClick.Invoke();
 
