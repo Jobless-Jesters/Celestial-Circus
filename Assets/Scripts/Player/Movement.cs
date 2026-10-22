@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem dustFX;
     public ParticleSystem twirlFX;
     public ParticleSystem tightropeLaunchFX;
-
+    public ParticleSystem deathFX;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -423,6 +423,11 @@ public class Movement : MonoBehaviour
                 dustFX.Play();
             }
         }
+    }
+
+    public void playDeathFX()
+    {
+        deathFX.Play();
     }
 
     private void OnDrawGizmosSelected()
