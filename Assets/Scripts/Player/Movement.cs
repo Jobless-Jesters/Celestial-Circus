@@ -45,8 +45,8 @@ public class Movement : MonoBehaviour
     [Header("Animation")]
     public Animator animator;
     //Temporary colours for death animation
-    [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
-    [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+    [SerializeField] private static Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+    [SerializeField] private static Color deathColour = normalColour;
 
     [Header("Particle Effects")]
     public ParticleSystem dustFX;
@@ -186,11 +186,11 @@ public class Movement : MonoBehaviour
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
     }
-    public void CallWalkSFX ()
+    public void CallWalkSFX()
     {
         AudioController.Instance.PlayWalkSFX();
     }
-    
+
     private void TwirlSFXLoop()
     {
         bool isTwirling = IsGliding();
@@ -433,7 +433,7 @@ public class Movement : MonoBehaviour
         // Ground check gizmo
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
-        
+
         // Wall check gizmo
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
