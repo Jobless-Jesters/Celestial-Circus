@@ -618,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 78883144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.756691, y: 7.2907715, z: -12}
+  m_LocalPosition: {x: -6.756691, y: 460.6, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,7 +1462,7 @@ Transform:
   m_GameObject: {fileID: 239227946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -979.5, y: -541.3, z: -1.5}
+  m_LocalPosition: {x: -977.88, y: -79.4, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1732,8 +1732,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1879560409
-  m_SortingLayer: 2
+  m_SortingLayerID: 1754248321
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -511916909, guid: 8e1a23ba9b9e87942882c5c6d52bdd57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2149,7 +2149,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -8340,7 +8340,7 @@ MonoBehaviour:
   m_Intensity: 0.85
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: d9d007704959fe78
+  m_ApplyToSortingLayers: d9d007704959fe7881b48f68
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -11084,7 +11084,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -16402,7 +16402,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -26796,7 +26796,7 @@ Transform:
   m_GameObject: {fileID: 2038632805}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -979.5, y: -541.3, z: -11.5}
+  m_LocalPosition: {x: -977.88, y: -79.399994, z: -11.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27334,7 +27334,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -32218,6 +32218,26 @@ PrefabInstance:
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 535623314}
+    - target: {fileID: 6593691219053612062, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026570902744028488, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026570902744028488, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: 2029934921
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026570902744028488, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: 1879560409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026570902744028488, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: 1754248321
+      objectReference: {fileID: 0}
     - target: {fileID: 9058111405685477322, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
       propertyPath: m_Name
       value: Comedy Balloon Animal
@@ -32225,7 +32245,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6593691219053612062, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e05a3bd2455ad9743b581452755ea480, type: 3}
 --- !u!4 &1009888291100858425 stripped
 Transform:

@@ -4797,7 +4797,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5017,7 +5017,10 @@ MonoBehaviour:
   sparks: {fileID: 692325796213620226}
   minIntensity: 0.2
   maxIntensity: 0.6
-  flickerSpeed: 0.1
+  flickerInterval: 0.1
+  sparkInterval: 0
+  minSparkInterval: 5
+  maxSparkInterval: 10
 --- !u!1 &7845143016533526523
 GameObject:
   m_ObjectHideFlags: 0
@@ -9814,7 +9817,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9900,7 +9903,7 @@ MonoBehaviour:
   m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000081c446cbd9d00770
+  m_ApplyToSortingLayers: 0000000081c446cbd9d0077081b48f68
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -9982,7 +9985,7 @@ MonoBehaviour:
   m_Intensity: 0.26
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000081c446cbd9d00770
+  m_ApplyToSortingLayers: 0000000081c446cbd9d0077081b48f68
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
