@@ -224,8 +224,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 988716989}
+  m_Children: []
   m_Father: {fileID: 258126659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -263,7 +262,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 849790989}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -599,7 +598,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1869355761}
-  m_Father: {fileID: 2106958877}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
@@ -636,7 +635,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1284475070}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -839,7 +838,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 38993392}
-  - {fileID: 1284475070}
   - {fileID: 60937109}
   m_Father: {fileID: 1489868854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -888,9 +886,9 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 988716990}
+  m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 227366912}
-  m_HandleRect: {fileID: 988716989}
+  m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
@@ -2602,7 +2600,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 472025501}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -2727,7 +2725,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 979275505}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
@@ -3015,9 +3013,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1306897223}
-  m_Father: {fileID: 979275505}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3054,7 +3051,7 @@ RectTransform:
   m_Children:
   - {fileID: 1756835839}
   - {fileID: 258126659}
-  m_Father: {fileID: 1089854208}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3648,7 +3645,7 @@ AudioSource:
   m_GameObject: {fileID: 1676797519}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 3737608415865236662, guid: 47005e0bfd5c7ee44823f6a9ca26e1af, type: 2}
+  OutputAudioMixerGroup: {fileID: 40844366589074008, guid: 47005e0bfd5c7ee44823f6a9ca26e1af, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4434,11 +4431,11 @@ MonoBehaviour:
   walkSFX: {fileID: 8300000, guid: 4944b701e825f45b1b251bbe57d4e799, type: 3}
   jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 8300000, guid: 8355107a8958a4d5cb8cbc39783aa4b1, type: 3}
-  hurtSFX: {fileID: 8300000, guid: dc08e4f7314d942389d889c67531196f, type: 3}
+  hurtSFX: {fileID: 8300000, guid: e57cc6578445e4dc28f88190f92c3a60, type: 3}
   levelselectSFX: {fileID: 8300000, guid: 50a90035f002b41c8a709d9f91207a18, type: 3}
   uibuttonSFX: {fileID: 8300000, guid: 87aca1b0affa5489bb41538a88a932fa, type: 3}
-  curtainopenSFX: {fileID: 8300000, guid: dc08e4f7314d942389d889c67531196f, type: 3}
-  curtaincloseSFX: {fileID: 8300000, guid: dc08e4f7314d942389d889c67531196f, type: 3}
+  curtainopenSFX: {fileID: 8300000, guid: 98ecf9599522d4657b3eb0a8db8ac580, type: 3}
+  curtaincloseSFX: {fileID: 8300000, guid: 71b614c8bf74740a6b059736126714ac, type: 3}
   swingingStarSFX: {fileID: 0}
   tragedyBGMusic: {fileID: 8300000, guid: 2792bb6136f93464f9cc2f219d6f987a, type: 3}
   comedyBGMusic: {fileID: 8300000, guid: ae90a8978d0d640b785033fcc37fc3e5, type: 3}
@@ -4758,7 +4755,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1029736137}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5568,3 +5565,11 @@ SceneRoots:
   - {fileID: 1901741337}
   - {fileID: 1391527668}
   - {fileID: 1821406873}
+  - {fileID: 111076571}
+  - {fileID: 174636229}
+  - {fileID: 227366912}
+  - {fileID: 1380299819}
+  - {fileID: 1392114310}
+  - {fileID: 1460136220}
+  - {fileID: 1489868854}
+  - {fileID: 1923189445}
