@@ -54,37 +54,42 @@ public class GameController : MonoBehaviour
         // Pause the game at any time
         if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
-            isPaused = !isPaused;
+            TogglePause();
+        }
+    }
 
-            // stop and restart time
-            if (isPaused)
-            {
-                Time.timeScale = 0.0f;
-                AudioController.Instance.loopedSFXSource.Pause();
+    // Pauses or unpauses the game. Used by the Escape key and the pause menu's Resume button
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
 
-            }
-            else
-            {
-                Time.timeScale = 1.0f;
-                AudioController.Instance.loopedSFXSource.UnPause();
-            }
+        // stop and restart time
+        if (isPaused)
+        {
+            Time.timeScale = 0.0f;
+            AudioController.Instance.loopedSFXSource.Pause();
 
-            // Show curtains only on level scenes
-            if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
-            {
-                // Get the curtains and play the pause curtain animation
-                GameObject curtains = GameObject.Find("CurtainContainer");
-                TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
-                curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            AudioController.Instance.loopedSFXSource.UnPause();
+        }
 
-                StartCoroutine(showPauseText());
-            }
-            else
-            {
-                // Don't play curtain animation on menu scenes
-                pauseMenu.SetActive(isPaused);
-            }
+        // Show curtains only on level scenes
+        if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
+        {
+            // Get the curtains and play the pause curtain animation
+            GameObject curtains = GameObject.Find("CurtainContainer");
+            TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
+            curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
 
+            StartCoroutine(showPauseText());
+        }
+        else
+        {
+            // Don't play curtain animation on menu scenes
+            pauseMenu.SetActive(isPaused);
         }
     }
 
