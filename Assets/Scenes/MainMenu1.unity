@@ -2966,6 +2966,26 @@ PrefabInstance:
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: soundsByID.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: soundsByID.Array.data[0].id
+      value: Comedy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: soundsByID.Array.data[1].id
+      value: Tragedy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: soundsByID.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d9bc13d8a63b64949ab19671b6624320, type: 3}
+    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: soundsByID.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b54a4f7b1e680467684a5ac769c9ebb4, type: 3}
     - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
       value: introDialogueMenu

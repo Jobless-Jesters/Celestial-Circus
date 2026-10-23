@@ -419,8 +419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundsByID:
-  - id: none
-    clip: {fileID: 0}
+  - id: Comedy
+    clip: {fileID: 8300000, guid: d9bc13d8a63b64949ab19671b6624320, type: 3}
+  - id: Tragedy
+    clip: {fileID: 8300000, guid: b54a4f7b1e680467684a5ac769c9ebb4, type: 3}
 --- !u!82 &6368236958586301892
 AudioSource:
   m_ObjectHideFlags: 0
