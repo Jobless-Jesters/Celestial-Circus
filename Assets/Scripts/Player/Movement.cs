@@ -49,6 +49,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private static Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
     [SerializeField] private static Color deathColour = normalColour;
 
+    [Header("Particle Effects")]
+    public ParticleSystem dustFX;
+    public ParticleSystem twirlFX;
+    public ParticleSystem tightropeLaunchFX;
+    public ParticleSystem deathFX;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -192,11 +197,13 @@ public class Movement : MonoBehaviour
         if (isTwirling && !_wasTwirling)
         {
             AudioController.Instance.PlayTwirlSFX();
+            twirlFX.Play();
         }
 
         if (!isTwirling && _wasTwirling)
         {
             AudioController.Instance.StopTwirlSFX();
+            twirlFX.Stop();
         }
 
         _wasTwirling = isTwirling;
@@ -347,6 +354,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            tightropeLaunchFX.Play(); // TODO: change this tighrope launch effect to something cooler
         }
     }
 
@@ -424,7 +432,17 @@ public class Movement : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
+
+            if (currentState == STATE.Grounded)
+            {
+                dustFX.Play();
+            }
         }
+    }
+
+    public void playDeathFX()
+    {
+        deathFX.Play();
     }
 
     private void OnDrawGizmosSelected()
