@@ -618,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 78883144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.756691, y: 7.2907715, z: -12}
+  m_LocalPosition: {x: -6.756691, y: 463.46, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,7 +1462,7 @@ Transform:
   m_GameObject: {fileID: 239227946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -977.88, y: -541, z: -1.5}
+  m_LocalPosition: {x: -979.8, y: -76.54, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25894,16 +25894,22 @@ MonoBehaviour:
   masterSource: {fileID: 657140559}
   musicSource: {fileID: 164660916}
   sfxSource: {fileID: 1167338734}
+  subsfxSource: {fileID: 0}
   loopedSFXSource: {fileID: 275081198}
+  menumusicSource: {fileID: 0}
+  gamemusicSource: {fileID: 0}
   walkSFX: {fileID: 8300000, guid: 4944b701e825f45b1b251bbe57d4e799, type: 3}
   jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 8300000, guid: 8355107a8958a4d5cb8cbc39783aa4b1, type: 3}
   hurtSFX: {fileID: 0}
   levelselectSFX: {fileID: 8300000, guid: 50a90035f002b41c8a709d9f91207a18, type: 3}
   uibuttonSFX: {fileID: 8300000, guid: 87aca1b0affa5489bb41538a88a932fa, type: 3}
+  curtainopenSFX: {fileID: 0}
+  curtaincloseSFX: {fileID: 0}
   swingingStarSFX: {fileID: 0}
   tragedyBGMusic: {fileID: 8300000, guid: 2792bb6136f93464f9cc2f219d6f987a, type: 3}
   comedyBGMusic: {fileID: 8300000, guid: ae90a8978d0d640b785033fcc37fc3e5, type: 3}
+  menuBGMusic: {fileID: 0}
 --- !u!4 &1847073200
 Transform:
   m_ObjectHideFlags: 0
@@ -26999,7 +27005,7 @@ Transform:
   m_GameObject: {fileID: 2038632805}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -977.88, y: -541, z: -11.5}
+  m_LocalPosition: {x: -979.8, y: -76.54001, z: -11.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
