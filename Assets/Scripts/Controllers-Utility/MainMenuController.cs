@@ -14,6 +14,9 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        // Play background music
+        AudioController.Instance.PlayMenuBG();
+        
         // Hide comedy button if we already got the mask
         if (GameController.Instance.getHasComedyMask()) {
             comedyButton.gameObject.SetActive(false);
@@ -29,11 +32,19 @@ public class UIController : MonoBehaviour
         GameController.Instance.clearCheckpoints();
         GameController.Instance.setPlayerIsAlive(true);
 
-        if (!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask()) {
+        // Only play the intro once, so returning from the pause menu goes straight to the menu
+        if (!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask() && !GameController.Instance.getHasSeenIntro()) {
+            GameController.Instance.setHasSeenIntro(true);
             introDialogue.Invoke();
         }
         if (GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask()) {
             endDialogue.Invoke();
         }
+    }
+
+    // Settings button: reuses the in-game pause menu's settings
+    public void OpenSettings()
+    {
+        GameController.Instance.OpenSettingsMenu();
     }
 }

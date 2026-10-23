@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private bool hasTragedyMask = false;
     [SerializeField] private bool hasComedyMask = false;
 
+    // Intro dialogue only plays the first time the main menu loads
+    private bool hasSeenIntro = false;
+
     [Header("Checkpoints")]
     private Vector3 lastCheckpointPosition;
     private int lastCheckpointID = -1;  // default ID
@@ -54,38 +57,50 @@ public class GameController : MonoBehaviour
         // Pause the game at any time
         if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
-            isPaused = !isPaused;
+            TogglePause();
+        }
+    }
 
-            // stop and restart time
-            if (isPaused)
-            {
-                Time.timeScale = 0.0f;
-                AudioController.Instance.loopedSFXSource.Pause();
+    // Pauses or unpauses the game. Used by the Escape key and the pause menu's Resume button
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
 
-            }
-            else
-            {
-                Time.timeScale = 1.0f;
-                AudioController.Instance.loopedSFXSource.UnPause();
-            }
-
-            // Show curtains only on level scenes
-            if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
-            {
-                // Get the curtains and play the pause curtain animation
-                GameObject curtains = GameObject.Find("CurtainContainer");
-                TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
-                curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
-
-                StartCoroutine(showPauseText());
-            }
-            else
-            {
-                // Don't play curtain animation on menu scenes
-                pauseMenu.SetActive(isPaused);
-            }
+        // stop and restart time
+        if (isPaused)
+        {
+            Time.timeScale = 0.0f;
+            AudioController.Instance.loopedSFXSource.Pause();
 
         }
+        else
+        {
+            Time.timeScale = 1.0f;
+            AudioController.Instance.loopedSFXSource.UnPause();
+        }
+
+        // Show curtains only on level scenes
+        if (SceneManager.GetActiveScene().name != "MainMenu1" && SceneManager.GetActiveScene().name != "EndMenu")
+        {
+            // Get the curtains and play the pause curtain animation
+            GameObject curtains = GameObject.Find("CurtainContainer");
+            TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
+            curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
+
+            StartCoroutine(showPauseText());
+        }
+        else
+        {
+            // Don't play curtain animation on menu scenes
+            pauseMenu.SetActive(isPaused);
+        }
+    }
+
+    // Opens the pause menu on its settings view. Only used on the main menu, where the menu shows instantly
+    public void OpenSettingsMenu()
+    {
+        if (!isPaused) TogglePause();
+        pauseMenu.GetComponent<PauseMenu>().ShowSettings();
     }
 
     private IEnumerator showPauseText()
@@ -116,6 +131,16 @@ public class GameController : MonoBehaviour
     public bool getHasComedyMask()
     {
         return hasComedyMask;
+    }
+
+    public void setHasSeenIntro(bool seen)
+    {
+        hasSeenIntro = seen;
+    }
+
+    public bool getHasSeenIntro()
+    {
+        return hasSeenIntro;
     }
 
     public void setMainMenu()
@@ -182,6 +207,7 @@ public class GameController : MonoBehaviour
             PlayerInput input = player.GetComponent<PlayerInput>();
 
             // Freeze player movement
+            AudioController.Instance.PlayHurtSFX();
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             input.enabled = false;
 
@@ -194,7 +220,7 @@ public class GameController : MonoBehaviour
     private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs, PlayerInput ip)
     {
         // Wait specfied time for curtain close animation to finish before resetting player
-        yield return new WaitForSecondsRealtime(1.2f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         // Reset player pos: offset by [0, 0, -2] so that player respawns in front of checkpoint
         player.transform.position = getLastCheckpointPosition() + new Vector3(0, 0, -2);

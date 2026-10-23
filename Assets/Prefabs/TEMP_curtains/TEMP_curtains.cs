@@ -49,6 +49,15 @@ public class TEMP_curtains : MonoBehaviour
         animator.SetTrigger("toggleCurtain");
         animator.SetBool("isOpen", isOpen);
     }
+    public void CallCurtainOpenSFX()
+    {
+        AudioController.Instance.PlayCurtainOpenSFX();
+    }
+    
+    public void CallCurtainCloseSFX()
+    {
+        AudioController.Instance.PlayCurtainCloseSFX();
+    }
 
     private void ApplyCurtainMode(CurtainMode mode)
     {
@@ -77,7 +86,7 @@ public class TEMP_curtains : MonoBehaviour
                 topRight.SetActive(false);
                 left.SetActive(true);
                 right.SetActive(true);
-                animator.speed = 3f;
+                animator.speed = 3.2f;
                 break;
             case CurtainMode.Pause:
                 top.SetActive(true);
