@@ -16,11 +16,17 @@ public class AudioController : MonoBehaviour
     [SerializeField] public AudioSource masterSource;
     [SerializeField] public AudioSource musicSource;
     [SerializeField] public AudioSource sfxSource;
+    [SerializeField] public AudioSource subsfxSource;
     [SerializeField] public AudioSource loopedSFXSource;
+    [SerializeField] public AudioSource menumusicSource;
+    [SerializeField] public AudioSource gamemusicSource;
 
     private AudioMixerGroup masterGroup;
     private AudioMixerGroup musicGroup;
     private AudioMixerGroup sfxGroup;
+    private AudioMixerGroup subsfxGroup;
+    private AudioMixerGroup menumusicGroup;
+    private AudioMixerGroup gamemusicGroup;
 
     private float masterVolume;
     private float musicVolume;
@@ -35,11 +41,14 @@ public class AudioController : MonoBehaviour
     [Header("UI SFX")]
     [SerializeField] public AudioClip levelselectSFX;
     [SerializeField] public AudioClip uibuttonSFX;
+    [SerializeField] public AudioClip curtainopenSFX;
+    [SerializeField] public AudioClip curtaincloseSFX;
     [Header("Environment SFX")]
     [SerializeField] public AudioClip swingingStarSFX;
     [Header("Background Tracks")]
     [SerializeField] public AudioClip tragedyBGMusic;
     [SerializeField] public AudioClip comedyBGMusic;
+    [SerializeField] public AudioClip menuBGMusic;
 
     void Awake()
     {
@@ -59,10 +68,21 @@ public class AudioController : MonoBehaviour
 
         musicGroup = audioMixer.FindMatchingGroups("Music")[0];
         musicSource.outputAudioMixerGroup = musicGroup;
+        
+        menumusicGroup = audioMixer.FindMatchingGroups("Menu Music")[0];
+        menumusicSource.outputAudioMixerGroup = menumusicGroup;
+        
+        gamemusicGroup = audioMixer.FindMatchingGroups("Music")[0];
+        gamemusicSource.outputAudioMixerGroup = gamemusicGroup;
 
         sfxGroup = audioMixer.FindMatchingGroups("SFX")[0];
         sfxSource.outputAudioMixerGroup = sfxGroup;
-        loopedSFXSource.outputAudioMixerGroup = sfxGroup;
+        
+        subsfxGroup = audioMixer.FindMatchingGroups("Sub SFX")[0];
+        sfxSource.outputAudioMixerGroup = subsfxGroup;
+        loopedSFXSource.outputAudioMixerGroup = subsfxGroup;
+        
+        
 
         SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume", 1f));
         SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 1f));
@@ -116,14 +136,15 @@ public class AudioController : MonoBehaviour
     }
 
     // TODO: Replace the function names and SFX with the correct sounds and names
+    // Player SFX
     public void PlayWalkSFX()
     {
-        sfxSource.PlayOneShot(walkSFX);
+        subsfxSource.PlayOneShot(walkSFX);
     }
 
     public void PlayJumpSFX()
     {
-        sfxSource.PlayOneShot(jumpSFX);
+        subsfxSource.PlayOneShot(jumpSFX);
     }
 
     public void PlayTwirlSFX()
@@ -142,6 +163,7 @@ public class AudioController : MonoBehaviour
         sfxSource.PlayOneShot(hurtSFX);
     }
     
+    // UI SFX
     public void PlayLevelSelectSFX()
     {
         sfxSource.PlayOneShot(levelselectSFX);
@@ -151,22 +173,43 @@ public class AudioController : MonoBehaviour
     {
         sfxSource.PlayOneShot(uibuttonSFX);
     }
+    
+    public void PlayCurtainOpenSFX()
+    {
+        sfxSource.PlayOneShot(curtainopenSFX);
+    }
+    
+    public void PlayCurtainCloseSFX()
+    {
+        sfxSource.PlayOneShot(curtaincloseSFX);
+    }
 
+    // Music
     public void PlayTragedyBG()
     {
-        musicSource.clip = tragedyBGMusic;
-        musicSource.Play();
-        musicSource.loop = true;
+        gamemusicSource.clip = tragedyBGMusic;
+        gamemusicSource.Play();
+        gamemusicSource.loop = true;
     }
     public void PlayComedyBG()
     {
-        musicSource.clip = comedyBGMusic;
-        musicSource.Play();
-        musicSource.loop = true;
+        gamemusicSource.clip = comedyBGMusic;
+        gamemusicSource.Play();
+        gamemusicSource.loop = true;
     }
-    public void StopScore()
+    public void PlayMenuBG()
     {
-        musicSource.Stop();
+        menumusicSource.clip = menuBGMusic;
+        menumusicSource.Play();
+        menumusicSource.loop = true;
+    }
+    public void StopGameScore()
+    {
+        gamemusicSource.Stop();
+    }
+    public void StopMenuScore()
+    {
+        menumusicSource.Stop();
     }
 }
 

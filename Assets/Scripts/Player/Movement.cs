@@ -38,16 +38,22 @@ public class Movement : MonoBehaviour
 
     [Header("Wall Slide Settings")]
     private float wallJumpLockTimer;
+    private float wallSlideCooldownTimer;
     [SerializeField] protected float wallSlideSpeed = 2f;
     [SerializeField] protected Vector2 wallJumpPower = new Vector2(12f, 30f);
     [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to ignore horizontal movement for, shorter is more control/responsive, enables a "push" off a wall
-
+    [SerializeField] private float wallSlideCooldown = 0.25f; // Avoid infinite wall climbing
     [Header("Animation")]
     public Animator animator;
     //Temporary colours for death animation
-    [SerializeField] private Color deathColour = new Color(1.0f, 0.0f, 0f, 1f);
-    [SerializeField] private Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+    [SerializeField] private static Color normalColour = new Color(1.0f, 1.0f, 1f, 1f);
+    [SerializeField] private static Color deathColour = normalColour;
 
+    [Header("Particle Effects")]
+    public ParticleSystem dustFX;
+    public ParticleSystem twirlFX;
+    public ParticleSystem tightropeLaunchFX;
+    public ParticleSystem deathFX;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -145,12 +151,11 @@ public class Movement : MonoBehaviour
     {
         // Actually move in fixed update to avoid kinematic body glitches
         _horizontalInput = _moveAction.ReadValue<Vector2>().x;
-
         groundCheck();
-        _ApplyGravity();
-        TwirlSFXLoop();
         Flip();
         WallSlide();
+        _ApplyGravity();
+        TwirlSFXLoop();
         Jump();
         Move();
 
@@ -181,22 +186,24 @@ public class Movement : MonoBehaviour
             _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
         }
     }
-    public void CallWalkSFX ()
+    public void CallWalkSFX()
     {
         AudioController.Instance.PlayWalkSFX();
     }
-    
+
     private void TwirlSFXLoop()
     {
         bool isTwirling = IsGliding();
         if (isTwirling && !_wasTwirling)
         {
             AudioController.Instance.PlayTwirlSFX();
+            twirlFX.Play();
         }
 
         if (!isTwirling && _wasTwirling)
         {
             AudioController.Instance.StopTwirlSFX();
+            twirlFX.Stop();
         }
 
         _wasTwirling = isTwirling;
@@ -231,6 +238,18 @@ public class Movement : MonoBehaviour
                 );
             }
         }
+        else if (currentState == STATE.WallSliding)
+        {
+            if (_playerBody.velocity.y <= -wallSlideSpeed) // Player is on the wall and falling
+            {
+                _playerBody.gravityScale = 0f;
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, -wallSlideSpeed);    
+            }
+            else // Player is on the wall but ascending i.e. jumped from ground next to the wall, proceed as regular jump
+            {
+                _playerBody.gravityScale = gravity * fallSpeedMultiplier;
+            }
+        }
         else
         {
             // Reset gravity when grounded
@@ -257,45 +276,26 @@ public class Movement : MonoBehaviour
 
         if (jumpBufferCounter > 0f)
         {
-            // Gives coyote time on the first jump; double jumps work normally.
-            if (jumpsRemaining > 1 && coyoteTimeCounter > 0f)
-            {
-                if (IsWallSliding())
-                {
-                    WallJump();
-                }
-                else
-                {
-                    _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
-                    jumpsRemaining--;
-                }
+            bool canRegularJump = currentState == STATE.Grounded || coyoteTimeCounter >= 0f;
 
-                animator.SetTrigger("jump");
-                currentState = STATE.Falling;
-                animator.SetBool("isGrounded", false);
-                AudioController.Instance.PlayJumpSFX();
-                jumpBufferCounter = 0f;
+            if (canRegularJump) // Check for regular ground jump
+            {
+                RegularJump();
+                FinishJump();
+            }
+            else if (currentState == STATE.WallSliding) // Check for wall jump
+            {
+                WallJump();
+                FinishJump();
+            }
+            // Gives coyote time on the first jump; double jumps work normally.
+            else if (jumpsRemaining > 0) // Check for double jump/first jump off a ledge
+            {
+                RegularJump();
+                FinishJump();
                 coyoteTimeCounter = 0f;
             }
-            else if (jumpsRemaining > 0)
-            {
-                if (IsWallSliding())
-                {
-                    WallJump();
-                }
-                else
-                {
-                    _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
-                    jumpsRemaining--;
-                }
 
-
-                animator.SetTrigger("jump");
-                currentState = STATE.Falling;
-                animator.SetBool("isGrounded", false);
-                AudioController.Instance.PlayJumpSFX();
-                jumpBufferCounter = 0f;
-            }
             else
             {
                 jumpBufferCounter -= Time.fixedDeltaTime;
@@ -305,12 +305,28 @@ public class Movement : MonoBehaviour
         // Holding Space tells Movement that the player wants to glide
         SetGliding(_jumpAction.IsPressed());
     }
+    
+    private void RegularJump()
+    {
+        _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
+        jumpsRemaining--;
+    }
+
+    private void FinishJump()
+    {
+        animator.SetTrigger("jump");
+        currentState = STATE.Falling;
+        animator.SetBool("isGrounded", false);
+        AudioController.Instance.PlayJumpSFX();
+        jumpBufferCounter = 0f;
+    }
 
     public void WallJump()
     {
-        float jumpDirection = -transform.localScale.x; // Opposite direction of wall
+        float jumpDirection = isFacingRight ? -1f : 1f; // Opposite direction of wall
         _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
         wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
+        wallSlideCooldownTimer = wallSlideCooldown;
         if (jumpDirection != transform.localScale.x) // Flip character direction
         {
             isFacingRight = !isFacingRight;
@@ -338,6 +354,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            tightropeLaunchFX.Play(); // TODO: change this tighrope launch effect to something cooler
         }
     }
 
@@ -361,16 +378,23 @@ public class Movement : MonoBehaviour
 
     private void WallSlide()
     {
-        if (IsWallSliding() && currentState != STATE.Grounded)
+        if (wallSlideCooldownTimer > 0) {
+            wallSlideCooldownTimer -= Time.deltaTime;
+            if (currentState == STATE.WallSliding) currentState = STATE.Falling;
+        } else
         {
-            currentState = STATE.WallSliding;
-            jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
-            _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
+            if (IsWallSliding() && currentState != STATE.Grounded)
+            {
+                currentState = STATE.WallSliding;
+                jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
+            }
+            else if (currentState == STATE.WallSliding)
+            {
+                currentState = STATE.Falling;
+            }
         }
-        else if (currentState == STATE.WallSliding)
-        {
-            currentState = STATE.Falling;
-        }
+        
     }
 
     private void groundCheck()
@@ -389,25 +413,36 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            // Avoid repeatedly assigning the same value to a variable every tick
-            if (currentState != STATE.Falling)
+            if (currentState == STATE.Grounded) // Player doesn't overlap with ground but state says grounded? Fix state
             {
                 animator.SetBool("isGrounded", false);  // fixes animator issues
                 currentState = STATE.Falling;
-                coyoteTimeCounter -= Time.fixedDeltaTime;
             }
+            // Avoid repeatedly assigning the same value to a variable every tick
+            coyoteTimeCounter -= Time.fixedDeltaTime; // Update every tick
         }
     }
 
     private void Flip()
     {
+        if (wallJumpLockTimer > 0f) return;
         if ((isFacingRight && _horizontalInput < 0) || (!isFacingRight && _horizontalInput > 0))
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
+
+            if (currentState == STATE.Grounded)
+            {
+                dustFX.Play();
+            }
         }
+    }
+
+    public void playDeathFX()
+    {
+        deathFX.Play();
     }
 
     private void OnDrawGizmosSelected()
@@ -418,7 +453,7 @@ public class Movement : MonoBehaviour
         // Ground check gizmo
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
-        
+
         // Wall check gizmo
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
