@@ -96,6 +96,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Opens the pause menu on its settings view. Only used on the main menu, where the menu shows instantly
+    public void OpenSettingsMenu()
+    {
+        if (!isPaused) TogglePause();
+        pauseMenu.GetComponent<PauseMenu>().ShowSettings();
+    }
+
     private IEnumerator showPauseText()
     {
         // Wait specfied time for curtain drop animation to finish

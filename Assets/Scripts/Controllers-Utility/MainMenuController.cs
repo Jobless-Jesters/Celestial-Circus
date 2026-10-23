@@ -38,4 +38,10 @@ public class UIController : MonoBehaviour
             endDialogue.Invoke();
         }
     }
+
+    // Settings button: reuses the in-game pause menu's settings
+    public void OpenSettings()
+    {
+        GameController.Instance.OpenSettingsMenu();
+    }
 }

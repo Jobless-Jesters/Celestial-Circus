@@ -42,6 +42,13 @@ public class PauseMenu : MonoBehaviour
         ApplyView();
     }
 
+    // Opens straight onto the volume sliders (used by the main menu's Settings button)
+    public void ShowSettings()
+    {
+        settingsOpen = true;
+        ApplyView();
+    }
+
     public void GoMainMenu()
     {
         AudioController.Instance.PlayUIButtonSFX();
