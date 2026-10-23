@@ -1,30 +1,35 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// Handles the pause menu buttons: Resume, Settings and Main Menu
+// Handles the pause menu buttons: Resume, Settings, Main Menu and Go Back
 public class PauseMenu : MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] private GameObject resumeButton;
-    [SerializeField] private RectTransform settingsButton;
+    [SerializeField] private GameObject settingsButton;
     [SerializeField] private GameObject mainMenuButton;
+    [SerializeField] private GameObject goBackButton;
 
     [Header("Settings")]
-    [SerializeField] private GameObject[] settingsRows;          // volume slider rows, only shown in settings view
-    [SerializeField] private Vector2 settingsButtonOpenPosition; // where the Settings button sits while the sliders are showing
+    [SerializeField] private GameObject[] settingsRows;   // volume slider rows, only shown in settings view
+    [SerializeField] private Image panel;
+    [SerializeField] private Sprite settingsPanelSprite;  // panel art with the Master/Music/SFX labels
 
-    private Vector2 settingsButtonHomePosition;
+    private Sprite pausePanelSprite;
     private bool settingsOpen;
+    private bool openedFromMainMenu;  // Go Back closes the menu instead of returning to the pause buttons
 
     void Awake()
     {
-        settingsButtonHomePosition = settingsButton.anchoredPosition;
+        pausePanelSprite = panel.sprite;
     }
 
     // Always reopen on the main buttons
     void OnEnable()
     {
         settingsOpen = false;
+        openedFromMainMenu = false;
         ApplyView();
     }
 
@@ -34,11 +39,22 @@ public class PauseMenu : MonoBehaviour
         if (GameController.Instance.getIsPaused()) GameController.Instance.TogglePause();
     }
 
-    // Swaps between the buttons and the volume sliders. Pressing Settings again goes back
-    public void ToggleSettings()
+    public void OpenSettings()
     {
         AudioController.Instance.PlayUIButtonSFX();
-        settingsOpen = !settingsOpen;
+        settingsOpen = true;
+        ApplyView();
+    }
+
+    public void GoBack()
+    {
+        if (openedFromMainMenu)
+        {
+            Resume();
+            return;
+        }
+        AudioController.Instance.PlayUIButtonSFX();
+        settingsOpen = false;
         ApplyView();
     }
 
@@ -46,6 +62,7 @@ public class PauseMenu : MonoBehaviour
     public void ShowSettings()
     {
         settingsOpen = true;
+        openedFromMainMenu = true;
         ApplyView();
     }
 
@@ -62,8 +79,10 @@ public class PauseMenu : MonoBehaviour
     private void ApplyView()
     {
         resumeButton.SetActive(!settingsOpen);
+        settingsButton.SetActive(!settingsOpen);
         mainMenuButton.SetActive(!settingsOpen);
+        goBackButton.SetActive(settingsOpen);
         foreach (GameObject row in settingsRows) row.SetActive(settingsOpen);
-        settingsButton.anchoredPosition = settingsOpen ? settingsButtonOpenPosition : settingsButtonHomePosition;
+        panel.sprite = settingsOpen ? settingsPanelSprite : pausePanelSprite;
     }
 }
