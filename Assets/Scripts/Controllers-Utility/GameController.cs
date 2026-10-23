@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private bool hasTragedyMask = false;
     [SerializeField] private bool hasComedyMask = false;
 
+    // Intro dialogue only plays the first time the main menu loads
+    private bool hasSeenIntro = false;
+
     [Header("Checkpoints")]
     private Vector3 lastCheckpointPosition;
     private int lastCheckpointID = -1;  // default ID
@@ -121,6 +124,16 @@ public class GameController : MonoBehaviour
     public bool getHasComedyMask()
     {
         return hasComedyMask;
+    }
+
+    public void setHasSeenIntro(bool seen)
+    {
+        hasSeenIntro = seen;
+    }
+
+    public bool getHasSeenIntro()
+    {
+        return hasSeenIntro;
     }
 
     public void setMainMenu()

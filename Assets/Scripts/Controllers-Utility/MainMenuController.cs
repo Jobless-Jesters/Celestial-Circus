@@ -29,7 +29,9 @@ public class UIController : MonoBehaviour
         GameController.Instance.clearCheckpoints();
         GameController.Instance.setPlayerIsAlive(true);
 
-        if (!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask()) {
+        // Only play the intro once, so returning from the pause menu goes straight to the menu
+        if (!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask() && !GameController.Instance.getHasSeenIntro()) {
+            GameController.Instance.setHasSeenIntro(true);
             introDialogue.Invoke();
         }
         if (GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask()) {
