@@ -1238,17 +1238,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
---- !u!114 &658784339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-  m_PrefabInstance: {fileID: 1455223774}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &666527310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,26 +2955,6 @@ PrefabInstance:
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
-    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: soundsByID.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: soundsByID.Array.data[0].id
-      value: Comedy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: soundsByID.Array.data[1].id
-      value: Tragedy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: soundsByID.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d9bc13d8a63b64949ab19671b6624320, type: 3}
-    - target: {fileID: 7179188656870994118, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: soundsByID.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b54a4f7b1e680467684a5ac769c9ebb4, type: 3}
     - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
       value: introDialogueMenu
@@ -3337,7 +3306,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 658784339}
+      - m_Target: {fileID: 5294503260705032225}
         m_TargetAssemblyTypeName: Narrative.DialogueTrigger, Assembly-CSharp
         m_MethodName: Trigger
         m_Mode: 1
