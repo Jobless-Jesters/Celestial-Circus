@@ -15,6 +15,12 @@ namespace Narrative
         //Event Callbacks
         public UnityEvent onClick;
         private bool wasClicked = false;
+        [SerializeField] private AdvanceArrow advanceArrow;
+
+        void Start()
+        {
+            advanceArrow.SetVisible(true);
+        }
 
         /// <summary>
         /// Called every frame when object is set as active 
@@ -28,6 +34,7 @@ namespace Narrative
             if (!wasClicked && Input.GetButtonDown("Submit"))
             {
                 wasClicked = true; 
+                advanceArrow.SetVisible(false);
                 onClick.Invoke();
             }
         }

@@ -72,7 +72,7 @@ public class AudioController : MonoBehaviour
         menumusicGroup = audioMixer.FindMatchingGroups("Menu Music")[0];
         menumusicSource.outputAudioMixerGroup = menumusicGroup;
         
-        gamemusicGroup = audioMixer.FindMatchingGroups("Music")[0];
+        gamemusicGroup = audioMixer.FindMatchingGroups("Game Music")[0];
         gamemusicSource.outputAudioMixerGroup = gamemusicGroup;
 
         sfxGroup = audioMixer.FindMatchingGroups("SFX")[0];
