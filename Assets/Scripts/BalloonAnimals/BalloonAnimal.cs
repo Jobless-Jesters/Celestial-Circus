@@ -12,9 +12,11 @@ public class BalloonAnimal : MonoBehaviour
 {
     public TMP_Text hintText;
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
     public String mask; // Which mask this balloon animal belongs to. LOWERCASE NAMES
     public UnityEvent onClick;
     private bool playerInRange;
+    private bool isBalloonPopped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +30,15 @@ public class BalloonAnimal : MonoBehaviour
         {
             AudioController.Instance.PlayTragedyBG();
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.X) && GameController.Instance.getPlayerIsAlive())
+        if (playerInRange && Input.GetKeyDown(KeyCode.X) && GameController.Instance.getPlayerIsAlive() && isBalloonPopped == false)
         {
+            isBalloonPopped = true;  // can only pop balloon once to avoid glitches
 
             if (mask == "comedy")
             {
@@ -53,13 +56,11 @@ public class BalloonAnimal : MonoBehaviour
             }
 
             AudioController.Instance.StopGameScore();
-            
-            onClick.Invoke();
 
-            //playLevelEndAnimation();
-
-            //SceneManager.LoadScene("MainMenu");
-
+            // Wait for balloon pop animation to finish before ending the level
+            animator.SetTrigger("pop");
+            AudioController.Instance.PlayLevelSelectSFX();
+            StartCoroutine(playLevelEndAnimation());
         }
     }
 
@@ -81,10 +82,11 @@ public class BalloonAnimal : MonoBehaviour
         }
     }
 
-    void playLevelEndAnimation()
+    private IEnumerator playLevelEndAnimation()
     {
-        // Code for level end animations and effects here
+        yield return new WaitForSecondsRealtime(1.1f);
 
-        return;
+        // Invoke the level cutscene
+        onClick.Invoke();
     }
 }
