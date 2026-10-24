@@ -105,20 +105,20 @@ public class TightropeController : MonoBehaviour
         float alpha = 1.0f;
 
         // define the ready gradient
-        Color yellowColor = new Color(0.7f, 0.7f, 0.0f, 1f);
+        Color yellowColor = new Color(1.0f, 0.674f, 0.0f, 1f);
 
         readyGradient = new Gradient();
         readyGradient.mode = GradientMode.Fixed;
         readyGradient.SetKeys(
             new GradientColorKey[] {
-                new GradientColorKey(yellowColor, 0.0f),
                 new GradientColorKey(Color.white, 0.125f),
-                new GradientColorKey(yellowColor, 0.25f),
+                new GradientColorKey(yellowColor, 0.250f),
                 new GradientColorKey(Color.white, 0.375f),
-                new GradientColorKey(yellowColor, 0.5f),
+                new GradientColorKey(yellowColor, 0.500f),
                 new GradientColorKey(Color.white, 0.625f),
-                new GradientColorKey(yellowColor, 0.75f),
-                new GradientColorKey(Color.white, 1f)
+                new GradientColorKey(yellowColor, 0.750f),
+                new GradientColorKey(Color.white, 0.875f),
+                new GradientColorKey(yellowColor, 1.000f),
                 },
            new GradientAlphaKey[] {
                 new GradientAlphaKey(alpha, 1.0f),
@@ -137,14 +137,14 @@ public class TightropeController : MonoBehaviour
         notReadyGradient.mode = GradientMode.Fixed;
         notReadyGradient.SetKeys(
             new GradientColorKey[] {
-                new GradientColorKey(Color.red, 0.0f),
                 new GradientColorKey(Color.white, 0.125f),
-                new GradientColorKey(Color.red, 0.25f),
+                new GradientColorKey(Color.red, 0.250f),
                 new GradientColorKey(Color.white, 0.375f),
-                new GradientColorKey(Color.red, 0.5f),
+                new GradientColorKey(Color.red, 0.500f),
                 new GradientColorKey(Color.white, 0.625f),
-                new GradientColorKey(Color.red, 0.75f),
-                new GradientColorKey(Color.white, 1f)
+                new GradientColorKey(Color.red, 0.750f),
+                new GradientColorKey(Color.white, 0.875f),
+                new GradientColorKey(Color.red, 1.000f),
             },
             new GradientAlphaKey[] {
                 new GradientAlphaKey(alpha, 1.0f),
@@ -331,7 +331,7 @@ public class TightropeController : MonoBehaviour
         float rightEdge = Mathf.Max(startPoint.position.x, endPoint.position.x) + rearmMarginHorizontal;
         float shortBounceHeight = Mathf.Max(startPoint.position.y, endPoint.position.y) + rearmMarginVertical;
 
-        if (playerX < leftEdge || playerX > rightEdge  || playerY > shortBounceHeight)
+        if (playerX < leftEdge || playerX > rightEdge || playerY > shortBounceHeight)
         {
             ResetRope();
         }
