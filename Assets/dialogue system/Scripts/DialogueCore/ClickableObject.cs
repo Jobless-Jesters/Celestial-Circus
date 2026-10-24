@@ -31,7 +31,7 @@ namespace Narrative
             // the object has yet to be clicked on already
             // and the input is either space or enter 
             // change wasClicked and do what was assigned
-            if (!wasClicked && Input.GetButtonDown("Submit"))
+            if (!wasClicked && (Input.GetButtonDown("Submit") || Input.GetMouseButtonDown(0)))
             {
                 wasClicked = true; 
                 advanceArrow.SetVisible(false);
