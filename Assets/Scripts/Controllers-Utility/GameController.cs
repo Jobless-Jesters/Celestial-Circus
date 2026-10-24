@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // Pause the game at any time
-        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        if (( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) ) && canPause)
         {
             TogglePause();
         }
