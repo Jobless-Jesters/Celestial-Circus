@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
     public bool canPause = true;
 
+    private string currentSceneName;
+
     void Awake()
     {
         // Prevent duplicate GameManagers by checking if there is more than one singleton
@@ -50,15 +53,24 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);  // Controller persists between scenes
 
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     void Update()
     {
         // Pause the game at any time
-        if (( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) ) && canPause)
+        if (( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) ) &&
+            canPause &&
+            currentSceneName != "MainMenu1")
         {
             TogglePause();
         }
+    }
+
+    public void LoadSceneByName(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName); // Takes the scene name
+        currentSceneName = sceneName; // Assumes load scene always works (bad code)
     }
 
     // Pauses or unpauses the game. Used by the Escape key and the pause menu's Resume button
