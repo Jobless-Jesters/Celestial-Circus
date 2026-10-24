@@ -620,6 +620,7 @@ MonoBehaviour:
   wallSlideSpeed: 2
   wallJumpPower: {x: 12, y: 30}
   wallJumpLockTime: 0.2
+  wallSlideCooldown: 0.25
   animator: {fileID: 218005414}
   dustFX: {fileID: 1660920072}
   twirlFX: {fileID: 650658974}
@@ -11538,7 +11539,23 @@ PrefabInstance:
       value: trag_done
       objectReference: {fileID: 0}
     - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: conditions.Array.data[0].flagID
+      value: intro1_done
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: conditions.Array.data[1].flagID
+      value: intro2_done
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
       propertyPath: conditions.Array.data[0].expectedValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
+      propertyPath: conditions.Array.data[1].expectedValue
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2230417164472639197, guid: 43abdc4936fb40b4faeec854ef687706, type: 3}
@@ -22443,16 +22460,22 @@ MonoBehaviour:
   masterSource: {fileID: 885009724}
   musicSource: {fileID: 1038526778}
   sfxSource: {fileID: 1285573700}
+  subsfxSource: {fileID: 0}
   loopedSFXSource: {fileID: 1733547186}
+  menumusicSource: {fileID: 0}
+  gamemusicSource: {fileID: 0}
   walkSFX: {fileID: 8300000, guid: 4944b701e825f45b1b251bbe57d4e799, type: 3}
   jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 8300000, guid: 8355107a8958a4d5cb8cbc39783aa4b1, type: 3}
   hurtSFX: {fileID: 0}
   levelselectSFX: {fileID: 8300000, guid: 50a90035f002b41c8a709d9f91207a18, type: 3}
   uibuttonSFX: {fileID: 8300000, guid: 87aca1b0affa5489bb41538a88a932fa, type: 3}
+  curtainopenSFX: {fileID: 0}
+  curtaincloseSFX: {fileID: 0}
   swingingStarSFX: {fileID: 0}
   tragedyBGMusic: {fileID: 8300000, guid: 2792bb6136f93464f9cc2f219d6f987a, type: 3}
   comedyBGMusic: {fileID: 8300000, guid: ae90a8978d0d640b785033fcc37fc3e5, type: 3}
+  menuBGMusic: {fileID: 0}
 --- !u!4 &1892629524
 Transform:
   m_ObjectHideFlags: 0
