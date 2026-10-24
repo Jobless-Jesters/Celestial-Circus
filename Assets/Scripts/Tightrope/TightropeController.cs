@@ -329,7 +329,7 @@ public class TightropeController : MonoBehaviour
         float playerY = launchedPlayer.position.y;
         float leftEdge = Mathf.Min(startPoint.position.x, endPoint.position.x) - rearmMarginHorizontal;
         float rightEdge = Mathf.Max(startPoint.position.x, endPoint.position.x) + rearmMarginHorizontal;
-        float shortBounceHeight = 1;
+        float shortBounceHeight = Mathf.Max(startPoint.position.y, endPoint.position.y) + rearmMarginVertical;
 
         if (playerX < leftEdge || playerX > rightEdge  || playerY > shortBounceHeight)
         {
