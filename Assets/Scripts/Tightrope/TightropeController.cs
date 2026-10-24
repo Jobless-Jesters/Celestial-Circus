@@ -18,6 +18,9 @@ public class TightropeController : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private LineRenderer ropeRenderer;
+    [SerializeField] private Gradient notReadyGradient;
+    [SerializeField] private Gradient readyGradient;
+
 
     [Header("Rope Shape")]
     // Number of line segments used to draw the rope
@@ -60,7 +63,10 @@ public class TightropeController : MonoBehaviour
     [SerializeField] private float reboundKick = 7f;
 
     // How far past either end the player must travel before the rope re-arms
-    [SerializeField] private float rearmMargin = 0.5f;
+    [SerializeField] private float rearmMarginHorizontal = 0.5f;
+
+    // How far past the top of the rope the player must travel before the rope rearms
+    [SerializeField] private float rearmMarginVertical = 3f;
 
     private RopeState state = RopeState.Idle;
 
@@ -96,6 +102,64 @@ public class TightropeController : MonoBehaviour
             ropeRenderer.useWorldSpace = true;
             ropeRenderer.positionCount = segments + 1;
         }
+        float alpha = 1.0f;
+
+        // define the ready gradient
+        Color yellowColor = new Color(0.7f, 0.7f, 0.0f, 1f);
+
+        readyGradient = new Gradient();
+        readyGradient.mode = GradientMode.Fixed;
+        readyGradient.SetKeys(
+            new GradientColorKey[] {
+                new GradientColorKey(yellowColor, 0.0f),
+                new GradientColorKey(Color.white, 0.125f),
+                new GradientColorKey(yellowColor, 0.25f),
+                new GradientColorKey(Color.white, 0.375f),
+                new GradientColorKey(yellowColor, 0.5f),
+                new GradientColorKey(Color.white, 0.625f),
+                new GradientColorKey(yellowColor, 0.75f),
+                new GradientColorKey(Color.white, 1f)
+                },
+           new GradientAlphaKey[] {
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f)
+            }
+        );
+
+        // define the not ready gradient
+        notReadyGradient = new Gradient();
+        notReadyGradient.mode = GradientMode.Fixed;
+        notReadyGradient.SetKeys(
+            new GradientColorKey[] {
+                new GradientColorKey(Color.red, 0.0f),
+                new GradientColorKey(Color.white, 0.125f),
+                new GradientColorKey(Color.red, 0.25f),
+                new GradientColorKey(Color.white, 0.375f),
+                new GradientColorKey(Color.red, 0.5f),
+                new GradientColorKey(Color.white, 0.625f),
+                new GradientColorKey(Color.red, 0.75f),
+                new GradientColorKey(Color.white, 1f)
+            },
+            new GradientAlphaKey[] {
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f),
+                new GradientAlphaKey(alpha, 1.0f)
+            }
+        );
+
+        ropeRenderer.colorGradient = notReadyGradient;
+
     }
 
     private void OnDisable()
@@ -189,11 +253,14 @@ public class TightropeController : MonoBehaviour
                 {
                     state = RopeState.JumpWindow;
                     windowTimer = jumpWindow;
+                    ropeRenderer.colorGradient = readyGradient;
+
 
                     // An early press that is still buffered counts immediately
                     if (bufferedJumpTimer > 0f)
                     {
                         Launch(true);
+                        ropeRenderer.colorGradient = notReadyGradient;
                     }
                 }
                 break;
@@ -204,6 +271,7 @@ public class TightropeController : MonoBehaviour
                 // Window closed without a press, so the player gets the weak bounce
                 if (windowTimer <= 0f)
                 {
+                    ropeRenderer.colorGradient = notReadyGradient;
                     Launch(false);
                 }
                 break;
@@ -258,10 +326,12 @@ public class TightropeController : MonoBehaviour
             return;
 
         float playerX = launchedPlayer.position.x;
-        float leftEdge = Mathf.Min(startPoint.position.x, endPoint.position.x) - rearmMargin;
-        float rightEdge = Mathf.Max(startPoint.position.x, endPoint.position.x) + rearmMargin;
+        float playerY = launchedPlayer.position.y;
+        float leftEdge = Mathf.Min(startPoint.position.x, endPoint.position.x) - rearmMarginHorizontal;
+        float rightEdge = Mathf.Max(startPoint.position.x, endPoint.position.x) + rearmMarginHorizontal;
+        float shortBounceHeight = Mathf.Max(startPoint.position.y, endPoint.position.y) + rearmMarginVertical;
 
-        if (playerX < leftEdge || playerX > rightEdge)
+        if (playerX < leftEdge || playerX > rightEdge  || playerY > shortBounceHeight)
         {
             ResetRope();
         }
@@ -321,6 +391,8 @@ public class TightropeController : MonoBehaviour
 
         state = RopeState.Released;
         bufferedJumpTimer = 0f;
+
+        ropeRenderer.colorGradient = notReadyGradient;
     }
 
     // Returns the rope to Idle and drops any state tied to the current player
@@ -340,5 +412,6 @@ public class TightropeController : MonoBehaviour
         state = RopeState.Idle;
         windowTimer = 0f;
         bufferedJumpTimer = 0f;
+        ropeRenderer.colorGradient = notReadyGradient;
     }
 }
