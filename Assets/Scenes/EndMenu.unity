@@ -3526,7 +3526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: conditions.Array.data[1].flagID
-      value: com_done
+      value: com1_done
       objectReference: {fileID: 0}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: conditions.Array.data[2].flagID
