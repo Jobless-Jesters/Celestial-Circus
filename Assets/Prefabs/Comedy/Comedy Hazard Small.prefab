@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e104162e0e934459298614b8f4d34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coreLight: {fileID: 0}
+  coreLight: {fileID: 3459563926232260534}
   sparks: {fileID: 2215986735313890518}
   minIntensity: 0.2
   maxIntensity: 0.6
