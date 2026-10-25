@@ -30,8 +30,8 @@ namespace CustomBlendModes
         // Store the last selected blend mode to only update when it changes
         private BlendModes lastBlendMode = BlendModes.Opaque;
         
-        // References to the SpriteRenderer and its material instance
-        private SpriteRenderer spriteRenderer;
+        // Supports sprites and particle systems rendered in 2D.
+        private Renderer targetRenderer;
         private Material materialInstance;
 
         private void Awake()
@@ -64,15 +64,45 @@ namespace CustomBlendModes
 
         private void SetupMaterial()
         {
-            // Get the SpriteRenderer on this GameObject
-            if (spriteRenderer == null)
-                spriteRenderer = GetComponent<SpriteRenderer>();
-
-            // Create a new instance of the material if needed
-            if (spriteRenderer != null && (materialInstance == null || spriteRenderer.sharedMaterial != materialInstance))
+            if (targetRenderer == null)
             {
-                materialInstance = new Material(Shader.Find("Custom/2D_Sprite_Shader"));
-                spriteRenderer.material = materialInstance;
+                targetRenderer = GetComponent<SpriteRenderer>();
+                if (targetRenderer == null)
+                    targetRenderer = GetComponent<ParticleSystemRenderer>();
+            }
+
+            if (targetRenderer == null)
+                return;
+
+            if (materialInstance == null || targetRenderer.sharedMaterial != materialInstance)
+            {
+                Shader shader = Shader.Find("Custom/2D_Sprite_Shader");
+                if (shader == null)
+                {
+                    Debug.LogError("Could not find shader 'Custom/2D_Sprite_Shader'.", this);
+                    return;
+                }
+
+                Material sourceMaterial = targetRenderer.sharedMaterial;
+                materialInstance = sourceMaterial != null
+                    ? new Material(sourceMaterial)
+                    : new Material(shader);
+                materialInstance.shader = shader;
+
+                if (sourceMaterial != null)
+                {
+                    if (sourceMaterial.HasProperty("_MainTex") && materialInstance.HasProperty("_MainTex"))
+                        materialInstance.SetTexture("_MainTex", sourceMaterial.GetTexture("_MainTex"));
+                    else if (sourceMaterial.HasProperty("_BaseMap") && materialInstance.HasProperty("_MainTex"))
+                        materialInstance.SetTexture("_MainTex", sourceMaterial.GetTexture("_BaseMap"));
+
+                    if (sourceMaterial.HasProperty("_Color") && materialInstance.HasProperty("_Color"))
+                        materialInstance.SetColor("_Color", sourceMaterial.GetColor("_Color"));
+                    else if (sourceMaterial.HasProperty("_BaseColor") && materialInstance.HasProperty("_Color"))
+                        materialInstance.SetColor("_Color", sourceMaterial.GetColor("_BaseColor"));
+                }
+
+                targetRenderer.sharedMaterial = materialInstance;
             }
         }
 
