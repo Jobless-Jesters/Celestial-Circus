@@ -43,11 +43,12 @@ public class BalloonAnimal : MonoBehaviour
             if (mask == "comedy")
             {
                 GameController.Instance.setHasComedyMask(true);
-
+                GameController.Instance.clearCheckpoints();
             }
             else if (mask == "tragedy")
             {
                 GameController.Instance.setHasTragedyMask(true);
+                GameController.Instance.clearCheckpoints();
             }
             else
             {

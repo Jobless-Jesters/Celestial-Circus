@@ -28,7 +28,6 @@ public class UIController : MonoBehaviour
             //introDialogue.Invoke();
         }
 
-        // Clear checkpoint data between levels
         GameController.Instance.setPlayerIsAlive(true);
 
         // Only play the intro once, so returning from the pause menu goes straight to the menu

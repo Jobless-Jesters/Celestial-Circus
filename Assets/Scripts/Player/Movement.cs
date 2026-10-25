@@ -107,6 +107,12 @@ public class Movement : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        Vector3 checkpoint = GameController.Instance.getLastCheckpointPosition();
+        if (checkpoint != Vector3.zero)
+        {
+            transform.position = checkpoint;
+        }
+
         // Disable player input until the curtains are fully open
         StartCoroutine(EnableMoveAfterCurtain(playerInput));
     }

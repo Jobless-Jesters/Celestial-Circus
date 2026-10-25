@@ -23,8 +23,9 @@ public class GameController : MonoBehaviour
     private bool hasSeenIntro = false;
 
     [Header("Checkpoints")]
-    private Vector3 lastCheckpointPosition;
-    private int lastCheckpointID = -1;  // default ID
+    // Latest checkpoint per level, keyed by scene name, so each level remembers its own progress
+    private Dictionary<string, int> checkpointIDs = new Dictionary<string, int>();
+    private Dictionary<string, Vector3> checkpointPositions = new Dictionary<string, Vector3>();
 
     [Header("Dialogue Flags")]
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
@@ -172,23 +173,25 @@ public class GameController : MonoBehaviour
 
     public void setLastCheckpoint(int newID, Vector3 pos)
     {
+        
         // Only update the checkpoint if it is further along the level than the previous checkpoint
-        if (lastCheckpointID < newID)
+        if (!checkpointIDs.TryGetValue(currentSceneName, out int lastID) || lastID < newID)
         {
-            lastCheckpointID = newID;
-            lastCheckpointPosition = pos;
+            checkpointIDs[currentSceneName] = newID;
+            checkpointPositions[currentSceneName] = pos;
         }
     }
 
     public Vector3 getLastCheckpointPosition()
     {
-        return lastCheckpointPosition;
+        checkpointPositions.TryGetValue(currentSceneName, out Vector3 pos);
+        return pos;
     }
 
     public void clearCheckpoints()
     {
-        lastCheckpointID = -1;
-        lastCheckpointPosition = Vector3.zero;
+        checkpointIDs.Remove(currentSceneName);
+        checkpointPositions.Remove(currentSceneName);
     }
 
     public void setPlayerIsAlive(bool isAlive)
