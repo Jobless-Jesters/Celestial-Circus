@@ -28,8 +28,6 @@ public class UIController : MonoBehaviour
             //introDialogue.Invoke();
         }
 
-        // Clear checkpoint data between levels
-        GameController.Instance.clearCheckpoints();
         GameController.Instance.setPlayerIsAlive(true);
 
         // Only play the intro once, so returning from the pause menu goes straight to the menu
@@ -46,5 +44,20 @@ public class UIController : MonoBehaviour
     public void OpenSettings()
     {
         GameController.Instance.OpenSettingsMenu();
+    }
+
+    public void LoadSceneByName(string sceneName)
+    {
+        GameController.Instance.LoadSceneByName(sceneName);
+    }
+
+    public void PlayLevelSelectSFX()
+    {
+        AudioController.Instance.PlayLevelSelectSFX();
+    }
+
+    public void PlayUIButtonSFX()
+    {
+        AudioController.Instance.PlayUIButtonSFX();
     }
 }
