@@ -229,8 +229,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1530455151}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+      - m_Target: {fileID: 1580547550}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: PlayUIButtonSFX
         m_Mode: 1
         m_Arguments:
@@ -1294,8 +1294,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1530455151}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+      - m_Target: {fileID: 1580547550}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: PlayUIButtonSFX
         m_Mode: 1
         m_Arguments:
@@ -4580,8 +4580,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1530455151}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
+      - m_Target: {fileID: 1580547550}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: PlayUIButtonSFX
         m_Mode: 1
         m_Arguments:

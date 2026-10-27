@@ -31,7 +31,7 @@ public class SettingsMenu : MonoBehaviour
     {
         GameController.Instance.setIsPaused(false);
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenu1");
+        GameController.Instance.LoadSceneByName("MainMenu1");
     }
 
     // For a back button
