@@ -1664,8 +1664,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1580547550}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+      - m_Target: {fileID: 4594838011187015700}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
         m_Arguments:
@@ -4805,6 +4805,7 @@ RectTransform:
   - {fileID: 1580547548}
   - {fileID: 1765938732}
   - {fileID: 1799849284}
+  - {fileID: 4594838011187015699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5030,8 +5031,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1580547550}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+      - m_Target: {fileID: 4594838011187015700}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
         m_Arguments:
@@ -5689,6 +5690,79 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1001 &4594838011187015698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1901741337}
+    m_Modifications:
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -960
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -540
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973148561376590081, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+      propertyPath: m_Name
+      value: SceneLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+--- !u!4 &4594838011187015699 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3531071151763560339, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+  m_PrefabInstance: {fileID: 4594838011187015698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4594838011187015700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1509817898337640829, guid: 577f61c9278f3b749bb59229cbc57a5b, type: 3}
+  m_PrefabInstance: {fileID: 4594838011187015698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb51e8fd8438624e8dab3b4efb5b4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5294503260705032225
 MonoBehaviour:
   m_ObjectHideFlags: 0
