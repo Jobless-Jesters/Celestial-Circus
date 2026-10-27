@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public class TEMP_curtains : MonoBehaviour
+public class Curtains : MonoBehaviour
 {
     public enum CurtainMode
     {

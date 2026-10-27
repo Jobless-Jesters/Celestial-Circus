@@ -70,6 +70,7 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName); // Takes the scene name
         currentSceneName = sceneName; // Assumes load scene always works (bad code)
+        // replace with try?
     }
 
     // Pauses or unpauses the game. Used by the Escape key and the pause menu's Resume button
@@ -95,8 +96,8 @@ public class GameController : MonoBehaviour
         {
             // Get the curtains and play the pause curtain animation
             GameObject curtains = GameObject.Find("CurtainContainer");
-            TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
-            curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Pause);
+            Curtains curtainScript = curtains.GetComponent<Curtains>();
+            curtainScript.toggleCurtain(Curtains.CurtainMode.Pause);
 
             StartCoroutine(showPauseText());
         }
@@ -214,7 +215,7 @@ public class GameController : MonoBehaviour
 
             // Get all components
             GameObject curtains = GameObject.Find("CurtainContainer");
-            TEMP_curtains curtainScript = curtains.GetComponent<TEMP_curtains>();
+            Curtains curtainScript = curtains.GetComponent<Curtains>();
             GameObject player = GameObject.Find("Player");
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             PlayerInput input = player.GetComponent<PlayerInput>();
@@ -225,12 +226,12 @@ public class GameController : MonoBehaviour
             input.enabled = false;
 
             // Toggle death curtain
-            curtainScript.toggleCurtain(TEMP_curtains.CurtainMode.Death);
+            curtainScript.toggleCurtain(Curtains.CurtainMode.Death);
             StartCoroutine(RespawnAfterCurtain(player, rb, curtainScript, input));
         }
     }
 
-    private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, TEMP_curtains cs, PlayerInput ip)
+    private IEnumerator RespawnAfterCurtain(GameObject player, Rigidbody2D rb, Curtains cs, PlayerInput ip)
     {
         // Wait specfied time for curtain close animation to finish before resetting player
         yield return new WaitForSecondsRealtime(2.0f);
@@ -245,7 +246,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.4f);
 
         // Open curtains
-        cs.toggleCurtain(TEMP_curtains.CurtainMode.Death);
+        cs.toggleCurtain(Curtains.CurtainMode.Death);
 
         // Re-enable pause and movement after opening animation is done
         yield return new WaitForSecondsRealtime(1.4f);
