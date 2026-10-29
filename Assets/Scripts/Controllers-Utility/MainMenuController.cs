@@ -46,11 +46,6 @@ public class UIController : MonoBehaviour
         GameController.Instance.OpenSettingsMenu();
     }
 
-    public void LoadSceneByName(string sceneName)
-    {
-        GameController.Instance.LoadSceneByName(sceneName);
-    }
-
     public void PlayLevelSelectSFX()
     {
         AudioController.Instance.PlayLevelSelectSFX();

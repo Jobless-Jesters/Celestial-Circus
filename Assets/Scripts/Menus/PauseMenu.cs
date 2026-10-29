@@ -74,7 +74,7 @@ public class PauseMenu : MonoBehaviour
         AudioController.Instance.loopedSFXSource.Stop();
         AudioController.Instance.StopGameScore();
         gameObject.SetActive(false);
-        SceneManager.LoadScene("MainMenu1");
+        GameController.Instance.LoadSceneByName("MainMenu1");
     }
 
     private void ApplyView()
