@@ -188,7 +188,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: magnitude
-    m_EventTreshold: 0
+    m_EventTreshold: 0.1
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
