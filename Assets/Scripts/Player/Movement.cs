@@ -166,7 +166,7 @@ public class Movement : MonoBehaviour
         Move();
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
     }
 
@@ -346,6 +346,7 @@ public class Movement : MonoBehaviour
     {
         // Force the player into the air
         currentState = STATE.Falling;
+        animator.SetBool("isGrounded", false);
 
         // Guaranteed upward velocity
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, launchVelocity);
@@ -360,7 +361,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
-            tightropeLaunchFX.Play(); // TODO: change this tighrope launch effect to something cooler
+            tightropeLaunchFX.Play();
         }
     }
 
