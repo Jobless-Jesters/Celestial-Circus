@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2753038240199996599}
   - component: {fileID: 7724043560101641349}
   m_Layer: 0
-  m_Name: Comedy Hazard Small
+  m_Name: Comedy Hazard Small (orange)
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
