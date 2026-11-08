@@ -183,12 +183,12 @@ MonoBehaviour:
   springStrength: 50
   damping: 4
   landingImpulse: 2.5
-  minBoostVelocity: 50
-  medBoostVelocity: 80
-  maxBoostVelocity: 110
+  minBoostVelocity: 90
+  medBoostVelocity: 120
+  maxBoostVelocity: 180
   reboundKick: 7
   tightropeTimer: 0
-  timeBetweenPhases: 1
+  timeBetweenPhases: 0.8
   minBoostFlashSpeed: 5
   medBoostFlashSpeed: 10
   maxBoostFlashSpeed: 20

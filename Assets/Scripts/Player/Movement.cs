@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem twirlFX;
     public ParticleSystem tightropeLaunchFX;
     public ParticleSystem deathFX;
+    public ParticleSystem tightropeChargeFX;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -93,7 +94,6 @@ public class Movement : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
-
 
     // Start is called before the first frame update
     protected void Start()
@@ -249,7 +249,7 @@ public class Movement : MonoBehaviour
             if (_playerBody.velocity.y <= -wallSlideSpeed) // Player is on the wall and falling
             {
                 _playerBody.gravityScale = 0f;
-                _playerBody.velocity = new Vector2(_playerBody.velocity.x, -wallSlideSpeed);    
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, -wallSlideSpeed);
             }
             else // Player is on the wall but ascending i.e. jumped from ground next to the wall, proceed as regular jump
             {
@@ -311,7 +311,7 @@ public class Movement : MonoBehaviour
         // Holding Space tells Movement that the player wants to glide
         SetGliding(_jumpAction.IsPressed());
     }
-    
+
     private void RegularJump()
     {
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
@@ -361,6 +361,7 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
+            tightropeChargeFX.Stop();
             tightropeLaunchFX.Play();
         }
     }
@@ -385,10 +386,12 @@ public class Movement : MonoBehaviour
 
     private void WallSlide()
     {
-        if (wallSlideCooldownTimer > 0) {
+        if (wallSlideCooldownTimer > 0)
+        {
             wallSlideCooldownTimer -= Time.deltaTime;
             if (currentState == STATE.WallSliding) currentState = STATE.Falling;
-        } else
+        }
+        else
         {
             if (IsWallSliding() && currentState != STATE.Grounded)
             {
@@ -401,7 +404,7 @@ public class Movement : MonoBehaviour
                 currentState = STATE.Falling;
             }
         }
-        
+
     }
 
     private void groundCheck()
@@ -450,6 +453,18 @@ public class Movement : MonoBehaviour
     public void playDeathFX()
     {
         deathFX.Play();
+    }
+
+    public void playTightropeChargeFX(float particleSpeed)
+    {
+        var tightropeMain = tightropeChargeFX.main;
+        var tightropeEm = tightropeChargeFX.emission;
+
+        // Customize the speed based on boost phase
+        tightropeMain.startSpeed = particleSpeed;
+        tightropeEm.rateOverTime = particleSpeed;
+
+        tightropeChargeFX.Play();
     }
 
     private void OnDrawGizmosSelected()

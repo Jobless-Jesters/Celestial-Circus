@@ -61,6 +61,7 @@ public class Tightrope2 : MonoBehaviour
     private Movement playerMovement;
     private Vector2[] colliderPoints;
     private InputAction _moveAction;
+    private InputAction _jumpAction;
     private bool playerOnRope;
     // Player position along the rope: 0 = start 1 = end
     private float playerT = 0.5f;
@@ -78,6 +79,10 @@ public class Tightrope2 : MonoBehaviour
     [SerializeField] public float medBoostFlashSpeed = 10f;
     [SerializeField] public float maxBoostFlashSpeed = 20f;
     [SerializeField] public float currFlashSpeed = 0f;
+    [SerializeField] public float minBoostChargeFxSpeed = 20f;
+    [SerializeField] public float medBoostChargeFxSpeed = 40f;
+    [SerializeField] public float maxBoostChargeFxSpeed = 60f;
+    [SerializeField] public float currChargeFxSpeed = 0f;
     private const int FlashKeyCount = 8;
     private readonly GradientColorKey[] flashColorKeys = new GradientColorKey[FlashKeyCount];
     private readonly GradientAlphaKey[] flashAlphaKeys = new GradientAlphaKey[FlashKeyCount];
@@ -96,25 +101,18 @@ public class Tightrope2 : MonoBehaviour
         }
         segments = Mathf.Max(1, segments);
 
-        if (ropeCollider == null)
-        {
-            ropeCollider = GetComponent<EdgeCollider2D>();
-        }
-
         if (ropeCollider != null)
         {
             colliderPoints = new Vector2[segments + 1];
         }
-        else
-        {
-            Debug.LogError("Tightrope2 requires an EdgeCollider2D reference.", this);
-        }
+
         _moveAction = FindObjectOfType<PlayerInput>().actions.FindAction("Move", true);
+        _jumpAction = FindObjectOfType<PlayerInput>().actions.FindAction("Jump", true);
+
         currentPlayer = GameObject.FindGameObjectWithTag("Player");
         currentPlayerTransform = currentPlayer.transform;
         playerRb = currentPlayer.GetComponent<Rigidbody2D>();
         playerMovement = currentPlayer.GetComponentInParent<Movement>();
-
         ropeRenderer.colorGradient = notReadyGradient;
     }
 
@@ -146,6 +144,7 @@ public class Tightrope2 : MonoBehaviour
             playerSag = minBoostRopeSag;
             ropeRenderer.colorGradient = minBoostGradient;
             currFlashSpeed = minBoostFlashSpeed;
+            playerMovement.playTightropeChargeFX(minBoostChargeFxSpeed);
         }
         else if (tightropeTimer > timeBetweenPhases && tightropeTimer < timeBetweenPhases * 2)
         {
@@ -154,6 +153,7 @@ public class Tightrope2 : MonoBehaviour
             playerSag = medBoostRopeSag;
             ropeRenderer.colorGradient = medBoostGradient;
             currFlashSpeed = medBoostFlashSpeed;
+            playerMovement.playTightropeChargeFX(medBoostChargeFxSpeed);
         }
         else if (tightropeTimer > timeBetweenPhases * 2)
         {
@@ -162,6 +162,7 @@ public class Tightrope2 : MonoBehaviour
             playerSag = maxBoostRopeSag;
             ropeRenderer.colorGradient = maxBoostGradient;
             currFlashSpeed = maxBoostFlashSpeed;
+            playerMovement.playTightropeChargeFX(maxBoostChargeFxSpeed);
         }
     }
 
@@ -239,8 +240,11 @@ public class Tightrope2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerOnRope = true;
+
             if (_moveAction.ReadValue<Vector2>().y < 0f)
             {
+                //todo: Disable other inputs somewhere here
+                _jumpAction.Disable();
                 tightropeTimer += Time.fixedDeltaTime;
             }
         }
@@ -268,7 +272,6 @@ public class Tightrope2 : MonoBehaviour
                 // max boost
                 playerMovement.LaunchFromTightrope(maxBoostVelocity, true);
             }
-
             ResetRope();
         }
     }
@@ -291,6 +294,7 @@ public class Tightrope2 : MonoBehaviour
     private void ResetRope()
     {
         playerOnRope = false;
+        _jumpAction.Enable();
         state = RopeState.Idle;
         tightropeTimer = 0f;
         playerSag = 0.2f;
@@ -303,7 +307,7 @@ public class Tightrope2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerOnRope = false;
+            ResetRope();
         }
     }
 
