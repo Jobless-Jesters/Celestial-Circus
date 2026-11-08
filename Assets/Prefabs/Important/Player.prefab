@@ -41,14 +41,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939477792504440028}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 40
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 44
+      scalar: 40
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -19596,7 +19596,7 @@ MonoBehaviour:
   twirlFX: {fileID: 4929830386808913944}
   tightropeLaunchFX: {fileID: 3505895980717661614}
   deathFX: {fileID: 9003610648397048698}
-  tightropeChargeFX: {fileID: 0}
+  tightropeChargeFX: {fileID: 6489164064855449932}
   groundCheckPos: {fileID: 5442058649593146136}
   groundCheckSize: {x: 1.17, y: 0.21}
   groundLayer:
