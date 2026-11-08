@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.81, y: 2.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8723987000543089261}
@@ -14546,8 +14546,8 @@ Transform:
   m_GameObject: {fileID: 6934452344308795867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.06, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8723987000543089261}
@@ -14744,19 +14744,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 600
-  jumpPower: 45
+  jumpPower: 50
   jumpsRemaining: 0
   maxJumps: 2
   isFacingRight: 1
   gravity: 9.8
+  _friction: 200
   fallSpeedMultiplier: 2
   maxFallSpeed: 18
+  maxSpeed: 12
   mass: 10
   glideGravity: 2
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2
   wallSlideSpeed: 2
-  wallJumpPower: {x: 12, y: 30}
+  wallJumpPower: {x: 30, y: 30}
   wallJumpLockTime: 0.2
   wallSlideCooldown: 0.25
   animator: {fileID: 8192205558385958770}
@@ -14845,7 +14847,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9936268, y: 4.49}
+  m_Size: {x: 1, y: 4.5}
   m_EdgeRadius: 0
 --- !u!95 &8192205558385958770
 Animator:
