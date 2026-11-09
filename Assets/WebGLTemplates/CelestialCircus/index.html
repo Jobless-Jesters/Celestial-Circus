@@ -4,8 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{{{ PRODUCT_NAME }}}</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000 }
+      #unity-container { position: fixed; left: 0; top: 0; width: 100%; height: 100% }
+      #unity-canvas { display: block; width: 100%; height: 100%; background: #000 }
+      #unity-loading-bar { position: absolute; left: 50%; top: 50%; width: 220px; transform: translate(-50%, -50%); display: none; text-align: center; font: 16px arial, sans-serif; color: #ddd }
+      #unity-progress-bar-empty { height: 10px; margin-top: 12px; border: 1px solid #ddd; border-radius: 6px; overflow: hidden }
+      #unity-progress-bar-full { width: 0%; height: 100%; background: #ddd }
+      #unity-fullscreen-button { position: absolute; left: 10px; top: 10px; width: 38px; height: 38px; border-radius: 4px; background: rgba(0, 0, 0, 0.5); cursor: pointer; opacity: 0.6 }
+      #unity-fullscreen-button:hover { opacity: 1 }
+      #unity-fullscreen-button svg { display: block; margin: 7px }
+      #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+    </style>
   </head>
   <body>
     <!--
@@ -16,13 +26,16 @@
     <div id="unity-container">
       <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1"></canvas>
       <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
+        {{{ PRODUCT_NAME }}}
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-fullscreen-button" title="Fullscreen"></div>
+      <!-- A div, not a button, so it can never take keyboard focus (Space / Enter must go to the game) -->
+      <div id="unity-fullscreen-button" title="Fullscreen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </div>
     </div>
     <script>
 
