@@ -57,7 +57,9 @@ namespace Narrative
         {
             //Input for advancing textbox
             // Cannot advance if game is paused
-            if ((Input.GetButtonDown("Submit") || Input.GetMouseButtonDown(0))&& GameController.Instance.getIsPaused() == false)
+            // Clicks on the letterbox bars don't count
+            bool clicked = Input.GetMouseButtonDown(0) && AspectRatioEnforcer.IsPointerInGameView(Input.mousePosition);
+            if ((Input.GetButtonDown("Submit") || clicked)&& GameController.Instance.getIsPaused() == false)
             {
                 if (isEndOfText())
                 {
