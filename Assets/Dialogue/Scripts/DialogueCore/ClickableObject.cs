@@ -31,7 +31,9 @@ namespace Narrative
             // the object has yet to be clicked on already
             // and the input is either space or enter 
             // change wasClicked and do what was assigned
-            if (!wasClicked && (Input.GetButtonDown("Submit") || Input.GetMouseButtonDown(0)))
+            // Clicks on the letterbox bars don't count
+            bool clicked = Input.GetMouseButtonDown(0) && AspectRatioEnforcer.IsPointerInGameView(Input.mousePosition);
+            if (!wasClicked && (Input.GetButtonDown("Submit") || clicked))
             {
                 wasClicked = true; 
                 advanceArrow.SetVisible(false);
