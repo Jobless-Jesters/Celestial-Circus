@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] protected float baseSpeed = 5f;
-    [SerializeField] public float jumpPower = 30f;
+    [SerializeField] public float jumpPower = 50f;
     [SerializeField] protected int jumpsRemaining;
     [SerializeField] public int maxJumps = 2;
     [SerializeField] protected bool isFacingRight = true;
@@ -26,8 +26,10 @@ public class Movement : MonoBehaviour
 
     [Header("Physics")]
     [SerializeField] protected float gravity = 6f;
+    [SerializeField] private float _friction = 200f;
     [SerializeField] protected float fallSpeedMultiplier = 2f;
     [SerializeField] protected float maxFallSpeed = 18f;
+    [SerializeField] protected float maxSpeed = 12f;
     [SerializeField] protected float mass = 1;
 
 
@@ -40,8 +42,8 @@ public class Movement : MonoBehaviour
     private float wallJumpLockTimer;
     private float wallSlideCooldownTimer;
     [SerializeField] protected float wallSlideSpeed = 2f;
-    [SerializeField] protected Vector2 wallJumpPower = new Vector2(12f, 30f);
-    [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to ignore horizontal movement for, shorter is more control/responsive, enables a "push" off a wall
+    [SerializeField] protected Vector2 wallJumpPower = new Vector2(30f, 45f);
+    [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to show player facing opposite direction of wall
     [SerializeField] private float wallSlideCooldown = 0.25f; // Avoid infinite wall climbing
     [Header("Animation")]
     public Animator animator;
@@ -54,6 +56,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem twirlFX;
     public ParticleSystem tightropeLaunchFX;
     public ParticleSystem deathFX;
+    public ParticleSystem tightropeChargeFX;
 
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
@@ -93,7 +96,6 @@ public class Movement : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
-
 
     // Start is called before the first frame update
     protected void Start()
@@ -166,7 +168,7 @@ public class Movement : MonoBehaviour
         Move();
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
-        animator.SetFloat("magnitude", _playerBody.velocity.magnitude);
+        animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
         animator.SetBool("isGliding", IsGliding());
     }
 
@@ -186,10 +188,20 @@ public class Movement : MonoBehaviour
         }
 
         wallJumpLockTimer -= Time.deltaTime;
-        if (wallJumpLockTimer <= 0f) // Guard against regular movement during a wall jump 
+
+        Vector2 newVelocity = _playerBody.velocity;
+        float baseVelocity = _horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier;
+
+        if (currentState == STATE.Falling)
         {
+            // "Smooth" out direction changes in the air using friction
+            newVelocity.x = Mathf.MoveTowards(newVelocity.x, baseVelocity, _friction * Time.fixedDeltaTime);
+            Mathf.Clamp(newVelocity.x, -maxSpeed, maxSpeed);
             // Says "right", but _horizontalInput flips the direction left if player presses Left
-            _playerBody.velocity = new Vector2(_horizontalInput * baseSpeed * Time.deltaTime * speedMultiplier, _playerBody.velocity.y);
+            _playerBody.velocity = newVelocity;
+        } else
+        {
+            _playerBody.velocity = new Vector2(baseVelocity, _playerBody.velocity.y);
         }
     }
     public void CallWalkSFX()
@@ -249,7 +261,7 @@ public class Movement : MonoBehaviour
             if (_playerBody.velocity.y <= -wallSlideSpeed) // Player is on the wall and falling
             {
                 _playerBody.gravityScale = 0f;
-                _playerBody.velocity = new Vector2(_playerBody.velocity.x, -wallSlideSpeed);    
+                _playerBody.velocity = new Vector2(_playerBody.velocity.x, -wallSlideSpeed);
             }
             else // Player is on the wall but ascending i.e. jumped from ground next to the wall, proceed as regular jump
             {
@@ -311,7 +323,7 @@ public class Movement : MonoBehaviour
         // Holding Space tells Movement that the player wants to glide
         SetGliding(_jumpAction.IsPressed());
     }
-    
+
     private void RegularJump()
     {
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
@@ -346,6 +358,7 @@ public class Movement : MonoBehaviour
     {
         // Force the player into the air
         currentState = STATE.Falling;
+        animator.SetBool("isGrounded", false);
 
         // Guaranteed upward velocity
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, launchVelocity);
@@ -360,7 +373,8 @@ public class Movement : MonoBehaviour
         if (playJumpAnimation)
         {
             animator.SetTrigger("jump");
-            tightropeLaunchFX.Play(); // TODO: change this tighrope launch effect to something cooler
+            tightropeChargeFX.Stop();
+            tightropeLaunchFX.Play();
         }
     }
 
@@ -384,10 +398,12 @@ public class Movement : MonoBehaviour
 
     private void WallSlide()
     {
-        if (wallSlideCooldownTimer > 0) {
+        if (wallSlideCooldownTimer > 0)
+        {
             wallSlideCooldownTimer -= Time.deltaTime;
             if (currentState == STATE.WallSliding) currentState = STATE.Falling;
-        } else
+        }
+        else
         {
             if (IsWallSliding() && currentState != STATE.Grounded)
             {
@@ -400,7 +416,7 @@ public class Movement : MonoBehaviour
                 currentState = STATE.Falling;
             }
         }
-        
+
     }
 
     private void groundCheck()
@@ -449,6 +465,18 @@ public class Movement : MonoBehaviour
     public void playDeathFX()
     {
         deathFX.Play();
+    }
+
+    public void playTightropeChargeFX(float particleSpeed)
+    {
+        var tightropeMain = tightropeChargeFX.main;
+        var tightropeEm = tightropeChargeFX.emission;
+
+        // Customize the speed based on boost phase
+        tightropeMain.startSpeed = particleSpeed;
+        tightropeEm.rateOverTime = particleSpeed;
+
+        tightropeChargeFX.Play();
     }
 
     private void OnDrawGizmosSelected()
