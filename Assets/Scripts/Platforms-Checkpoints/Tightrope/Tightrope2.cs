@@ -83,6 +83,12 @@ public class Tightrope2 : MonoBehaviour
     [SerializeField] public float medBoostChargeFxSpeed = 40f;
     [SerializeField] public float maxBoostChargeFxSpeed = 60f;
     [SerializeField] public float currChargeFxSpeed = 0f;
+
+    [Header("Wait for Jump Re-Enable")]
+    [SerializeField] public float minBoostWaitTime = .3f;
+    [SerializeField] public float medBoostWaitTime = .5f;
+    [SerializeField] public float maxBoostWaitTime = 1f;
+    [SerializeField] public float currWaitTime = 0f;
     private const int FlashKeyCount = 8;
     private readonly GradientColorKey[] flashColorKeys = new GradientColorKey[FlashKeyCount];
     private readonly GradientAlphaKey[] flashAlphaKeys = new GradientAlphaKey[FlashKeyCount];
@@ -123,6 +129,7 @@ public class Tightrope2 : MonoBehaviour
         if (tightropeTimer > 0f && _moveAction.ReadValue<Vector2>().y >= 0f)
             Boost();
     }
+
     // Keep the deforming collider in sync with the physics simulation.
     void FixedUpdate()
     {
@@ -145,6 +152,7 @@ public class Tightrope2 : MonoBehaviour
             ropeRenderer.colorGradient = minBoostGradient;
             currFlashSpeed = minBoostFlashSpeed;
             playerMovement.playTightropeChargeFX(minBoostChargeFxSpeed);
+            currWaitTime = minBoostWaitTime;
         }
         else if (tightropeTimer > timeBetweenPhases && tightropeTimer < timeBetweenPhases * 2)
         {
@@ -154,6 +162,7 @@ public class Tightrope2 : MonoBehaviour
             ropeRenderer.colorGradient = medBoostGradient;
             currFlashSpeed = medBoostFlashSpeed;
             playerMovement.playTightropeChargeFX(medBoostChargeFxSpeed);
+            currWaitTime = medBoostWaitTime;
         }
         else if (tightropeTimer > timeBetweenPhases * 2)
         {
@@ -163,6 +172,7 @@ public class Tightrope2 : MonoBehaviour
             ropeRenderer.colorGradient = maxBoostGradient;
             currFlashSpeed = maxBoostFlashSpeed;
             playerMovement.playTightropeChargeFX(maxBoostChargeFxSpeed);
+            currWaitTime = maxBoostWaitTime;
         }
     }
 
@@ -219,6 +229,8 @@ public class Tightrope2 : MonoBehaviour
             }
 
             position.y -= downwardAmount;
+
+            // Deform collider with rope
             if (ropeRenderer != null)
             {
                 ropeRenderer.SetPosition(i, position);
@@ -243,7 +255,7 @@ public class Tightrope2 : MonoBehaviour
 
             if (_moveAction.ReadValue<Vector2>().y < 0f)
             {
-                //todo: Disable other inputs somewhere here
+                // Disable jumps to prevent player from keeping boost even off the tightrope
                 _jumpAction.Disable();
                 tightropeTimer += Time.fixedDeltaTime;
             }
@@ -291,28 +303,38 @@ public class Tightrope2 : MonoBehaviour
                 Physics2D.IgnoreCollision(playerCollider, ropeCollider, false);
     }
 
+    private IEnumerator ReEnableJumpAfterTime(float waitTime)
+    {
+        // Prevent premature jumps from cutting off the tightrope boost midway
+        yield return new WaitForSecondsRealtime(waitTime);
+        _jumpAction.Enable();
+        currWaitTime = 0f;
+    }
+
     private void ResetRope()
     {
         playerOnRope = false;
-        _jumpAction.Enable();
         state = RopeState.Idle;
         tightropeTimer = 0f;
         playerSag = 0.2f;
         ropeRenderer.colorGradient = notReadyGradient;
         currFlashSpeed = 0;
         flashOffset = 0f;
+        StartCoroutine(ReEnableJumpAfterTime(currWaitTime));
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Prevent players from keeping the boost even when off the tightrope
             ResetRope();
         }
     }
 
     private void tightropeFlash()
     {
+        // Flash the tighrope depending based on state
         if (state == RopeState.Idle)
             return;
 

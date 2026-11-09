@@ -197,6 +197,10 @@ MonoBehaviour:
   medBoostChargeFxSpeed: 35
   maxBoostChargeFxSpeed: 50
   currChargeFxSpeed: 0
+  minBoostWaitTime: 0.3
+  medBoostWaitTime: 0.5
+  maxBoostWaitTime: 0.8
+  currWaitTime: 0
 --- !u!61 &7591278235065117622
 BoxCollider2D:
   m_ObjectHideFlags: 0
