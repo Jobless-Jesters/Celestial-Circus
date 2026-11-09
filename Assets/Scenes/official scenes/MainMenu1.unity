@@ -579,6 +579,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 272207820343523559, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3833613755990313757, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -667,7 +671,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 272207820343523559, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1641,6 +1646,14 @@ PrefabInstance:
     - target: {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644781942415118778, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 170dafbf4ddd34ecab3d6b89770d735a, type: 2}
+    - target: {fileID: 1644781942415118778, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1896955182663176089, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -3645,7 +3658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repeatable: 0
-  dialogueCSV: {fileID: 4900000, guid: b6e64ffc68423924cb82fd8f2f45dc41, type: 3}
+  dialogueCSV: {fileID: 4900000, guid: 756a372ee22917b4ba446f251f57d5ab, type: 3}
   conditions:
   - flagID: intro1_done
     expectedValue: 0

@@ -135,9 +135,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<font="Cinzel-VariableFont_wght SDF"><color="white"><b><i><sup>Laughs</i></sup></font></b></color>
-    How <mark=#73710680>horrible</mark>! It truly is almost enough to make <b>me</b>
-    weep.
+  m_text: '<font="Cinzel-Regular SDF"><color="white"><b><i><sup>Laughs</i></sup></font></b></color>
+    <font="Metamorphous-Regular SDF">How <mark=#73710680>horrible</mark>! It truly
+    is almost enough to make <b>me</b> weep.</font>
 
 
 '
