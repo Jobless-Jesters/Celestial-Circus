@@ -471,11 +471,9 @@ public class Movement : MonoBehaviour
 
     public void playTightropeChargeFX(float particleSpeed)
     {
-        var tightropeMain = tightropeChargeFX.main;
         var tightropeEm = tightropeChargeFX.emission;
 
-        // Customize the speed based on boost phase
-        tightropeMain.startSpeed = particleSpeed;
+        // Customize the speed (fudged using rate over time) based on boost phase
         tightropeEm.rateOverTime = particleSpeed;
 
         tightropeChargeFX.Play();
