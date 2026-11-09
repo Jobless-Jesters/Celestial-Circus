@@ -135,10 +135,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: temp text with showing off both portaits.
+  m_text: '<font="Cinzel-VariableFont_wght SDF"><color="white"><b><i><sup>Laughs</i></sup></font></b></color>
+    How <mark=#73710680>horrible</mark>! It truly is almost enough to make <b>me</b>
+    weep.
+
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
-  m_sharedMaterial: {fileID: 6975985051645742393, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a1256c24289284ebe97bb939a3eb0adb, type: 2}
+  m_sharedMaterial: {fileID: -773808564388581165, guid: a1256c24289284ebe97bb939a3eb0adb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1191,8 +1196,6 @@ MonoBehaviour:
       m_Calls: []
   textbox: {fileID: 8787959325407815265}
   portraits: {fileID: 1340742186145307250}
-  comedyFont: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
-  tragedyFont: {fileID: 11400000, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
 --- !u!1 &9060854134392236406
 GameObject:
   m_ObjectHideFlags: 0

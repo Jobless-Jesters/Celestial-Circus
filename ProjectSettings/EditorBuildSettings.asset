@@ -24,13 +24,13 @@ EditorBuildSettings:
     path: Assets/Scenes/ComedyLevel.unity
     guid: 4ad2f7a33e7c9c340b6b0b6dd6ab58e8
   - enabled: 1
-    path: Assets/scenes (main)/MainMenu1.unity
+    path: Assets/Scenes/official scenes/MainMenu1.unity
     guid: c1dc0277bb0d7d14095792a8932c3947
   - enabled: 1
     path: Assets/Scenes/ComedyLevel1.unity
     guid: 94be0314b8278ae46a349fc06b1b4845
   - enabled: 1
-    path: Assets/scenes (main)/TragedyLevel1.unity
+    path: Assets/Scenes/official scenes/TragedyLevel1.unity
     guid: f3d772a9f1772bc4ea3f777350f61d30
   - enabled: 0
     path: Assets/Scenes/MainMenu.unity
@@ -45,21 +45,21 @@ EditorBuildSettings:
     path: Assets/dialogue system/TEMP_scenes/TragedyLevel2.unity
     guid: 87b217cb2c58ba24db715a5d8b0ff490
   - enabled: 1
-    path: Assets/scenes (main)/ComedyLevelSketch.unity
+    path: Assets/Scenes/official scenes/ComedyLevelSketch.unity
     guid: b750b50c39fc6b94ca2bbca58f1cecd3
   - enabled: 1
-    path: Assets/scenes (main)/EndMenu.unity
+    path: Assets/Scenes/official scenes/EndMenu.unity
     guid: 36dd76a7c3d51484d8ddb60795a842ef
   - enabled: 1
-    path: Assets/Scenes/EasyComedy.unity
+    path: Assets/Scenes/easy or hard/EasyComedy.unity
     guid: 0e041f1f47cc88b42a6577392e23d9b7
   - enabled: 1
-    path: Assets/Scenes/EasyTragedy.unity
+    path: Assets/Scenes/easy or hard/EasyTragedy.unity
     guid: c89f6b537568ca547adf2338120bb070
   - enabled: 1
-    path: Assets/Scenes/HardComedy.unity
+    path: Assets/Scenes/easy or hard/HardComedy.unity
     guid: b7acb77969ac74b46a9600942eafbbf9
   - enabled: 1
-    path: Assets/Scenes/HardTragedy.unity
+    path: Assets/Scenes/easy or hard/HardTragedy.unity
     guid: f6c852caa7998df45a670a01ada126b8
   m_configObjects: {}
