@@ -199,7 +199,8 @@ public class Movement : MonoBehaviour
             Mathf.Clamp(newVelocity.x, -maxSpeed, maxSpeed);
             // Says "right", but _horizontalInput flips the direction left if player presses Left
             _playerBody.velocity = newVelocity;
-        } else
+        }
+        else
         {
             _playerBody.velocity = new Vector2(baseVelocity, _playerBody.velocity.y);
         }
@@ -431,6 +432,7 @@ public class Movement : MonoBehaviour
                 currentState = STATE.Grounded;  // fixes animator issues
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
+                dustFX.Play();
             }
         }
         else
@@ -469,11 +471,9 @@ public class Movement : MonoBehaviour
 
     public void playTightropeChargeFX(float particleSpeed)
     {
-        var tightropeMain = tightropeChargeFX.main;
         var tightropeEm = tightropeChargeFX.emission;
 
-        // Customize the speed based on boost phase
-        tightropeMain.startSpeed = particleSpeed;
+        // Customize the speed (fudged using rate over time) based on boost phase
         tightropeEm.rateOverTime = particleSpeed;
 
         tightropeChargeFX.Play();
