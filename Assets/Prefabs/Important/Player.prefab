@@ -14549,7 +14549,7 @@ Transform:
   m_GameObject: {fileID: 6505564795102480500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23, z: -10.3}
+  m_LocalPosition: {x: 0, y: 0, z: -10.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14808,15 +14808,15 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.4
+      minMaxState: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 1
+          time: 0.002292633
+          value: 0.72307587
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14825,7 +14825,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.2307663
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14861,7 +14861,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -14914,7 +14914,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15133,7 +15133,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.27
+      scalar: -1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -16009,7 +16009,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -2100966360, guid: c6e61ae778d46cc4a9162d276af19d17, type: 3}
+    - sprite: {fileID: 732477820, guid: c6e61ae778d46cc4a9162d276af19d17, type: 3}
+    - sprite: {fileID: -705900332, guid: c6e61ae778d46cc4a9162d276af19d17, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -19531,7 +19533,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30532d5157aad2b4889dc68b4eb7d775, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
