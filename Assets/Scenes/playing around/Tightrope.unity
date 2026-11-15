@@ -2715,7 +2715,7 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &1315667090
+--- !u!21 &1353518372
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -2964,7 +2964,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1569891599 stripped
@@ -3059,7 +3059,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 163.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1624180348
@@ -3849,7 +3849,7 @@ PrefabInstance:
     - target: {fileID: 9189410093632800293, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1315667090}
+      objectReference: {fileID: 1353518372}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
