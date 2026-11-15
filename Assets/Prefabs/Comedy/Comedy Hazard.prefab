@@ -4797,7 +4797,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4934,7 +4934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56494734a06e3d74dabc607f97fa2405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 2
+  movementType: 0
   endPoint: {x: -1.4128475, y: 13.157154, z: 0}
   cycleTime: 7
   arcDirection: 0
@@ -4982,22 +4982,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 6.928219, y: -3.6654272}
+    - - {x: 6.1699104, y: -3.4307132}
       - {x: 3.808735, y: -0.8822174}
       - {x: 3.651991, y: 0.77212334}
-      - {x: 6.0962963, y: 3.751132}
+      - {x: 5.337988, y: 3.1733732}
       - {x: 2.4929695, y: 2.2716122}
       - {x: 1.3563671, y: 3.150443}
-      - {x: 0.21173096, y: 7.557475}
+      - {x: 0.3214845, y: 6.9648056}
       - {x: -0.3674488, y: 3.18857}
       - {x: -1.7344589, y: 2.3542519}
-      - {x: -5.314822, y: 3.33}
+      - {x: -4.5904484, y: 3.000739}
       - {x: -2.631031, y: 0.5055704}
       - {x: -2.582779, y: -1.104167}
-      - {x: -5.695959, y: -3.8741589}
+      - {x: -5.1910925, y: -3.500998}
       - {x: -2.0649033, y: -2.5770478}
       - {x: -0.6748276, y: -3.9320922}
-      - {x: 0.62784314, y: -9.335211}
+      - {x: 0.5400403, y: -8.12792}
       - {x: 1.4712181, y: -3.6797395}
       - {x: 3.2793522, y: -2.553956}
   m_UseDelaunayMesh: 0
@@ -9817,7 +9817,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029934921
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
