@@ -19533,7 +19533,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 30532d5157aad2b4889dc68b4eb7d775, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19592,7 +19592,7 @@ MonoBehaviour:
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2
   wallSlideSpeed: 2
-  wallJumpPower: {x: 30, y: 30}
+  wallJumpPower: {x: 30, y: 45}
   wallJumpLockTime: 0.2
   wallSlideCooldown: 0.25
   animator: {fileID: 8192205558385958770}
