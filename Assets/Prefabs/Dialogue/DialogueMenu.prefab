@@ -597,7 +597,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3737608415865236662, guid: 47005e0bfd5c7ee44823f6a9ca26e1af, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5481327062218301004
 MonoBehaviour:
   m_ObjectHideFlags: 0

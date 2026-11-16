@@ -55,7 +55,7 @@ namespace Narrative
         /// </summary>
         private void CheckInput()
         {
-            //Input for advancing textbox
+            // Input for advancing textbox
             // Cannot advance if game is paused
             // Clicks on the letterbox bars don't count
             bool clicked = Input.GetMouseButtonDown(0) && AspectRatioEnforcer.IsPointerInGameView(Input.mousePosition);
@@ -86,8 +86,28 @@ namespace Narrative
                 if (isEndOfText())
                 {
                     advanceArrow.SetVisible(true);
+                    // trying to auto trigger dialogue
+                    // only when in endMenu
+                    // and during clown speaking
+                    // and check to make sure didn't pause at this exact moment
+                    if(GameController.Instance.getCurrentSceneName() == "EndMenu" 
+                    && nameLabel.text == "Clown" 
+                    && GameController.Instance.getIsPaused() == false)
+                    {
+                        StartCoroutine(AutoPlay());
+                    }
                 }
             }
+        }
+
+        private IEnumerator AutoPlay()
+        {
+            Debug.Log("AutoPlay Coroutine started");
+            // Wait specfied time for curtain open animation to finish
+            yield return new WaitForSecondsRealtime(2.8f);
+
+            Debug.Log("AutoPlay Coroutine ended");
+            AdvanceLine(); // advance line
         }
 
         /// <summary>
