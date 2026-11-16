@@ -45,6 +45,10 @@ public class Movement : MonoBehaviour
     [SerializeField] protected Vector2 wallJumpPower = new Vector2(30f, 45f);
     [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to show player facing opposite direction of wall
     [SerializeField] private float wallSlideCooldown = 0.25f; // Avoid infinite wall climbing
+
+    [Header("Edge Snap Settings")]
+    [SerializeField] private float edgeSnapDistance = 0.3f; // Max sideways nudge onto a platform edge. 0 turns snapping off
+
     [Header("Animation")]
     public Animator animator;
     //Temporary colours for death animation
@@ -166,6 +170,7 @@ public class Movement : MonoBehaviour
         TwirlSFXLoop();
         Jump();
         Move();
+        EdgeSnap(); // After Jump so a jump this tick (upward velocity) never snaps
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
@@ -459,6 +464,42 @@ public class Movement : MonoBehaviour
             }
             // Avoid repeatedly assigning the same value to a variable every tick
             coyoteTimeCounter -= Time.fixedDeltaTime; // Update every tick
+        }
+    }
+
+    // When the player is about to fall just past the edge of a platform they are steering towards,
+    // nudge them sideways so they land on it instead.
+    private void EdgeSnap()
+    {
+        bool isFallingInAir = currentState == STATE.Falling && _playerBody.velocity.y < 0f;
+        if (edgeSnapDistance <= 0f || !isFallingInAir || _horizontalInput == 0f)
+        {
+            return;
+        }
+
+        Vector2 snapOffset = Vector2.right * Mathf.Sign(_horizontalInput) * edgeSnapDistance;
+        Vector2 boxCenter = _playerCollider.bounds.center;
+        Vector2 boxSize = _playerCollider.bounds.size;
+        // Look two physics steps ahead so a fast fall can't skip past the platform top unnoticed
+        float lookAheadDistance = -_playerBody.velocity.y * Time.fixedDeltaTime * 2f;
+
+        // The player is already going to land on something, so no help is needed
+        if (Physics2D.BoxCast(boxCenter, boxSize, 0f, Vector2.down, lookAheadDistance, groundLayer))
+        {
+            return;
+        }
+
+        // Never snap through a wall or into the side of a platform (this also covers the destination)
+        if (Physics2D.BoxCast(boxCenter, boxSize, 0f, snapOffset, edgeSnapDistance, groundLayer | wallLayer))
+        {
+            return;
+        }
+
+        // Only snap if a platform is about to be under the player once nudged. Since this only looks a
+        // short way down, it ignores platforms far below, and it never sees platforms above the player.
+        if (Physics2D.BoxCast(boxCenter + snapOffset, boxSize, 0f, Vector2.down, lookAheadDistance, groundLayer))
+        {
+            _playerBody.position += snapOffset;
         }
     }
 
