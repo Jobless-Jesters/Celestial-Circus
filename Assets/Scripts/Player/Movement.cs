@@ -61,9 +61,11 @@ public class Movement : MonoBehaviour
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
     [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] public Vector2 groundCheckOffset = new Vector2(0f, 0f);
     [SerializeField] public LayerMask groundLayer;
     [SerializeField] public Transform wallCheckPos;
-    [SerializeField] public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] public Vector2 wallCheckSize = new Vector2(0.2f, 0.2f);
+    [SerializeField] public Vector2 wallCheckOffset = new Vector2(0f, 0f);
     [SerializeField] public LayerMask wallLayer;
     // Player States
     public enum STATE { Grounded, Falling, WallSliding }
@@ -409,7 +411,8 @@ public class Movement : MonoBehaviour
 
     private bool IsWallSliding()
     {
-        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, wallLayer); // Check if colliding with wall
+        Vector2 offset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
+        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3) offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
     }
 
     private void WallSlide()
@@ -438,7 +441,8 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
+        Vector2 offset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
+        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3) offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
@@ -500,11 +504,13 @@ public class Movement : MonoBehaviour
         // You can turn this off by deselcting Gizmos in the Scene view
 
         // Ground check gizmo
+        Vector2 groundOffset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3) groundOffset, groundCheckSize);
 
         // Wall check gizmo
+        Vector2 wallOffset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
+        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3) wallOffset, wallCheckSize);
     }
 }
