@@ -104,7 +104,7 @@ namespace Narrative
         {
             Debug.Log("AutoPlay Coroutine started");
             // Wait specfied time for curtain open animation to finish
-            yield return new WaitForSecondsRealtime(2.8f);
+            yield return new WaitForSecondsRealtime(1.0f);
 
             Debug.Log("AutoPlay Coroutine ended");
             AdvanceLine(); // advance line

@@ -862,6 +862,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448111435}
   m_CullTransparentMesh: 1
+--- !u!1 &530490822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 530490824}
+  - component: {fileID: 530490823}
+  m_Layer: 0
+  m_Name: end_pt3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &530490823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530490822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatable: 0
+  dialogueCSV: {fileID: 4900000, guid: 7bf6b144e94dcc34c8e238150effe6ad, type: 3}
+  conditions: []
+  writeToFlagId: end_done
+  writeToFlagValue: 1
+  onFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1661283828}
+        m_TargetAssemblyTypeName: Narrative.DialogueTrigger, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &530490824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530490822}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721473354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &566150836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566150838}
+  - component: {fileID: 566150837}
+  m_Layer: 0
+  m_Name: end_pt2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &566150837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566150836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatable: 0
+  dialogueCSV: {fileID: 4900000, guid: 23ab9f43b63faf440b001f10d163623a, type: 3}
+  conditions: []
+  writeToFlagId: end_done
+  writeToFlagValue: 1
+  onFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 530490823}
+        m_TargetAssemblyTypeName: Narrative.DialogueTrigger, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &566150838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566150836}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721473354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &588653777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &721473354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8656012496883773265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+  m_PrefabInstance: {fileID: 1455223774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &938600261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,12 +2505,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 53651987}
+      objectReference: {fileID: 566150837}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Narrative.DialogueTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317605181486624424, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
@@ -2409,7 +2558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509969925868503270, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
-      value: EndDialogue
+      value: end_pt1
       objectReference: {fileID: 0}
     - target: {fileID: 8670079341587678605, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_sharedMaterial
@@ -2428,6 +2577,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2647234840029614896, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1801626736}
+    - targetCorrespondingSourceObject: {fileID: 8656012496883773265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 566150838}
+    - targetCorrespondingSourceObject: {fileID: 8656012496883773265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 530490824}
+    - targetCorrespondingSourceObject: {fileID: 8656012496883773265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1661283829}
+    - targetCorrespondingSourceObject: {fileID: 8656012496883773265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1875681424}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
 --- !u!224 &1455223775 stripped
@@ -2782,6 +2943,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
+--- !u!1 &1661283827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661283829}
+  - component: {fileID: 1661283828}
+  m_Layer: 0
+  m_Name: end_pt4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661283828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661283827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatable: 0
+  dialogueCSV: {fileID: 4900000, guid: 43225e18becb5a5438b2e3da0bc22b77, type: 3}
+  conditions: []
+  writeToFlagId: end_done
+  writeToFlagValue: 1
+  onFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1875681423}
+        m_TargetAssemblyTypeName: Narrative.DialogueTrigger, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1661283829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661283827}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721473354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672882686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,7 +3395,7 @@ GameObject:
   - component: {fileID: 1801626738}
   - component: {fileID: 1801626737}
   m_Layer: 0
-  m_Name: clown (1)
+  m_Name: clown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3249,6 +3474,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801626735}
   m_CullTransparentMesh: 1
+--- !u!1 &1875681422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875681424}
+  - component: {fileID: 1875681423}
+  m_Layer: 0
+  m_Name: end_pt5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1875681423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875681422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0171f21dd0affbe4ba028ad1389a6f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatable: 0
+  dialogueCSV: {fileID: 4900000, guid: d170a960343ffdb45ab8bdf5d456fae8, type: 3}
+  conditions: []
+  writeToFlagId: end_done
+  writeToFlagValue: 1
+  onFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 53651987}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2078119605}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1875681424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875681422}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721473354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901741333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,6 +3671,7 @@ GameObject:
   - component: {fileID: 2116706409}
   - component: {fileID: 2116706408}
   - component: {fileID: 2116706407}
+  - component: {fileID: 2116706410}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3451,6 +3753,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2116706410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116706406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &2146411549
 GameObject:
   m_ObjectHideFlags: 0
