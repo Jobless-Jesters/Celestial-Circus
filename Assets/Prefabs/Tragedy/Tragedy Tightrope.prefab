@@ -185,7 +185,7 @@ MonoBehaviour:
   landingImpulse: 2.5
   minBoostVelocity: 90
   medBoostVelocity: 120
-  maxBoostVelocity: 180
+  maxBoostVelocity: 150
   reboundKick: 7
   tightropeTimer: 0
   timeBetweenPhases: 0.8
