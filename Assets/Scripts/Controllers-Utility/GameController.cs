@@ -69,36 +69,36 @@ public class GameController : MonoBehaviour
     public void LoadSceneByName(string sceneName)
     {
         // Delete the following two lines and uncomment the rest for level swapping
-        // Keeping the old code here for compatibility 
-        SceneManager.LoadScene(sceneName); // Takes the scene name
-        currentSceneName = sceneName; // Assumes load scene always works (bad code)
-        // // Change scenes normally if we are heading to the main/end menu
-        // if (sceneName == "MainMenu1" || sceneName == "EndMenu")
-        // {
-        //     Debug.Log("Inside first IF in LoadSceneNameByName");
-        //     SceneManager.LoadScene(sceneName); // Takes the scene name
-        //     currentSceneName = sceneName; // Assumes load scene always works (bad code)
-        //     return;
-        // }
+        // // Keeping the old code here for compatibility 
+        // SceneManager.LoadScene(sceneName); // Takes the scene name
+        // currentSceneName = sceneName; // Assumes load scene always works (bad code)
+        // Change scenes normally if we are heading to the main/end menu
+        if (sceneName == "MainMenu1" || sceneName == "EndMenu")
+        {
+            Debug.Log("Inside first IF in LoadSceneNameByName");
+            SceneManager.LoadScene(sceneName); // Takes the scene name
+            currentSceneName = sceneName; // Assumes load scene always works (bad code)
+            return;
+        }
 
-        // //ASSUMES EACH LEVEL'S SCENE NAME STARTS WITH EITHER "Hard" OR "Easy"
-        // // Go into a level only if we are in the main/end menu
-        // if (currentSceneName == "MainMenu1" || currentSceneName == "EndMenu")
-        // {
-        //     if (getHasComedyMask() == false && getHasTragedyMask() == false)
-        //     {
-        //         SceneManager.LoadScene("Easy" + sceneName); // Takes the scene name
-        //         currentSceneName = sceneName; // Assumes load scene always works (bad code)
-        //                                       // replace with try?
-        //     }
-        //     else
-        //     {
-        //         SceneManager.LoadScene("Hard" + sceneName); // Takes the scene name
-        //         currentSceneName = sceneName; // Assumes load scene always works (bad code)
-        //                                       // replace with try?
-        //     }
-        //     return;
-        // }
+        //ASSUMES EACH LEVEL'S SCENE NAME STARTS WITH EITHER "Hard" OR "Easy"
+        // Go into a level only if we are in the main/end menu
+        if (currentSceneName == "MainMenu1" || currentSceneName == "EndMenu")
+        {
+            if (getHasComedyMask() == false && getHasTragedyMask() == false)
+            {
+                SceneManager.LoadScene("Easy" + sceneName); // Takes the scene name
+                currentSceneName = sceneName; // Assumes load scene always works (bad code)
+                                              // replace with try?
+            }
+            else
+            {
+                SceneManager.LoadScene("Hard" + sceneName); // Takes the scene name
+                currentSceneName = sceneName; // Assumes load scene always works (bad code)
+                                              // replace with try?
+            }
+            return;
+        }
 
     }
 
