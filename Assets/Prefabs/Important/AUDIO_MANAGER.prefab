@@ -837,6 +837,7 @@ MonoBehaviour:
   drumbounceSFX: {fileID: 8300000, guid: a18d4ee020c6c4e89af51f5a955ac72e, type: 3}
   drumwalkSFX: {fileID: 8300000, guid: ec0d2ad19b3764e3e81f85bc0e45306c, type: 3}
   tightropewalkSFX: {fileID: 8300000, guid: 03eda84a9335243418574e290c45b94b, type: 3}
+  tightropestretchSFX: {fileID: 8300000, guid: e5fb356a2d0794fa0afcd6bee5f086d4, type: 3}
   tightropeboostSFX: {fileID: 8300000, guid: 27312282fe0a84ced92daef976d439cf, type: 3}
   jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 8300000, guid: 8355107a8958a4d5cb8cbc39783aa4b1, type: 3}

@@ -248,20 +248,34 @@ public class Tightrope2 : MonoBehaviour
         }
     }
 
+    private bool hasPlayedStretchSFX = false;
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             playerOnRope = true;
-
+    
             if (_moveAction.ReadValue<Vector2>().y < 0f)
             {
-                // Disable jumps to prevent player from keeping boost even off the tightrope
                 _jumpAction.Disable();
                 tightropeTimer += Time.fixedDeltaTime;
+    
+                // Only play once when pressing down starts
+                if (!hasPlayedStretchSFX)
+                {
+                    AudioController.Instance.PlayTightropeStretchSFX();
+                    hasPlayedStretchSFX = true;
+                }
+            }
+            else
+            {
+                // Reset if they stop holding down while still on the rope
+                hasPlayedStretchSFX = false;
             }
         }
     }
+    
 
     private void Boost()
     {
@@ -333,6 +347,7 @@ public class Tightrope2 : MonoBehaviour
         {
             // Prevent players from keeping the boost even when off the tightrope
             ResetRope();
+            hasPlayedStretchSFX = false;
         }
     }
 

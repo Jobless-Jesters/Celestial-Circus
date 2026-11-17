@@ -44,6 +44,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] public AudioClip drumbounceSFX;
     [SerializeField] public AudioClip drumwalkSFX;
     [SerializeField] public AudioClip tightropewalkSFX;
+    [SerializeField] public AudioClip tightropestretchSFX;
     [SerializeField] public AudioClip tightropeboostSFX;
     [SerializeField] public AudioClip jumpSFX;
     [SerializeField] public AudioClip twirlSFX;
@@ -178,6 +179,10 @@ public class AudioController : MonoBehaviour
     public void PlayJumpSFX()
     {
         subsfxSource.PlayOneShot(jumpSFX);
+    }
+    public void PlayTightropeStretchSFX()
+    {
+        subsfxSource.PlayOneShot(tightropestretchSFX);
     }
     public void PlaySlideSFX()
     {
