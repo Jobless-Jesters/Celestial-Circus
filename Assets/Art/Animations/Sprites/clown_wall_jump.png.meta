@@ -104,8 +104,8 @@ TextureImporter:
         y: 2000
         width: 1259
         height: 1479
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,8 +125,8 @@ TextureImporter:
         y: 2000
         width: 1152
         height: 1563
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +147,7 @@ TextureImporter:
         width: 1178
         height: 1204
       alignment: 9
-      pivot: {x: 0.7, y: 0}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,10 +165,10 @@ TextureImporter:
         serializedVersion: 2
         x: 808
         y: 407
-        width: 1092
+        width: 1186
         height: 1396
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,9 +205,9 @@ TextureImporter:
       name: clown_wall_jump_5
       rect:
         serializedVersion: 2
-        x: 4117
+        x: 4018
         y: 278
-        width: 1555
+        width: 1561
         height: 1667
       alignment: 7
       pivot: {x: 0.5, y: 0}
