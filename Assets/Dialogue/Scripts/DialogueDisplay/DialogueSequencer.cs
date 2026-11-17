@@ -34,8 +34,6 @@ namespace Narrative
         //Sub-Object references
         [SerializeField] private DialogueBox textbox;
         [SerializeField] private DialoguePortraits portraits;
-        [SerializeField] private TMPro.TMP_FontAsset comedyFont;
-        [SerializeField] private TMPro.TMP_FontAsset tragedyFont;
 
         //Object properties
         private DialogueSequence currentDialog;  //set when we are playing
@@ -101,18 +99,6 @@ namespace Narrative
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
-
-                // change of font controlled by if statement
-                // ideal world this would be become part of the csv file
-                // for now this base set works fine 
-                if (name == "Comedy") 
-                {
-                    textbox.setFont(comedyFont);
-                }
-                else 
-                {
-                    textbox.setFont(tragedyFont);
-                }
             }
 
             //Apply to left portrait
