@@ -92,6 +92,7 @@ namespace Narrative
                     // and check to make sure didn't pause at this exact moment
                     if(GameController.Instance.getCurrentSceneName() == "EndMenu" 
                     && nameLabel.text == "Clown" 
+                    && textLabel.text != "…"
                     && GameController.Instance.getIsPaused() == false)
                     {
                         StartCoroutine(AutoPlay());
@@ -104,7 +105,7 @@ namespace Narrative
         {
             Debug.Log("AutoPlay Coroutine started");
             // Wait specfied time for curtain open animation to finish
-            yield return new WaitForSecondsRealtime(1.0f);
+            yield return new WaitForSecondsRealtime(0.8f);
 
             Debug.Log("AutoPlay Coroutine ended");
             AdvanceLine(); // advance line
