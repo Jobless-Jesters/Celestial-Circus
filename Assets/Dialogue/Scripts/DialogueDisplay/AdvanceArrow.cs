@@ -25,5 +25,10 @@ namespace Narrative
         {
             image.enabled = isVisible;
         }
+
+        public bool getVisible()
+        {
+            return image.enabled;
+        }
     }
 }
