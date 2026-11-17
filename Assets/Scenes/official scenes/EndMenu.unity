@@ -1235,17 +1235,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588653777}
   m_CullTransparentMesh: 1
---- !u!114 &605990576 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6268091881861555059, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-  m_PrefabInstance: {fileID: 1455223774}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7635567d13e9047b6a1a8c88c8b0c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &658784339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
@@ -2517,14 +2506,6 @@ PrefabInstance:
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1644781942415118778, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -7247438099097575819, guid: b34e5bf7c5ca2c44b927fc4b80e8ad40, type: 2}
-    - target: {fileID: 1644781942415118778, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1896955182663176089, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -2772,14 +2753,6 @@ PrefabInstance:
     - target: {fileID: 8509969925868503270, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_Name
       value: end_pt1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8670079341587678605, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 6975985051645742393, guid: b985bff5634cdcf44a4dbce74c9fe80c, type: 2}
-    - target: {fileID: 8670079341587678605, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060854134392236406, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_IsActive
@@ -3635,7 +3608,6 @@ GameObject:
   - component: {fileID: 1801626736}
   - component: {fileID: 1801626739}
   - component: {fileID: 1801626738}
-  - component: {fileID: 1801626737}
   m_Layer: 0
   m_Name: clown
   m_TagString: Untagged
@@ -3662,22 +3634,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1007, y: 450}
   m_SizeDelta: {x: 399, y: 486}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1801626737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801626735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c17f22f81c5bd64c93fca8f0ebc0f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
-  advanceArrow: {fileID: 605990576}
 --- !u!114 &1801626738
 MonoBehaviour:
   m_ObjectHideFlags: 0
