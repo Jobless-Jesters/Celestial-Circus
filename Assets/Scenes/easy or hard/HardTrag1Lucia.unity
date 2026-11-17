@@ -190,6 +190,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &68188222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 334.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (58)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1 &78883144
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 78883144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.756691, y: 294.65, z: -12}
+  m_LocalPosition: {x: 6.039978, y: 7.2907715, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -704,6 +761,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+--- !u!114 &166962543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441764069450374737, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+  m_PrefabInstance: {fileID: 1044049994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &170592077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1108,6 +1176,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
+--- !u!1001 &239332750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 421.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (51)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &253448976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1456727419835882383, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Platform(Two Way) (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.291828
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 472.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257541113270658379, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c2000b6901be44cb492a9abe770f48, type: 3}
 --- !u!1001 &256144105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1477,6 +1659,120 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &314862219
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 455.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (28)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &337351872
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 384.19998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (54)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1 &337539653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +2090,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &393869187
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 433.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (34)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &410218403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1804,11 +2157,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 884195495920579274, guid: 46f25af76c875004eb594fb9724e28b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -992.57
+      value: -944.2
       objectReference: {fileID: 0}
     - target: {fileID: 884195495920579274, guid: 46f25af76c875004eb594fb9724e28b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -513.07
+      value: -227.7
       objectReference: {fileID: 0}
     - target: {fileID: 884195495920579274, guid: 46f25af76c875004eb594fb9724e28b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1846,6 +2199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tragedy Balloon Animal
       objectReference: {fileID: 0}
+    - target: {fileID: 5389022872388041304, guid: 46f25af76c875004eb594fb9724e28b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7408761991663586314, guid: 46f25af76c875004eb594fb9724e28b8, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1882,7 +2239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1233239485976719544, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.677858
+      value: -11.83
       objectReference: {fileID: 0}
     - target: {fileID: 1233239485976719544, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2017,6 +2374,63 @@ Transform:
   - {fileID: 196628797}
   m_Father: {fileID: 988027636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &483800208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (61)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &506125044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2875,6 +3289,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &563558693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 397.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (42)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &564786539
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 359.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (64)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1 &574109504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3959,9 +4487,139 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 2, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 3, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 4, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 5, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 6, y: 69, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 70, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 71, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 72, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 73, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 74, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 75, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 76, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 63
+  - m_RefCount: 76
     m_Data: {fileID: 11400000, guid: 94983bded9900f943b1d3db7ef9108a2, type: 2}
   - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: 5682b499197dbd24aa842d6c2d5cf98d, type: 2}
@@ -3974,7 +4632,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 63
+  - m_RefCount: 76
     m_Data: {fileID: 21300000, guid: 51aa96d87c89af145b75c3b5d3c67dc5, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: 21300000, guid: c67f6faa1c2b3cd4b9829d35b8f6352c, type: 3}
@@ -3987,7 +4645,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 99
+  - m_RefCount: 112
     m_Data:
       e00: 1
       e01: 0
@@ -4006,7 +4664,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 99
+  - m_RefCount: 112
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 4.3e-44, g: 4.3e-44, b: 4.3e-44, a: 4.3e-44}
@@ -4109,6 +4767,18 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 574109508}
     m_ColliderPaths:
+    - - X: 279999968
+        Y: 2800000000
+      - X: 79999992
+        Y: 2800000000
+      - X: 79999992
+        Y: 3080000000
+      - X: 39999996
+        Y: 3080000000
+      - X: 39999996
+        Y: 2760000000
+      - X: 279999968
+        Y: 2760000000
     - - X: 279999968
         Y: 2280000000
       - X: -199999984
@@ -4283,6 +4953,12 @@ CompositeCollider2D:
         Y: -360000000
   m_CompositePaths:
     m_Paths:
+    - - {x: 27.999968, y: 276}
+      - {x: 27.999968, y: 280}
+      - {x: 7.9999995, y: 280.00003}
+      - {x: 7.9999695, y: 308}
+      - {x: 3.9999998, y: 307.99997}
+      - {x: 4.0000286, y: 276}
     - - {x: 27.999968, y: 224}
       - {x: 27.999968, y: 228}
       - {x: -19.999998, y: 227.99997}
@@ -4597,6 +5273,177 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
   m_PrefabInstance: {fileID: 723361024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &630987311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 394.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (43)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &633635176
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 405.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (40)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &637735165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 420.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (36)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &641429593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4745,6 +5592,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0.00000023841858}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &656613728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 444.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (31)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &661724869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4859,6 +5763,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &668185752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 355.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: cycleTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: endPoint.x
+      value: 19.171705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: endPoint.y
+      value: 374.62262
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: movementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (49)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &668291147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5030,49 +6007,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
---- !u!21 &684635669
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/2D_Sprite_Shader
-  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _BlendOp: 0
-    - _DestinationBlend: 1
-    - _EnableExternalAlpha: 0
-    - _SourceBlend: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!114 &716554903 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1441764069450374737, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
@@ -6197,6 +7131,63 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1001 &748625302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 429.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (35)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &750091355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6254,6 +7245,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
+--- !u!1001 &751989138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.065495
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 459.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (27)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &758653709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6867,6 +7915,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
   m_PrefabInstance: {fileID: 882842843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &883119827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 389.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (44)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1 &886594897
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,6 +8215,63 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &926790665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 416.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (37)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &934176848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7587,6 +8749,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
+--- !u!1001 &1044049994
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2039426245}
+    m_Modifications:
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 470.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781347452265062086, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: m_Name
+      value: Checkpoint 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798355459682336813, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: debugIDText
+      value: 
+      objectReference: {fileID: 166962543}
+    - target: {fileID: 7798355459682336813, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      propertyPath: checkpointID
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7259691790150000901, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
 --- !u!1001 &1062534342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7660,6 +8890,177 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &1083015253
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 380.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (53)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1088068732
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 364.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (63)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1094948564
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 388.15997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (55)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!114 &1104831502 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1441764069450374737, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
@@ -7728,6 +9129,136 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+--- !u!1001 &1128443084
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 381.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (45)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1157000195
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 367.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: cycleTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: endPoint.x
+      value: 9.082462
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: endPoint.y
+      value: 379.2444
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212695536775963701, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: movementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (48)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1179772668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7785,6 +9316,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &1184716490
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 452.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (29)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1 &1197241775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8360,102 +9948,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
---- !u!1 &1266705232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1266705233}
-  - component: {fileID: 1266705235}
-  - component: {fileID: 1266705234}
-  m_Layer: 0
-  m_Name: FrontSpotlight (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1266705233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266705232}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 2.39, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9024617032016391145}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1266705234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266705232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12dee38520f09846906fd272d3f0fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blendMode: 4
---- !u!114 &1266705235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266705232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 3
-  m_BlendStyleIndex: 1
-  m_FalloffIntensity: 0.079
-  m_Color: {r: 0, g: 0.08540636, b: 0.4339623, a: 1}
-  m_Intensity: 0.85
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: d9d007704959fe7881b48f68fb3c8304
-  m_LightCookieSprite: {fileID: 0}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 1
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.92
-  m_PointLightOuterRadius: 5.52
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1001 &1293059505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8580,6 +10072,63 @@ PrefabInstance:
     - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
       propertyPath: m_Name
       value: Tragedy Hazard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1304335513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 436.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (33)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8908,6 +10457,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1386119942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
+  m_PrefabInstance: {fileID: 1044049994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1399533476
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 424.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (50)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1399891100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8965,49 +10576,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
---- !u!21 &1406246816
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/2D_Sprite_Shader
-  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _BlendOp: 0
-    - _DestinationBlend: 1
-    - _EnableExternalAlpha: 0
-    - _SourceBlend: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &1423477539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9743,6 +11311,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &1496015386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 350.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (59)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1506978313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9800,6 +11425,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &1507725542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 315.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (62)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1513449701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9873,6 +11555,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1560594630
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 342.56003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (60)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!114 &1569891599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1441764069450374737, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
@@ -10266,7 +12005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781347452265062086, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
       propertyPath: m_Name
-      value: Checkpoint 7 (1)
+      value: Checkpoint 8
       objectReference: {fileID: 0}
     - target: {fileID: 7798355459682336813, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
       propertyPath: debugIDText
@@ -10274,7 +12013,7 @@ PrefabInstance:
       objectReference: {fileID: 1882507971}
     - target: {fileID: 7798355459682336813, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
       propertyPath: checkpointID
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10397,7 +12136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1657917602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10846,6 +12585,106 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf93ce393bbef245bf4abf588ae0fb8, type: 3}
+--- !u!1001 &1703842844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 358.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (47)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!21 &1719006234
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/2D_Sprite_Shader
+  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _BlendOp: 0
+    - _DestinationBlend: 1
+    - _EnableExternalAlpha: 0
+    - _SourceBlend: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1736909858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11866,6 +13705,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &1938088235
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 440.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (32)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1950195033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11974,6 +13870,120 @@ PrefabInstance:
     - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
       propertyPath: m_Name
       value: Tragedy Hazard (21)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1957961418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 409.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (39)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &1962195616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 346.27002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (57)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12198,6 +14208,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 988027636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1988991476
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 428.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (52)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &2002467722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12255,6 +14322,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
+--- !u!1001 &2003162391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 401.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (41)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &2031071233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 374.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (46)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!4 &2031334784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4365188329699894351, guid: e4eb5dc04fd6cf141a363f19b1fc414b, type: 3}
@@ -12361,6 +14542,7 @@ Transform:
   - {fileID: 1215555597}
   - {fileID: 581719414}
   - {fileID: 1216966820}
+  - {fileID: 1386119942}
   m_Father: {fileID: 988027636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2053591415 stripped
@@ -12457,6 +14639,120 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2134773736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 448.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (30)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+--- !u!1001 &2135462580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 412.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142118527167710281, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
+      propertyPath: m_Name
+      value: Tragedy Hazard (38)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
 --- !u!1001 &1900584077211370594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12552,6 +14848,10 @@ PrefabInstance:
     - target: {fileID: 6947185086929218362, guid: c99d1728a8678ed47a2f2ff47df23a7d, type: 3}
       propertyPath: m_Name
       value: TutorialHint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947185086929218362, guid: c99d1728a8678ed47a2f2ff47df23a7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12690,11 +14990,11 @@ PrefabInstance:
       objectReference: {fileID: 987662896}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -979.83
+      value: -953.96
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -245.35
+      value: -541.4
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12802,29 +15102,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 988027636}
     m_Modifications:
-    - target: {fileID: 2723364782879000441, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
-      propertyPath: wallSlideSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4686832276676019805, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
-      propertyPath: m_Intensity
-      value: 0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4686832276676019805, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
-      propertyPath: m_BlendStyleIndex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7332048130589145531, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -979.83
+      value: -953.96
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -245.35
+      value: -541.4
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12861,13 +15149,10 @@ PrefabInstance:
     - target: {fileID: 9189410093632800293, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1406246816}
+      objectReference: {fileID: 1719006234}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1266705233}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
 --- !u!4 &9024617032016391145 stripped
@@ -12995,3 +15280,41 @@ SceneRoots:
   - {fileID: 1950195033}
   - {fileID: 741204470}
   - {fileID: 263098561}
+  - {fileID: 253448976}
+  - {fileID: 751989138}
+  - {fileID: 314862219}
+  - {fileID: 1184716490}
+  - {fileID: 2134773736}
+  - {fileID: 656613728}
+  - {fileID: 1938088235}
+  - {fileID: 1304335513}
+  - {fileID: 393869187}
+  - {fileID: 748625302}
+  - {fileID: 637735165}
+  - {fileID: 926790665}
+  - {fileID: 2135462580}
+  - {fileID: 1399533476}
+  - {fileID: 239332750}
+  - {fileID: 337351872}
+  - {fileID: 1083015253}
+  - {fileID: 1094948564}
+  - {fileID: 1988991476}
+  - {fileID: 1957961418}
+  - {fileID: 633635176}
+  - {fileID: 1496015386}
+  - {fileID: 1962195616}
+  - {fileID: 1560594630}
+  - {fileID: 68188222}
+  - {fileID: 483800208}
+  - {fileID: 1507725542}
+  - {fileID: 2003162391}
+  - {fileID: 563558693}
+  - {fileID: 630987311}
+  - {fileID: 883119827}
+  - {fileID: 1128443084}
+  - {fileID: 2031071233}
+  - {fileID: 1703842844}
+  - {fileID: 1088068732}
+  - {fileID: 564786539}
+  - {fileID: 1157000195}
+  - {fileID: 668185752}
