@@ -170,6 +170,7 @@ public class Movement : MonoBehaviour
         WallSlide();
         _ApplyGravity();
         TwirlSFXLoop();
+        SlideSFXLoop();
         Jump();
         Move();
         EdgeSnap(); // After Jump so a jump this tick (upward velocity) never snaps
@@ -180,6 +181,7 @@ public class Movement : MonoBehaviour
     }
 
     private bool _wasTwirling = false;
+    private bool _wasSliding = false;
 
     private void Move()
     {
@@ -233,6 +235,21 @@ public class Movement : MonoBehaviour
         }
 
         _wasTwirling = isTwirling;
+    }
+    private void SlideSFXLoop()
+    {
+        bool isSliding = IsWallSliding();
+        if (isSliding && !_wasSliding)
+        {
+            AudioController.Instance.PlaySlideSFX();
+        }
+
+        if (!isSliding && _wasSliding)
+        {
+            AudioController.Instance.StopSlideSFX();
+        }
+
+        _wasSliding = isSliding;
     }
 
     private void _ApplyGravity()

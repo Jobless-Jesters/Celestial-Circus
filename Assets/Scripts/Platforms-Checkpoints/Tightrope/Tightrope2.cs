@@ -20,6 +20,7 @@ public class Tightrope2 : MonoBehaviour
     [SerializeField] private Gradient minBoostGradient;
     [SerializeField] private Gradient medBoostGradient;
     [SerializeField] private Gradient maxBoostGradient;
+    [SerializeField] private bool ropeMaterial = true;
     [Header("Rope Shape")]
     // Number of line segments used to draw the rope
     [SerializeField] private int segments = 24;
@@ -273,16 +274,19 @@ public class Tightrope2 : MonoBehaviour
             {
                 // short boost
                 playerMovement.LaunchFromTightrope(minBoostVelocity, true);
+                AudioController.Instance.PlayTightropeBoostSFX();
             }
             else if (state == RopeState.MedBoost)
             {
                 //medium boost
                 playerMovement.LaunchFromTightrope(medBoostVelocity, true);
+                AudioController.Instance.PlayTightropeBoostSFX();
             }
             else if (state == RopeState.MaxBoost)
             {
                 // max boost
                 playerMovement.LaunchFromTightrope(maxBoostVelocity, true);
+                AudioController.Instance.PlayTightropeBoostSFX();
             }
             ResetRope();
         }
@@ -358,4 +362,5 @@ public class Tightrope2 : MonoBehaviour
         flashGradient.mode = source.mode;
         ropeRenderer.colorGradient = flashGradient;
     }
+    
 }

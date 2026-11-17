@@ -129,26 +129,28 @@ public class TwoWayPlatform : MonoBehaviour
 
         droppingThrough = false;
     }
-    // 
+    
+    // Set material for walkSFX
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger entered by: " + other.name);
-    
-        if (!other.CompareTag("Player"))
-            return;
-    
-        Debug.Log("Player detected!");
-    
-        AudioController.Instance.barMaterial = barMaterial;
-    
-        Debug.Log("barMaterial set to: " + AudioController.Instance.barMaterial);
+
+        if (other.attachedRigidbody == null ||
+        !other.attachedRigidbody.CompareTag("Player"))
+    {
+        return;
     }
-    
+
+    AudioController.Instance.barMaterial = barMaterial;
+
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-            return;
-    
-        AudioController.Instance.barMaterial = false;
+    if (other.attachedRigidbody == null ||
+        !other.attachedRigidbody.CompareTag("Player"))
+        return;
+
+    AudioController.Instance.barMaterial = false;
     }
+
 }
