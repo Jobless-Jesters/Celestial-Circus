@@ -355,6 +355,21 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Bounce(float bounceVelocity)
+    {
+        currentState = STATE.Falling;
+        animator.SetBool("isGrounded", false);
+        animator.SetTrigger("jump");
+
+        _playerBody.velocity = new Vector2(_playerBody.velocity.x, bounceVelocity);
+        // Treat a bounce as a normal jump, reset coyote time
+        jumpsRemaining = maxJumps - 1;
+        coyoteTimeCounter = 0f;
+        jumpBufferCounter = 0f;
+
+        dustFX.Play();
+    }
+
     public void LaunchFromTightrope(float launchVelocity, bool playJumpAnimation = true)
     {
         // Force the player into the air
