@@ -3335,6 +3335,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3232772645549404404, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+      propertyPath: hurtSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 73c24187843c642e8b646c80c680eebc, type: 3}
+    - target: {fileID: 3232772645549404404, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+      propertyPath: barwalkSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 797c703750a234848b060e0f9ec3a18e, type: 3}
+    - target: {fileID: 3232772645549404404, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+      propertyPath: menuBGMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b29881ff843040d49871321c28ef571, type: 3}
+    - target: {fileID: 3232772645549404404, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+      propertyPath: drumbounceSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a18d4ee020c6c4e89af51f5a955ac72e, type: 3}
+    - target: {fileID: 3232772645549404404, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
+      propertyPath: tragedyBGMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 700125e8bafaa47c5bb83e743c2fbeb5, type: 3}
     - target: {fileID: 5983826276643433638, guid: 97b0f0500267a7f469fc64d47803b7a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 701.9402

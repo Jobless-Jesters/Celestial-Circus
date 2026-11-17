@@ -819,6 +819,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc424485a57c71f46acbae686d7bccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barMaterial: 0
+  drumMaterial: 0
+  ropeMaterial: 0
   audioMixer: {fileID: 24100000, guid: 47005e0bfd5c7ee44823f6a9ca26e1af, type: 2}
   masterSource: {fileID: 2489767800608383859}
   musicSource: {fileID: 6574343441925272553}
@@ -828,17 +831,28 @@ MonoBehaviour:
   menumusicSource: {fileID: 3709100416545084192}
   gamemusicSource: {fileID: 5547806989608109752}
   walkSFX: {fileID: 8300000, guid: 4944b701e825f45b1b251bbe57d4e799, type: 3}
+  bumpSFX: {fileID: 0}
+  slideSFX: {fileID: 8300000, guid: d10222f22d5db4b61a2355e4167d9d17, type: 3}
+  barwalkSFX: {fileID: 8300000, guid: 797c703750a234848b060e0f9ec3a18e, type: 3}
+  drumbounceSFX: {fileID: 8300000, guid: a18d4ee020c6c4e89af51f5a955ac72e, type: 3}
+  drumwalkSFX: {fileID: 8300000, guid: ec0d2ad19b3764e3e81f85bc0e45306c, type: 3}
+  tightropewalkSFX: {fileID: 8300000, guid: 03eda84a9335243418574e290c45b94b, type: 3}
+  tightropestretchSFX: {fileID: 8300000, guid: e5fb356a2d0794fa0afcd6bee5f086d4, type: 3}
+  tightropeboostSFX: {fileID: 8300000, guid: 27312282fe0a84ced92daef976d439cf, type: 3}
   jumpSFX: {fileID: 8300000, guid: 99aebf4d53eff4ef4b720c79426e1339, type: 3}
   twirlSFX: {fileID: 8300000, guid: 8355107a8958a4d5cb8cbc39783aa4b1, type: 3}
-  hurtSFX: {fileID: 8300000, guid: e57cc6578445e4dc28f88190f92c3a60, type: 3}
+  hurtSFX: {fileID: 8300000, guid: 73c24187843c642e8b646c80c680eebc, type: 3}
   levelselectSFX: {fileID: 8300000, guid: 50a90035f002b41c8a709d9f91207a18, type: 3}
   uibuttonSFX: {fileID: 8300000, guid: 87aca1b0affa5489bb41538a88a932fa, type: 3}
   curtainopenSFX: {fileID: 8300000, guid: 98ecf9599522d4657b3eb0a8db8ac580, type: 3}
   curtaincloseSFX: {fileID: 8300000, guid: 71b614c8bf74740a6b059736126714ac, type: 3}
   swingingStarSFX: {fileID: 0}
-  tragedyBGMusic: {fileID: 8300000, guid: 2792bb6136f93464f9cc2f219d6f987a, type: 3}
+  tightropeminboostSFX: {fileID: 0}
+  tightropemedboostSFX: {fileID: 0}
+  tightropemaxboostSFX: {fileID: 0}
+  tragedyBGMusic: {fileID: 8300000, guid: 700125e8bafaa47c5bb83e743c2fbeb5, type: 3}
   comedyBGMusic: {fileID: 8300000, guid: ae90a8978d0d640b785033fcc37fc3e5, type: 3}
-  menuBGMusic: {fileID: 8300000, guid: 3c73bfa956ab848d0b9ef33530f11543, type: 3}
+  menuBGMusic: {fileID: 8300000, guid: 1b29881ff843040d49871321c28ef571, type: 3}
 --- !u!1 &8648930645598852950
 GameObject:
   m_ObjectHideFlags: 0

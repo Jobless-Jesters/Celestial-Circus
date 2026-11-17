@@ -8,6 +8,9 @@ public class AudioController : MonoBehaviour
     // Wherever you need a certain sound effect
     private static AudioController _instance;
     public static AudioController Instance { get { return _instance; } }
+    public bool barMaterial = false;
+    public bool drumMaterial = false;
+    public bool ropeMaterial = false;
     [Header("Mixer")]
     [SerializeField] AudioMixer audioMixer;
     
@@ -35,6 +38,14 @@ public class AudioController : MonoBehaviour
     // TODO: Replace with all the actual sound effects, split by category (you can add more categories/change them)
     [Header("Player SFX")]
     [SerializeField] public AudioClip walkSFX;
+    [SerializeField] public AudioClip bumpSFX;
+    [SerializeField] public AudioClip slideSFX;
+    [SerializeField] public AudioClip barwalkSFX;
+    [SerializeField] public AudioClip drumbounceSFX;
+    [SerializeField] public AudioClip drumwalkSFX;
+    [SerializeField] public AudioClip tightropewalkSFX;
+    [SerializeField] public AudioClip tightropestretchSFX;
+    [SerializeField] public AudioClip tightropeboostSFX;
     [SerializeField] public AudioClip jumpSFX;
     [SerializeField] public AudioClip twirlSFX;
     [SerializeField] public AudioClip hurtSFX;
@@ -45,6 +56,9 @@ public class AudioController : MonoBehaviour
     [SerializeField] public AudioClip curtaincloseSFX;
     [Header("Environment SFX")]
     [SerializeField] public AudioClip swingingStarSFX;
+    [SerializeField] public AudioClip tightropeminboostSFX;
+    [SerializeField] public AudioClip tightropemedboostSFX;
+    [SerializeField] public AudioClip tightropemaxboostSFX;
     [Header("Background Tracks")]
     [SerializeField] public AudioClip tragedyBGMusic;
     [SerializeField] public AudioClip comedyBGMusic;
@@ -139,14 +153,57 @@ public class AudioController : MonoBehaviour
     // Player SFX
     public void PlayWalkSFX()
     {
-        subsfxSource.PlayOneShot(walkSFX);
+        if (barMaterial)
+        {
+            subsfxSource.PlayOneShot(barwalkSFX);
+        }
+        else if (drumMaterial)
+        {
+            subsfxSource.PlayOneShot(drumwalkSFX);
+        }
+        else if (ropeMaterial)
+        {
+            subsfxSource.PlayOneShot(tightropewalkSFX);
+        }
+        else
+        {
+            subsfxSource.PlayOneShot(walkSFX);
+        }
+    }
+    
+    public void PlayDrumBounceSFX()
+    {
+        subsfxSource.PlayOneShot(drumbounceSFX);
     }
 
     public void PlayJumpSFX()
     {
         subsfxSource.PlayOneShot(jumpSFX);
     }
-
+    public void PlayTightropeStretchSFX()
+    {
+        subsfxSource.PlayOneShot(tightropestretchSFX);
+    }
+    public void PlaySlideSFX()
+    {
+        loopedSFXSource.clip = slideSFX;
+        loopedSFXSource.Play();
+    }
+    public void StopSlideSFX()
+    {
+        loopedSFXSource.Stop();
+    }
+    
+    public void PlayBumpSFX()
+    {
+        loopedSFXSource.clip = slideSFX;
+        loopedSFXSource.Play();
+    }
+    public void StopBumpSFX()
+    {
+        loopedSFXSource.Stop();
+    }
+    
     public void PlayTwirlSFX()
     {
         loopedSFXSource.clip = twirlSFX;
@@ -160,7 +217,12 @@ public class AudioController : MonoBehaviour
 
     public void PlayHurtSFX()
     {
-        sfxSource.PlayOneShot(hurtSFX);
+        subsfxSource.PlayOneShot(hurtSFX);
+    }
+    
+    public void PlayTightropeBoostSFX()
+    {
+        subsfxSource.PlayOneShot(tightropeboostSFX);
     }
     
     // UI SFX
@@ -183,7 +245,24 @@ public class AudioController : MonoBehaviour
     {
         sfxSource.PlayOneShot(curtaincloseSFX);
     }
+    
+    // Environment
 
+    public void PlayTightropeMinBoostSFX()
+    {
+        sfxSource.PlayOneShot(tightropeminboostSFX);
+    }
+    
+    public void PlayTightropeMedBoostSFX()
+    {
+        sfxSource.PlayOneShot(tightropemedboostSFX);
+    }
+    
+    public void PlayTightropeMaxBoostSFX()
+    {
+        sfxSource.PlayOneShot(tightropemaxboostSFX);
+    }
+    
     // Music
     public void PlayTragedyBG()
     {

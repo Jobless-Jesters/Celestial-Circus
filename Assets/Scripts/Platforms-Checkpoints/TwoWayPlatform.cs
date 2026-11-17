@@ -8,8 +8,8 @@ public class TwoWayPlatform : MonoBehaviour
     [SerializeField] private float inputBufferTime = 0.15f;
     [SerializeField] private float dropSpeed = 2f;
     [SerializeField] private float reenableMargin = 0.1f;
+    [SerializeField] private bool barMaterial = true;
     private InputAction _moveAction;
-
 
     private BoxCollider2D platformCollider;
 
@@ -129,4 +129,28 @@ public class TwoWayPlatform : MonoBehaviour
 
         droppingThrough = false;
     }
+    
+    // Set material for walkSFX
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.attachedRigidbody == null ||
+        !other.attachedRigidbody.CompareTag("Player"))
+    {
+        return;
+    }
+
+    AudioController.Instance.barMaterial = barMaterial;
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+    if (other.attachedRigidbody == null ||
+        !other.attachedRigidbody.CompareTag("Player"))
+        return;
+
+    AudioController.Instance.barMaterial = false;
+    }
+
 }
