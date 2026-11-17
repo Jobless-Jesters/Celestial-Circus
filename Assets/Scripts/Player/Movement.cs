@@ -45,6 +45,10 @@ public class Movement : MonoBehaviour
     [SerializeField] protected Vector2 wallJumpPower = new Vector2(30f, 45f);
     [SerializeField] private float wallJumpLockTime = 0.2f; // Controls how "long" to show player facing opposite direction of wall
     [SerializeField] private float wallSlideCooldown = 0.25f; // Avoid infinite wall climbing
+
+    [Header("Edge Snap Settings")]
+    [SerializeField] private float edgeSnapDistance = 0.3f; // Max sideways nudge onto a platform edge. 0 turns snapping off
+
     [Header("Animation")]
     public Animator animator;
     //Temporary colours for death animation
@@ -61,9 +65,11 @@ public class Movement : MonoBehaviour
     [Header("Collision Variables")]
     [SerializeField] public Transform groundCheckPos;
     [SerializeField] public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] public Vector2 groundCheckOffset = new Vector2(0f, 0f);
     [SerializeField] public LayerMask groundLayer;
     [SerializeField] public Transform wallCheckPos;
-    [SerializeField] public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] public Vector2 wallCheckSize = new Vector2(0.2f, 0.2f);
+    [SerializeField] public Vector2 wallCheckOffset = new Vector2(0f, 0f);
     [SerializeField] public LayerMask wallLayer;
     // Player States
     public enum STATE { Grounded, Falling, WallSliding }
@@ -145,6 +151,7 @@ public class Movement : MonoBehaviour
             animator.SetFloat("magnitude", 0);
             animator.SetBool("isGliding", false);
             animator.SetBool("isGrounded", false);
+            animator.SetBool("isSliding", false);
             animator.SetBool("isAlive", false);
             spriteRenderer.color = deathColour;
         }
@@ -166,6 +173,7 @@ public class Movement : MonoBehaviour
         TwirlSFXLoop();
         Jump();
         Move();
+        EdgeSnap(); // After Jump so a jump this tick (upward velocity) never snaps
 
         animator.SetFloat("yVelocity", _playerBody.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(_playerBody.velocity.x));
@@ -329,11 +337,11 @@ public class Movement : MonoBehaviour
     {
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
         jumpsRemaining--;
+        animator.SetTrigger("jump"); // Wall jumps use their own trigger, so only set this here
     }
 
     private void FinishJump()
     {
-        animator.SetTrigger("jump");
         currentState = STATE.Falling;
         animator.SetBool("isGrounded", false);
         AudioController.Instance.PlayJumpSFX();
@@ -342,6 +350,8 @@ public class Movement : MonoBehaviour
 
     public void WallJump()
     {
+        animator.SetBool("isSliding", false);
+        animator.SetTrigger("wallJump");
         float jumpDirection = isFacingRight ? -1f : 1f; // Opposite direction of wall
         _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
         wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
@@ -353,6 +363,7 @@ public class Movement : MonoBehaviour
             ls.x *= -1f;
             transform.localScale = ls;
         }
+        dustFX.Play();
     }
 
     public void Bounce(float bounceVelocity)
@@ -409,7 +420,8 @@ public class Movement : MonoBehaviour
 
     private bool IsWallSliding()
     {
-        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, wallLayer); // Check if colliding with wall
+        Vector2 offset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
+        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3) offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
     }
 
     private void WallSlide()
@@ -418,18 +430,23 @@ public class Movement : MonoBehaviour
         {
             wallSlideCooldownTimer -= Time.deltaTime;
             if (currentState == STATE.WallSliding) currentState = STATE.Falling;
+            animator.SetBool("isSliding", false);
         }
         else
         {
             if (IsWallSliding() && currentState != STATE.Grounded)
             {
+                if (currentState != STATE.WallSliding) animator.SetTrigger("wallStick");
                 currentState = STATE.WallSliding;
                 jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
+                animator.SetBool("isSliding", true);
+                dustFX.Play();
             }
             else if (currentState == STATE.WallSliding)
             {
                 currentState = STATE.Falling;
+                animator.SetBool("isSliding", false);
             }
         }
 
@@ -438,12 +455,14 @@ public class Movement : MonoBehaviour
     private void groundCheck()
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
+        Vector2 offset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
+        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3) offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
             {
                 animator.SetBool("isGrounded", true);
+                animator.SetBool("isSliding", false); // Landing while sliding down a wall
                 currentState = STATE.Grounded;  // fixes animator issues
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;
@@ -459,6 +478,42 @@ public class Movement : MonoBehaviour
             }
             // Avoid repeatedly assigning the same value to a variable every tick
             coyoteTimeCounter -= Time.fixedDeltaTime; // Update every tick
+        }
+    }
+
+    // When the player is about to fall just past the edge of a platform they are steering towards,
+    // nudge them sideways so they land on it instead.
+    private void EdgeSnap()
+    {
+        bool isFallingInAir = currentState == STATE.Falling && _playerBody.velocity.y < 0f;
+        if (edgeSnapDistance <= 0f || !isFallingInAir || _horizontalInput == 0f)
+        {
+            return;
+        }
+
+        Vector2 snapOffset = Vector2.right * Mathf.Sign(_horizontalInput) * edgeSnapDistance;
+        Vector2 boxCenter = _playerCollider.bounds.center;
+        Vector2 boxSize = _playerCollider.bounds.size;
+        // Look two physics steps ahead so a fast fall can't skip past the platform top unnoticed
+        float lookAheadDistance = -_playerBody.velocity.y * Time.fixedDeltaTime * 2f;
+
+        // The player is already going to land on something, so no help is needed
+        if (Physics2D.BoxCast(boxCenter, boxSize, 0f, Vector2.down, lookAheadDistance, groundLayer))
+        {
+            return;
+        }
+
+        // Never snap through a wall or into the side of a platform (this also covers the destination)
+        if (Physics2D.BoxCast(boxCenter, boxSize, 0f, snapOffset, edgeSnapDistance, groundLayer | wallLayer))
+        {
+            return;
+        }
+
+        // Only snap if a platform is about to be under the player once nudged. Since this only looks a
+        // short way down, it ignores platforms far below, and it never sees platforms above the player.
+        if (Physics2D.BoxCast(boxCenter + snapOffset, boxSize, 0f, Vector2.down, lookAheadDistance, groundLayer))
+        {
+            _playerBody.position += snapOffset;
         }
     }
 
@@ -500,11 +555,13 @@ public class Movement : MonoBehaviour
         // You can turn this off by deselcting Gizmos in the Scene view
 
         // Ground check gizmo
+        Vector2 groundOffset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3) groundOffset, groundCheckSize);
 
         // Wall check gizmo
+        Vector2 wallOffset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
+        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3) wallOffset, wallCheckSize);
     }
 }

@@ -583,22 +583,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8787959325407815265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: advanceArrow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787959325407815265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-      propertyPath: onAdvance.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     - {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     - {fileID: 6327838659338133773, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
     m_RemovedGameObjects:
-    - {fileID: 7895476779136485944, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-    - {fileID: 8275123458646148281, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-    - {fileID: 5821795355198840003, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2647234840029614896, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       insertIndex: 0

@@ -19688,10 +19688,11 @@ MonoBehaviour:
   glideGravity: 2
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2
-  wallSlideSpeed: 10
+  wallSlideSpeed: 8
   wallJumpPower: {x: 30, y: 45}
   wallJumpLockTime: 0.2
   wallSlideCooldown: 0.25
+  edgeSnapDistance: 0.3
   animator: {fileID: 8192205558385958770}
   dustFX: {fileID: 5147499608835353198}
   twirlFX: {fileID: 4929830386808913944}
@@ -19699,12 +19700,14 @@ MonoBehaviour:
   deathFX: {fileID: 9003610648397048698}
   tightropeChargeFX: {fileID: 6489164064855449932}
   groundCheckPos: {fileID: 5442058649593146136}
-  groundCheckSize: {x: 1.17, y: 0.21}
+  groundCheckSize: {x: 0.95, y: 0.05}
+  groundCheckOffset: {x: 0.058, y: 0.08}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   wallCheckPos: {fileID: 6259317770161663537}
-  wallCheckSize: {x: 0.5, y: -4.32}
+  wallCheckSize: {x: 0.05, y: 4.5}
+  wallCheckOffset: {x: -0.23, y: -0.055}
   wallLayer:
     serializedVersion: 2
     m_Bits: 64

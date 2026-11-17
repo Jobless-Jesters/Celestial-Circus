@@ -19,7 +19,7 @@ namespace Narrative
 
         void Start()
         {
-            advanceArrow.SetVisible(true);
+            setArrowVisibility(true);
         }
 
         /// <summary>
@@ -33,12 +33,17 @@ namespace Narrative
             // change wasClicked and do what was assigned
             // Clicks on the letterbox bars don't count
             bool clicked = Input.GetMouseButtonDown(0) && AspectRatioEnforcer.IsPointerInGameView(Input.mousePosition);
-            if (!wasClicked && (Input.GetButtonDown("Submit") || clicked))
+            if (advanceArrow.getVisible() && !wasClicked && (Input.GetButtonDown("Submit") || clicked))
             {
                 wasClicked = true; 
                 advanceArrow.SetVisible(false);
                 onClick.Invoke();
             }
+        }
+
+        public void setArrowVisibility(bool state)
+        {
+            advanceArrow.SetVisible(state);
         }
     }
 }
