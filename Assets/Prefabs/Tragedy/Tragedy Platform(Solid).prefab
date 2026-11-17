@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd2a4f385f2e924a908db7acbb075af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouncePower: 45
+  bouncePower: 70
   bounceDecay: 10
-  bounceCooldown: 2
+  bounceCooldown: 1
   drumMaterial: 1
 --- !u!1 &3426407010538806769
 GameObject:
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouncePower: 45
   bounceDecay: 10
-  bounceCooldown: 2
   drumMaterial: 1
+  bounceCooldown: 1
 --- !u!1 &3431585404386438611
 GameObject:
   m_ObjectHideFlags: 0
