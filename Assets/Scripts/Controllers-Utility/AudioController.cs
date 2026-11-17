@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour
     // Wherever you need a certain sound effect
     private static AudioController _instance;
     public static AudioController Instance { get { return _instance; } }
+    public bool barMaterial = false;
     [Header("Mixer")]
     [SerializeField] AudioMixer audioMixer;
     
@@ -35,6 +36,8 @@ public class AudioController : MonoBehaviour
     // TODO: Replace with all the actual sound effects, split by category (you can add more categories/change them)
     [Header("Player SFX")]
     [SerializeField] public AudioClip walkSFX;
+    [SerializeField] public AudioClip barwalkSFX;
+    [SerializeField] public AudioClip drumbounceSFX;
     [SerializeField] public AudioClip jumpSFX;
     [SerializeField] public AudioClip twirlSFX;
     [SerializeField] public AudioClip hurtSFX;
@@ -139,7 +142,19 @@ public class AudioController : MonoBehaviour
     // Player SFX
     public void PlayWalkSFX()
     {
-        subsfxSource.PlayOneShot(walkSFX);
+        if (barMaterial)
+        {
+            subsfxSource.PlayOneShot(barwalkSFX);
+        }
+        else
+        {
+            subsfxSource.PlayOneShot(walkSFX);
+        }
+    }
+    
+    public void PlayDrumBounceSFX()
+    {
+        subsfxSource.PlayOneShot(drumbounceSFX);
     }
 
     public void PlayJumpSFX()

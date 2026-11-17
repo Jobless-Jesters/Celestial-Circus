@@ -19593,6 +19593,7 @@ MonoBehaviour:
   wallJumpPower: {x: 30, y: 45}
   wallJumpLockTime: 0.2
   wallSlideCooldown: 0.25
+  edgeSnapDistance: 0.3
   animator: {fileID: 8192205558385958770}
   dustFX: {fileID: 5147499608835353198}
   twirlFX: {fileID: 4929830386808913944}

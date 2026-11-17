@@ -15,6 +15,7 @@ public class BouncyPlatform : MonoBehaviour
         Movement movement = collision.rigidbody.GetComponent<Movement>();
         if (collision.gameObject.CompareTag("Player") && collision.GetContact(0).normal.y < -0.5f) // Check if player is falling downward onto platform
         {
+            AudioController.Instance.PlayDrumBounceSFX();
             // Reset cooldown if time since last bounce is more than cooldown
             if (Time.time - lastBounceTime > bounceCooldown) 
             {
