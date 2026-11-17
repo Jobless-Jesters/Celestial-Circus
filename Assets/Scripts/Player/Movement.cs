@@ -349,6 +349,8 @@ public class Movement : MonoBehaviour
 
     public void WallJump()
     {
+        animator.SetTrigger("wallJump");
+        animator.SetBool("isSliding", false);
         float jumpDirection = isFacingRight ? -1f : 1f; // Opposite direction of wall
         _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
         wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
@@ -426,6 +428,7 @@ public class Movement : MonoBehaviour
         {
             wallSlideCooldownTimer -= Time.deltaTime;
             if (currentState == STATE.WallSliding) currentState = STATE.Falling;
+            animator.SetBool("isSliding", false);
         }
         else
         {
@@ -434,10 +437,13 @@ public class Movement : MonoBehaviour
                 currentState = STATE.WallSliding;
                 jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
+                animator.SetBool("isSliding", true);
+                animator.SetTrigger("WallSlide");
             }
             else if (currentState == STATE.WallSliding)
             {
                 currentState = STATE.Falling;
+                animator.SetBool("isSliding", false);
             }
         }
 
