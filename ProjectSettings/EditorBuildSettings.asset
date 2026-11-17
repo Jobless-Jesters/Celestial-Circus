@@ -56,16 +56,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/easy or hard/EasyTragedy.unity
     guid: c89f6b537568ca547adf2338120bb070
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/easy or hard/HardComedy.unity
     guid: b7acb77969ac74b46a9600942eafbbf9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/easy or hard/HardTragedy.unity
     guid: f6c852caa7998df45a670a01ada126b8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/easy or hard/HardTrag1Lucia.unity
     guid: 6f8accb7cdb9f544db07dba4de9ac63d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/easy or hard/HardCom1Lucia.unity
     guid: 2b0781f329049ed4b979dbb2d8c75089
   m_configObjects: {}
