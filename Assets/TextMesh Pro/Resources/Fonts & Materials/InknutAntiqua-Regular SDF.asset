@@ -183,18 +183,18 @@ MonoBehaviour:
     m_PointSize: 69
     m_Scale: 1
     m_UnitsPerEM: 1000
-    m_LineHeight: 177.95099
-    m_AscentLine: 117.506996
+    m_LineHeight: 98
+    m_AscentLine: 77
     m_CapLine: 55
     m_MeanLine: 37
     m_Baseline: 0
-    m_DescentLine: -60.444
-    m_SuperscriptOffset: 117.506996
+    m_DescentLine: -18
+    m_SuperscriptOffset: 77
     m_SuperscriptSize: 0.5
-    m_SubscriptOffset: -60.444
+    m_SubscriptOffset: -18
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -12.075
-    m_UnderlineThickness: 3.105
+    m_UnderlineThickness: 8
     m_StrikethroughOffset: 14.8
     m_StrikethroughThickness: 3.105
     m_TabWidth: 19

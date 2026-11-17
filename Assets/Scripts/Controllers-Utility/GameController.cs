@@ -199,6 +199,11 @@ public class GameController : MonoBehaviour
         return isPaused;
     }
 
+    public string getCurrentSceneName()
+    {
+        return currentSceneName;
+    }
+
     public void setLastCheckpoint(int newID, Vector3 pos)
     {
 

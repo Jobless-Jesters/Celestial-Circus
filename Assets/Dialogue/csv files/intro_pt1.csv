@@ -1,5 +1,5 @@
-Both,comedy,tragedy,Tragedy,"Welcome, one and all, to the Celestial Circus!"
+Both,comedy,tragedy,Comedy,"<size=70px><align=""center"">Welcome, one and all, to the<br>Celestial Circus!</align></size>"
 Comedy,comedy,NONE,Comedy,"Tonight will be a night filled with laughter–"
 Tragedy,NONE,tragedy,Tragedy,"–And tears."
-Comedy,comedy,NONE,Comedy,"*Laughs* Yes, and that too!"
-Comedy,comedy,NONE,none,"The main act, for you all today, will be a performance by our magnificent clown–"
+Comedy,comedy,NONE,Comedy,"<sup></sup><sup><i>Haha</i></sup> Yes, and that too!"
+Comedy,comedy,NONE,Comedy,"Standing centre stage, we have your main<br>entertainment for the evening–"
