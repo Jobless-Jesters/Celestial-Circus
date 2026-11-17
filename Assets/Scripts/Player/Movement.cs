@@ -151,6 +151,7 @@ public class Movement : MonoBehaviour
             animator.SetFloat("magnitude", 0);
             animator.SetBool("isGliding", false);
             animator.SetBool("isGrounded", false);
+            animator.SetBool("isSliding", false);
             animator.SetBool("isAlive", false);
             spriteRenderer.color = deathColour;
         }
@@ -336,11 +337,11 @@ public class Movement : MonoBehaviour
     {
         _playerBody.velocity = new Vector2(_playerBody.velocity.x, jumpPower);
         jumpsRemaining--;
+        animator.SetTrigger("jump"); // Wall jumps use their own trigger, so only set this here
     }
 
     private void FinishJump()
     {
-        animator.SetTrigger("jump");
         currentState = STATE.Falling;
         animator.SetBool("isGrounded", false);
         AudioController.Instance.PlayJumpSFX();
@@ -349,8 +350,8 @@ public class Movement : MonoBehaviour
 
     public void WallJump()
     {
-        animator.SetTrigger("wallJump");
         animator.SetBool("isSliding", false);
+        animator.SetTrigger("wallJump");
         float jumpDirection = isFacingRight ? -1f : 1f; // Opposite direction of wall
         _playerBody.velocity = new Vector2(wallJumpPower.x * jumpDirection, wallJumpPower.y);
         wallJumpLockTimer = wallJumpLockTime; // Reset wall jump duration
@@ -362,6 +363,7 @@ public class Movement : MonoBehaviour
             ls.x *= -1f;
             transform.localScale = ls;
         }
+        dustFX.Play();
     }
 
     public void Bounce(float bounceVelocity)
@@ -434,11 +436,12 @@ public class Movement : MonoBehaviour
         {
             if (IsWallSliding() && currentState != STATE.Grounded)
             {
+                if (currentState != STATE.WallSliding) animator.SetTrigger("wallStick");
                 currentState = STATE.WallSliding;
                 jumpsRemaining = maxJumps - 1; // Reset to jump counter - 1
                 _playerBody.velocity = new Vector2(_playerBody.velocity.x, Mathf.Clamp(_playerBody.velocity.y, -wallSlideSpeed, float.MaxValue)); // Control sliding speed
                 animator.SetBool("isSliding", true);
-                animator.SetTrigger("WallSlide");
+                dustFX.Play();
             }
             else if (currentState == STATE.WallSliding)
             {
@@ -459,6 +462,7 @@ public class Movement : MonoBehaviour
             if (currentState != STATE.Grounded)
             {
                 animator.SetBool("isGrounded", true);
+                animator.SetBool("isSliding", false); // Landing while sliding down a wall
                 currentState = STATE.Grounded;  // fixes animator issues
                 jumpsRemaining = maxJumps;
                 coyoteTimeCounter = coyoteTime;

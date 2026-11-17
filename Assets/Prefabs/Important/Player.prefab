@@ -19589,7 +19589,7 @@ MonoBehaviour:
   glideGravity: 2
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2
-  wallSlideSpeed: 2
+  wallSlideSpeed: 8
   wallJumpPower: {x: 30, y: 45}
   wallJumpLockTime: 0.2
   wallSlideCooldown: 0.25
