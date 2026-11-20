@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
 
         // Update timer and timer display
         globalTimer += Time.deltaTime;
-        timerText.text = "Time: " + Mathf.Floor(globalTimer / 60).ToString("00") + ":" + Mathf.FloorToInt(globalTimer % 60).ToString("00");
+        timerText.text = "TIME: " + Mathf.Floor(globalTimer / 60).ToString("00") + ":" + Mathf.FloorToInt(globalTimer % 60).ToString("00");
 
     }
 
