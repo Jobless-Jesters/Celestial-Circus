@@ -108,7 +108,13 @@ namespace Narrative
             yield return new WaitForSecondsRealtime(0.8f);
 
             Debug.Log("AutoPlay Coroutine ended");
-            AdvanceLine(); // advance line
+            if(GameController.Instance.getCurrentSceneName() == "EndMenu" 
+                    && nameLabel.text == "Clown" 
+                    && textLabel.text != "…"
+                    && GameController.Instance.getIsPaused() == false)
+                    {
+                        AdvanceLine(); // advance line
+                    }
         }
 
         /// <summary>
