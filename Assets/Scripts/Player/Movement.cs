@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float maxFallSpeed = 18f;
     [SerializeField] protected float maxSpeed = 12f;
     [SerializeField] protected float mass = 1;
+    [SerializeField] private float fallSpeedYDampingChangeThreshold;
 
 
     [Header("Glide Settings")]
@@ -115,6 +116,8 @@ public class Movement : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        fallSpeedYDampingChangeThreshold = CameraManager.Instance.fallSpeedYDampingChangeThreshold;
+
         Vector3 checkpoint = GameController.Instance.getLastCheckpointPosition();
         if (checkpoint != Vector3.zero)
         {
@@ -143,6 +146,21 @@ public class Movement : MonoBehaviour
         if (_jumpAction.WasPressedThisFrame())
         {
             jumpPressed = true;
+        }
+
+        // Adjust camara lerping based on fall speed. Very tight to player when falling, loose when rising
+        if (_playerBody.velocity.y < fallSpeedYDampingChangeThreshold
+            && !CameraManager.Instance.isLerpingYDamping
+            && !CameraManager.Instance.lerpedFromPlayerFalling)  // Falling
+        {
+            CameraManager.Instance.LerpYDamping(true);
+        }
+        if (_playerBody.velocity.y >= 0f
+            && CameraManager.Instance.lerpedFromPlayerFalling)  // Standing still/moving up
+        {
+            CameraManager.Instance.lerpedFromPlayerFalling = false;
+            CameraManager.Instance.LerpYDamping(false);
+
         }
 
         if (GameController.Instance.getPlayerIsAlive() == false)
@@ -438,7 +456,7 @@ public class Movement : MonoBehaviour
     private bool IsWallSliding()
     {
         Vector2 offset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
-        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3) offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
+        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3)offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
     }
 
     private void WallSlide()
@@ -473,7 +491,7 @@ public class Movement : MonoBehaviour
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
         Vector2 offset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
-        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3) offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
+        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3)offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
@@ -574,11 +592,11 @@ public class Movement : MonoBehaviour
         // Ground check gizmo
         Vector2 groundOffset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3) groundOffset, groundCheckSize);
+        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3)groundOffset, groundCheckSize);
 
         // Wall check gizmo
         Vector2 wallOffset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3) wallOffset, wallCheckSize);
+        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3)wallOffset, wallCheckSize);
     }
 }
