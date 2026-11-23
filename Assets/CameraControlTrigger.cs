@@ -21,12 +21,14 @@ public class CameraControlTrigger : MonoBehaviour
     [SerializeField] public PanDirection panDirection;
     [SerializeField] public float panDistance = 3f;
     [SerializeField] public float panTime = 0.35f;
+    [SerializeField] public float zoomTime = 2f;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            CameraManager.Instance.PanCameraOnContact(panDistance, panTime, panDirection, false);
+            CameraManager.Instance.PanCameraOnContact(panDistance, panTime, zoomTime, panDirection, false);
         }
     }
 
@@ -34,7 +36,7 @@ public class CameraControlTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CameraManager.Instance.PanCameraOnContact(panDistance, panTime, panDirection, true);
+            CameraManager.Instance.PanCameraOnContact(panDistance, panTime, zoomTime, panDirection, true);
         }
     }
 }

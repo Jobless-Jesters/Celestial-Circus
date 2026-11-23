@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Unity.VisualScripting;
+using UnityEngine.Video;
 
 public class CameraManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class CameraManager : MonoBehaviour
     private CinemachineFramingTransposer framingTransposer;
 
     private float normYPanAmount;
+    [SerializeField] private float zoomLensOrthoSize = 30f;
+    [SerializeField] private float ogLensOrthoSize = 15.76f;
     private Vector2 startingTrackedObjectOffset;
 
     void Awake()
@@ -68,7 +71,7 @@ public class CameraManager : MonoBehaviour
         }
 
         float elapsedTime = 0f;
-        while(elapsedTime <fallYPanTime)
+        while (elapsedTime < fallYPanTime)
         {
             elapsedTime += Time.deltaTime;
 
@@ -84,17 +87,25 @@ public class CameraManager : MonoBehaviour
         lerpYPanCoroutine = null;
     }
 
-    public void PanCameraOnContact(float panDistance, float panTime, PanDirection panDirection, bool panToStartingPos)
+    public void PanCameraOnContact(float panDistance, float panTime, float zoomTime, PanDirection panDirection, bool panToStartingPos)
     {
-        StartCoroutine(CameraPanCoroutine(panDistance, panTime, panDirection, panToStartingPos));
+        if (panCameraCoroutine != null)
+        {
+            StopCoroutine(panCameraCoroutine);
+        }
+
+        panCameraCoroutine = StartCoroutine(CameraPanCoroutine(panDistance, panTime, zoomTime, panDirection, panToStartingPos));
     }
 
-    private IEnumerator CameraPanCoroutine(float panDistance, float panTime, PanDirection panDirection, bool panToStartingPos)
+    private IEnumerator CameraPanCoroutine(float panDistance, float panTime, float zoomTime, PanDirection panDirection, bool panToStartingPos)
     {
+        // init start and end points
         Vector2 endPos = Vector2.zero;
         Vector2 startPos = Vector2.zero;
+        float startLensOrthoSize = 0f;
+        float endLensOrthoSize = 0f;
 
-        // handle pan from trigger
+        // handle pan from trigger (pan/zoom out)
         if (!panToStartingPos)
         {
             switch (panDirection)
@@ -114,24 +125,44 @@ public class CameraManager : MonoBehaviour
             }
 
             endPos *= panDistance;
-            startPos = startingTrackedObjectOffset;
-            endPos += startPos;
+            startPos = framingTransposer.m_TrackedObjectOffset;
+            endPos += startingTrackedObjectOffset;
+
+            // Always start on the current camera size to avoid jarring switches between sizes
+            startLensOrthoSize = currentCamera.m_Lens.OrthographicSize;
+            endLensOrthoSize = zoomLensOrthoSize;
         }
-        else
+        else // pan/zoom back to original position
         {
             startPos = framingTransposer.m_TrackedObjectOffset;
             endPos = startingTrackedObjectOffset;
+
+            // Always start on the current camera size to avoid jarring switches between sizes
+            startLensOrthoSize = currentCamera.m_Lens.OrthographicSize;
+            endLensOrthoSize = ogLensOrthoSize;
         }
 
         float elapsedTime = 0f;
-        while (elapsedTime < panTime)
+        // Allow for the coroutine to run as long as the larger of the the two times
+        while (elapsedTime < panTime || elapsedTime < zoomTime)
         {
             elapsedTime += Time.deltaTime;
 
-            Vector3 panLerp = Vector3.Lerp(startPos, endPos, elapsedTime / panTime);
-            framingTransposer.m_TrackedObjectOffset = panLerp;
+            // Calculate pan and zoom transformations
+            float panT = panTime <= 0f
+                ? 1f
+                : Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsedTime / panTime));
+            float zoomT = zoomTime <= 0f
+                ? 1f
+                : Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsedTime / zoomTime));
 
+            // Lerp between the two positions/lens sizes
+            framingTransposer.m_TrackedObjectOffset = Vector2.Lerp(startPos, endPos, panT);
+            currentCamera.m_Lens.OrthographicSize = Mathf.Lerp(startLensOrthoSize, endLensOrthoSize, zoomT);
             yield return null;
         }
+
+        framingTransposer.m_TrackedObjectOffset = endPos;
+        currentCamera.m_Lens.OrthographicSize = endLensOrthoSize;
     }
 }

@@ -214,6 +214,8 @@ MonoBehaviour:
   fallYPanTime: 1
   fallSpeedYDampingChangeThreshold: -1
   currentCamera: {fileID: 6449133197284077462}
+  zoomLensOrthoSize: 30
+  ogLensOrthoSize: 15.76
 --- !u!1 &7799863550034273178
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 7799863550034273178}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.419866, y: 2.0978088, z: 0}
+  m_LocalPosition: {x: 14.419864, y: 71.17007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -404,11 +406,11 @@ PrefabInstance:
       objectReference: {fileID: 4227322782529285583}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.01001
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5899487
+      value: 71.17003
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.z
