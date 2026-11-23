@@ -1732,6 +1732,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 183.23001
       objectReference: {fileID: 0}
+    - target: {fileID: 4449761517233374258, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: dialogueCSV
       value: 
