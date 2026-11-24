@@ -1730,7 +1730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3447968965206019393, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 183.23001
+      value: 203.23001
       objectReference: {fileID: 0}
     - target: {fileID: 5294503262018632703, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: dialogueCSV
@@ -1770,7 +1770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8099390655752150889, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3571,13 +3571,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5531173146561424986, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7038701576590060278, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
       propertyPath: m_Name
       value: GAME_MANAGER
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555612018685751233, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
+      propertyPath: m_text
+      value: 'TIME: 0:00'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
