@@ -3575,6 +3575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GAME_MANAGER
       objectReference: {fileID: 0}
+    - target: {fileID: 7183844749460256336, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8555612018685751233, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
       propertyPath: m_text
       value: 'TIME: 0:00'
