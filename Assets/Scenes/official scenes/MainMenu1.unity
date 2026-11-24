@@ -602,6 +602,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
+--- !u!114 &628724673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8787959325407815265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+  m_PrefabInstance: {fileID: 1455223774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8cb58801d775d4b847a18915fa57e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &740731156 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3833613755990313757, guid: 1f6da8ce9e5fe1a448b9fd76c0f2fa0d, type: 3}
@@ -1782,16 +1793,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509969925868503270, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8670079341587678605, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 6727131
       objectReference: {fileID: 0}
+    - target: {fileID: 8787959325407815265, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 390861864250378960, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-    - {fileID: 6327838659338133773, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
-    - {fileID: 2114882965021020388, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2647234840029614896, guid: 676748a370297ae40a3d6cef3b94c829, type: 3}
@@ -2169,10 +2184,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1631446273}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2078119605}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 628724673}
+        m_TargetAssemblyTypeName: Narrative.DialogueBox, Assembly-CSharp
+        m_MethodName: CloseTextbox
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3569,10 +3608,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479034647577507475, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531173146561424986, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7038701576590060278, guid: 0783b5503eb4080439aa1888665bc51f, type: 3}

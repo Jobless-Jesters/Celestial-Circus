@@ -33,7 +33,7 @@ namespace Narrative
         /// </summary>
         public void Trigger()
         {
-            //Debug.LogWarning("DialogueTrigger Trigger() start");
+            Debug.LogWarning("DialogueTrigger Trigger() start");
             
             if (DialogueSystem.IsPlaying())
             {
@@ -51,7 +51,7 @@ namespace Narrative
 
             //Activate Dialogue
             DialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
-            DialogueSystem.PlaySequence(dialogueCSV);
+            DialogueSystem.PlaySequence1(dialogueCSV);
             //Debug.LogWarning("end of trigger code");
         }
 
@@ -81,9 +81,9 @@ namespace Narrative
                 GameController.SetFlag(writeToFlagId, writeToFlagValue);
             }
             DialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
-            if(!repeatable){
-                Destroy(this);
-            }
+            // if(!repeatable){
+            //     Destroy(this);
+            // }
             onFinish.Invoke();
             //Debug.LogWarning("DialogueTrigger onDialogueEnd() run");
         }

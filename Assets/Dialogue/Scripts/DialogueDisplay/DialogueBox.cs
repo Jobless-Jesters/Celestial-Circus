@@ -27,16 +27,38 @@ namespace Narrative
 
         //State tracking variables and getters, useful for timing
         //serialized so the animator can edit them but shouldn't be modified otherwise
-        [SerializeField] [HideInInspector] private bool isOpen = false;
+        [SerializeField][HideInInspector] private bool isOpen = false;
         [SerializeField] private bool isActive = false;
         public bool IsOpen { get { return isOpen; } }
         public bool IsActive { get { return isActive; } }
 
+
+        void OnEnable()
+        {
+
+            if (!animator)
+            {
+                GameObject anim = GameObject.Find("TextboxAnimator");
+                animator = anim.GetComponent<Animator>();
+                Debug.LogWarning("Tried for Animator in start = " + animator);
+            }
+
+            Debug.LogWarning("Animator = " + animator);
+        }
         // Start is called before the first frame update
         private void Start()
         {
             //Connect onAdvance event to hide the advancearrow object on invoke
             onAdvance.AddListener(() => advanceArrow.SetVisible(false));
+            isActive = false;
+            if (!animator)
+            {
+                GameObject anim = GameObject.Find("TextboxAnimator");
+                animator = anim.GetComponent<Animator>();
+                Debug.LogWarning("Tried for Animator in start = " + animator);
+            }
+            //animator.SetBool("isOpen", false);
+            //CloseTextbox();
         }
 
         // Update is called once per frame
@@ -59,7 +81,7 @@ namespace Narrative
             // Cannot advance if game is paused
             // Clicks on the letterbox bars don't count
             bool clicked = Input.GetMouseButtonDown(0) && AspectRatioEnforcer.IsPointerInGameView(Input.mousePosition);
-            if ((Input.GetButtonDown("Submit") || clicked)&& GameController.Instance.getIsPaused() == false)
+            if ((Input.GetButtonDown("Submit") || clicked) && GameController.Instance.getIsPaused() == false)
             {
                 if (isEndOfText())
                 {
@@ -90,8 +112,8 @@ namespace Narrative
                     // only when in endMenu
                     // and during clown speaking
                     // and check to make sure didn't pause at this exact moment
-                    if(GameController.Instance.getCurrentSceneName() == "EndMenu" 
-                    && nameLabel.text == "Clown" 
+                    if (GameController.Instance.getCurrentSceneName() == "EndMenu"
+                    && nameLabel.text == "Clown"
                     && textLabel.text != "…"
                     && GameController.Instance.getIsPaused() == false)
                     {
@@ -116,6 +138,14 @@ namespace Narrative
         /// </summary>
         public void OpenTextbox()
         {
+            if (!animator)
+            {
+                GameObject anim = GameObject.Find("TextboxAnimator");
+                animator = anim.GetComponent<Animator>();
+                Debug.LogWarning("Tried for Animator = " + animator);
+            }
+
+            Debug.LogWarning("Animator OpenTxtBx = " + animator);
             animator.SetBool("isOpen", true);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
@@ -131,6 +161,7 @@ namespace Narrative
             animator.SetBool("isOpen", false);
             isActive = false;
             isOpen = false;
+            Debug.LogWarning("CloseTextBox called");
         }
 
         /// <summary>

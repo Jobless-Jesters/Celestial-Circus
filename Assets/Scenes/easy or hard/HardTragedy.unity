@@ -1750,11 +1750,11 @@ PrefabInstance:
       objectReference: {fileID: 1410226998}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -966
+      value: -943
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -542
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3719,49 +3719,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1607988528195437301, guid: 8e4b4490343823147ade54cbe9e09047, type: 3}
   m_PrefabInstance: {fileID: 403137298}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &427835365
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/2D_Sprite_Shader
-  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _BlendOp: 0
-    - _DestinationBlend: 1
-    - _EnableExternalAlpha: 0
-    - _SourceBlend: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &433527377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4154,7 +4111,7 @@ Transform:
   m_GameObject: {fileID: 487893214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.020874023, y: 11.290771, z: -12}
+  m_LocalPosition: {x: -0.020874023, y: 320, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4670,11 +4627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -966
+      value: -943
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -542
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12572,6 +12529,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6598358165798209698, guid: 2153c8f61ab72ba4ea3e48d89af436b1, type: 3}
   m_PrefabInstance: {fileID: 1013229320}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1016178703
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/2D_Sprite_Shader
+  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _BlendOp: 0
+    - _DestinationBlend: 1
+    - _EnableExternalAlpha: 0
+    - _SourceBlend: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1017494984
 PrefabInstance:
   m_ObjectHideFlags: 0

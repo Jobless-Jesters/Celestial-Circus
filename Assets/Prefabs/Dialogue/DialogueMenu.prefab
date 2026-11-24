@@ -210,13 +210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<font="Metamorphous-Regular SDF">Metamorphous-Regular SDF</font> <font="Cinzel-Regular
-    SDF">Cinzel-Regular SDF</font> <font="DavidLibre-Regular SDF">DavidLibre-Regular
-    SDF</font> <font="IbarraRealNova-Regular SDF">IbarraRealNova-Regular SDF</font>
-    <font="InknutAntiqua-Regular SDF">InknutAntiqua-Regular SDF</font>
-
-
-'
+  m_text: <size=70px><align="center">Welcome, one and all, to the<br>Celestial Circus!</align></size>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b34e5bf7c5ca2c44b927fc4b80e8ad40, type: 2}
   m_sharedMaterial: {fileID: -7247438099097575819, guid: b34e5bf7c5ca2c44b927fc4b80e8ad40, type: 2}
@@ -1062,7 +1056,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7966854790341004020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1366,7 +1360,7 @@ GameObject:
   - component: {fileID: 8755497942432161570}
   - component: {fileID: 8931195307559256951}
   - component: {fileID: 8787959325407815265}
-  - component: {fileID: 3265195102630906206}
+  - component: {fileID: 88628172739686866}
   m_Layer: 5
   m_Name: TextboxPanel
   m_TagString: Untagged
@@ -1476,11 +1470,11 @@ MonoBehaviour:
   textLabel: {fileID: 1644781942415118778}
   nameLabel: {fileID: 8670079341587678605}
   advanceArrow: {fileID: 3048543325773452353}
-  animator: {fileID: 3265195102630906206}
+  animator: {fileID: 88628172739686866}
   charactersPerSecond: 45
-  isOpen: 0
+  isOpen: 1
   isActive: 0
---- !u!95 &3265195102630906206
+--- !u!95 &88628172739686866
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
