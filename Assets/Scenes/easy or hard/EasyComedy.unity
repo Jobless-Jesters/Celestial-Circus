@@ -951,6 +951,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3772317609709200726, guid: 4ae279f9c2c2da24dbf1bd7ceea9c935, type: 3}
   m_PrefabInstance: {fileID: 1181656612}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &278179633
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpriteCanBeLit
+  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _BlendOp: 0
+    - _DestinationBlend: 1
+    - _EnableExternalAlpha: 0
+    - _SourceBlend: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!21 &286813643
 Material:
   serializedVersion: 8
@@ -1109,11 +1160,11 @@ PrefabInstance:
       objectReference: {fileID: 1700326885}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -975.4
+      value: -971.7
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -541.9
+      value: -121.600006
       objectReference: {fileID: 0}
     - target: {fileID: 8346294796497737314, guid: 57f890f7e4911374ab36d7bcc6d22ba1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7594,57 +7645,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3332732422627021311, guid: fd65878a60f6ac747a960ecff385eb1a, type: 3}
   m_PrefabInstance: {fileID: 829559272}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &702375102
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteCanBeLit
-  m_Shader: {fileID: 4800000, guid: 9c8c68ac275084a468cdcd23360fb6cb, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _BlendOp: 0
-    - _DestinationBlend: 1
-    - _EnableExternalAlpha: 0
-    - _SourceBlend: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &714621831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7842,11 +7842,11 @@ PrefabInstance:
       objectReference: {fileID: 286813643}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -975.4
+      value: -975.62
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -541.9
+      value: -542.13
       objectReference: {fileID: 0}
     - target: {fileID: 8723987000543089261, guid: 3e4f95e2db5643148ae3d36620a72db9, type: 3}
       propertyPath: m_LocalPosition.z
