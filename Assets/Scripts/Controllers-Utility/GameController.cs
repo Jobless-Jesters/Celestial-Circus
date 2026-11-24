@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class GameController : MonoBehaviour
     //Block reference for spawning
     [Header("Player Info")]
     private bool playerIsAlive = true;
+
+    [Header("Timer")]
+    public float globalTimer = 0f;
+    public TMP_Text timerText;
+
 
     [Header("Masks Info")]
     [SerializeField] private bool hasTragedyMask = false;
@@ -64,6 +70,12 @@ public class GameController : MonoBehaviour
         {
             TogglePause();
         }
+
+
+        // Update timer and timer display
+        globalTimer += Time.deltaTime;
+        timerText.text = "TIME: " + Mathf.Floor(globalTimer / 60).ToString("00") + ":" + Mathf.FloorToInt(globalTimer % 60).ToString("00");
+
     }
 
     public void LoadSceneByName(string sceneName)
