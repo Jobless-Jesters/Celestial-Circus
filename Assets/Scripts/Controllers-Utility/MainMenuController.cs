@@ -55,4 +55,8 @@ public class UIController : MonoBehaviour
     {
         AudioController.Instance.PlayUIButtonSFX();
     }
+
+    public void callReset() {
+        GameController.Instance.resetGame();
+    }
 }

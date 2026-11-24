@@ -288,6 +288,18 @@ public class GameController : MonoBehaviour
         ip.enabled = true;
     }
 
+    public void resetGame()
+    {
+        // resets game once they have completed it
+
+        setHasComedyMask(false);
+        setHasTragedyMask(false);
+        setHasSeenIntro(false);
+        clearCheckpoints();
+        clearFlags();   
+        setPlayerIsAlive(true);
+    }
+
     // dealing with dialogue flags
     // reused code and comments from DialogueFlags.cs from canvas base unity 
 
@@ -321,5 +333,13 @@ public class GameController : MonoBehaviour
         }
         return false;
 
+    }
+
+    public void clearFlags()
+    {
+        if (_instance.flags != null)
+        {
+            _instance.flags.Clear();
+        }
     }
 }
