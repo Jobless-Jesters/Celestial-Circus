@@ -46,22 +46,30 @@ namespace Narrative
         /// <param name="dialogue">Dialogue resource to play</param>
         public void PlaySequence(DialogueSequence dialogue)
         {
+            Debug.LogWarning("Dialogue Sequencer PlaySequence() this.gameObject.activeSelf: " + this.gameObject.activeSelf);
+            Debug.LogWarning("Dialogue Sequencer PlaySequence() this.gameObject.activeInHierarchy: " + this.gameObject.activeInHierarchy);
             if (dialogue.IsEmpty())
             {
                 Debug.LogWarning("Playing sequence stopped because DialogueSequence was empty");
                 return;
             }
 
-            //Set our state
-            currentDialog = dialogue;
-            currentLine = 0;
-            isPlaying = true;
+            if (this.gameObject.activeInHierarchy)
+            {
+                Debug.Log("DialogueSequencer PlaySequence() inside activeInHierarchy if statement");
+                //Set our state
+                currentDialog = dialogue;
+                currentLine = 0;
+                isPlaying = true;
 
-            //Open and play
-            textbox.OpenTextbox();
-            ParseLine(currentLine);
+                //Open and play
+                textbox.OpenTextbox();
+                ParseLine(currentLine);
 
-            onStarted.Invoke();
+                onStarted.Invoke();
+            }
+
+            
         }
 
         /// <summary>

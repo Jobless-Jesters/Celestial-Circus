@@ -1471,8 +1471,9 @@ MonoBehaviour:
   nameLabel: {fileID: 8670079341587678605}
   advanceArrow: {fileID: 3048543325773452353}
   animator: {fileID: 88628172739686866}
+  newController: {fileID: 9100000, guid: 921425159756ffc42b23c8f72ef593ae, type: 2}
   charactersPerSecond: 45
-  isOpen: 1
+  isOpen: 0
   isActive: 0
 --- !u!95 &88628172739686866
 Animator:

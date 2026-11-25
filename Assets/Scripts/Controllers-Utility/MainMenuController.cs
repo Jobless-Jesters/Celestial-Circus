@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour
     [SerializeField] public Button comedyButton;
     [SerializeField] public Button tragedyButton;
 
+    [SerializeField] public Button replayButton;
+    [SerializeField] public Button playButton;
+
     public UnityEvent introDialogue;
     public UnityEvent endDialogue;
 
@@ -16,15 +19,19 @@ public class UIController : MonoBehaviour
     {
         // Play background music
         AudioController.Instance.PlayMenuBG();
+        replayButton.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(true);
         
         // Hide comedy button if we already got the mask
         if (GameController.Instance.getHasComedyMask()) {
             comedyButton.gameObject.SetActive(false);
+            replayButton.gameObject.SetActive(true);
         }
 
         // Hide tragedy button if we already got the mask
         if (GameController.Instance.getHasTragedyMask()) {
             tragedyButton.gameObject.SetActive(false);
+            replayButton.gameObject.SetActive(true);
             //introDialogue.Invoke();
         }
 
@@ -32,12 +39,24 @@ public class UIController : MonoBehaviour
 
         // Only play the intro once, so returning from the pause menu goes straight to the menu
         if (!GameController.Instance.getHasComedyMask() && !GameController.Instance.getHasTragedyMask() && !GameController.Instance.getHasSeenIntro()) {
-            GameController.Instance.setHasSeenIntro(true);
+
+            Debug.Log("Intro Dialogue Invoke in MainMenu");
             introDialogue.Invoke();
+            GameController.Instance.setHasSeenIntro(true);
         }
-        if (GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask()) {
+        else
+        {
+            playButton.gameObject.SetActive(false);
+        }
+        
+        if (GameController.Instance.getHasComedyMask() && GameController.Instance.getHasTragedyMask() && !GameController.Instance.getHasSeenOutro()) {
             endDialogue.Invoke();
         }
+    }
+
+    public void setHasSeenOutro()
+    {
+        GameController.Instance.setHasSeenOutro(true);
     }
 
     // Settings button: reuses the in-game pause menu's settings

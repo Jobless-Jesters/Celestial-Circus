@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
 
     // Intro dialogue only plays the first time the main menu loads
     private bool hasSeenIntro = false;
+    // Outro dialogue only plays the first time the main menu loads
+    private bool hasSeenOutro = false;
 
     [Header("Checkpoints")]
     // Latest checkpoint per level, keyed by scene name, so each level remembers its own progress
@@ -184,6 +186,16 @@ public class GameController : MonoBehaviour
         return hasSeenIntro;
     }
 
+    public void setHasSeenOutro(bool seen)
+    {
+        hasSeenOutro = seen;
+    }
+
+    public bool getHasSeenOutro()
+    {
+        return hasSeenOutro;
+    }
+
     public void setMainMenu()
     {
         mainmenu = GameObject.Find("MainMenu");
@@ -295,6 +307,7 @@ public class GameController : MonoBehaviour
         setHasComedyMask(false);
         setHasTragedyMask(false);
         setHasSeenIntro(false);
+        setHasSeenOutro(false);
         clearCheckpoints();
         clearFlags();   
         setPlayerIsAlive(true);
