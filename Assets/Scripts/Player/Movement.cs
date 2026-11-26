@@ -31,8 +31,6 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float maxFallSpeed = 18f;
     [SerializeField] protected float maxSpeed = 12f;
     [SerializeField] protected float mass = 1;
-    [SerializeField] private float fallSpeedYDampingChangeThreshold;
-
 
     [Header("Glide Settings")]
     [SerializeField] protected float glideGravity = 2f;
@@ -116,8 +114,6 @@ public class Movement : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        fallSpeedYDampingChangeThreshold = CameraManager.Instance.fallSpeedYDampingChangeThreshold;
-
         Vector3 checkpoint = GameController.Instance.getLastCheckpointPosition();
         if (checkpoint != Vector3.zero)
         {
@@ -148,19 +144,10 @@ public class Movement : MonoBehaviour
             jumpPressed = true;
         }
 
-        // Adjust camara lerping based on fall speed. Very tight to player when falling, loose when rising
-        if (_playerBody.velocity.y < fallSpeedYDampingChangeThreshold
-            && !CameraManager.Instance.isLerpingYDamping
-            && !CameraManager.Instance.lerpedFromPlayerFalling)  // Falling
+        // If falling below level or gliding, lock onto player
+        if ((transform.position.y < CameraManager.Instance.getCameraLevelPosY() && currentState == STATE.Falling) || IsGliding())
         {
-            CameraManager.Instance.LerpYDamping(true);
-        }
-        if (_playerBody.velocity.y >= 0f
-            && CameraManager.Instance.lerpedFromPlayerFalling)  // Standing still/moving up
-        {
-            CameraManager.Instance.lerpedFromPlayerFalling = false;
-            CameraManager.Instance.LerpYDamping(false);
-
+            CameraManager.Instance.setFollowPlayer(transform);
         }
 
         if (GameController.Instance.getPlayerIsAlive() == false)
@@ -496,6 +483,8 @@ public class Movement : MonoBehaviour
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
             {
+                CameraManager.Instance.changeCameraLevel(transform.position);
+                CameraManager.Instance.setFollowCameraLevel();
                 animator.SetBool("isGrounded", true);
                 animator.SetBool("isSliding", false); // Landing while sliding down a wall
                 currentState = STATE.Grounded;  // fixes animator issues

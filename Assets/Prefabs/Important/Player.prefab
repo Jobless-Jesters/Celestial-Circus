@@ -19685,7 +19685,6 @@ MonoBehaviour:
   maxFallSpeed: 18
   maxSpeed: 12
   mass: 10
-  fallSpeedYDampingChangeThreshold: 0
   glideGravity: 2
   glideMaxFallSpeed: 4
   glideSpeedMultiplier: 1.2

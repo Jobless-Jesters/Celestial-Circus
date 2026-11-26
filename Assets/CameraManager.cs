@@ -4,20 +4,13 @@ using UnityEngine;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine.Video;
+using System;
 
 public class CameraManager : MonoBehaviour
 {
     //Singleton pattern
     private static CameraManager _instance;
     public static CameraManager Instance { get { return _instance; } }
-
-    [Header("Damping Controls During Jump/Fall")]
-    [SerializeField] private float fallPanAmount = 0.25f;
-    [SerializeField] private float fallYPanTime = 0.35f;
-    public float fallSpeedYDampingChangeThreshold = -15f;
-
-    public bool isLerpingYDamping { get; private set; }
-    public bool lerpedFromPlayerFalling { get; set; }
 
     private Coroutine lerpYPanCoroutine;
     private Coroutine panCameraCoroutine;
@@ -28,6 +21,11 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float zoomLensOrthoSize = 30f;
     [SerializeField] private float ogLensOrthoSize = 15.76f;
     private Vector2 startingTrackedObjectOffset;
+    [SerializeField] Transform cameraLevelPos;
+    [SerializeField] Vector3 camLevPos;
+    [SerializeField] float lerpCamLevelTime = 0.25f;
+    private Vector3 cameraLevelVelocity;
+    [SerializeField] private float fallingViewOffset = 7.67f;
 
     void Awake()
     {
@@ -38,53 +36,46 @@ public class CameraManager : MonoBehaviour
         }
 
         framingTransposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-        normYPanAmount = framingTransposer.m_YDamping;
         startingTrackedObjectOffset = framingTransposer.m_TrackedObjectOffset;
+        camLevPos = cameraLevelPos.position;
     }
 
-    public void LerpYDamping(bool isPlayerFalling)
+    public void changeCameraLevel(Vector3 position)
     {
-        if (lerpYPanCoroutine != null)
-        {
-            StopCoroutine(lerpYPanCoroutine);
-        }
-
-        isLerpingYDamping = false;
-        lerpYPanCoroutine = StartCoroutine(LerpYAction(isPlayerFalling));
+        camLevPos = position;
     }
 
-    private IEnumerator LerpYAction(bool isPlayerFalling)
+    private void Update()
     {
-        isLerpingYDamping = true;
-
-        float startDampAmount = framingTransposer.m_YDamping;
-        float endDampAmount = 0f;
-
-        if (isPlayerFalling)
+        if (currentCamera.Follow == cameraLevelPos)
         {
-            endDampAmount = fallPanAmount;
-            lerpedFromPlayerFalling = true;
+            cameraLevelPos.position = Vector3.SmoothDamp(cameraLevelPos.position, camLevPos, ref cameraLevelVelocity, lerpCamLevelTime);
         }
-        else
+    }
+
+    public void setFollowPlayer(Transform transform)
+    {
+        // Swap only once
+        if (currentCamera.Follow == cameraLevelPos)
         {
-            endDampAmount = normYPanAmount;
+            framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset + Vector2.down * fallingViewOffset;
+            currentCamera.Follow = transform;
         }
+    }
 
-        float elapsedTime = 0f;
-        while (elapsedTime < fallYPanTime)
+    public void setFollowCameraLevel()
+    {
+        // swap only once
+        if (currentCamera.Follow != cameraLevelPos)
         {
-            elapsedTime += Time.deltaTime;
-
-            float t = Mathf.SmoothStep(0f, 1f, elapsedTime / fallYPanTime);
-            float lerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, t);
-            framingTransposer.m_YDamping = lerpedPanAmount;
-
-            yield return null;
+            framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset;
+            currentCamera.Follow = cameraLevelPos;
         }
+    }
 
-        framingTransposer.m_YDamping = endDampAmount;
-        isLerpingYDamping = false;
-        lerpYPanCoroutine = null;
+    public float getCameraLevelPosY()
+    {
+        return cameraLevelPos.position.y;
     }
 
     public void PanCameraOnContact(float panDistance, float panTime, float zoomTime, PanDirection panDirection, bool panToStartingPos)
