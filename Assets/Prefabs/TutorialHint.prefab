@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 17af6ea9146248aca1d7a2f81402419a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4def7559afac8f140992a96671e7c65c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -91,23 +91,23 @@ MonoBehaviour:
   player: {fileID: 0}
   hintImage: {fileID: 8605209666646763414}
   hints:
-  - sprite: {fileID: 21300000, guid: 17af6ea9146248aca1d7a2f81402419a, type: 3}
+  - sprite: {fileID: 21300000, guid: 4def7559afac8f140992a96671e7c65c, type: 3}
     showOnStart: 1
     triggerPoint: {x: 0, y: 0}
     shown: 0
-  - sprite: {fileID: 21300000, guid: b6628bb9272141a696de93a1a3849beb, type: 3}
+  - sprite: {fileID: 21300000, guid: da7e6132929a50b47ad351a9ddb89e28, type: 3}
     showOnStart: 0
     triggerPoint: {x: -949, y: -534.47}
     shown: 0
-  - sprite: {fileID: 21300000, guid: 8a2931ad33f54f7c832046598a4ff0a9, type: 3}
+  - sprite: {fileID: 21300000, guid: 47837e08c2598fe4fb14973309d1020a, type: 3}
     showOnStart: 0
     triggerPoint: {x: -973.08, y: -498.05}
     shown: 0
-  - sprite: {fileID: 21300000, guid: 333efb514a6f4dad920656dea362bf66, type: 3}
+  - sprite: {fileID: 21300000, guid: 10516c556ff7f4348af05e638262b13a, type: 3}
     showOnStart: 0
     triggerPoint: {x: -953.1, y: -466.6}
     shown: 0
-  - sprite: {fileID: 21300000, guid: 0101cf6dfe17448ead127130e5cc8708, type: 3}
+  - sprite: {fileID: 21300000, guid: d3f8e9c55a726ec4a869d979b084cead, type: 3}
     showOnStart: 0
     triggerPoint: {x: -979, y: -80}
     shown: 0
