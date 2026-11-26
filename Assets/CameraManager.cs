@@ -21,10 +21,19 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float zoomLensOrthoSize = 30f;
     [SerializeField] private float ogLensOrthoSize = 15.76f;
     private Vector2 startingTrackedObjectOffset;
-    [SerializeField] Transform cameraLevelPos;
-    [SerializeField] Vector3 camLevPos;
+
+    [Header("Camera Tracking Variables")]
+    // A semi-static anchor for the camera. Does not change until we jump on a new platform, changes fluidly if we are tracking the player
+    [SerializeField] Transform cameraLevelTransform;  
+    // The current target of the camera. Either the cameraLevel or the Player
+    [SerializeField] private Transform currTarget;
+    // Our target position. Our camera will be trying to get to this position
+    [SerializeField] Vector3 cameraTargetPos;
+    // How long a lerp takes to complete while tracking player movements across the level
     [SerializeField] float lerpCamLevelTime = 0.25f;
+    // How fast the camera is moving during the smooth damp. Initialized to zero during swaps
     private Vector3 cameraLevelVelocity;
+    // Needed to smoothly map camera changes
     [SerializeField] private float fallingViewOffset = 7.67f;
 
     void Awake()
@@ -35,49 +44,70 @@ public class CameraManager : MonoBehaviour
             _instance = this;
         }
 
+        // Get components
         framingTransposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         startingTrackedObjectOffset = framingTransposer.m_TrackedObjectOffset;
-        camLevPos = cameraLevelPos.position;
-    }
 
-    public void changeCameraLevel(Vector3 position)
-    {
-        camLevPos = position;
+        // Set the current camera target position to the camera level's transform.
+        cameraTargetPos = cameraLevelTransform.position;
     }
 
     private void Update()
     {
-        if (currentCamera.Follow == cameraLevelPos)
+        currTarget = currentCamera.Follow;
+        // If we're moving up, lerp smoothly between the platforms
+        if (currTarget == cameraLevelTransform)
         {
-            cameraLevelPos.position = Vector3.SmoothDamp(cameraLevelPos.position, camLevPos, ref cameraLevelVelocity, lerpCamLevelTime);
+            cameraLevelTransform.position = Vector3.SmoothDamp(cameraLevelTransform.position, cameraTargetPos, ref cameraLevelVelocity, lerpCamLevelTime);
         }
+        else  
+        // If we're tracking the player, make the cameraLevel's position follow it to prevent heaving between swaps. 
+        // When falling/gliding, the cameraLevel's new position will always be where we land
+        {
+            cameraTargetPos = currentCamera.Follow.position;
+            cameraLevelTransform.position = cameraTargetPos;
+        }
+    }
+
+
+    public void changeCameraLevel(Vector3 position)
+    {
+        // When a player jumps on a platform
+        // Make the camera's target position the new position they landed on
+        cameraTargetPos = position;
     }
 
     public void setFollowPlayer(Transform transform)
     {
+        // Swap the camera follow target to the player
         // Swap only once
-        if (currentCamera.Follow == cameraLevelPos)
+        if (currentCamera.Follow == cameraLevelTransform)
         {
             framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset + Vector2.down * fallingViewOffset;
+            cameraTargetPos = transform.position;
             currentCamera.Follow = transform;
         }
     }
 
     public void setFollowCameraLevel()
     {
-        // swap only once
-        if (currentCamera.Follow != cameraLevelPos)
+        // Swap the camera follow target to the cameraLevel
+        // Swap only once
+        if (currentCamera.Follow != cameraLevelTransform)
         {
+            cameraLevelVelocity = Vector3.zero;
             framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset;
-            currentCamera.Follow = cameraLevelPos;
+            currentCamera.Follow = cameraLevelTransform;
         }
     }
 
     public float getCameraLevelPosY()
     {
-        return cameraLevelPos.position.y;
+        return cameraLevelTransform.position.y;
     }
 
+
+    // Methods related to camera trigger panning
     public void PanCameraOnContact(float panDistance, float panTime, float zoomTime, PanDirection panDirection, bool panToStartingPos)
     {
         if (panCameraCoroutine != null)
