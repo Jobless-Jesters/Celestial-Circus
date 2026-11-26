@@ -20,7 +20,6 @@ namespace Narrative
         [SerializeField] private TextMeshProUGUI nameLabel;
         [SerializeField] private AdvanceArrow advanceArrow;
         [SerializeField] private Animator animator;
-        //[SerializeField] private RuntimeAnimatorController newController;
 
         //Object properties
         public float charactersPerSecond = 45.0f;//how many characters are displayed per second
@@ -38,19 +37,14 @@ namespace Narrative
         void OnEnable()
         {
 
-            if (!animator)
+            /* if (!animator)
             {
                 GameObject anim = GameObject.Find("TextboxAnimator");
                 animator = anim.GetComponent<Animator>();
-                //animator.runtimeAnimatorController = newController;
-                //animator.enabled = true; 
                 Debug.LogWarning("Tried for Animator in start = " + animator);
-            }
-            //animator.runtimeAnimatorController = newController;
-            //animator.enabled = true; 
+            } */
             isActive = false;
             isOpen = false; 
-            //Debug.LogWarning("Animator = " + animator);
         }
         // Start is called before the first frame update
         private void Start()
@@ -59,18 +53,12 @@ namespace Narrative
             onAdvance.AddListener(() => advanceArrow.SetVisible(false));
             isActive = false;
             isOpen = false; 
-            if (!animator)
+            /* if (!animator)
             {
                 GameObject anim = GameObject.Find("TextboxAnimator");
                 animator = anim.GetComponent<Animator>();
-                //animator.runtimeAnimatorController = newController;
-                //animator.enabled = true; 
                 Debug.LogWarning("Tried for Animator in start = " + animator);
-            }
-            //animator.runtimeAnimatorController = newController;
-            //animator.enabled = true; 
-            //animator.SetBool("isOpen", false);
-            //CloseTextbox();
+            } */
         }
 
         // Update is called once per frame
@@ -150,25 +138,12 @@ namespace Narrative
         /// </summary>
         public void OpenTextbox()
         {
-            if (!animator)
+            /* if (!animator)
             {
                 GameObject anim = GameObject.Find("TextboxAnimator");
                 animator = anim.GetComponent<Animator>();
-                //animator.runtimeAnimatorController = newController;
-                //animator.enabled = true; 
                 Debug.LogWarning("Tried for Animator = " + animator);
-            }
-
-            //Debug.LogWarning("Animator OpenTxtBx = " + animator);
-            //animator.runtimeAnimatorController = newController;
-            //animator.enabled = true; 
-            //Debug.LogWarning("AnimatorController OpenTxtBx = " + newController);
-            //Debug.LogWarning("AnimatorController & Animator OpenTxtBx = " + animator.runtimeAnimatorController);
-            //Debug.LogWarning("this.gameObject.activeSelf: " + this.gameObject.activeSelf);
-            //Debug.LogWarning("this.gameObject.activeInHierarchy: " + this.gameObject.activeInHierarchy);
-            //Debug.LogWarning("animator.gameObject.activeSelf: " + animator.gameObject.activeSelf);
-            //Debug.LogWarning("animator.gameObject.activeInHierarchy: " + animator.gameObject.activeInHierarchy);
-            //Debug.LogWarning("AnimatorController & Animator isActive and Enabled = " + animator.isActiveAndEnabled);
+            } */
             animator.SetBool("isOpen", true);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
