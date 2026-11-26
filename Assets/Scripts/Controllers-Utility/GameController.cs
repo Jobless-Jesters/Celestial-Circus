@@ -19,15 +19,14 @@ public class GameController : MonoBehaviour
     [SerializeField] private bool hasTragedyMask = false;
     [SerializeField] private bool hasComedyMask = false;
 
-    // Intro dialogue only plays the first time the main menu loads
-    private bool hasSeenIntro = false;
-    // Outro dialogue only plays the first time the main menu loads
-    private bool hasSeenOutro = false;
-
     [Header("Checkpoints")]
     // Latest checkpoint per level, keyed by scene name, so each level remembers its own progress
     private Dictionary<string, int> checkpointIDs = new Dictionary<string, int>();
     private Dictionary<string, Vector3> checkpointPositions = new Dictionary<string, Vector3>();
+
+    [Header("Dialogue Control")]
+    private bool hasSeenIntro = false; // ensure intro is only seen once
+    private bool hasSeenOutro = false; // ensure outro is only seen once 
 
     [Header("Dialogue Flags")]
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();

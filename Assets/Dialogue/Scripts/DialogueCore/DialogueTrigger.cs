@@ -33,7 +33,7 @@ namespace Narrative
         /// </summary>
         public void Trigger()
         {
-            Debug.LogWarning("DialogueTrigger Trigger() start");
+            //Debug.Log("DialogueTrigger Trigger() start");
             
             if (DialogueSystem.IsPlaying())
             {
@@ -52,7 +52,7 @@ namespace Narrative
             //Activate Dialogue
             DialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             DialogueSystem.PlaySequence1(dialogueCSV);
-            //Debug.LogWarning("end of trigger code");
+            //Debug.Log("end of trigger code");
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Narrative
             //     Destroy(this);
             // }
             onFinish.Invoke();
-            //Debug.LogWarning("DialogueTrigger onDialogueEnd() run");
+            //Debug.Log("DialogueTrigger onDialogueEnd() run");
         }
     }
 }

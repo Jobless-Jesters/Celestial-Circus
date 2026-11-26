@@ -46,8 +46,7 @@ namespace Narrative
         /// <param name="dialogue">Dialogue resource to play</param>
         public void PlaySequence(DialogueSequence dialogue)
         {
-            Debug.LogWarning("Dialogue Sequencer PlaySequence() this.gameObject.activeSelf: " + this.gameObject.activeSelf);
-            Debug.LogWarning("Dialogue Sequencer PlaySequence() this.gameObject.activeInHierarchy: " + this.gameObject.activeInHierarchy);
+            
             if (dialogue.IsEmpty())
             {
                 Debug.LogWarning("Playing sequence stopped because DialogueSequence was empty");
