@@ -35,9 +35,7 @@ public class EndCurtains : MonoBehaviour
 
     private void Start()
     {
-        // Allows curtain animations to play during pauses, important for the Pause curtain mode
-        //animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        //ApplyCurtainMode(curtainMode);
+        
     }
 
     public void setOpen()
