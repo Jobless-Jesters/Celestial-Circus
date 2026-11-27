@@ -101,13 +101,13 @@ public class GameController : MonoBehaviour
             if (getHasComedyMask() == false && getHasTragedyMask() == false)
             {
                 SceneManager.LoadScene("Easy" + sceneName); // Takes the scene name
-                currentSceneName = sceneName; // Assumes load scene always works (bad code)
+                currentSceneName = "Easy" + sceneName; // Assumes load scene always works (bad code)
                                               // replace with try?
             }
             else
             {
                 SceneManager.LoadScene("Hard" + sceneName); // Takes the scene name
-                currentSceneName = sceneName; // Assumes load scene always works (bad code)
+                currentSceneName = "Hard" + sceneName; // Assumes load scene always works (bad code)
                                               // replace with try?
             }
             return;
@@ -319,7 +319,8 @@ public class GameController : MonoBehaviour
         setHasTragedyMask(false);
         setHasSeenIntro(false);
         setHasSeenOutro(false);
-        clearCheckpoints();
+        checkpointIDs.Clear(); // Clear every level's checkpoint, not just the current scene's
+        checkpointPositions.Clear();
         clearFlags();   
         setPlayerIsAlive(true);
     }
