@@ -12,7 +12,6 @@ public class CameraManager : MonoBehaviour
     private static CameraManager _instance;
     public static CameraManager Instance { get { return _instance; } }
 
-    private Coroutine lerpYPanCoroutine;
     private Coroutine panCameraCoroutine;
     public CinemachineVirtualCamera currentCamera;
     private CinemachineFramingTransposer framingTransposer;
@@ -33,10 +32,14 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Vector3 cameraTargetPos;
     // How long a lerp takes to complete while tracking player movements across the level
     [SerializeField] float lerpCamLevelTime = 0.25f;
+    [SerializeField] float lerpOffsetTime;
+    private Coroutine lerpOffsetCoroutine;
     // How fast the camera is moving during the smooth damp. Initialized to zero during swaps
     private Vector3 cameraLevelVelocity;
     // Needed to smoothly map camera changes
-    [SerializeField] private float fallingViewOffset = 7.67f;
+    [SerializeField] private Vector3 fallingViewOffset = new Vector3(0, 7.67f, 0);
+    [SerializeField] private Vector3 risingViewOffset = new Vector3(0, 7.67f, 0);
+
 
     void Awake()
     {
@@ -62,6 +65,7 @@ public class CameraManager : MonoBehaviour
         if (playerFollowTarget != null)
             cameraTargetPos = playerFollowTarget.position;
 
+
         // Either go to the next platform or smooth onto the player, depending on the cameraTargetPos
         cameraLevelTransform.position = Vector3.SmoothDamp(cameraLevelTransform.position, cameraTargetPos, ref cameraLevelVelocity, lerpCamLevelTime);
     }
@@ -74,13 +78,24 @@ public class CameraManager : MonoBehaviour
         cameraTargetPos = position;
     }
 
-    public void setFollowPlayer(Transform transform, bool onTightrope)
+    public void setFollowPlayer(Transform transform, bool onTightrope, bool gliding)
     {
         // Swap to the player
         // Swap only once
-        if (currentCamera.Follow == cameraLevelTransform)
+        if (currentCamera.Follow == cameraLevelTransform && playerFollowTarget != transform)
         {
             playerFollowTarget = transform;  // set the transform we'll be tracking
+            if (!onTightrope && !gliding)
+            {
+                // Only if truly falling change the offset
+                // Do not change offsets on tightropes
+                LerpOffsetsFunc(fallingViewOffset);
+            }
+            else if (gliding)
+            {
+                // Camera stays at regular offset during glides, otherwise it looks weird
+                LerpOffsetsFunc(risingViewOffset);
+            }
             cameraTargetPos = transform.position;  // set our goal target position
         }
     }
@@ -92,9 +107,47 @@ public class CameraManager : MonoBehaviour
         if (playerFollowTarget != null || currentCamera.Follow != cameraLevelTransform)
         {
             playerFollowTarget = null;  // unlink the player
-            cameraLevelVelocity = Vector3.zero;
-            currentCamera.Follow = cameraLevelTransform;
+            cameraLevelVelocity = Vector3.zero;  // init smoothDamp velocity
+            LerpOffsetsFunc(risingViewOffset);
+            currentCamera.Follow = cameraLevelTransform;  // follow the ground level again
         }
+    }
+
+    private void LerpOffsetsFunc(Vector3 newOffset)
+    {
+        if (lerpOffsetCoroutine != null)
+        {
+            StopCoroutine(lerpOffsetCoroutine);
+        }
+
+        lerpOffsetCoroutine = StartCoroutine(LerpOffsets(newOffset));
+    }
+
+    private IEnumerator LerpOffsets(Vector3 newOffset)
+    {
+        Vector3 startOffset = framingTransposer.m_TrackedObjectOffset;
+        float duration = Mathf.Max(0f, lerpOffsetTime);
+        float elapsedTime = 0f;
+
+        Debug.Log("Entered LerpOffsets. New offset is " + newOffset);
+
+        if (duration == 0f)
+        {
+            framingTransposer.m_TrackedObjectOffset = newOffset;
+            lerpOffsetCoroutine = null;
+            yield break;
+        }
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsedTime / duration));
+            framingTransposer.m_TrackedObjectOffset = Vector3.Lerp(startOffset, newOffset, t);
+            yield return null;
+        }
+
+        framingTransposer.m_TrackedObjectOffset = newOffset;
+        lerpOffsetCoroutine = null;
     }
 
     public float getCameraLevelPosY()

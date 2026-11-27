@@ -23,7 +23,7 @@ public class CameraLockOn : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CameraManager.Instance.changeCameraLevel(collision.transform.position);
-            CameraManager.Instance.setFollowPlayer(collision.transform, false);
+            CameraManager.Instance.setFollowPlayer(collision.transform, false, false);
         }
     }
 

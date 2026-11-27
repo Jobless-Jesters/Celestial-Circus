@@ -128,7 +128,7 @@ public class Tightrope2 : MonoBehaviour
         // Ensure camera locked on player before jump
         if (playerOnRope)
         {
-            CameraManager.Instance.setFollowPlayer(currentPlayerTransform, true);
+            CameraManager.Instance.setFollowPlayer(currentPlayerTransform, true, false);
         }
 
     }
