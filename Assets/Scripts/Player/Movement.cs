@@ -147,7 +147,7 @@ public class Movement : MonoBehaviour
         // If falling below level or gliding, lock onto player
         if ((transform.position.y < CameraManager.Instance.getCameraLevelPosY() && currentState == STATE.Falling) || IsGliding())
         {
-            CameraManager.Instance.setFollowPlayer(transform);
+            CameraManager.Instance.setFollowPlayer(transform, false);
         }
 
         if (GameController.Instance.getPlayerIsAlive() == false)

@@ -20,7 +20,6 @@ public class Tightrope2 : MonoBehaviour
     [SerializeField] private Gradient minBoostGradient;
     [SerializeField] private Gradient medBoostGradient;
     [SerializeField] private Gradient maxBoostGradient;
-    [SerializeField] private bool ropeMaterial = true;
     [Header("Rope Shape")]
     // Number of line segments used to draw the rope
     [SerializeField] private int segments = 24;
@@ -40,12 +39,8 @@ public class Tightrope2 : MonoBehaviour
     [Header("Spring")]
     // How quickly the rope tries to return to its target shape
     [SerializeField] private float springStrength = 50f;
-
     // How quickly the rope loses its bouncing motion
     [SerializeField] private float damping = 4f;
-
-    // Initial downward kick when the player lands
-    [SerializeField] private float landingImpulse = 2.5f;
 
     [Header("Launch")]
     // Upward velocity for a well timed jump (a normal jump is ~40)
@@ -129,6 +124,13 @@ public class Tightrope2 : MonoBehaviour
         tightropeFlash();
         if (tightropeTimer > 0f && _moveAction.ReadValue<Vector2>().y >= 0f)
             Boost();
+
+        // Ensure camera locked on player before jump
+        if (playerOnRope)
+        {
+            CameraManager.Instance.setFollowPlayer(currentPlayerTransform, true);
+        }
+
     }
 
     // Keep the deforming collider in sync with the physics simulation.
@@ -255,12 +257,12 @@ public class Tightrope2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerOnRope = true;
-    
+
             if (_moveAction.ReadValue<Vector2>().y < 0f)
             {
                 _jumpAction.Disable();
                 tightropeTimer += Time.fixedDeltaTime;
-    
+
                 // Only play once when pressing down starts
                 if (!hasPlayedStretchSFX)
                 {
@@ -275,7 +277,7 @@ public class Tightrope2 : MonoBehaviour
             }
         }
     }
-    
+
 
     private void Boost()
     {
@@ -377,5 +379,5 @@ public class Tightrope2 : MonoBehaviour
         flashGradient.mode = source.mode;
         ropeRenderer.colorGradient = flashGradient;
     }
-    
+
 }
