@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -15,17 +16,23 @@ public class GameController : MonoBehaviour
     [Header("Player Info")]
     private bool playerIsAlive = true;
 
+    [Header("Timer")]
+    public float globalTimer = 0f;
+    public TMP_Text timerText;
+
+
     [Header("Masks Info")]
     [SerializeField] private bool hasTragedyMask = false;
     [SerializeField] private bool hasComedyMask = false;
-
-    // Intro dialogue only plays the first time the main menu loads
-    private bool hasSeenIntro = false;
 
     [Header("Checkpoints")]
     // Latest checkpoint per level, keyed by scene name, so each level remembers its own progress
     private Dictionary<string, int> checkpointIDs = new Dictionary<string, int>();
     private Dictionary<string, Vector3> checkpointPositions = new Dictionary<string, Vector3>();
+
+    [Header("Dialogue Control")]
+    private bool hasSeenIntro = false; // ensure intro is only seen once
+    private bool hasSeenOutro = false; // ensure outro is only seen once 
 
     [Header("Dialogue Flags")]
     [SerializeField] private Dictionary<string, bool> flags = new Dictionary<string, bool>();
@@ -64,6 +71,12 @@ public class GameController : MonoBehaviour
         {
             TogglePause();
         }
+
+
+        // Update timer and timer display
+        globalTimer += Time.deltaTime;
+        timerText.text = "TIME: " + Mathf.Floor(globalTimer / 60).ToString("00") + ":" + Mathf.FloorToInt(globalTimer % 60).ToString("00");
+
     }
 
     public void LoadSceneByName(string sceneName)
@@ -184,6 +197,16 @@ public class GameController : MonoBehaviour
         return hasSeenIntro;
     }
 
+    public void setHasSeenOutro(bool seen)
+    {
+        hasSeenOutro = seen;
+    }
+
+    public bool getHasSeenOutro()
+    {
+        return hasSeenOutro;
+    }
+
     public void setMainMenu()
     {
         mainmenu = GameObject.Find("MainMenu");
@@ -288,6 +311,19 @@ public class GameController : MonoBehaviour
         ip.enabled = true;
     }
 
+    public void resetGame()
+    {
+        // resets game once they have completed it
+
+        setHasComedyMask(false);
+        setHasTragedyMask(false);
+        setHasSeenIntro(false);
+        setHasSeenOutro(false);
+        clearCheckpoints();
+        clearFlags();   
+        setPlayerIsAlive(true);
+    }
+
     // dealing with dialogue flags
     // reused code and comments from DialogueFlags.cs from canvas base unity 
 
@@ -321,5 +357,13 @@ public class GameController : MonoBehaviour
         }
         return false;
 
+    }
+
+    public void clearFlags()
+    {
+        if (_instance.flags != null)
+        {
+            _instance.flags.Clear();
+        }
     }
 }

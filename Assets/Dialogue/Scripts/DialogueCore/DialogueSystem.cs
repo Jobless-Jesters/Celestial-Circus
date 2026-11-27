@@ -34,6 +34,8 @@ namespace Narrative
         void Start()
         {
             //Add event listeners
+            //Debug.LogWarning("Dialogue System Start() this.gameObject.activeSelf: " + this.gameObject.activeSelf);
+            //Debug.LogWarning("Dialogue System Start() this.gameObject.activeInHierarchy: " + this.gameObject.activeInHierarchy);
             dialogueSequencer.onFinish.AddListener(OnFinish);
             dialogueCanvas.enabled = true;//Enable the canvas only on runtime so it doesn't get in the way of scene editing
         }
@@ -43,16 +45,17 @@ namespace Narrative
         /// Plays the dialogue sequence.
         /// </summary>
         /// <param name="asset">Text asset source to play</param>
-        public static void PlaySequence(TextAsset asset)
+        public static void PlaySequence1(TextAsset asset)
         {
-            PlaySequence(new DialogueSequence(asset));
+            DialogueSequence dialogueSequence = new DialogueSequence(asset);
+            PlaySequence2(dialogueSequence);
         }
 
         /// <summary>
         /// Plays the dialogue sequence.
         /// </summary>
         /// <param name="dialogue">Dialogue sequence object to play</param>
-        public static void PlaySequence(DialogueSequence dialogue)
+        public static void PlaySequence2(DialogueSequence dialogue)
         {
             Instance.dialogueSequencer.PlaySequence(dialogue);
             Instance.onDialogueStarted.Invoke();
