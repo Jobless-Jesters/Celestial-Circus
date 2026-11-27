@@ -32,7 +32,6 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float maxSpeed = 12f;
     [SerializeField] protected float mass = 1;
 
-
     [Header("Glide Settings")]
     [SerializeField] protected float glideGravity = 2f;
     [SerializeField] protected float glideMaxFallSpeed = 4f;
@@ -143,6 +142,12 @@ public class Movement : MonoBehaviour
         if (_jumpAction.WasPressedThisFrame())
         {
             jumpPressed = true;
+        }
+
+        // If falling below level or gliding, lock onto player
+        if ((transform.position.y < CameraManager.Instance.getCameraLevelPosY() && currentState == STATE.Falling) || IsGliding())
+        {
+            CameraManager.Instance.setFollowPlayer(transform, false);
         }
 
         if (GameController.Instance.getPlayerIsAlive() == false)
@@ -439,7 +444,7 @@ public class Movement : MonoBehaviour
     private bool IsWallSliding()
     {
         Vector2 offset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
-        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3) offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
+        return Physics2D.OverlapBox(wallCheckPos.position + (Vector3)offset, wallCheckSize, 0f, wallLayer); // Check if colliding with wall
     }
 
     private void WallSlide()
@@ -474,11 +479,13 @@ public class Movement : MonoBehaviour
     {
         // Overlaps is calculated with an invisible box, not an invisible ray
         Vector2 offset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
-        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3) offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
+        if (Physics2D.OverlapBox(groundCheckPos.position + (Vector3)offset, groundCheckSize, 0, groundLayer) && _playerBody.velocity.y <= 0.1f)
         {
             // Only change to Grounded if it wasn't already to avoid jump count errors
             if (currentState != STATE.Grounded)
             {
+                CameraManager.Instance.changeCameraLevel(transform.position);
+                CameraManager.Instance.setFollowCameraLevel();
                 animator.SetBool("isGrounded", true);
                 animator.SetBool("isSliding", false); // Landing while sliding down a wall
                 currentState = STATE.Grounded;  // fixes animator issues
@@ -575,11 +582,11 @@ public class Movement : MonoBehaviour
         // Ground check gizmo
         Vector2 groundOffset = new Vector2(groundCheckOffset.x * Mathf.Sign(transform.localScale.x), groundCheckOffset.y);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3) groundOffset, groundCheckSize);
+        Gizmos.DrawWireCube(groundCheckPos.position + (Vector3)groundOffset, groundCheckSize);
 
         // Wall check gizmo
         Vector2 wallOffset = new Vector2(wallCheckOffset.x * Mathf.Sign(transform.localScale.x), wallCheckOffset.y);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3) wallOffset, wallCheckSize);
+        Gizmos.DrawWireCube(wallCheckPos.position + (Vector3)wallOffset, wallCheckSize);
     }
 }
