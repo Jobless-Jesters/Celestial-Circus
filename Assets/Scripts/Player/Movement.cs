@@ -320,16 +320,17 @@ public class Movement : MonoBehaviour
 
         if (jumpBufferCounter > 0f)
         {
-            bool canRegularJump = currentState == STATE.Grounded || coyoteTimeCounter >= 0f;
+            bool canRegularJump = currentState == STATE.Grounded || coyoteTimeCounter > 0f;
 
-            if (canRegularJump) // Check for regular ground jump
-            {
-                RegularJump();
-                FinishJump();
-            }
-            else if (currentState == STATE.WallSliding) // Check for wall jump
+            // Wall jump is checked first so leftover coyote time can't turn it into a straight-up jump
+            if (currentState == STATE.WallSliding) // Check for wall jump
             {
                 WallJump();
+                FinishJump();
+            }
+            else if (canRegularJump) // Check for regular ground jump
+            {
+                RegularJump();
                 FinishJump();
             }
             // Gives coyote time on the first jump; double jumps work normally.
@@ -337,7 +338,6 @@ public class Movement : MonoBehaviour
             {
                 RegularJump();
                 FinishJump();
-                coyoteTimeCounter = 0f;
             }
 
             else
@@ -363,6 +363,7 @@ public class Movement : MonoBehaviour
         animator.SetBool("isGrounded", false);
         AudioController.Instance.PlayJumpSFX();
         jumpBufferCounter = 0f;
+        coyoteTimeCounter = 0f; // Any jump consumes coyote time
     }
 
     public void WallJump()
