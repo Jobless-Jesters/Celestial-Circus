@@ -24,9 +24,11 @@ public class CameraManager : MonoBehaviour
 
     [Header("Camera Tracking Variables")]
     // A semi-static anchor for the camera. Does not change until we jump on a new platform, changes fluidly if we are tracking the player
-    [SerializeField] Transform cameraLevelTransform;  
+    [SerializeField] Transform cameraLevelTransform;
     // The current target of the camera. Either the cameraLevel or the Player
     [SerializeField] private Transform currTarget;
+    // The transform of the player we follow
+    private Transform playerFollowTarget;
     // Our target position. Our camera will be trying to get to this position
     [SerializeField] Vector3 cameraTargetPos;
     // How long a lerp takes to complete while tracking player movements across the level
@@ -54,19 +56,14 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        currTarget = currentCamera.Follow;
-        // If we're moving up, lerp smoothly between the platforms
-        if (currTarget == cameraLevelTransform)
-        {
-            cameraLevelTransform.position = Vector3.SmoothDamp(cameraLevelTransform.position, cameraTargetPos, ref cameraLevelVelocity, lerpCamLevelTime);
-        }
-        else  
-        // If we're tracking the player, make the cameraLevel's position follow it to prevent heaving between swaps. 
-        // When falling/gliding, the cameraLevel's new position will always be where we land
-        {
-            cameraTargetPos = currentCamera.Follow.position;
-            cameraLevelTransform.position = cameraTargetPos;
-        }
+        currTarget = playerFollowTarget != null ? playerFollowTarget : cameraLevelTransform;
+
+        // If we swapped to the player, set them as our goal target position
+        if (playerFollowTarget != null)
+            cameraTargetPos = playerFollowTarget.position;
+
+        // Either go to the next platform or smooth onto the player, depending on the cameraTargetPos
+        cameraLevelTransform.position = Vector3.SmoothDamp(cameraLevelTransform.position, cameraTargetPos, ref cameraLevelVelocity, lerpCamLevelTime);
     }
 
 
@@ -77,15 +74,14 @@ public class CameraManager : MonoBehaviour
         cameraTargetPos = position;
     }
 
-    public void setFollowPlayer(Transform transform)
+    public void setFollowPlayer(Transform transform, bool onTightrope)
     {
-        // Swap the camera follow target to the player
+        // Swap to the player
         // Swap only once
         if (currentCamera.Follow == cameraLevelTransform)
         {
-            framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset + Vector2.down * fallingViewOffset;
-            cameraTargetPos = transform.position;
-            currentCamera.Follow = transform;
+            playerFollowTarget = transform;  // set the transform we'll be tracking
+            cameraTargetPos = transform.position;  // set our goal target position
         }
     }
 
@@ -93,10 +89,10 @@ public class CameraManager : MonoBehaviour
     {
         // Swap the camera follow target to the cameraLevel
         // Swap only once
-        if (currentCamera.Follow != cameraLevelTransform)
+        if (playerFollowTarget != null || currentCamera.Follow != cameraLevelTransform)
         {
+            playerFollowTarget = null;  // unlink the player
             cameraLevelVelocity = Vector3.zero;
-            framingTransposer.m_TrackedObjectOffset = startingTrackedObjectOffset;
             currentCamera.Follow = cameraLevelTransform;
         }
     }
