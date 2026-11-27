@@ -108,6 +108,7 @@ namespace Narrative
                 if (isEndOfText())
                 {
                     advanceArrow.SetVisible(true);
+                    
                     // trying to auto trigger dialogue
                     // only when in endMenu
                     // and during clown speaking
@@ -130,9 +131,7 @@ namespace Narrative
             yield return new WaitForSecondsRealtime(0.8f);
 
             Debug.Log("AutoPlay Coroutine ended");
-            if(GameController.Instance.getCurrentSceneName() == "EndMenu" 
-                    && nameLabel.text == "Clown" 
-                    && textLabel.text != "…"
+            if(nameLabel.text == "Clown" && textLabel.text != "…"
                     && GameController.Instance.getIsPaused() == false)
                     {
                         AdvanceLine(); // advance line
